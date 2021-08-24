@@ -3,8 +3,9 @@
    Author Rob Verdon
    rob.verdon@gmail.com
    
-   Version 1.1
-   Functonal as of 2-26-2021
+   Version 1.2
+   Functonal as of 8-23-2021
+   8-23-2021-Add SP Button
    
    REQUIRES Mobiflight-event-module in community folder  
    https://www.mobiflight.com/en/download.html
@@ -85,6 +86,7 @@ if user_prop_get(displaybtns) then
     DOTButtonPressed = "DOT_btn_pressed.png"
     ZEROButtonPressed = "ZERO_btn_pressed.png"
     PLUSMINUSButtonPressed = "PLUSMINUS_btn_pressed.png"
+    SPButtonPressed = "SP_btn_pressed.png"
     else
     SelectorButtonPressed = nil
     CLRButtonPressed = nil
@@ -142,6 +144,7 @@ if user_prop_get(displaybtns) then
     DOTButtonPressed = nil
     ZEROButtonPressed = nil
     PLUSMINUSButtonPressed = nil
+    SPButton = nil
 end 
 displaybtnsalwys = user_prop_add_boolean("Display Buttons Always", false, "") -- Show or hide the unit type onscreen
 if user_prop_get(displaybtnsalwys) then
@@ -201,6 +204,7 @@ if user_prop_get(displaybtnsalwys) then
     DOTButton = "DOT_btn_pressed.png"
     ZEROButton = "ZERO_btn_pressed.png"
     PLUSMINUSButton = "PLUSMINUS_btn_pressed.png"
+    SPButtonPressed = "SP_btn_pressed.png"
     else
     SelectorButton = nil
     CLRButton = nil
@@ -258,8 +262,9 @@ if user_prop_get(displaybtnsalwys) then
     DOTButton = nil
     ZEROButton = nil
     PLUSMINUSButton = nil
+    SPButton = nil
 end 
---START OF BUTTONS************
+--START OF BUTTONS************f
 
 --L1 Button
 function FMC_1_BTN_L1()
@@ -439,13 +444,13 @@ button_add(CLRButton,CLRButtonPressed, 731,671,52,52, FMC_1_BTN_CLR_Start, FMC_1
 
 --BRT Button **DOESN'T WORK
 function FMC_1_BTN_BRT()
-   --fs2020_event("MOBIFLIGHT.CJ4_FMC_1_BRT_")
+   fs2020_event("O:XMLVAR_FMC_CJ4_1_Button_BRT_DIM",100)
    sound_play(fail_snd)
 end
 button_add(nil,nil, 733,741,42,42, FMC_1_BTN_BRT)
 --DIM Button **DOESN'T WORK
 function FMC_1_BTN_DIM()
-   --fs2020_event("MOBIFLIGHT.CJ4_FMC_1_DIM_")
+   fs2020_event("O:XMLVAR_FMC_CJ4_1_Button_BRT_DIM",0)
    sound_play(fail_snd)
 end
 button_add(nil,nil, 733,790,42,42, FMC_1_BTN_DIM)
@@ -615,10 +620,10 @@ end
 button_add(ZButton,ZButtonPressed, 331,921,52,52, FMC_1_BTN_Z)
 
 
---SP Button **DOESN'T WORK
+--SP Button
 function FMC_1_BTN_SP()
    fs2020_event("MOBIFLIGHT.CJ4_FMC_1_BTN_SP")
-   sound_play(fail_snd)
+   sound_play(click_snd)
 end
 button_add(SPButton,SPButtonPressed, 395,921,52,52, FMC_1_BTN_SP)
 --DIV Button
