@@ -7,7 +7,7 @@
 ***
 ***
 *** To avoid retyping too much info. Do a search and replace for the following:
-*** github_username, repo_name, twitter_handle, email, project_title, project_description
+*** Simstrumentation, Air-Manager, twitter_handle, email, Air-Manager-Instruments, project_description
 -->
 
 
@@ -32,23 +32,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/Simstrumentation/Air-Manager">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">Air-Manager-Instruments</h3>
 
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Simstrumentation/Air-Manager"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/Simstrumentation/Air-Manager">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/Simstrumentation/Air-Manager/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/Simstrumentation/Air-Manager/issues">Request Feature</a>
   </p>
 </p>
 
@@ -89,7 +89,7 @@
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+`Simstrumentation`, `Air-Manager`, `twitter_handle`, `email`, `Air-Manager-Instruments`, `project_description`
 
 
 ### Built With
@@ -117,7 +117,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/Simstrumentation/Air-Manager.git
    ```
 2. Install NPM packages
    ```sh
@@ -138,7 +138,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/Simstrumentation/Air-Manager/issues) for a list of proposed features (and known issues).
 
 
 
@@ -167,7 +167,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/Simstrumentation/Air-Manager](https://github.com/Simstrumentation/Air-Manager)
 
 
 
@@ -184,15 +184,15 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Simstrumentation/repo.svg?style=for-the-badge
+[contributors-url]: https://github.com/Simstrumentation/Air-Manager/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Simstrumentation/repo.svg?style=for-the-badge
+[forks-url]: https://github.com/Simstrumentation/Air-Manager/network/members
+[stars-shield]: https://img.shields.io/github/stars/Simstrumentation/repo.svg?style=for-the-badge
+[stars-url]: https://github.com/Simstrumentation/Air-Manager/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Simstrumentation/repo.svg?style=for-the-badge
+[issues-url]: https://github.com/Simstrumentation/Air-Manager/issues
+[license-shield]: https://img.shields.io/github/license/Simstrumentation/repo.svg?style=for-the-badge
+[license-url]: https://github.com/Simstrumentation/Air-Manager/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+[linkedin-url]: https://linkedin.com/in/Simstrumentation
