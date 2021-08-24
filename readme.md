@@ -24,8 +24,8 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
+
 
 
 
@@ -162,15 +162,14 @@ Project Link: [https://github.com/Simstrumentation/Air-Manager](https://github.c
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Simstrumentation/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Simstrumentation/Air-Manager.svg?style=for-the-badge
 [contributors-url]: https://github.com/Simstrumentation/Air-Manager/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Simstrumentation/repo.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Simstrumentation/Air-Manager.svg?style=for-the-badge
 [forks-url]: https://github.com/Simstrumentation/Air-Manager/network/members
-[stars-shield]: https://img.shields.io/github/stars/Simstrumentation/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Simstrumentation/Air-Manager.svg?style=for-the-badge
 [stars-url]: https://github.com/Simstrumentation/Air-Manager/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Simstrumentation/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Simstrumentation/Air-Manager.svg?style=for-the-badge
 [issues-url]: https://github.com/Simstrumentation/Air-Manager/issues
-[license-shield]: https://img.shields.io/github/license/Simstrumentation/repo.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Simstrumentation/Air-Manager.svg?style=for-the-badge
 [license-url]: https://github.com/Simstrumentation/Air-Manager/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/Simstrumentation
+
