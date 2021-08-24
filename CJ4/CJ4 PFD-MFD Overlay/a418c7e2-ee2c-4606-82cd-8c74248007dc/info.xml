@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna CJ4</aircraft><type>PFD or MDF Overlay</type><uuid>a418c7e2-ee2c-4606-82cd-8c74248007dc</uuid><author>Rob Verdon</author><description>   CJ4 Simple PFD/MDF Overlay Bezel
+   Author Rob Verdon
+   rob.verdon@gmail.com
+   
+   Version 1.0</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>830</prefWidth><prefHeight>1080</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
