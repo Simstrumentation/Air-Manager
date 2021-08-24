@@ -19,6 +19,17 @@
 *** See the bottom of this document for the declaration of the reference variables
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
+
+
+  <a href="https://github.com/Simstrumentation/Air-Manager">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+
+
+
+
+
 -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -32,9 +43,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Simstrumentation/Air-Manager">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+
 
   <h3 align="center">Air-Manager-Instruments</h3>
 
@@ -74,9 +83,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+
   </ol>
 </details>
 
@@ -85,11 +92,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`Simstrumentation`, `Air-Manager`, `twitter_handle`, `email`, `Air-Manager-Instruments`, `project_description`
+Aircraft | Panel | Current Version | Documentation |
+--------|-------------|-----------------|--------------
+CJ4 | FMS-3200 FMC-CDU Overlay | [8-23-2021 v1.2](https://github.com/Simstrumentation/Air-Manager/raw/main/CJ4/FMS-3200%20FMC-CDU%20Overlay/Cessna%20Citation%20CJ4%20-%20FMS-3200%20FMC-CDU%20Overlay.siff) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/CJ4/FMS-3200%20FMC-CDU%20Overlay) | <img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/b477785b7c4a67db3f169b8666b329ae116df9b8/CJ4/FMS-3200%20FMC-CDU%20Overlay/f7659605-1421-4d75-a347-55d9cb92db57/preview.png" width="100" height="100">
 
 
 ### Built With
@@ -133,28 +138,7 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
-<!-- LICENSE -->
-## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/Simstrumentation/Air-Manager](https://github.com/Simstrumentation/Air-Manager)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
 
 
 
