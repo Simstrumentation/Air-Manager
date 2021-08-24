@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna Citation CJ4</aircraft><type>FMS-3200 FMC-CDU Overlay</type><uuid>f7659605-1421-4d75-a347-55d9cb92db57</uuid><author>Rob Verdon</author><description>Cessna Citation CJ4 
+FMS-3200 FMC-CDU Overlay 
+Rob Verdon Rob.Verdon@gmail.com
+2-26-2021 
+*Must have mobiflight-event-module in community folder
+See this forum for info:
+https://forums.flightsimulator.com/t/full-g1000-control-now-with-mobiflight/348509
+
+The scren must be &quot;popped&quot; out of the game using the right ALT key and clicking on the screen. The screen size must be streched behind the overlay.
+
+Note: SP, BRT and DIM not working.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>800</prefWidth><prefHeight>1000</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
