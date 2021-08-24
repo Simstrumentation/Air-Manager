@@ -1,11 +1,5 @@
-Update 8-23-21
+Update 3-7-21
 
-Add Space Button on keypad.
+Overlay for PFD or MFD
 
-Inop:
-BRT/DIM -O variables not writeable 
-
-Left to do:
-* Replace Graphics
-* Update Click sound to match ingame. 
-* Convert all MobiFlight Events to Direct Variables
+You must "Pop out" the PDF or MFD from the game using Alt inorder to use this panel.

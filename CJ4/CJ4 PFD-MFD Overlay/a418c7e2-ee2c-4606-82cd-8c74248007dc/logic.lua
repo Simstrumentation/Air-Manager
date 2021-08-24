@@ -1,5 +1,5 @@
 --[[
-   CJ4 Simple PFD or MDF Overlay Bezel
+   CJ4 Simple PFD or MFD Overlay Bezel
    Author Rob Verdon
    rob.verdon@gmail.com
    
