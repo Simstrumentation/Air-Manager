@@ -98,11 +98,6 @@ CJ4 | PFD MFD Overlay | [3-7-2021 v1.0](https://github.com/Simstrumentation/Air-
 CJ4 | FMS-3200 FMC-CDU Overlay | [8-23-2021 v1.2](https://github.com/Simstrumentation/Air-Manager/raw/main/CJ4/CJ4%20FMS-3200%20FMC-CDU%20Overlay/Cessna%20Citation%20CJ4%20-%20FMS-3200%20FMC-CDU%20Overlay.siff) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/CJ4/CJ4%20FMS-3200%20FMC-CDU%20Overlay) | <img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/b477785b7c4a67db3f169b8666b329ae116df9b8/CJ4/FMS-3200%20FMC-CDU%20Overlay/f7659605-1421-4d75-a347-55d9cb92db57/preview.png" width="100" height="100">
 
 
-### Built With
-
-* []()
-* []()
-* []()
 
 
 
