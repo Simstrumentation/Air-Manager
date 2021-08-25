@@ -45,21 +45,18 @@
 <p align="center">
 
 
-  <h3 align="center">Air-Manager-Instruments</h3>
+  <h1 align="center">Flying Flight Simulator Mouse Free </h1>
+  <h1 align="center">Using Touch Screen Instruments Build On Air Manager</h1>
 
   <p align="center">
-    project_description
+  <br />  
+  <br /> 
+  Air Manager is paid software available at https://www.siminnovations.com/ but our Instruments may be Imported into Air Manager for free!
     <br />
-    <a href="https://github.com/Simstrumentation/Air-Manager"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/Simstrumentation/Air-Manager">View Demo</a>
-    ·
-    <a href="https://github.com/Simstrumentation/Air-Manager/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Simstrumentation/Air-Manager/issues">Request Feature</a>
+   <br /> 
   </p>
 </p>
+<p align="center"><img src="https://user-images.githubusercontent.com/38576265/130723641-ee6a6614-b705-4dc5-bafd-02910f70b6d1.png" alt="drawing" width="400"/></p>
 
 
 
