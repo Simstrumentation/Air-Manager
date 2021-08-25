@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna_Citation_CJ4</aircraft><type>Upper_DCP_Menu</type><uuid>646e2e0b-4014-4add-b572-242aa038b2f1</uuid><author>Rob Verdon</author><description>   CJ4 Upper DCP Menu
+   Author Rob Verdon
+   rob.verdon@gmail.com
+   
+   Version 1.0
+   Functonal as of 3-3-2021
+   
+   REQUIRES Mobiflight-event-module in community folder  
+   https://www.mobiflight.com/en/download.html
+   
+   How to in 1st post here:
+   https://forums.flightsimulator.com/t/full-g1000-control-now-with-mobiflight/348509
+
+   CCP Meanu, Radar Menu, TAWS Menu and Weather Tilt not functional.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>981</prefWidth><prefHeight>346</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

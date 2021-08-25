@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna_Citation_CJ4</aircraft><type>AutoPilot_Panel</type><uuid>30f0e44d-791c-4ecc-a5c4-eb80d769d3ea</uuid><author>Rob Verdon</author><description>  CJ4 AutoPilot Panel
+   Author Rob Verdon
+   rob.verdon@gmail.com
+   
+   Version 1.1
+   Functonal as of 3-8-2021
+
+3-8-2021 YD button fixed.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1920</prefWidth><prefHeight>215</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
