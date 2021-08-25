@@ -4,6 +4,10 @@
    
    Version 1.0
    Functonal as of 3-13-2021
+
+   Version 1.1
+   Modified by Joe &quot;Crunchmeister&quot; Gilker
+   - Fixed start functionality that had been broken by a previous update
    
    REQUIRES Mobiflight-event-module in community folder  
    https://www.mobiflight.com/en/download.html
@@ -11,4 +15,4 @@
    How to in 1st post here:
    https://forums.flightsimulator.com/t/full-g1000-control-now-with-mobiflight/348509
 
-   Secondary Elev Trim Button Not Functional</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>664</prefWidth><prefHeight>860</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+   Secondary Elev Trim Button Not Functional</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>110</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>664</prefWidth><prefHeight>860</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

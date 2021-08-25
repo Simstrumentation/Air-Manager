@@ -6,6 +6,10 @@
    Version 1.0
    Functonal as of 3-13-2021
    
+   Version 1.1
+   Modified by Joe "Crunchmeister" Gilker
+   - Fixed start functionality that had been broken by a previous update
+   
    REQUIRES Mobiflight-event-module in community folder  
    https://www.mobiflight.com/en/download.html
    
@@ -58,31 +62,17 @@ local L_Mix2_Status = false
 ---------START----------------------------
 
 function Engine1_Run_Toggle()
-    if L_Mix1_Status == true then
-         fs2020_event("MIXTURE1_RICH")
-         fs2020_event("TOGGLE_FUEL_VALVE_ENG1")
-         fs2020_event("TURBINE_IGNITION_SWITCH_SET1")
+
+ fs2020_event("MOBIFLIGHT.WT_CJ4_ENG_RUNSTOP_L_PUSH")
          sound_play(click_snd)
-    else 
-        fs2020_event("MIXTURE1_LEAN")
-        fs2020_event("TOGGLE_FUEL_VALVE_ENG1")
-        sound_play(click_snd)
-    end
+
 end
 button_add(nil,nil, 151,30,100,100, Engine1_Run_Toggle)
 
   
 function Engine2_Run_Toggle()
-    if L_Mix2_Status == true then
-         fs2020_event("MIXTURE2_RICH")
-         fs2020_event("TOGGLE_FUEL_VALVE_ENG2")
-         fs2020_event("TURBINE_IGNITION_SWITCH_SET2")
+fs2020_event("MOBIFLIGHT.WT_CJ4_ENG_RUNSTOP_R_PUSH")
          sound_play(click_snd)
-    else 
-        fs2020_event("MIXTURE2_LEAN")
-        fs2020_event("TOGGLE_FUEL_VALVE_ENG2")
-        sound_play(click_snd)
-    end
 end
 button_add(nil,nil, 421,30,100,100, Engine2_Run_Toggle)
 
