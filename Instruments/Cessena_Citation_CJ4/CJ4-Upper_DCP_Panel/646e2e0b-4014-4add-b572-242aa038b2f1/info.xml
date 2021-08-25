@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna_Citation_CJ4</aircraft><type>Upper_DCP_Menu</type><uuid>646e2e0b-4014-4add-b572-242aa038b2f1</uuid><author>Rob Verdon</author><description>   CJ4 Upper DCP Menu
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna_Citation_CJ4</aircraft><type>Upper_DCP_Panel</type><uuid>646e2e0b-4014-4add-b572-242aa038b2f1</uuid><author>Rob Verdon</author><description>   CJ4 Upper DCP Panel
    Author Rob Verdon
    rob.verdon@gmail.com
    
