@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessena 172 G1000</aircraft><type>GMA 1347 Audio Panel</type><uuid>ee15381c-ab11-4cf2-bac6-fba2d7b63ded</uuid><author>Rob Verdon</author><description>G1000 Audio Panel GMA 1347 in Cessena 172
-MSFS2020
-Functions: Com1Mic, Com2Mic, Com1, Com2, DME, ADF, NAV1, NAV2,Marker Mute
-Beta Release 3-2-2021
-</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>130</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>180</prefWidth><prefHeight>917</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
