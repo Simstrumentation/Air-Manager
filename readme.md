@@ -113,7 +113,7 @@ CJ4 | Blah Panel | [3-7-2021 v1.1](Right Click and copy link of raw siff file) |
 ## In Progress Instruments
 Aircraft | Panel | Current Version | Documentation | Preview
 --------|-------------|-----------------|--------------|--------------
-CJ4 | Light Panel | [8-2-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/Cessna_Citation_CJ4-Light_Panel.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel) | <p align="center"><img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/40e12ee4-9d82-427c-8760-372fbcaf482f/preview.png" width="100" height="60"> </p>
+CJ4 | Light Panel | [8-30-2021 v1.2](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/Cessna_Citation_CJ4-Light_Panel.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel) | <p align="center"><img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/40e12ee4-9d82-427c-8760-372fbcaf482f/preview.png" width="100" height="60"> </p>
 
 
 
@@ -142,13 +142,7 @@ See the [open issues](https://github.com/Simstrumentation/Air-Manager/issues) fo
 Panel Names should not have spaces.
 When Export out of AirManger remove the "-" that AirManager Exporter puts in between the Plane Name and Model. 
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 
 
