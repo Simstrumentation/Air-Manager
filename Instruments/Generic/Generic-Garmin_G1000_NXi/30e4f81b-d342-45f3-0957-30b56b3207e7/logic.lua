@@ -14,8 +14,12 @@ X-Plane compatiblity unaltered and original Sim Innovations / Russ Barlow code
 
 ***************CHANGE LOG
 
-02-09-2021 - Added fix for FLC not working with Working TItle G1000 NXi 0.5.0 (Joe Gilker)
+02-09-2021:
+ - Added fix for FLC not working with Working TItle G1000 NXi 0.5.0 (Joe Gilker)
+- Changed NVAV command to use the new H:AS1000_VNAV_TOGGLE event vs old LVAR write code.
 
+04-09-2021:
+- Fixed FLC button not working with WT G1000 NXi 0.5.1
 ]]--
 
 -- Select whether this unit is in position 1 or two.  If you need two G530s clone this instrument, rename it, and change the variable 
@@ -163,11 +167,11 @@ fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", flc_callback)
     
         if FLCState then  --check if FLC is currently on
             fs2020_event("FLIGHT_LEVEL_CHANGE_OFF")    --For stock G1000
-            fs2020_event("FLIGHT_LEVEL_CHANGE")            --for WT G1000 NXi
+            fs2020_event("H:FLIGHT_LEVEL_CHANGE")            --for WT G1000 NXi
         else    -- if FLC currently off
             AirspeedDecimal = math.floor(AirspeedIndicated)        -- read current airspeed and convert variable
             fs2020_event("FLIGHT_LEVEL_CHANGE_ON")                --For stock G1000
-            fs2020_event("FLIGHT_LEVEL_CHANGE")                        --for WT G1000 NXi
+            fs2020_event("H:FLIGHT_LEVEL_CHANGE")                        --for WT G1000 NXi
             fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
         end
     end
@@ -214,13 +218,14 @@ fs2020_variable_subscribe("L:XMLVAR_VNAVButtonValue", "number", vnv_state_callba
 
 function vnv_click()
     xpl_command("sim/GPS/g1000n"..g_unitpos.."_vnv")
- 
+     fs2020_event("H:AS1000_VNAV_TOGGLE")
+    --[[
     if VNAVState == 1 then
       fs2020_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 0)
     else
       fs2020_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 1)
     end
-    
+    ]]--
     sound_play(click_snd)
 end
 
