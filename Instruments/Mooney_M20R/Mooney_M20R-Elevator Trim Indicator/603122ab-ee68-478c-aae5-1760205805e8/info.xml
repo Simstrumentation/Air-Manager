@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Mooney M20R</aircraft><type>Elevator Trim Indicator</type><uuid>603122ab-ee68-478c-aae5-1760205805e8</uuid><author>Joe &quot;Crunchmeister&quot; Gilker</author><description>Carenado Mooney M20R elevator trim indicator for MSFS 2020 
+
+By Joe &quot;Crunchmester&quot; Gilker
+
+Based on the C172 trim indicator by Jason Tatum</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>184</prefWidth><prefHeight>512</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
