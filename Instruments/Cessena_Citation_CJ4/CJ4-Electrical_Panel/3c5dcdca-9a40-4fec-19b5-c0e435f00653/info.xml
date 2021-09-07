@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna_Citation_CJ4</aircraft><type>Electrical_Panel</type><uuid>3c5dcdca-9a40-4fec-19b5-c0e435f00653</uuid><author>Rob Verdon</author><description>CJ4 Electrical Panel
    Author Rob Verdon
    rob.verdon@gmail.com
-   
-   Version 1.0
-   Functonal as of 3-4-2021
-   
-   REQUIRES Mobiflight-event-module in community folder  
-   https://www.mobiflight.com/en/download.html
-   
-   How to in 1st post here:
-   ttps://forums.flightsimulator.com/t/full-g1000-control-now-with-mobiflight/348509
 
-  *** Avionics Button Does not Work, Status only.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>750</prefWidth><prefHeight>500</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+   </description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>201</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>750</prefWidth><prefHeight>500</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
