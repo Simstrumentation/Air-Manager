@@ -10,6 +10,12 @@
    Modified by Joe "Crunchmeister" Gilker
    - Fixed start functionality that had been broken by a previous update
    
+   Version 1.2
+   Modified by Joe "Crunchmeister" Gilker
+   - New custom graphics
+   - functional covers added to run buttons. Touch or click the cover hinges to open and close.
+      Run switches will be INOP until covers are open.
+   
    REQUIRES Mobiflight-event-module in community folder  
    https://www.mobiflight.com/en/download.html
    
@@ -23,6 +29,8 @@
 --Backgroud Image before anything else
 img_add_fullscreen("background.png")
 
+local  left_run = 0
+local right_run = 0
 
 PIC_Engine1_Run = img_add("Engine_Run.png", 160,33,90,70)
 PIC_Engine1_Stop = img_add("Engine_Stop.png", 167,69,70,50)
@@ -53,26 +61,41 @@ move(AILERON_Trim_Knob, nil, nil, nil, nil, "LOG", 0.04)
 
 ---Sounds
 click_snd = sound_add("Asobo_CJ4_WT.PC_63.wav")
+fail_snd = sound_add("beepfail.wav")
+cover_open_snd = sound_add("cover_open.wav")
+cover_close_snd = sound_add("cover_close.wav")
 
 --Locals
 local L_Starter1_Status = false 
 local L_Starter2_Status = false
 local L_Mix1_Status = false
 local L_Mix2_Status = false
+
+
 ---------START----------------------------
 
 function Engine1_Run_Toggle()
-
- fs2020_event("MOBIFLIGHT.WT_CJ4_ENG_RUNSTOP_L_PUSH")
+    if left_run == 0 then    --if button cover is down, play fail sound and don't start the engine
+        sound_play(fail_snd)
+     else    -- set engine to RUN if cover is open
+         fs2020_event("MOBIFLIGHT.WT_CJ4_ENG_RUNSTOP_L_PUSH")
          sound_play(click_snd)
-
+      end
 end
 button_add(nil,nil, 151,30,100,100, Engine1_Run_Toggle)
 
   
 function Engine2_Run_Toggle()
-fs2020_event("MOBIFLIGHT.WT_CJ4_ENG_RUNSTOP_R_PUSH")
-         sound_play(click_snd)
+    if right_run==0 then    --if button cover is down, play fail sound and don't start the engine
+         sound_play(fail_snd)
+    else    -- set engine to RUN if cover is open
+        fs2020_event("MOBIFLIGHT.WT_CJ4_ENG_RUNSTOP_R_PUSH")
+        sound_play(click_snd)
+    
+    end
+
+
+
 end
 button_add(nil,nil, 421,30,100,100, Engine2_Run_Toggle)
 
@@ -313,6 +336,60 @@ function Aileron_Trim_Right()
 end   
 button_add(nil,nil, 200,390,60,130, Aileron_Trim_Right_Start, Aileron_Trim_Right_End)                         
 
-                                                                                                                                                          
-                                                                                                                                                                                                                                                                                                                    
+-- Engine run button covers
+function cover_l_id()
+
+end
+
+-- Engine run button covers--
+
+--Add graphics for both states
+
+L_Closed = img_add("cover_l_closed.png", 120 ,5,152,146)
+L_Open = img_add("cover_l_open.png", 120 ,5,152,146)
+visible(L_Closed, true)
+visible(L_Open, false)
+
+R_Closed = img_add("cover_r_closed.png", 400 ,5,152,146)
+R_Open = img_add("cover_r_open.png", 400 ,5,152,146)
+visible(R_Closed, true)
+visible(R_Open, false)
+
+
+function cover_l_toggle()
+    if left_run == 0 then
+        left_run =1
+        visible(L_Closed, false)
+        visible(L_Open, true)
+         sound_play(cover_open_snd)
+     else
+         left_run = 0
+         visible(L_Closed, true)
+         visible(L_Open, false)
+         sound_play(cover_close_snd)
+      end
+
+end
+
+
+button_add(nil, nil ,120 ,5,30,146, cover_l_toggle)                                                                                                                                                          
+
+function cover_r_toggle()
+    if right_run == 0 then
+        right_run =1
+        visible(R_Closed, false)
+        visible(R_Open, true)
+        sound_play(cover_open_snd)
+     else
+         right_run = 0
+         visible(R_Closed, true)
+         visible(R_Open, false)
+         sound_play(cover_close_snd)
+      end    
+
+end
+
+button_add(nil, nil, 525 ,5,30,146, cover_r_toggle)                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                    
