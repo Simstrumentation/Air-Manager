@@ -88,7 +88,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Aircraft
-Aircraft |  Preview
+Aircraft (click to view instruments for this plane) |  Plane image
 --------|-------------
 [Generic Aircrafts](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/) | <p align="center"></p>
 [Cessena Citation CJ4](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/) | <p align="center"><img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" alt="drawing" width="200"/></p>
