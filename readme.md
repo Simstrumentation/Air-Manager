@@ -27,11 +27,12 @@ https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-
 
 
 -->
+<!--
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-
+-->
 
 
 
@@ -73,6 +74,9 @@ https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-
 
 <!-- ABOUT THE PROJECT -->
 ## Aircraft Instrument Categories
+<p>This is a list of the different aircraft in MSFS 2020 that we currently have working instruments for.</p>
+<h6>At the current time, we don't provide complete panel layouts, just individual instruments. Each person will have a different setup with a different number of monitors in different sizes. Preset panels that work for us won't necessarily work for you. You can use the instruments provided to build a layout that works for you.</h6>
+
 Aircraft <br> (click to view instruments for this plane) |  Plane image
 --------|-------------
 [Cessena C172](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/) | <img src="https://user-images.githubusercontent.com/75218511/133437329-3312c807-dbbf-4a73-b99e-e09678afdc82.png" width="300">
