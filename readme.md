@@ -36,8 +36,9 @@ https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-
 
 
 <!-- PROJECT LOGO -->
-<h1 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!</h1>  
-<h2 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager</h2>
+<h1 align="center">SIMSTRUMENTATION</h1>
+<h2 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!</h2>  
+<h3 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager</h3>
   
 
 <p align="center">The goal of Air Manager, and subsequently, this collection of instruments, is to be able to offer flight simmers a more realistic mouse and keyboard-free experience for our favourite aircraft. Through the use of touch screens and the optional <a href="https://www.siminnovations.com/hardware/product/57-knobster">Knobster</a> from Sim Innovations, you can have a fully interactive cockpit without requiring the use of a mouse in flight.</p>
