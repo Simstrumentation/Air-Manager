@@ -13,7 +13,7 @@
 
 
 <!-- PROJECT SHIELDS -->
-<!--
+https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-ae63-19b5796f72ed.png
 *** I'm using markdown "reference style" links for readability.
 *** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
 *** See the bottom of this document for the declaration of the reference variables
@@ -90,11 +90,10 @@
 ## Aircraft Instrument Categories
 Aircraft (click to view instruments for this plane) |  Plane image
 --------|-------------
-[Cessena Citation CJ4](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/) | <img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" alt="drawing" width="200"/></p>
-[Cessena C172](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/) | <img src="https://user-images.githubusercontent.com/75218511/133437329-3312c807-dbbf-4a73-b99e-e09678afdc82.png" width="200">
-[TBM 930](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/TBM_930/) | <img src="https://user-images.githubusercontent.com/75218511/133437825-439d90a5-4129-45f0-a48d-a30ea18aefad.png" width="200">
-[Generic Aircrafts](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/) | This section contains generic instruments and controls that can be used in a wide variety of aircraft and aren't aircraft-specific. 
-
+[Cessena C172](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/) | <img src="https://user-images.githubusercontent.com/75218511/133437329-3312c807-dbbf-4a73-b99e-e09678afdc82.png" width="300">
+[Cessena Citation CJ4](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/) | <img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" alt="drawing" width="300"/></p>
+[Generic Instruments](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/) | This section contains generic instruments and controls that can be used in a wide variety of aircraft and aren't aircraft-specific. 
+[TBM 930](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/TBM_930/) | <img src="https://user-images.githubusercontent.com/75218511/133437825-439d90a5-4129-45f0-a48d-a30ea18aefad.png" width="300">
 
 ## Examples
 
@@ -105,10 +104,10 @@ Cessna 172 G1000 |<img src="https://user-images.githubusercontent.com/75218511/1
 Cessna 172 Classic |<img src="https://user-images.githubusercontent.com/75218511/133440037-938e5ea4-7aec-4915-bd2c-c108e3e5ed45.png" width=500>
 Piper Arrow III (Just Flight) |<img src="https://user-images.githubusercontent.com/75218511/133440178-deecb726-7b5e-49b6-8c64-2e0e40262e47.png" width=500>
 Beechcraft Baron |<img src="https://user-images.githubusercontent.com/75218511/133440350-5b83c3b4-09d2-4dde-8d71-d933c7c21345.png" width=500>
+Mooney M20R - modern cockpit layout with dual G5 and GTN750 |<img src="https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-ae63-19b5796f72ed.png" width=500>
 
 
-
-
+<!--
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -130,7 +129,7 @@ See the [open issues](https://github.com/Simstrumentation/Air-Manager/issues) fo
 
 Panel Names should not have spaces.
 When Export out of AirManger remove the "-" that AirManager Exporter puts in between the Plane Name and Model. 
-
+-->
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
