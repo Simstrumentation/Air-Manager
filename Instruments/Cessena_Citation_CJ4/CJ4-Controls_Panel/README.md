@@ -1,6 +1,6 @@
 ##Centre Controls Panel
 
-<img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Controls_Panel/c5e5c1b1-d600-44a3-901d-2f8f6e086a3d/preview.png?raw=true" align="center">
+<img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Controls_Panel/c5e5c1b1-d600-44a3-901d-2f8f6e086a3d/preview.png?raw=true" align="center" width="300" style="float: right;" >
 
 ##Details
 
