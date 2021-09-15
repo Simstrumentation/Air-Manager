@@ -2,7 +2,7 @@
 <p align="center">
   <h1 align="center">Cessena Citation CJ4</h1>
 </p>
-<p align="center"><img src="https://user-images.githubusercontent.com/38576265/130723641-ee6a6614-b705-4dc5-bafd-02910f70b6d1.png" alt="drawing" width="400"/></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" width="600"/></p>
 <p>This collection of Cessna Citation CJ4 instruments is currently our flagship and most complete instrument collection. It contains every instrument that you need to be able to use your CJ4 mouse and keyboard free. Each instrument and control has been meticulously crafted to give you a near perfect visual recreation of what you would see in your virtual cockpit, and all instruments replicate their in simulator functionality exactly.</p>
 
 <h4>NOTE - THESE INSTRUMENTS ARE DESIGNED TO BE USED WITH THE WORKING TITLE CJ4 MODIFICATION</h4>
