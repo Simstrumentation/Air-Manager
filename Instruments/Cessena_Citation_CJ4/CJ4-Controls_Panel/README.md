@@ -8,7 +8,7 @@
 
 <h4>REQUIRES Mobiflight-event-module in community folder  </h4>
 <p>You can download Mobiflight at https://www.mobiflight.com/en/download.html</p>
-<p>The eventual goal is to remove Mobiflight as a requirement for this instrument in a future version.</p>
+<H6>NOTE: The eventual goal is to remove Mobiflight as a requirement for this instrument in a future version.</H6>
 
 
 ##Version Information and Change Log
