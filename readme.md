@@ -44,9 +44,9 @@ https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-
 <br />
 <p align="center">
 
-
-  <h1 align="center">Flying Flight Simulator Mouse Free Using Touch Screen Instruments Build On Air Manager</h1>
-  <h2 align="center">Exterminate the mice from your cockpit!</h2>
+<h1 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!</h1>  
+<h2 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager</h2>
+  
 
   <p align="center">
   <br />  
@@ -107,7 +107,7 @@ Beechcraft Baron |<img src="https://user-images.githubusercontent.com/75218511/1
 Mooney M20R - modern cockpit layout with dual G5 and GTN750 |<img src="https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-ae63-19b5796f72ed.png" width=500>
 
 
-<!--
+
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -129,7 +129,7 @@ See the [open issues](https://github.com/Simstrumentation/Air-Manager/issues) fo
 
 Panel Names should not have spaces.
 When Export out of AirManger remove the "-" that AirManager Exporter puts in between the Plane Name and Model. 
--->
+
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
