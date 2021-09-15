@@ -46,7 +46,7 @@
 
 
   <h1 align="center">Flying Flight Simulator Mouse Free Using Touch Screen Instruments Build On Air Manager</h1>
-  <h2>Exterminate the mice from your cockpit!</h2>
+  <h2 align="center">Exterminate the mice from your cockpit!</h2>
 
   <p align="center">
   <br />  
