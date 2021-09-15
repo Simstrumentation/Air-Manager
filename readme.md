@@ -46,7 +46,7 @@ https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-
   
 
 <p align="center">The goal of Air Manager, and subsequently, this collection of instruments, is to be able to offer flight simmers a more realistic mouse and keyboard-free experience for our favourite aircraft. Through the use of touch screens and the optional <a href="https://www.siminnovations.com/hardware/product/57-knobster">Knobster</a> from Sim Innovations, you can have a fully interactive cockpit without requiring the use of a mouse in flight.</p>
-<H5>While the download and use of our instruments is free, Air Manager is paid software available at https://www.siminnovations.com/. We are not associated with Sim Innovations in any way and cannot provide users with Air Manager nor can we provide any technical support for Air Manager.</h5>
+<H6>While the download and use of our instruments is free, Air Manager is paid software available at https://www.siminnovations.com/. We are not associated with Sim Innovations in any way and cannot provide users with Air Manager nor can we provide any technical support for Air Manager.</h6>
 
 
 <!-- TABLE OF CONTENTS 
