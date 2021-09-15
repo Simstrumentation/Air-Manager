@@ -91,7 +91,7 @@
 Aircraft |  Preview
 --------|-------------
 [Generic Aircrafts](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/) | <p align="center"></p>
-[Cessena Citation CJ4](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/) | <p align="center"><img src="https://user-images.githubusercontent.com/38576265/130723641-ee6a6614-b705-4dc5-bafd-02910f70b6d1.png" alt="drawing" width="200"/></p>
+[Cessena Citation CJ4](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/) | <p align="center"><img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" alt="drawing" width="200"/></p>
 [Cessena C172](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/) | <p align="center"></p>
 [TBM 930](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/TBM_930/) | <p align="center"></p>
 
