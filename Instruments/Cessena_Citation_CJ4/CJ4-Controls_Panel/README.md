@@ -4,8 +4,9 @@
 
 ## Details
 
-<p>This is the center console incorporating the engine run, starter and trim controls paired with the engine run / start controls. Normally the throttle quadrant would be between these 2 sections on the center console but weren't included in this instrument as most people have dedicated throttles and don't need virtual ones in Air Manager. </p>
+<p>This is a combination of the center console panels for the engine controls paired up with tthe trim control panel. Normally the throttle quadrant, speed brake and flaps control occupy the space between them on the console. The throttle, speed brake and flap controls weren't included in this instrument as it would make it larger than most peoples' screens can handle and most people already have dedicated throttles and don't need virtual ones in Air Manager. </p>
 
+## Dependencies
 <h4>REQUIRES Mobiflight-event-module in community folder  </h4>
 <p>You can download Mobiflight at https://www.mobiflight.com/en/download.html</p>
 <H6>NOTE: The eventual goal is to remove Mobiflight as a requirement for this instrument in a future version.</H6>
