@@ -77,7 +77,7 @@ https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-
 
 <!-- ABOUT THE PROJECT -->
 ## Aircraft Instrument Categories
-Aircraft</ br> (click to view instruments for this plane) |  Plane image
+Aircraft <br> (click to view instruments for this plane) |  Plane image
 --------|-------------
 [Cessena C172](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/) | <img src="https://user-images.githubusercontent.com/75218511/133437329-3312c807-dbbf-4a73-b99e-e09678afdc82.png" width="300">
 [Cessena Citation CJ4](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/) | <img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" alt="drawing" width="300"/></p>
