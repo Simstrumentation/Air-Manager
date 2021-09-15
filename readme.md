@@ -77,7 +77,7 @@ https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-
 
 Aircraft <br> (click to view instruments for this plane) |  Plane image
 --------|-------------
-[Cessena C172](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/) <br /> includes both G1000 and steam gauge variants| <img src="https://user-images.githubusercontent.com/75218511/133437329-3312c807-dbbf-4a73-b99e-e09678afdc82.png" width="300">
+[Cessena 172](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/) <br /> includes both G1000 and steam gauge variants| <img src="https://user-images.githubusercontent.com/75218511/133437329-3312c807-dbbf-4a73-b99e-e09678afdc82.png" width="300">
 [Cessena Citation CJ4](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/) | <img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" alt="drawing" width="300"/></p>
 [Generic Instruments](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/) | This section contains generic instruments and controls that can be used in a wide variety of aircraft and aren't aircraft-specific. 
 [TBM 930](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/TBM_930/) | <img src="https://user-images.githubusercontent.com/75218511/133437825-439d90a5-4129-45f0-a48d-a30ea18aefad.png" width="300">
