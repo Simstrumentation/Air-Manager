@@ -56,7 +56,7 @@
    <br /> 
   </p>
 </p>
-<p align="center"><img src="https://user-images.githubusercontent.com/38576265/130723641-ee6a6614-b705-4dc5-bafd-02910f70b6d1.png" alt="drawing" width="400"/></p>
+<p align="center">The goal of Air Manager, and subsequently, this collection of instruments, is to be able to offer flight simmers a more realistic mouse and keyboard-free experience for our favourite aircraft. Through the use of touch screens and the optional <a href="https://www.siminnovations.com/hardware/product/57-knobster">Knobster</a> from Sim Innovations, you can have a fully interactive cockpit without requiring the use of a mouse in flight.</p>
 
 
 
