@@ -96,6 +96,7 @@ Aircraft |  Preview
 [TBM 930](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/TBM_930/) | <p align="center"></p><img src="https://user-images.githubusercontent.com/75218511/133437825-439d90a5-4129-45f0-a48d-a30ea18aefad.png" width="200">
 
 
+## Examples
 
 
 <!-- USAGE EXAMPLES -->
