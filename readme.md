@@ -98,6 +98,10 @@ Aircraft |  Preview
 
 ## Examples
 
+Aircraft |  Preview
+--------|-------------
+[Cessna Citation CJ4 |<img src="https://user-images.githubusercontent.com/75218511/133439412-05aea04e-1dac-409f-9335-7844819230b4.png" width=300>
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
