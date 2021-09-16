@@ -3,14 +3,23 @@
 -- ******************Cessna Citation CJ4 Light Control Panel****************************
 --******************************************************************************************
 
-v1.0 8-2-21 Joe "Crunchmeister" Gilker
-	-Original Panel Created
-v1.1 8-29-21 Todd "Toddimus831" Lorey 
-	-Added seatbelt, safety and pulse light functionality
-v1.2 8-30-21 Rob "FlightLevelRob" Verdon	
-	-Added variable subscribe for lights: Beacon,Nav,Strobe,Taxi,LNDG,Logo,Belt,Safety,RecLt. 
-	-Removed toggle code now that variable subscribe is working.
-	
+- **v1.0** 8-2-21 Joe "Crunchmeister" Gilker
+    - Original Panel Created
+- **v1.1** 8-29-21 Todd "Toddimus831" Lorey 
+    - Added seatbelt, safety and pulse light functionality
+- **v1.2** 8-30-21 Rob "FlightLevelRob" Verdon 
+    - Added variable subscribe for lights: Beacon,Nav,Strobe,Taxi,LNDG,Logo,Belt,Safety,RecLt. 
+    - Removed toggle code now that variable subscribe is working.
+- **v1.3** 9-9-21 Herbert Puukka
+    - Repalced Background Graphic to remove back edges.		
+- **v1.4** 9-13-21 Rob "FlightLevelRob" Verdon 			
+    - Added panel dimming functionality
+- **v1.5** 9-15-2021 Joe "Crunchmeister" Gilker
+    - Total custom graphics overhaul    
+    			
+    						
+    												
+						
 ##Left To Do:
 	-Dimming Dials
 	
@@ -25,7 +34,152 @@ v1.2 8-30-21 Rob "FlightLevelRob" Verdon
 --IMPORT ASSETS
 img_add_fullscreen("bg.png")
 fail_snd = sound_add("beepfail.wav")
-click_snd=sound_add("Asobo_CJ4_WT_PC_75.wav")
+click_snd=sound_add("click.wav")
+
+
+panel_knob_img = img_add("panel_dimmer.png", 279, 34, 152, 152)
+
+small_knob_outer_left = img_add("smallKnob_outer.png",144,55,94, 94)
+small_knob_inner_left = img_add("smallKnob_inner.png",162,69,57, 57)
+
+small_knob_outer_right = img_add("smallKnob_outer.png",474,55,94, 94)
+small_knob_inner_right = img_add("smallKnob_inner.png",493,69,57, 57)
+
+
+--subscribe to position
+function panel_dimming_pos(sw_pos)
+--print "position is:"
+--print (sw_pos)
+    if sw_pos == 0.1 then
+        switch_set_position(panel_dimming_switch, 0)
+        rotate (panel_knob_img, -120)  
+    elseif  sw_pos == 0.2 then
+        switch_set_position(panel_dimming_switch, 1)
+	rotate (panel_knob_img, -100) 
+    elseif  sw_pos == 0.3 then
+        switch_set_position(panel_dimming_switch, 2)
+	rotate (panel_knob_img, -80) 
+    elseif  sw_pos == 0.4 then
+        switch_set_position(panel_dimming_switch, 3)
+	rotate (panel_knob_img, -40) 	
+    elseif  sw_pos == 0.5 then
+        switch_set_position(panel_dimming_switch, 4)
+	rotate (panel_knob_img, 0) 
+    elseif  sw_pos == 0.6 then
+        switch_set_position(panel_dimming_switch, 5)
+	rotate (panel_knob_img, 40)
+	
+
+    elseif  sw_pos > 0.6 and sw_pos < 0.8 then
+	--print "sw_pos=0.7, just set position to 6"
+        switch_set_position(panel_dimming_switch, 6)
+	rotate (panel_knob_img, 80)
+
+    elseif  sw_pos == 0.8 then
+        switch_set_position(panel_dimming_switch, 7)
+	rotate (panel_knob_img, 100)
+--	print "sw_pos=0.8, just set position to 7"
+    elseif  sw_pos == 0.9 then
+        switch_set_position(panel_dimming_switch, 8)
+	rotate (panel_knob_img, 120)	
+    elseif  sw_pos == 1 then
+        switch_set_position(panel_dimming_switch, 9)
+        rotate (panel_knob_img, 150)
+    end
+end 
+fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number", panel_dimming_pos)
+--trying to see if L var is readable
+--fs2020_variable_subscribe("L:LIGHTING_Knob_Master", "Int", panel_dimming_pos)
+--fs2020_variable_subscribe("K:LIGHT POTENTIOMETER 3 SET", "Int", panel_dimming_pos)
+
+
+
+function panel_dimming_callback(position, direction)
+--print "Position:"
+
+    if direction == 1 then           -- turned dial to the right 
+      --  print "Called To go Right"
+      --  print (position) 
+        if position == 0 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",20)  
+        elseif  position == 1 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",30) 
+        elseif  position == 2 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",40) 
+        elseif  position == 3 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",50) 
+        elseif  position == 4 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",60)      
+        elseif  position == 5 then   
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",70) 
+        elseif  position == 6 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",80) 
+        elseif  position == 7 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",90) 
+        elseif  position == 8 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",100) 
+        elseif  position == 9 then    
+           -- Can't go any more
+        end
+          
+    else            -- turned dial to the left
+       -- print "Called To go Left"
+       -- print (position)
+        if position == 0 then    
+           -- Can't go any more  
+        elseif  position == 1 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",10) 
+        elseif  position == 2 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",20) 
+        elseif  position == 3 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",30) 
+        elseif  position == 4 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",40)      
+        elseif  position == 5 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",50) 
+        elseif  position == 6 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",60) 
+        elseif  position == 7 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",70) 
+        elseif  position == 8 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",80) 
+        elseif  position == 9 then    
+            fs2020_variable_write("L:LIGHTING_Knob_Master", "Int",90)      
+                                      
+        end
+    end
+
+
+end
+panel_dimming_switch = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 285, 40, 140, 140, panel_dimming_callback)
+
+
+
+
+
+---------PFD1
+--[[
+
+function pfd1_dimming_callback(position, direction)
+--print "Position:"
+
+    if direction == 1 then           -- turned dial to the right 
+      --  print "Called To go Right"
+      --  print (position) 
+        if position == 0 then    
+            fs2020_variable_write("L:LIGHTING_Strobe_0", "Int",100) --this current sets TTValue
+            fs2020_variable_write("L:LIGHTING_Knob_PFD_1", "Float",100)
+           -- fs2020_variable_write("L:LIGHT POTENTIOMETER:15", "Float",100)
+            --fs2020_variable_write("L:LIGHTING_POTENTIOMETER_15_Inc", "Number",0)
+            --fs2020_variable_write("L:AS3000_Brightness", "Number",10)
+            print "going"
+        end
+     end
+end  
+pfd1_dimming_switch = switch_add("beacon_off.png",nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 130, 40, 120, 120, pfd1_dimming_callback)
+
+
+--]]
 
 
 --------SET UP INDIVIDUAL LIGHT SWITCHES
