@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin G3000 / 5000 Overlay Mobiflight</type><uuid>3f24eb91-44e3-4d7c-1f45-b412646a19d8</uuid><author>Yves Levesque - modified by Joe &quot;Cruchmeister&quot; Gilker</author><description>Bezel overlay for G3000 and G5000 screens. Can be used as a G3000 or a buttonless G5000 unit.
+
+Which unit type can be selected by the user property in the instrument configuration. 
+
+
+-- Mobiflight WASM module MUST be installed for G3000 functionality to work. To install it:
+-- 1. Download MobiFlight (https://www.mobiflight.com/en/download.html)
+-- 2. Go to Settings and enable the beta
+-- 3. Go to Help, check for updates
+-- 4. After the update, go to the MobiFlight folder (where MFConnector.exe is located)
+-- 5. Go inside the MSFS2020-module folder and copy the mobiflight-event-module folder to your community packages.
+
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1440</prefWidth><prefHeight>969</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
