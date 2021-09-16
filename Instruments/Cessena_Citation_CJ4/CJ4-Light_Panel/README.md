@@ -6,10 +6,16 @@
 - **v1.2** 8-30-21 Rob "FlightLevelRob" Verdon	
 	- Added variable subscribe for lights: Beacon,Nav,Strobe,Taxi,LNDG,Logo,Belt,Safety,RecLt. 
 	- Removed toggle code now that variable subscribe is working.
-	- Removed all MobiFlight references. 
-	
+	- Removed all MobiFlight references.
+- **v1.3** 9-9-21 Herbert Puukka
+    - Repalced Background Graphic to remove back edges.		
+- **v1.4** 9-13-21 Rob "FlightLevelRob" Verdon 			
+    - Added panel dimming functionality
+- **v1.5** 9-15-2021 Joe "Crunchmeister" Gilker
+    - Total custom graphics overhaul    
+
 ## Left To Do:
-- Dimming Dials
+- Dimming for PFD and MFD
 	
 ## Notes:
 - TCAS is INOP in game. Not used.
