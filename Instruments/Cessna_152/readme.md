@@ -42,15 +42,3 @@ Primer Handle | [8-9-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/
 ## COMING SOON
 N/A
 <!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/Simstrumentation/Air-Manager/issues) for a list of proposed features (and known issues).
-
-
-
-
-
-
-
-
-
