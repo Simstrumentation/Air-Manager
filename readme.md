@@ -36,7 +36,7 @@ https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-
 
 
 <!-- PROJECT LOGO -->
-<img align="center" src="https://user-images.githubusercontent.com/75218511/133656593-b3f47b6a-9396-4dc5-8cbd-ef68e923396b.png">
+<img align="center" width="100%" src="https://user-images.githubusercontent.com/75218511/133656593-b3f47b6a-9396-4dc5-8cbd-ef68e923396b.png">
 <h1 align="center">SIMSTRUMENTATION</h1>
 <h2 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!</h2>  
 <h3 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager</h3>
