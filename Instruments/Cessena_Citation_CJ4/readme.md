@@ -38,7 +38,7 @@
 ## Working Instruments
 
 
-Panel | Current Version | Documentation | Preview
+Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
 PFD MFD Overlay | [3-7-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-PFD_MFD_Overlay/Cessna_CJ4-PFD_MFD_Overlay.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-PFD_MFD_Overlay) | <p align="center"><img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-PFD_MFD_Overlay/a418c7e2-ee2c-4606-82cd-8c74248007dc/preview.png" width="100"> </p>
 FMS-3200 FMC-CDU Overlay | [9-13-21 v1.4](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-FMS-3200_FMC_CDU_Overlay/Cessna_Citation_CJ4-FMS-3200_FMC_CDU_Overlay.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-FMS-3200_FMC_CDU_Overlay) | <img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-FMS-3200_FMC_CDU_Overlay/f7659605-1421-4d75-a347-55d9cb92db57/preview.png" width="100" height="100"> </p>
