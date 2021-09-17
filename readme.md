@@ -89,6 +89,7 @@ Aircraft <br> (click to view instruments for this plane) |  Plane image
 [Cessena Citation CJ4](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/) | <img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" alt="drawing" width="300"/></p>
 [Generic Instruments](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/) | This section contains generic instruments and controls that can be used in a wide variety of aircraft and aren't aircraft-specific. 
 [Mooney M20R Ovation (Carenado)](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Mooney_M20R/) | <img src="https://user-images.githubusercontent.com/75218511/133450810-00e7ae37-2f84-47d4-9b09-e3c3af8996bc.png" width="300"/></p>
+[Piper Arrow Series](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Piper_Arrow_III) | <img src="https://user-images.githubusercontent.com/75218511/133791509-3c8ae5d0-b01e-46c7-9998-3d718a728f12.png" width="300"/></p>
 [TBM 930](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/TBM_930/) | <img src="https://user-images.githubusercontent.com/75218511/133437825-439d90a5-4129-45f0-a48d-a30ea18aefad.png" width="300">
 
 ## Examples of Air Manager Panel Layouts
