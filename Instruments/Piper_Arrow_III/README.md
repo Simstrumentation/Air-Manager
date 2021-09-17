@@ -7,7 +7,7 @@
 
 ## Description
 <p>In this section you'll find instruments for the various flavours of the Piper Arrow.</p>
-<p>While Carenado have released a single variant of the Arrow, Just Flight have several. Most instruments are fairly generic and should function equally with any variant made by either of the companies. We're aware that the layout and types of controls of these planes are wildly different, with Carenado choosing a more modern, refurbished Arrow to model and Just Flight choosing to model an old school, original layout. </p>
+<p>While Carenado have released a single variant of the Arrow, Just Flight have several. Most instruments are fairly generic and should function equally with any variant made by either of the companies. </p>
 
 <p>Any instruments that are specific to one variant only will be clearly marked as such</p>
 <!-- TABLE OF CONTENTS 
