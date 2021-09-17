@@ -16,14 +16,27 @@
    - functional covers added to run buttons. Touch or click the cover hinges to open and close.
       Run switches will be INOP until covers are open.
    
-   REQUIRES Mobiflight-event-module in community folder  
-   https://www.mobiflight.com/en/download.html
-   
-   How to in 1st post here:
-   https://forums.flightsimulator.com/t/full-g1000-control-now-with-mobiflight/348509
 
-   Secondary Elev Trim Button with shield Not Functional
+   Modified by Todd "Toddimus831" Lorey  9/17/2021
+   - Slight tweaks to PIC_EngineX_ and PIC_StarterX positions to center them better in their buttons
+   - Refactored code to adapt to native A: variable and K: events and remove MobiFlight dependency
+	RPN Code from https://hubhop.mobiflight.com/
+	MobiFlight Command: WT_CJ4_ENG_RUNSTOP_L_PUSH
 
+	MobiFlight RPN Code for command:
+		(A:GENERAL ENG MIXTURE LEVER POSITION:1, Percent) 0 > 
+			if{ (>K:MIXTURE1_LEAN) 
+				(A:GENERAL ENG FUEL VALVE:1, Bool) 
+					if{ (>K:TOGGLE_FUEL_VALVE_ENG1) } 
+				(A:TURB ENG IGNITION SWITCH EX1:1, enum) 0 == 
+					if{ 0 (>K:TURBINE_IGNITION_SWITCH_SET1) } 
+					} 
+			els{ (>K:MIXTURE1_RICH) 
+				(A:GENERAL ENG FUEL VALVE:1, Bool) ! 
+					if{ (>K:TOGGLE_FUEL_VALVE_ENG1) } 
+				(A:TURB ENG IGNITION SWITCH EX1:1, enum) 0 == 
+					if{ 1 (>K:TURBINE_IGNITION_SWITCH_SET1) } 
+					}
 --]]
   
 --Backgroud Image before anything else
@@ -32,18 +45,23 @@ img_add_fullscreen("background.png")
 local  left_run = 0
 local right_run = 0
 
-PIC_Engine1_Run = img_add("Engine_Run.png", 160,33,90,70)
-PIC_Engine1_Stop = img_add("Engine_Stop.png", 167,69,70,50)
+--PIC_Engine1_Run = img_add("Engine_Run.png", 160,33,90,70) -- original position
+PIC_Engine1_Run = img_add("Engine_Run.png", 158,33,90,70)
+--PIC_Engine1_Stop = img_add("Engine_Stop.png", 167,69,70,50) -- original position
+PIC_Engine1_Stop = img_add("Engine_Stop.png", 169,69,70,50)
 
-PIC_Engine2_Run = img_add("Engine_Run.png", 425,33,90,70)
+--PIC_Engine2_Run = img_add("Engine_Run.png", 425,33,90,70) -- original position
+PIC_Engine2_Run = img_add("Engine_Run.png", 422,33,90,70)
 PIC_Engine2_Stop = img_add("Engine_Stop.png", 433,69,70,50)
 visible(PIC_Engine1_Run, false)
 visible(PIC_Engine2_Run, false)
 visible(PIC_Engine1_Stop, false)
 visible(PIC_Engine2_Stop, false)
 
-PIC_Starter1_On = img_add("LTS_On.png", 203,258,50,10)
-PIC_Starter2_On = img_add("LTS_On.png", 403,258,50,10)
+--PIC_Starter1_On = img_add("LTS_On.png", 203,258,50,10)  -- original position
+PIC_Starter1_On = img_add("LTS_On.png", 205,258,50,10)
+--PIC_Starter2_On = img_add("LTS_On.png", 403,258,50,10)  -- original position
+PIC_Starter2_On = img_add("LTS_On.png", 410,258,50,10)
 visible(PIC_Starter1_On, false)
 visible(PIC_Starter2_On, false)
 
@@ -58,7 +76,6 @@ AILERON_Trim_Knob = img_add("Aileron_Trim.png", 135,400,127,95)
 visible(AILERON_Trim_Knob, true)
 move(AILERON_Trim_Knob, nil, nil, nil, nil, "LOG", 0.04)
 
-
 ---Sounds
 click_snd = sound_add("Asobo_CJ4_WT.PC_63.wav")
 fail_snd = sound_add("beepfail.wav")
@@ -66,36 +83,197 @@ cover_open_snd = sound_add("cover_open.wav")
 cover_close_snd = sound_add("cover_close.wav")
 
 --Locals
-local L_Starter1_Status = false 
+local L_Starter1_Status = false
 local L_Starter2_Status = false
-local L_Mix1_Status = false
+local L_Mix1_Status = false 
 local L_Mix2_Status = false
+local L_Fuel_Valve1_Status = false
+local L_Fuel_Valve2_Status = false
+local L_Ign_Switch1_Status = false
+local L_Ign_Switch2_Status = false
+local L_Battery_Master_Status = false
 
+--------ENGINES---  Determine and set variable states and visibilities
+function Engine_Status( Starter1_Status, Starter2_Status, 
+			Mix1_Status, Mix2_Status,
+			Fuel_Valve1_Status, Fuel_Valve2_Status,
+			Ign_Switch1_Status, Ign_Switch2_Status,
+			Battery_Status)
+	--BATTERY
+		L_Battery_Master_Status = Battery_Status
 
----------START----------------------------
+	--STARTER1
+		if Starter1_Status == true and L_Battery_Master_Status == true then 
+			visible(PIC_Starter1_On, true)
+			L_Starter1_Status = true
+		else 
+			visible(PIC_Starter1_On, false)
+			L_Starter1_Status = false        
+		end 
 
+	--STARTER2
+		if Starter2_Status == true and L_Battery_Master_Status == true then 
+			visible(PIC_Starter2_On, true)
+			L_Starter2_Status = true        
+		else 
+			visible(PIC_Starter2_On, false)
+			L_Starter2_Status = false        
+		end 
+
+	--MIXTURES -- For determining run/stop status
+		if Mix1_Status > 0 then
+			L_Mix1_Status = true
+		else
+			L_Mix1_Status = false
+		end
+		if Mix2_Status > 0 then
+			L_Mix2_Status = true
+		else
+			L_Mix2_Status = false
+		end
+
+	--FUEL VALVES -- For determining run/stop status
+		L_Fuel_Valve1_Status = Fuel_Valve1_Status
+		L_Fuel_Valve2_Status = Fuel_Valve2_Status
+
+	--IGNITION SWITCHES (NOT MANUAL IGNITION) -- For determining run/stop status
+		if Ign_Switch1_Status == 0 then
+			L_Ign_Switch1_Status = false
+		else
+			L_Ign_Switch1_Status = true
+		end
+		if Ign_Switch2_Status == 0 then
+			L_Ign_Switch2_Status = false
+		else
+			L_Ign_Switch2_Status = true
+		end
+
+	--SET RUN/STOP STATUS
+		if L_Battery_Master_Status == true then  --Battery is On	
+			if (L_Starter1_Status == true or L_Starter2_Status == true) and L_Mix1_Status == false and L_Mix2_Status == false then
+				visible(PIC_Engine1_Run, false)
+				visible(PIC_Engine1_Stop, false) 
+				visible(PIC_Engine2_Run, false)
+				visible(PIC_Engine2_Stop, false)      
+			else		
+			--Engine 1
+				if L_Starter1_Status == false then
+					if L_Mix1_Status == true  then 
+						visible(PIC_Engine1_Run, true)
+						visible(PIC_Engine1_Stop, false)
+					elseif L_Mix1_Status == false then
+						visible(PIC_Engine1_Run, false)
+						visible(PIC_Engine1_Stop, true)         
+					end 
+				else --turn off when starter is on
+					if L_Mix1_Status == true  then 
+						visible(PIC_Engine1_Run, true)
+						visible(PIC_Engine1_Stop, false)
+					elseif L_Mix1_Status == false  then 
+						visible(PIC_Engine1_Run, false)
+						visible(PIC_Engine1_Stop, false)                 
+					end
+				end				
+			--Engine 2
+				if L_Starter2_Status == false then
+					if L_Mix2_Status == true  then 
+						visible(PIC_Engine2_Run, true)
+						visible(PIC_Engine2_Stop, false)
+					elseif L_Mix2_Status == false then
+						visible(PIC_Engine2_Run, false)
+						visible(PIC_Engine2_Stop, true)         
+					end 
+				else --turn off when starter is on
+					if L_Mix2_Status == true  then 
+						visible(PIC_Engine2_Run, true)
+						visible(PIC_Engine2_Stop, false) 
+					elseif L_Mix2_Status == false  then 
+						visible(PIC_Engine2_Run, false)
+						visible(PIC_Engine2_Stop, false)                 
+					end
+				end    
+			end
+			if L_Fuel_Valve1_Status == false and L_Mix1_Status == false and L_Starter2_Status == true then -- this is weird but it's what the sim does
+						visible(PIC_Engine1_Run, false)
+						visible(PIC_Engine1_Stop, false)
+			end	     
+			if L_Fuel_Valve2_Status == false and L_Mix2_Status == false and L_Starter1_Status == true then -- this is weird but it's what the sim does
+						visible(PIC_Engine2_Run, false)
+						visible(PIC_Engine2_Stop, false)
+			end	     		
+		else --Battery is Off
+			visible(PIC_Engine1_Run, false)
+			visible(PIC_Engine1_Stop, false) 
+			visible(PIC_Engine2_Run, false)
+			visible(PIC_Engine2_Stop, false)        
+		end
+end
+
+fs2020_variable_subscribe("GENERAL ENG STARTER:1","Bool",  
+                          "GENERAL ENG STARTER:2","Bool",
+                          "GENERAL ENG MIXTURE LEVER POSITION:1", "Percent",  
+                          "GENERAL ENG MIXTURE LEVER POSITION:2", "Percent",  
+                          "GENERAL ENG FUEL VALVE:1", "Bool",
+                          "GENERAL ENG FUEL VALVE:2", "Bool",
+                          "TURB ENG IGNITION SWITCH EX1:1", "enum",
+                          "TURB ENG IGNITION SWITCH EX1:2", "enum",
+                          "ELECTRICAL MASTER BATTERY","Bool",Engine_Status)
+
+--ENGINE 1
 function Engine1_Run_Toggle()
     if left_run == 0 then    --if button cover is down, play fail sound and don't start the engine
-        sound_play(fail_snd)
-     else    -- set engine to RUN if cover is open
-         fs2020_event("MOBIFLIGHT.WT_CJ4_ENG_RUNSTOP_L_PUSH")
-         sound_play(click_snd)
-      end
+		sound_play(fail_snd)
+    else    -- run toggle logic if cover is open
+		if  L_Battery_Master_Status == true then
+			if L_Mix1_Status == true then
+				fs2020_event("MIXTURE1_LEAN")
+				if L_Fuel_Valve1_Status == true then
+					fs2020_event("TOGGLE_FUEL_VALVE_ENG1")
+				end
+				if L_Ign_Switch1_Status == true then
+					fs2020_event("TURBINE_IGNITION_SWITCH_SET1",0)
+				end
+			else
+				fs2020_event("MIXTURE1_RICH")
+				if L_Fuel_Valve1_Status ~= true then
+					fs2020_event("TOGGLE_FUEL_VALVE_ENG1")
+				end
+				if L_Ign_Switch1_Status == false then
+					fs2020_event("TURBINE_IGNITION_SWITCH_SET1",1)
+				end	
+			end
+		end
+		sound_play(click_snd)
+    end
 end
 button_add(nil,nil, 151,30,100,100, Engine1_Run_Toggle)
 
-  
+--ENGINE 2
 function Engine2_Run_Toggle()
     if right_run==0 then    --if button cover is down, play fail sound and don't start the engine
-         sound_play(fail_snd)
-    else    -- set engine to RUN if cover is open
-        fs2020_event("MOBIFLIGHT.WT_CJ4_ENG_RUNSTOP_R_PUSH")
-        sound_play(click_snd)
-    
-    end
-
-
-
+        sound_play(fail_snd)
+    else    -- run toggle logic if cover is open
+		if  L_Battery_Master_Status == true then
+			if L_Mix2_Status == true then
+				fs2020_event("MIXTURE2_LEAN")
+				if L_Fuel_Valve2_Status == true then
+					fs2020_event("TOGGLE_FUEL_VALVE_ENG2")
+				end
+				if L_Ign_Switch2_Status == true then
+					fs2020_event("TURBINE_IGNITION_SWITCH_SET2",0)
+				end
+			else
+				fs2020_event("MIXTURE2_RICH")
+				if L_Fuel_Valve2_Status ~= true then
+					fs2020_event("TOGGLE_FUEL_VALVE_ENG2")
+				end
+				if L_Ign_Switch2_Status == false then
+					fs2020_event("TURBINE_IGNITION_SWITCH_SET2",1)
+				end	
+			end
+		end
+		sound_play(click_snd)
+	end
 end
 button_add(nil,nil, 421,30,100,100, Engine2_Run_Toggle)
 
@@ -122,114 +300,6 @@ function Starter_Diseng_Toggle()
    end
 end
 button_add(nil,nil, 295,250,80,50, Starter_Diseng_Toggle)
-
-
-
---Test if Engine Start Stop    
-
-
-function Engine_Status(Starter1_Status,Starter2_Status,Engine1_Status,Engine2_Status,Battery_Status) 
-    if Battery_Status == true then  --Battery is On
-    
-     if (Starter1_Status == true or Starter2_Status == true) and Engine1_Status == 0 and Engine2_Status == 0 then
-        visible(PIC_Engine1_Run, false)
-        visible(PIC_Engine1_Stop, false) 
-        visible(PIC_Engine2_Run, false)
-        visible(PIC_Engine2_Stop, false)      
-    else
-    
-            --Engine 1
-        if Starter1_Status == false then
-            if Engine1_Status == 100  then 
-                visible(PIC_Engine1_Run, true)
-                visible(PIC_Engine1_Stop, false)
-             elseif Engine1_Status == 0 then
-                visible(PIC_Engine1_Run, false)
-                visible(PIC_Engine1_Stop, true)         
-            end 
-        else --turn off when starter is on
-            if Engine1_Status == 100  then 
-                visible(PIC_Engine1_Run, true)
-                visible(PIC_Engine1_Stop, false) 
-            elseif Engine1_Status == 0  then 
-                visible(PIC_Engine1_Run, false)
-                visible(PIC_Engine1_Stop, false)                 
-            end
-        end
-        
-        --Engine 2
-        if Starter2_Status == false then
-            if Engine2_Status == 100  then 
-                visible(PIC_Engine2_Run, true)
-                visible(PIC_Engine2_Stop, false)
-             elseif Engine2_Status == 0 then
-                visible(PIC_Engine2_Run, false)
-                visible(PIC_Engine2_Stop, true)         
-            end 
-        else --turn off when starter is on
-            if Engine2_Status == 100  then 
-                visible(PIC_Engine2_Run, true)
-                visible(PIC_Engine2_Stop, false) 
-            elseif Engine1_Status == 0  then 
-                visible(PIC_Engine2_Run, false)
-                visible(PIC_Engine2_Stop, false)                 
-            end
-        end    
-
-     end
-    else --Battery is Off
-        visible(PIC_Engine1_Run, false)
-        visible(PIC_Engine1_Stop, false) 
-        visible(PIC_Engine2_Run, false)
-        visible(PIC_Engine2_Stop, false)        
-    end
-end
-fs2020_variable_subscribe("GENERAL ENG STARTER:1","Bool",  
-                          "GENERAL ENG STARTER:2","Bool",
-                          "GENERAL ENG MIXTURE LEVER POSITION:1","Percent",
-                          "GENERAL ENG MIXTURE LEVER POSITION:2","Percent",
-                          "ELECTRICAL MASTER BATTERY","Bool",Engine_Status)
-
-function Mixture_Status(Mix1_Status,Mix2_Status)
-    if Mix1_Status == 0 then
-        L_Mix1_Status = true
-    else
-        L_Mix1_Status = false
-    end
-    if Mix2_Status == 0 then
-        L_Mix2_Status = true
-    else
-        L_Mix2_Status = false
-    end
-end
-
-fs2020_variable_subscribe("GENERAL ENG MIXTURE LEVER POSITION:1","Percent",
-                          "GENERAL ENG MIXTURE LEVER POSITION:2","Percent",Mixture_Status)
-
-
-
-
-
---Test if Starters are On    
-function Starter_Status(Starter1_Status,Starter2_Status) 
-    if Starter1_Status == true then 
-        visible(PIC_Starter1_On, true)
-        L_Starter1_Status = true
-    else 
-        visible(PIC_Starter1_On, false)
-        L_Starter1_Status = false        
-    end 
-    if Starter2_Status == true then 
-        visible(PIC_Starter2_On, true)
-        L_Starter2_Status = true        
-    else 
-        visible(PIC_Starter2_On, false)
-        L_Starter2_Status = false        
-    end 
-
-end
-fs2020_variable_subscribe("GENERAL ENG STARTER:1","Bool",  
-                          "GENERAL ENG STARTER:2","Bool",Starter_Status)
 
                           
 ------Rudder Trim------------                                                                                    
@@ -361,13 +431,13 @@ function cover_l_toggle()
         left_run =1
         visible(L_Closed, false)
         visible(L_Open, true)
-         sound_play(cover_open_snd)
+        sound_play(cover_open_snd)
      else
-         left_run = 0
-         visible(L_Closed, true)
-         visible(L_Open, false)
-         sound_play(cover_close_snd)
-      end
+        left_run = 0
+        visible(L_Closed, true)
+        visible(L_Open, false)
+        sound_play(cover_close_snd)
+     end
 
 end
 
@@ -380,12 +450,12 @@ function cover_r_toggle()
         visible(R_Closed, false)
         visible(R_Open, true)
         sound_play(cover_open_snd)
-     else
-         right_run = 0
-         visible(R_Closed, true)
-         visible(R_Open, false)
-         sound_play(cover_close_snd)
-      end    
+    else
+        right_run = 0
+        visible(R_Closed, true)
+        visible(R_Open, false)
+        sound_play(cover_close_snd)
+    end    
 
 end
 
