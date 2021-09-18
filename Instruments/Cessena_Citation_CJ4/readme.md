@@ -59,7 +59,7 @@ CJ4 | Light Panel | [9-15-2021 v1.5](https://github.com/Simstrumentation/Air-Man
 
  Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
-Climate Control Switch | [9-13-2021 v1.2](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Climate_Controls/Cessna_Citation_CJ4-Climate_Control_Switch.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Climate_Controls/) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Tilt_Panel/CJ4-Climate_Controls/f90941ea-f1d4-43ad-09d9-794be2092d77/preview.png?raw=true" width="100" height="100"> </p>
+Climate Control Switch | [9-13-2021 v1.2](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Climate_Controls/Cessna_Citation_CJ4-Climate_Control_Switch.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Climate_Controls/) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Climate_Controls/f90941ea-f1d4-43ad-09d9-794be2092d77/preview.png?raw=true" width="100" height="100"> </p>
 
 
 
@@ -67,7 +67,7 @@ Climate Control Switch | [9-13-2021 v1.2](https://github.com/Simstrumentation/Ai
 ###### These are some extra Instruments that are not nesessarily in the game, but are useful. ######
  Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
-Ground Power Unit GPU Knob | [9-18-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-GPU_Knob/Cessna%20Citation%20CJ4%20-%20GPU%20Knob.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-GPU_Knob/) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Extra_Instruments/CJ4-GPU_Knob/a9de14b4-3f6f-4b05-babd-9632374d52b3/preview.png?raw=true" width="100" height="100"> </p>
+Ground Power Unit GPU Knob | [9-18-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-GPU_Knob/Cessna%20Citation%20CJ4%20-%20GPU%20Knob.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-GPU_Knob/) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-GPU_Knob/a9de14b4-3f6f-4b05-babd-9632374d52b3/preview.png?raw=true" width="100" height="100"> </p>
 
 
 <!-- Blank Example
