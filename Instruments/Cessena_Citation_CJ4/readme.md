@@ -35,7 +35,7 @@
 -->
 
 <!-- ABOUT THE PROJECT -->
-## Working Instruments
+## Main Panels & Instruments
 
 
 
@@ -51,7 +51,23 @@ CJ4 | Lower CCP Panel | [3-4-2021 v1.1](https://github.com/Simstrumentation/Air-
 CJ4 | Upper DCP Panel | [3-7-2021 v1.1](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Upper_DCP_Panel/Cessna_Citation_CJ4-Upper_DCP_Panel.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Upper_DCP_Panel) | <p align="center"><img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-Upper_DCP_Panel/646e2e0b-4014-4add-b572-242aa038b2f1/preview.png" width="100"> </p>
 CJ4 | Master Caution Panel | [3-7-2021 v1.1](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Master_Caution_Warning/Cessna_Citation_CJ4-Master_Warning_Caution%20.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Master_Caution_Warning) | <p align="center"><img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-Master_Caution_Warning/2b2cf6ea-8d1a-4a09-a335-83d96ead012e/preview.png" width="100"> </p>
 CJ4 | Landing Gear Handle | [9-15-2021 v1.1](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Landing_Gear_Handle/Cessna_Citation_CJ4-Landing_gear_handle.siff) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Landing_Gear_Handle) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Cessena_Citation_CJ4/CJ4-Landing_Gear_Handle/ec2057fa-5839-42d6-1f55-35c13e0feb9f/preview.png?raw=true" width="100"> </p>
-CJ4 | Tilt Panel Instument Listing | [See docs](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Tilt_Panel/) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Tilt_Panel/) | <p align="center"><img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-Tilt_Panel/LeftPanel.png" width="100" > </p>
+CJ4 | Light Panel | [9-15-2021 v1.5](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/Cessna_Citation_CJ4-Light_Panel.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel) | <p align="center"><img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/40e12ee4-9d82-427c-8760-372fbcaf482f/preview.png" width="100" height="60"> </p>
+
+
+# Tilt Panels & Instruments
+######   We felt it was neseccary to break up the instruements in this section as not everyone wants the entire tilt panel on there screen. This allows you to choose which instruments you'd like. Future work may include an entire AM Panel for importing. ######
+
+ Instrument | Current Version | Documentation | Preview
+-------------|-----------------|--------------|--------------
+Climate Control Switch | [9-13-2021 v1.2](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Tilt_Panel/CJ4-Climate_Controls/Cessna_Citation_CJ4-Climate_Control_Switch.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Tilt_Panel/CJ4-Climate_Controls/) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Tilt_Panel/CJ4-Climate_Controls/f90941ea-f1d4-43ad-09d9-794be2092d77/preview.png?raw=true" width="100" height="100"> </p>
+
+
+
+## Extra Panels & Instruments
+###### These are some extra Instruments that are not nesessarily in the game, but are useful. ######
+ Instrument | Current Version | Documentation | Preview
+-------------|-----------------|--------------|--------------
+Ground Power Unit GPU Knob | [9-18-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Extra_Instruments/CJ4-GPU_Knob/Cessna_Citation_CJ4-Climate_Control_Switch.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Extra_Instruments/CJ4-GPU_Knob/) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Extra_Instruments/CJ4-GPU_Knob/a9de14b4-3f6f-4b05-babd-9632374d52b3/preview.png?raw=true" width="100" height="100"> </p>
 
 
 <!-- Blank Example
@@ -59,13 +75,6 @@ CJ4 | Tilt Panel Instument Listing | [See docs](https://github.com/Simstrumentat
 CJ4 | Blah Panel | [3-7-2021 v1.1](Right Click and copy link of raw siff file) | [docs](Link to Instrument Folder) | <p align="center"><img src="RightClickOpenImageAndPaste" width="100" height="60"> </p>
 
 -->
-
-## In Progress Instruments
-Aircraft | Panel | Current Version | Documentation | Preview
---------|-------------|-----------------|--------------|--------------
-CJ4 | Light Panel | [9-15-2021 v1.5](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/Cessna_Citation_CJ4-Light_Panel.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel) | <p align="center"><img src="https://raw.githubusercontent.com/Simstrumentation/Air-Manager/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/40e12ee4-9d82-427c-8760-372fbcaf482f/preview.png" width="100" height="60"> </p>
-
-
 
 
 
