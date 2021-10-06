@@ -36,7 +36,7 @@
 
 Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
-Fuel Selector Lever | [8-27-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bonanza/Fuel_Selector_Valve/Bonanza-Fuel_Selector_Valve.siff) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Bonanza/Fuel_Selector_Valve) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bonanza/Fuel_Selector_Valve/17751b37-f849-4396-10a1-d627bdc00ac9/preview.png?raw=true" width="100"> </p>
+Fuel Selector Lever | [8-27-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bonanza/Fuel_Selector_Valve/Bonanza-Fuel_Selector_Valve.siff) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Bonanza/Fuel_Selector_Valve) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bonanza/Fuel_Selector_Valve/17751b37-f849-4396-10a1-d627bdc00ac9/preview.png?raw=true" width="100">
 
 ## COMING SOON
 N/A
