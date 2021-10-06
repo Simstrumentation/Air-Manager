@@ -10,8 +10,7 @@ This collection of Cessna Citation CJ4 instruments is currently our flagship and
 | Instrument | Download Current Version | Documentation | Preview |
 | ---------- | ------------------------ | ------------- | ------- |
 | Audio Panel | [v2.0 - 10-06-2021](CJ4-Audio_Panel/Cessna_Citation_CJ4_(Working_Title Mod)-Audio_Panel.siff?raw=true) | [docs](CJ4-Audio_Panel/) | <img src="CJ4-Audio_Panel/cc714760-4287-43e8-323f-d1b817072e43/preview.png" width="100"> |
-| Autopilot Panel | [v2.0 - 10-06-2021](CJ4-AutoPilot_Panel/Cessna_Citation_CJ4_(Working_Title Mod)-AutoPilot_Panel.siff) | [docs](CJ4-AutoPilot_Panel/) | <img src="CJ4-AutoPilot_Panel/30f0e44d-791c-4ecc-a5c4-eb80d769d3ea/preview.png" width="100"> |  
-
+| Autopilot Panel | [v2.0 - 10-06-2021](CJ4-AutoPilot_Panel/Cessna_Citation_CJ4_(Working_Title Mod)-AutoPilot_Panel.siff) | [docs](CJ4-AutoPilot_Panel/) | <img src="CJ4-AutoPilot_Panel/30f0e44d-791c-4ecc-a5c4-eb80d769d3ea/preview.png" width="100"> |
 | Climate Control Knob | [v2.0 - 10-06-2021](CJ4-Climate_Control/Cessna_Citation_CJ4_(Working_Title Mod)-Climate_Control_Switch.siff?raw=true) | [docs](CJ4-Climate_Control/) | <img src="CJ4-Climate_Control/f90941ea-f1d4-43ad-09d9-794be2092d77/preview.png" width="100"> |
 | Electrical Panel | [v2.0 - 10-06-2021](CJ4-Electrical_Panel/Cessna_Citation_CJ4_(Working_Title Mod)-Electrical_Panel.siff?raw=true) | [docs](CJ4-Electrical_Panel/) | <img src="CJ4-Electrical_Panel/3c5dcdca-9a40-4fec-19b5-c0e435f00653/preview.png" width="100"> |
 | Ice Protection Panel | [v2.0 - 10-06-2021](CJ4-Ice_Protection_Panel/Cessna_Citation_CJ4_(Working_Title Mod)-Ice_Protection_Panel.siff?raw=true) | [docs](CJ4-Ice_Protection_Panel/) | <img src="CJ4-Ice_Protection_Panel/9d628764-3c98-4426-172e-5d672c0aa47a/preview.png" width="100"> |
