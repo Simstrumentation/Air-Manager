@@ -44,7 +44,7 @@ This instrument, when used in conjunction with V2.0 or higher of our other CJ4 i
 
 | Instrument | Current Version | Documentation | Preview |
 | ---------- | --------------- | ------------- | ------- |
-| Ground Power Unit GPU Knob | [9-18-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-GPU_Knob/Cessna_Citation_CJ4-GPU%20Knob.siff) | [docs](CJ4-GPU_Knob/) | <img src="CJ4-GPU_Knob/a9de14b4-3f6f-4b05-babd-9632374d52b3/preview.png" width="100"> |
+| Ground Power Unit GPU Knob | [v1.0 - 9-18-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-GPU_Knob/Cessna_Citation_CJ4-GPU%20Knob.siff) | [docs](CJ4-GPU_Knob/) | <img src="CJ4-GPU_Knob/a9de14b4-3f6f-4b05-babd-9632374d52b3/preview.png" width="100"> |
 
 ## Roadmap
 
