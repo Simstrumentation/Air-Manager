@@ -26,6 +26,7 @@ This collection of Cessna Citation CJ4 instruments is currently our flagship and
 | Upper DCP | [v2.0 - 10-06-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Upper_DCP_Panel/Cessna_Citation_CJ4_(Working_Title%20Mod)-Upper_DCP_Menu.siff) | [docs](CJ4-Upper_DCP_Panel/) | <img src="CJ4-Upper_DCP_Panel/646e2e0b-4014-4add-b572-242aa038b2f1/preview.png" width="100"> |
 
 <br>
+
 ## Ambient Light Dimming - Full Day / Night Cycle On Your CJ4 Instruments
 
 We've created a new instrument for the CJ4. While it isn't part of the cockpit normally, it's been created to look like an authentic CJ4 control and will fit inconspicuously in your panel. It also has the option of being a hidden control that won't appear on your screen at all.
@@ -37,15 +38,12 @@ This instrument, when used in conjunction with V2.0 or higher of our other CJ4 i
 | ---------- | --------------- | ------------- | ------- |
 | Ambient Light Dimmer | [v2.0 - 10-06-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Ambient_Light_Dimmer/Cessna_Citation_CJ4_(Working_Title%20Mod)-Ambient_Light_Dimmer.siff) |  [docs](CJ4-Ambient_Light_Dimmer/) | <img src="CJ4-Ambient_Light_Dimmer/d6f6d4ab-62f6-4427-844a-4909fe2fbd4e/preview.PNG" width="100">  |
 
-
-
 <br>
-###### These are some extra Instruments that are not nesessarily in the game, but are useful.
 
 
 ## Extra Panels & Instruments
 
-###### These are some extra Instruments that are not nesessarily in the game, but are useful.
+###### These are some extra Instruments that are not nesessarily in the actual plane, but are useful for testing purposes.
 
 | Instrument | Current Version | Documentation | Preview |
 | ---------- | --------------- | ------------- | ------- |
