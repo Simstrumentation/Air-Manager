@@ -31,9 +31,14 @@ This collection of Cessna Citation CJ4 instruments is currently our flagship and
 We've created a new instrument for the CJ4. While it isn't part of the cockpit normally, it's been created to look like an authentic CJ4 control and will fit inconspicuously in your panel. It also has the option of being a hidden control that won't appear on your screen at all.
 
 This instrument, when used in conjunction with V2.0 or higher of our other CJ4 instruments, will automatically follow ambient lighting in the sim and dim all your instruments background from full bright daytime lighting to nearly black dark mode for night lighting. It has an auto mode, or you can manually select the ambient light level with the knob in manual mode.
+<br>
 
-| Instrument | Download Current Version | Documentation | Preview |
-| Ambient Light Dimmer | [v2.0 - 10-06-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Ambient_Light_Dimmer/Cessna_Citation_CJ4_(Working_Title%20Mod)-Ambient_Light_Dimmer.siff) | [docs](CJ4-Ambient_Light_Dimmer/) | <img src="CJ4-Ambient_Light_Dimmer/d6f6d4ab-62f6-4427-844a-4909fe2fbd4e/preview.png" width="100"> |
+| Instrument | Current Version | Documentation | Preview |
+| ---------- | --------------- | ------------- | ------- |
+| Ambient Light Dimmer | [v2.0 - 10-06-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Ambient_Light_Dimmer/Cessna_Citation_CJ4_(Working_Title%20Mod)-Ambient_Light_Dimmer.siff) |  [docs](CJ4-Ambient_Light_Dimmer/)) | <img src="CJ4-Ambient_Light_Dimmer/d6f6d4ab-62f6-4427-844a-4909fe2fbd4e/preview.png" width="100">  |
+
+
+
 <br>
 ###### These are some extra Instruments that are not nesessarily in the game, but are useful.
 
