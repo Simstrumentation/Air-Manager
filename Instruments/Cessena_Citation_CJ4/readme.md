@@ -35,7 +35,7 @@ This instrument, when used in conjunction with V2.0 or higher of our other CJ4 i
 
 | Instrument | Current Version | Documentation | Preview |
 | ---------- | --------------- | ------------- | ------- |
-| Ambient Light Dimmer | [v2.0 - 10-06-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Ambient_Light_Dimmer/Cessna_Citation_CJ4_(Working_Title%20Mod)-Ambient_Light_Dimmer.siff) |  [docs](CJ4-Ambient_Light_Dimmer/)) | <img src="CJ4-Ambient_Light_Dimmer/d6f6d4ab-62f6-4427-844a-4909fe2fbd4e/preview.png" width="100">  |
+| Ambient Light Dimmer | [v2.0 - 10-06-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Ambient_Light_Dimmer/Cessna_Citation_CJ4_(Working_Title%20Mod)-Ambient_Light_Dimmer.siff) |  [docs](CJ4-Ambient_Light_Dimmer/) | <img src="CJ4-Ambient_Light_Dimmer/d6f6d4ab-62f6-4427-844a-4909fe2fbd4e/preview.PNG" width="100">  |
 
 
 
