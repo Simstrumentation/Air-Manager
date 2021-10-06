@@ -3,8 +3,9 @@
 	- Original Panel Created
 
 ## Left To Do:
-
+  -Add backlighting mode
+  -add night lighting mode
 	
 ## Notes:
-
+-N/A
 	

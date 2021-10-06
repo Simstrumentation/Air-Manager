@@ -1,0 +1,215 @@
+{
+  "name": "",
+  "isOrdered": true,
+  "folders": {
+    "Instruments": {
+      "name": "Instruments",
+      "isOrdered": true,
+      "folders": {
+        "Bonanza": {
+          "name": "Bonanza",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "Cessena_Citation_CJ4": {
+          "name": "Cessena_Citation_CJ4",
+          "isOrdered": true,
+          "folders": {
+            "CJ4-Ambient_Light_Dimmer": {
+              "name": "CJ4-Ambient_Light_Dimmer",
+              "isOrdered": true,
+              "folders": {
+                "d6f6d4ab-62f6-4427-844a-4909fe2fbd4e": {
+                  "name": "d6f6d4ab-62f6-4427-844a-4909fe2fbd4e",
+                  "isOrdered": true,
+                  "folders": {
+                    "lib": {
+                      "name": "lib",
+                      "isOrdered": true,
+                      "folders": {},
+                      "files": {}
+                    },
+                    "resources": {
+                      "name": "resources",
+                      "isOrdered": true,
+                      "folders": {},
+                      "files": {}
+                    }
+                  },
+                  "files": {}
+                }
+              },
+              "files": {}
+            },
+            "CJ4-Audio_Panel": {
+              "name": "CJ4-Audio_Panel",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-AutoPilot_Panel": {
+              "name": "CJ4-AutoPilot_Panel",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Electrical_Panel": {
+              "name": "CJ4-Electrical_Panel",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-GPU_Knob": {
+              "name": "CJ4-GPU_Knob",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Ice_Protection_Panel": {
+              "name": "CJ4-Ice_Protection_Panel",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Landing_Gear_Handle": {
+              "name": "CJ4-Landing_Gear_Handle",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Light_Panel": {
+              "name": "CJ4-Light_Panel",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Lower_CCP_Panel": {
+              "name": "CJ4-Lower_CCP_Panel",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Master_Caution_Warning": {
+              "name": "CJ4-Master_Caution_Warning",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Parking_Brake": {
+              "name": "CJ4-Parking_Brake",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-PFD_MFD_Overlay": {
+              "name": "CJ4-PFD_MFD_Overlay",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Upper_DCP_Panel": {
+              "name": "CJ4-Upper_DCP_Panel",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Standby_Flight_Instrument": {
+              "name": "CJ4-Standby_Flight_Instrument",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            },
+            "CJ4-Rockwell_Collins_Pro_Line_21": {
+              "name": "CJ4-Rockwell_Collins_Pro_Line_21",
+              "isOrdered": true,
+              "folders": {
+                "f7659605-1421-4d75-a347-55d9cb92db57": {
+                  "name": "f7659605-1421-4d75-a347-55d9cb92db57",
+                  "isOrdered": true,
+                  "folders": {},
+                  "files": {}
+                }
+              },
+              "files": {
+                "readme": 0
+              }
+            },
+            "CJ4-Trim_and_Engine_Control": {
+              "name": "CJ4-Trim_and_Engine_Control",
+              "isOrdered": true,
+              "folders": {
+                "c5e5c1b1-d600-44a3-901d-2f8f6e086a3d": {
+                  "name": "c5e5c1b1-d600-44a3-901d-2f8f6e086a3d",
+                  "isOrdered": true,
+                  "folders": {},
+                  "files": {}
+                }
+              },
+              "files": {
+                "README": 0
+              }
+            },
+            "CJ4-Climate_Control": {
+              "name": "CJ4-Climate_Control",
+              "isOrdered": true,
+              "folders": {},
+              "files": {}
+            }
+          },
+          "files": {
+            "readme": 0
+          }
+        },
+        "Cessna_152": {
+          "name": "Cessna_152",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "Cessna_C172": {
+          "name": "Cessna_C172",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "Generic": {
+          "name": "Generic",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "Mooney_M20R": {
+          "name": "Mooney_M20R",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "Piper_Arrow_III_(Carenado)": {
+          "name": "Piper_Arrow_III_(Carenado)",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "Piper_Arrow_III": {
+          "name": "Piper_Arrow_III",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "TBM_930": {
+          "name": "TBM_930",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
+      "files": {
+        "README": 0
+      }
+    }
+  },
+  "files": {
+    "readme": 0
+  }
+}

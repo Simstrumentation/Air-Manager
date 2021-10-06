@@ -1,5 +1,21 @@
-Update 3-7-21
+## Cessna Citation CJ4 Audio Panel
+- **v1.0** 
+  Released 03-07-21
+	- Original panel created 
 
-Overlay for PFD or MFD
+- **v2.0** 
+  Released 10-06-2021-8-2021
+	- New custom graphics
+	- Backlighting
+	- Night mode (when used in conjunction with Simstrumentation Ambient Light Control)
+	- Mobiflight events replaced with H: events and L: variables 
 
-You must "Pop out" the PDF or MFD from the game using Alt inorder to use this panel.
+
+## Left To Do:
+- N/A
+	
+## Notes:
+- Offers both a full size and condensed size version for smaller screen sizes. This option can be selected in the user properties of the panel
+- You must select if the unit is either the PFD or MFD in the user properties in order for dimming controls (either from the virtual cockpit or from the Simstrumentation CJ4 Light Control Panel)
+- Must be used with the popped out MCDU screen from the sim
+- Must use the Simstrumentation Ambient Light Dimmer control in order to use night lighting mode

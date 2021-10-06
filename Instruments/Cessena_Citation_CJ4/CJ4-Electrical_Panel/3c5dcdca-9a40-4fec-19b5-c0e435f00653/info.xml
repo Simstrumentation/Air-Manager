@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna_Citation_CJ4</aircraft><type>Electrical_Panel</type><uuid>3c5dcdca-9a40-4fec-19b5-c0e435f00653</uuid><author>Rob Verdon</author><description>CJ4 Electrical Panel
-   Author Rob Verdon
-   rob.verdon@gmail.com
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna Citation CJ4 (Working Title Mod)</aircraft><type>Electrical Panel</type><uuid>3c5dcdca-9a40-4fec-19b5-c0e435f00653</uuid><author>SIMSTRUMENTATION</author><description>CJ4 Electrical Panel
 
-   </description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>201</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>750</prefWidth><prefHeight>500</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+THIS INSTRUMENT IS ONLY DESIGNED TO WORK USING THE WORKING TITLE CJ4 MOD FOR MSFS2020.
+
+White some functions may work with the default C4 included in MSFS, you must use the Working Title mod for full functionality. 
+
+Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>200</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>750</prefWidth><prefHeight>500</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>LINUX</platform><platform>MAC</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

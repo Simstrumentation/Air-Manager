@@ -1,24 +1,21 @@
 ## Cessna Citation CJ4 Light Control Panel:
-- **v1.0** 8-2-21 Joe "Crunchmeister" Gilker
+- **v1.0** 
+Released 8-2-21
 	- Original Panel Created
-- **v1.1** 8-29-21 Todd "Toddimus831" Lorey 
-	- Added seatbelt, safety and pulse light functionality
-- **v1.2** 8-30-21 Rob "FlightLevelRob" Verdon	
-	- Added variable subscribe for lights: Beacon,Nav,Strobe,Taxi,LNDG,Logo,Belt,Safety,RecLt. 
-	- Removed toggle code now that variable subscribe is working.
-	- Removed all MobiFlight references.
-- **v1.3** 9-9-21 Herbert Puukka
-    - Repalced Background Graphic to remove back edges.		
-- **v1.4** 9-13-21 Rob "FlightLevelRob" Verdon 			
-    - Added panel dimming functionality
-- **v1.5** 9-15-2021 Joe "Crunchmeister" Gilker
-    - Total custom graphics overhaul    
+
+- **v2.0** 
+  Released 10-06-2021-8-2021
+	- New custom graphics
+	- Backlighting
+	- Night mode (when used in conjunction with Simstrumentation Ambient Light Control)
+	- Pilot and copilot PFD and MFD dimming in virtual cockpit
+	- Pilot-side PFD and MFD dimming will also dim Simstrumentation CJ4 PFD / MFD overlays in Air Manager
+	- Master light dimmer will control both instrument backlighting in the virtual cockpit and Simstrumentation CJ4 Air Manager instruments
+	- Mobiflight events replaced with H: events and L: variables 
 
 ## Left To Do:
-- Dimming for PFD and MFD
+
 	
 ## Notes:
 - TCAS is INOP in game. Not used.
-- You may have to push the in-game cockpit buttons twice to turn off a light if you turned it on from AirManager. Not sure if a WT issue or Asbro issue. The "toggle" AM events do not seem to update tooltips, could probably use LVARS as it does update when using a ExtController.
-
 	
