@@ -1,8 +1,8 @@
-<h1 align="center">Cessena Citation CJ4 (Working Title)
+<h1 align="center">Cessna Citation CJ4 (Working Title) Collection
 </h1><br>
 <p align="center"><img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" width="600"></p>
 This collection of Cessna Citation CJ4 instruments is currently our flagship and most complete instrument collection. It contains every instrument that you need to be able to use your CJ4 mouse and keyboard free. Each instrument and control has been meticulously crafted to give you a near perfect visual recreation of what you would see in your virtual cockpit, and all instruments replicate their in simulator functionality exactly.
-<h4>NOTE - THESE INSTRUMENTS ARE DESIGNED TO BE USED WITH THE WORKING TITLE CJ4 MODIFICATION
+<h4>NOTE - THESE INSTRUMENTS ARE DESIGNED TO BE USED WITH THE WORKING TITLE CJ4 MODIFICATION. Some functions may work with the stock CJ4 or other planes, but most won't. Those aren't officially supported and there are no plans to make these instruments work with the stock CJ4. 
 </h4>While some of these instruments may function correctly with the stock CJ4 provided with MSFS, many functions are specific to the Working Title CJ4 modification and won't work on the stock aircraft. If you fly the CJ4 and aren't using the Working Title mod, you're most definitely missing out on one of the most complete and realistic flying experiences that MSFS has to offer. You can download the WT CJ4 mod package from <a href="https://www.workingtitle.aero/packages/cj4/" target="_blank">the Working Title CJ4 page</a>
 
 ## Main Panels & Instruments
