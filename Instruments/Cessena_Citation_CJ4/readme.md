@@ -51,9 +51,9 @@ This instrument, when used in conjunction with V2.0 or higher of our other CJ4 i
 
 ## Full CJ4 Cockpit Screen Shots
 - Day mode
-<p align="center"><img src="https://user-images.githubusercontent.com/75218511/136465263-c3e724ac-3730-4831-a9c2-02689306c5c7.png" width ="400"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/75218511/136465263-c3e724ac-3730-4831-a9c2-02689306c5c7.png" width ="600"></p>
 - Night mode with backlights on
-<p align="center"><img src="https://user-images.githubusercontent.com/75218511/136465299-82c56770-944d-4117-93f5-d3d44226ba43.png" width ="400"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/75218511/136465299-82c56770-944d-4117-93f5-d3d44226ba43.png" width ="600"></p>
 
 ## Roadmap
 
