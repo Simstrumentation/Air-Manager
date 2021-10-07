@@ -49,6 +49,12 @@ This instrument, when used in conjunction with V2.0 or higher of our other CJ4 i
 | ---------- | --------------- | ------------- | ------- |
 | Ground Power Unit GPU Knob | [v1.0 - 9-18-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-GPU_Knob/Cessna_Citation_CJ4-GPU%20Knob.siff) | [docs](CJ4-GPU_Knob/) | <img src="CJ4-GPU_Knob/a9de14b4-3f6f-4b05-babd-9632374d52b3/preview.png" width="100"> |
 
+## Full CJ4 Cockpit Screen Shots
+- Day mode
+<p align="center">![image](https://user-images.githubusercontent.com/75218511/136465263-c3e724ac-3730-4831-a9c2-02689306c5c7.png)</p>
+- Night mode with backlights on
+<p align="center">![image](https://user-images.githubusercontent.com/75218511/136465299-82c56770-944d-4117-93f5-d3d44226ba43.png)</p>
+
 ## Roadmap
 
 See the [open issues](https://github.com/Simstrumentation/Air-Manager/issues) for a list of proposed features (and known issues).
