@@ -16,8 +16,8 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-
-
+ **v2.01** 10-6-21
+    - Updated preview graphic
 ##Left To Do:
     - Baro knob adjusts knob on PFD and not Standby Instrument.
 	
