@@ -1,4 +1,4 @@
-<h1 align="center">Cessna Citation CJ4 (Working Title)
+<h1 align="center">Cessna Citation CJ4 (Working Title) Collection
 </h1><br>
 <p align="center"><img src="https://user-images.githubusercontent.com/75218511/133437045-c895881c-5502-4885-94dd-b4fe9b288246.png" width="600"></p>
 This collection of Cessna Citation CJ4 instruments is currently our flagship and most complete instrument collection. It contains every instrument that you need to be able to use your CJ4 mouse and keyboard free. Each instrument and control has been meticulously crafted to give you a near perfect visual recreation of what you would see in your virtual cockpit, and all instruments replicate their in simulator functionality exactly.
