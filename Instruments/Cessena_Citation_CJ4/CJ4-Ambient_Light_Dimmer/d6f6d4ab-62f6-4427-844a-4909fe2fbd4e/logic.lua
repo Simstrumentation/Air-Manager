@@ -28,6 +28,7 @@ snd_dial = sound_add("dial.wav")
 -- Create user props
 prop_BG = user_prop_add_boolean("Display Background",true,"Show grey background")
 prop_hide = user_prop_add_boolean("Hide Ambient Light Insturment and Auto Dim",false,"Hide Ambient Light Insturment and Auto Dim")
+prop_arduino_hue = user_prop_add_string("Philips Hue Light Control Arduino Name String", "ARDUINO_NANO_A", "Change this if you have already have Arduinos connected for different things and need to make this a different channel. See Simstrumentation GitHub for documentation.")
 
 if user_prop_get(prop_BG) == true then
     img_add_fullscreen("background.png")
@@ -48,6 +49,13 @@ var_ambient_darkness = si_variable_create("sivar_ambient_darkness", "FLOAT", 0.0
 --Add buttons
 img_buttons = img_add_fullscreen("buttons.png")
 img_buttons_night = img_add_fullscreen("buttons_night.png")
+
+--Message Port for Hue Dimming
+currentambientdarkness = 0
+function callback_message_port_hue(message_port_hue1, payload)
+  print("received new message with id " .. message_port_hue1)
+end
+message_port_hue1 = hw_message_port_add(user_prop_get(prop_arduino_hue), callback_message_port_hue1)
 
 --******************************************************************************************
 --Backlighting images
@@ -101,6 +109,10 @@ function pos_ambient_darkness(value) -- apply darkness value from si var to inst
         opacity(img_buttons_night, value, "LOG", 0.04)
         opacity(img_ambient_knob_night, value, "LOG", 0.04)       
         opacity(img_labels, (1-value), "LOG", 0.04)       
+        if  (currentambientdarkness ~= value) then       --Setting Hue Light   
+            hw_message_port_send(message_port_hue1, 776, "BYTE[1]", {254-(value*254) } )
+            currentambientdarkness = value     --Used for IF statement so only sending updates to Hue Light
+       end 
 end 
 si_variable_subscribe("sivar_ambient_darkness", "FLOAT", pos_ambient_darkness)
 
