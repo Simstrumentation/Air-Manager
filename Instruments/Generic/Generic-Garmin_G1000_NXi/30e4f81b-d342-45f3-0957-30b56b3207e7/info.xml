@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin G1000 NXi </type><uuid>30e4f81b-d342-45f3-0957-30b56b3207e7</uuid><author>Joe &quot;Crunchmeister&quot; Gilker</author><description>Modification of the Sim Innovations G1000 bezel by Russ Barlow.
-- Improved graphics
-- VNAV with Working Title G1000 NXi functions
-- Added detection of VS and FLC states for improved behaviour of Nose Up / Down keys
-
-
-02-09-2021 - Added fix for FLC not working with Working TItle G1000 NXi 0.5.0
-
-</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>true</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>105</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1412</prefWidth><prefHeight>917</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
