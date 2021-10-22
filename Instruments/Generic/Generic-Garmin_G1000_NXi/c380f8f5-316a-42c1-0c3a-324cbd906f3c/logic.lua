@@ -8,9 +8,15 @@
 This G1000 bezel is specifically designed for use with Microsoft Flight Simulator (2020)
 and to work with the Working Title G1000 NXi 0.8 or higher. It's compatible with the stock G1000, 
 although some functions (such as VNAV) may be INOP due to not being available in the stock G1000. 
-
+- **v1.0** (August-2021)
+    - Original modification of Sim Innovations G1000 to function with Working Title G1000 NXi
+    
 - **v2.0** (10-21-2021)
-    - Original Panel Created
+    - Full recoding from the ground up for MSFS only and the WT G1000 NXi
+    - Complete new instrument with new id. 
+    - New custom graphics
+    - New custom sounds
+    - All buttons function exactly as the real G1000 unit
 
 NOTES: 
 - Compatible with Working Title G1000 NXi 0.8 and above
