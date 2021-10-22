@@ -18,12 +18,15 @@ although some functions (such as VNAV) may be INOP due to not being available in
     - New custom sounds
     - All buttons function exactly as the real G1000 unit
 
+- **v2.01** (10-21-2021)
+    - Map panning working with WT G1000 NXi
+    
 NOTES: 
 - Compatible with Working Title G1000 NXi 0.8 and above
 - Volume knob for NAV radio works on stock G1000, but that function is currently INOP in the WT G1000 NXi
 
 KNOWN ISSUES:
-- Map panning works in default G1000, but not yet in the Working Title G1000 NXi. Once panning is added to the WT version, this function will be work. 
+- None
 
 ATTRIBUTION:
 All code, artwork and sound effects are original creations by Simstrumentation
@@ -569,6 +572,7 @@ button_add(nil,nil, 1315,370,13,13, btn_crs_knob)
 local pal_y =  432
 pan_background = img_add("pan_background.png", 1229 ,432,190,190)
 -- up
+
 function btn_0_deg()
     fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_UP")
 end
@@ -649,11 +653,7 @@ dial_click_rotate( rng_dial, 6)
 function btn_map_cursor_toggle()
     show_cursor = not show_cursor
     visible(pan_background, show_cursor)
-    if show_cursor then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_ActivateMapCursor")
-    else
-        fs2020_event("H:AS1000_" .. unit_mode .. "_DeactivateMapCursor")
-    end
+    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_PUSH")
     sound_play(press_snd)
 end
 
