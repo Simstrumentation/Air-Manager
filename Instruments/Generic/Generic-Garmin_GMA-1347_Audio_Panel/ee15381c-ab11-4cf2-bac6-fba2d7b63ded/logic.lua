@@ -8,20 +8,18 @@
 This GMA 1347 is specifically designed for use with Microsoft Flight Simulator (2020) and 
 Windows only.No compatibility with Xplane, FSX nor P3D is planned
 
-- **v1.0** (3-2-2021)
+- **v1.0** (03-02-2021)
     - Original Panel Created by Rob Verdon
     
-- **v2.0** (RELEASE DATE)
+- **v2.0** (10-22-2021)
     - New custom graphics
     - New custom sounds
     - More working events
 
 
-NOTES: 
-- The current functions are currently INOP as they have no function in the simulator:
-    - 
-    -
-    -
+## NOTES
+- There a lot of INOP's that are inop in the sim itself. If you hear the "fail" sound that button or function is inop.
+- In SimUpdate6 (Released 10-19-21) You can no longer use the SimConnect events for Mute and HiSens.
     
 
 ATTRIBUTION:
