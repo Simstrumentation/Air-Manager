@@ -1,17 +1,57 @@
 --[[
-   C172 Audio Panel
-   Author Rob Verdon
-   
-   MSFS2020
-   Functions: Com1Mic, Com2Mic, Com1, Com2, DME, ADF, NAV1, NAV2,Marker Mute
-   Beta Release 3-2-2021
+******************************************************************************************
+***************************Garmin GMA 1347 Audio Panel******************************
+******************************************************************************************
+    Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
+    GitHub: https://github.com/simstrumentation
+
+This GMA 1347 is specifically designed for use with Microsoft Flight Simulator (2020) and 
+Windows only.No compatibility with Xplane, FSX nor P3D is planned
+
+- **v1.0** (3-2-2021)
+    - Original Panel Created by Rob Verdon
+    
+- **v2.0** (RELEASE DATE)
+    - New custom graphics
+    - New custom sounds
+    - More working events
 
 
---]]
+NOTES: 
+- The current functions are currently INOP as they have no function in the simulator:
+    - 
+    -
+    -
+    
 
+ATTRIBUTION:
+All code, artwork and sound effects are original creations by Simstrumentation
+Sharing or re-use of any code or assets is not permitted without credit to the original authors.
+]]--
+
+--***********************************************USER PROPERTY CONFIG***********************************************
+-- define user selectable properties
+play_sounds = user_prop_add_boolean("Play Sounds", true, "Play sounds in Air Manager")                           -- Use sounds in Air Manager    
+-- end define user selectable properties
+
+-- set user properties
+
+-- play sound
+if user_prop_get(play_sounds) then
+    click_snd = sound_add("click.wav")
+    dial_snd = sound_add("dial.wav")
+    fail_snd = sound_add("fail.wav")    
+else
+    click_snd = sound_add("silence.wav")
+    dial_snd = sound_add("silence.wav")
+    fail_snd = sound_add("silence.wav")    
+end
+-- end play sound
+
+--*********************************************END USER PROPERTY CONFIG***********************************************
 
 --Backgroud Image before anything else
-img_add_fullscreen("MidStack.png")
+img_add_fullscreen("bg.png")
 
 --Declare Locals
 local com1mic = false
@@ -22,93 +62,272 @@ local nav1 = false
 local nav2 = false
 local dme = false
 local adf = false
+local hisens = false
+local local_mute = false
+local audio_panel_vol = nil
 local LEDIndicator = "Mid_Aud_Enable.png"
 
---Set Images  
+-- INDICATORS
+-- initial state of all indicators set to off (hidden / visibility = false)
 
-com1mic = img_add(LEDIndicator, 40,19,18,8)
-com1select = img_add(LEDIndicator, 120,19,18,8) 
+com1mic = img_add(LEDIndicator, 51, 25,25, 13)
+visible(com1mic, false)
+com1select = img_add(LEDIndicator, 155,25,25, 13) 
+visible(com1select , false)
+com2mic = img_add(LEDIndicator, 51,117,25, 13)
+visible(com2mic , false)
+com2select = img_add(LEDIndicator, 155,117,25, 13)
+visible(com2select , false)
+com3mic = img_add(LEDIndicator, 51,199,25, 13)
+visible(com3mic, false)
+com3select = img_add(LEDIndicator, 155,199,25, 13)
+visible(com3select, false)   
+com1_2mic = img_add(LEDIndicator, 51,289,25, 13)
+visible(com1_2mic, false)
+tel = img_add(LEDIndicator, 155,289,25, 13)
+visible(tel, false)   
+pa = img_add(LEDIndicator, 51,379,25, 13)
+visible(pa, false)
+spkr = img_add(LEDIndicator, 155,379,25, 13)
+visible(spkr, false)   
+hi_sens = img_add(LEDIndicator, 155,469,25, 13)
+visible(hi_sens, false)   
+nav1 = img_add(LEDIndicator, 155,568,25, 13)  
+visible(nav1, false)    
+nav2 = img_add(LEDIndicator, 155,650,25, 13)  
+visible(nav2, false)   
+dme = img_add(LEDIndicator, 51,568,25, 13)
+visible(dme, false)   
+adf = img_add(LEDIndicator, 51,650,25, 13)
+visible(adf, false)   
+aux = img_add(LEDIndicator, 51,743,25, 13)
+visible(aux, false)
+man_seq = img_add(LEDIndicator, 51,833,25, 13)
+visible(man_seq, false)
+play = img_add(LEDIndicator, 155,833,25, 13)
+visible(play, false)
+pilot = img_add(LEDIndicator, 51,923,25, 13)
+visible(pilot, false)
+coplt = img_add(LEDIndicator, 155,923,25, 13)
+visible(coplt, false)
+mute = img_add(LEDIndicator, 51,468,25, 13)
+visible(mute, false)
 
-com2mic = img_add(LEDIndicator, 40,83,18,8)
-com2select = img_add(LEDIndicator, 120,83,18,8)
-   
-nav1 = img_add(LEDIndicator, 120,392,18,8)   
-nav2 = img_add(LEDIndicator, 120,450,18,8)  
-
-dme = img_add(LEDIndicator, 40,392,18,8)
-adf = img_add(LEDIndicator, 40,450,18,8)
-
-mute = img_add(LEDIndicator, 40,325,18,8)
-
---Sounds   
-click_snd = sound_add("knobclick.wav")
-    
-    
---Start 
+--BUTTONS
 
 --Com1 TX Select    
 function mid_com1mic()
    fs2020_event("COM1_TRANSMIT_SELECT")
+   --fs2020_event("H:AS1000_MID_COM_Mic_1_Push")
    sound_play(click_snd)
 end
-button_add(nil,"com1mic_pressed.png", 19,32,60,34, mid_com1mic)
+button_add(nil,"com1mic_pressed.png", 19,41,90, 66, mid_com1mic)
 
 --Com2 TX Select    
 function mid_com2mic()
    fs2020_event("COM2_TRANSMIT_SELECT")
+   --fs2020_event("H:AS1000_MID_COM_Mic_2_Push")
    sound_play(click_snd)
 end
-button_add(nil,"com2mic_pressed.png", 19,97,60,34, mid_com2mic)
+button_add(nil,"com2mic_pressed.png", 18,135,89, 64, mid_com2mic)
 
+--Com3 TX Select    
+function mid_com3mic()
+   --currently INOP
+   --fs2020_event("H:AS1000_MID_COM_Mic_3_Push")
+   --sound_play(click_snd)
+   sound_play(fail_snd)
+end
+button_add(nil,"com3mic_pressed.png", 18,219,89, 64, mid_com3mic)
 
---Com1 Receive All 
+--Com1_2 TX Select    
+function mid_com1_2mic()
+   fs2020_event("H:AS1000_MID_COM_Swap_1_2_Push")
+   sound_play(click_snd)
+end
+button_add(nil,"com1-2_pressed.png", 18,311,89, 64, mid_com1_2mic)
+
+--Com1 Receive
 function mid_com1()
    fs2020_event("COM_RECEIVE_ALL_TOGGLE")
    sound_play(click_snd)
 end
-button_add(nil,"com1_pressed.png", 98,32,60,34, mid_com1)
+button_add(nil,"com1_pressed.png", 122,41,90, 66, mid_com1)
 
---Com2 Receive All 
+--Com2 Receive
 function mid_com2()
    fs2020_event("COM_RECEIVE_ALL_TOGGLE")
    sound_play(click_snd)
 end
-button_add(nil,"com2_pressed.png", 98,98,60,34, mid_com2)
+button_add(nil,"com2_pressed.png", 122,135,90, 66, mid_com2)
 
---Nav Buttons   
+--Com3 Receive
+function mid_com3()
+    --currently INOP
+   --fs2020_event("H:AS1000_MID_COM_3_Push")
+   sound_play(fail_snd)
+end
+button_add(nil,"com3_pressed.png", 122,218,90, 66, mid_com3)
+
+--Tel
+function mid_tel()
+    --currently INOP
+   --fs2020_event("H:AS1000_MID_TEL_Push")
+   sound_play(fail_snd)
+end
+button_add(nil,"tel_pressed.png", 122,310,90, 66, mid_tel)
+
+--PA
+function pa()
+   --currently INOP
+   --fs2020_event("H:AS1000_MID_PA_Push")
+   --sound_play(click_snd)
+   sound_play(fail_snd)
+end
+button_add(nil,"pa_pressed.png", 18,400,89, 64, pa)
+
+--Spkr
+function spkr()
+   --currently INOP
+   --fs2020_event("H:AS1000_MID_SPKR_Push")
+   --sound_play(click_snd)
+   sound_play(fail_snd)
+end
+button_add(nil,"spkr_pressed.png", 122,399,89, 64, spkr)
+
+--Hi Sens
+function hisens_btn()
+  --fs2020_event("H:AS1000_MID_HI_SENS_Push")
+  
+  --    fs2020_variable_write("A:LIGHT CABIN:3", "BOOL", true)
+  --    fs2020_event("K:ELECTRICAL_CIRCUIT_TOGGLE",49, "Int",1)
+    -- fs2020_variable_write("A:MARKER BEACON SENSITIVITY HIGH","BOOL",false)
+    
+    if hisens == true then
+        fs2020_event("MARKER_BEACON_SENSITIVITY_HIGH",0)
+    else 
+        fs2020_event("MARKER_BEACON_SENSITIVITY_HIGH",1)
+    end
+
+   sound_play(click_snd)
+end
+button_add(nil,"hisens_pressed.png", 122,489,89, 64, hisens_btn)
+
+--Nav 1
 function nav1_btn()
    fs2020_event("RADIO_VOR1_IDENT_TOGGLE")
    sound_play(click_snd)
 end
-button_add(nil,"NAV1_pressed.png", 98,406,60,34, nav1_btn)
+button_add(nil,"NAV1_pressed.png", 121,583,90, 66, nav1_btn)
 
+--Nav 2
 function nav2_btn()
    fs2020_event("RADIO_VOR2_IDENT_TOGGLE")
    sound_play(click_snd)
 end
-button_add(nil,"NAV2_pressed.png", 98,464,60,34, nav2_btn)
+button_add(nil,"NAV2_pressed.png", 121,669,90, 66, nav2_btn)
+
 --DME Button  
 function dme_btn()
    fs2020_event("RADIO_SELECTED_DME_IDENT_TOGGLE")
    sound_play(click_snd)
 end
-button_add(nil,"DME_pressed.png", 18,406,60,34, dme_btn)
+button_add(nil,"DME_pressed.png", 18,583,90, 66, dme_btn)
+
 --ADF Button 
 function adf_btn()
    fs2020_event("RADIO_ADF_IDENT_TOGGLE")
    sound_play(click_snd)
 end
-button_add(nil,"ADF_pressed.png", 18,464,60,35, adf_btn)
+button_add(nil,"ADF_pressed.png", 17,669,90, 66, adf_btn)
+
+--Aux Button 
+function aux()
+   --currently INOP
+   --fs2020_event("H:AS1000_MID_AUX_Push")
+   --sound_play(click_snd)
+   sound_play(fail_snd)
+end
+button_add(nil,"aux_pressed.png", 17,762,90, 66, aux)
+
+--Man Sq
+function mansq()
+   --currently INOP
+   --fs2020_event("H:AS1000_MID_MAN_SQ_Push")
+   --sound_play(click_snd)
+   sound_play(fail_snd)
+end
+button_add(nil,"mansq_pressed.png", 17,850,90, 66, mansq)
+
+--Play
+function play()
+   --currently INOP
+   --fs2020_event("H:AS1000_MID_Play_Push")
+   --sound_play(click_snd)
+   sound_play(fail_snd)
+end
+button_add(nil,"play_pressed.png", 120,850,90, 66, play)
+
+--Pilot
+function pilot()
+   --currently INOP
+   --fs2020_event("H:AS1000_MID_Isolate_Pilot_Push")
+   --sound_play(click_snd)
+   sound_play(fail_snd)
+end
+button_add(nil,"pilot_pressed.png", 18,942,90, 66, pilot)
+
+--Coplt
+function coplt()
+   --currently INOP
+   --fs2020_event("H:AS1000_MID_Isolate_Copilot_Push")
+   --sound_play(click_snd)
+   sound_play(fail_snd)
+end
+button_add(nil,"coplt_pressed.png", 120,942,90, 66, coplt)
+
 --Mute Button 
 function mute_btn()
-   fs2020_event("MARKER_SOUND_TOGGLE")
+   --fs2020_event("MARKER_SOUND_TOGGLE")
+      if local_mute == true then
+        fs2020_event("MARKER_BEACON_TEST_MUTE",0)
+    else 
+        fs2020_event("MARKER_BEACON_TEST_MUTE",1)
+    end  
    sound_play(click_snd)
 end
-button_add(nil,"mute_pressed.png", 18,341,60,34, mute_btn)
+button_add(nil,"mute_pressed.png", 17,489,90, 66, mute_btn)
 
---Dial
---mid_vol_dial_outer = dial_add("plain_knob_outer.png", 49,750,79,79, mid_vol_outer_turn)
---mid_vol_dial_inner = dial_add("plain_knob_inner.png", 65,766,47,47, mid_vol_inner_turn)
+-- Volume knobs
+
+--CoPilot currently INOP
+function coplt_vol(direction)
+    if direction == 1 then
+    --inop
+    elseif direction == -1 then
+    --inop
+    end
+    sound_play(fail_snd)
+end
+copilot_vol = dial_add("vol_outer.png", 59, 1081, 112, 112, coplt_vol)
+
+function plt_vol(direction)
+    if direction == 1 then
+            audio_panel_vol = var_cap((audio_panel_vol + 5), 0, 100)
+    elseif direction == -1 then
+            audio_panel_vol = var_cap((audio_panel_vol - 5), 0, 100)
+    end
+    fs2020_event("AUDIO_PANEL_VOLUME_SET", audio_panel_vol)
+    sound_play(dial_snd)
+end
+pilot_vol= dial_add("vol_inner.png", 76, 1099, 78, 78, plt_vol)
+
+-- display backup 
+function display_backup()
+    fs2020_event("H:AS1000_MID_Display_Backup_Push")
+    sound_play(fail_snd)
+end
+dsp_bkup= button_add(nil, "red_button_pressed.png", 83, 1225, 64,  65, display_backup)
 
 --Indicators LEDs on Panel
 
@@ -171,17 +390,34 @@ function adf_snd(adf_sndch)
     else 
         visible(adf, false)
     end
-  end  
+  end 
+  
+-- Test if Hi Sen is On
+--hisens_on
+function hisens_on(high) 
+    if high == true then 
+        visible(hi_sens, true)
+        hisens = true
+    else 
+        visible(hi_sens, false)
+        hisens = false
+    end
+end   
+    
 --Test if Mute is On    
 function mute_snd(mute_sndch) 
     if mute_sndch == true then 
         visible(mute, true)
+        local_mute = true
     else 
         visible(mute, false)
-    end
+        local_mute = false
+    end    
   end  
-
-
+  
+function update_audio_vol(val)
+    audio_panel_vol = val
+end
 
 
 fs2020_variable_subscribe("COM TRANSMIT:1","Bool",
@@ -190,5 +426,7 @@ fs2020_variable_subscribe("NAV SOUND:1","Bool", nav1_snd)
 fs2020_variable_subscribe("NAV SOUND:2","Bool", nav2_snd)    
 fs2020_variable_subscribe("DME SOUND","Bool", dme_snd)  
 fs2020_variable_subscribe("ADF SOUND:1","Bool", adf_snd)
-fs2020_variable_subscribe("MARKER SOUND","Bool", mute_snd)                                      
+fs2020_variable_subscribe("MARKER BEACON TEST MUTE","Bool", mute_snd)     
+fs2020_variable_subscribe("MARKER BEACON SENSITIVITY HIGH", "Bool", hisens_on)   
+fs2020_variable_subscribe("AUDIO PANEL VOLUME", "Percent", update_audio_vol)                              
                            

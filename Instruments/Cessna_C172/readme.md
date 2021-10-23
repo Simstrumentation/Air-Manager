@@ -4,6 +4,7 @@
 </p>
 <p align="center"><img src="https://user-images.githubusercontent.com/75218511/133437329-3312c807-dbbf-4a73-b99e-e09678afdc82.png" width="600"/></p>
 <p>Description to come</p>
+<h3>Make sure to check the <a href="https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/">Generic Instrument page here </a> as many Generic Instruments that work for the C172 are listed there.</h3>
 
 <!-- TABLE OF CONTENTS 
 <details open="open">
