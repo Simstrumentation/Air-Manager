@@ -4,7 +4,7 @@
 	- Original panel created 
 
 - **v2.0** 
-  Released 10-26-2021
+  Released 10-22-2021
     - New custom graphics
     - New custom sounds
     - More working events
