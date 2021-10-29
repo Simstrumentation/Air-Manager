@@ -32,7 +32,6 @@ This is a list of the different aircraft in MSFS 2020 that we currently have wor
 | Cessna Citation CJ4 | <img src="https://user-images.githubusercontent.com/75218511/133439412-05aea04e-1dac-409f-9335-7844819230b4.png" width="500"> |
 | Cessna 172 G1000 | <img src="https://user-images.githubusercontent.com/75218511/133439856-9c2d3323-5f0a-4b6c-8800-071a47859b9e.png" width="500"> |
 | Cessna 172 Classic | <img src="https://user-images.githubusercontent.com/75218511/133449154-3d8774a5-0902-4b73-9737-18ad816e06e9.png" width="500"> |
-| Piper Arrow III (Just Flight) | <img src="https://user-images.githubusercontent.com/75218511/133440178-deecb726-7b5e-49b6-8c64-2e0e40262e47.png" width="500"> |
 | Beechcraft Baron | <img src="https://user-images.githubusercontent.com/75218511/133440350-5b83c3b4-09d2-4dde-8d71-d933c7c21345.png" width="500"> |
 | Mooney M20R - modern cockpit layout with dual G5 and GTN750 | <img src="https://user-images.githubusercontent.com/75218511/133441816-29e1ce1e-b461-4a14-ae63-19b5796f72ed.png" width="500"> |
 
