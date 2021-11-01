@@ -27,6 +27,8 @@ This is a list of the different aircraft in MSFS 2020 that we currently have wor
 
 ## Examples of Air Manager Panel Layouts
 
+<p>These panels are not available for download. These layouts are just examples of possible layouts combining our instruments with other instruments from the AM community store or other shared repos.</p>
+
 | Aircraft | Preview |
 | -------- | ------- |
 | Cessna Citation CJ4 | <img src="https://user-images.githubusercontent.com/75218511/133439412-05aea04e-1dac-409f-9335-7844819230b4.png" width="500"> |
