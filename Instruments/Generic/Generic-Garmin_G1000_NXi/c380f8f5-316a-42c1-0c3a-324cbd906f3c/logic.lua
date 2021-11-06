@@ -47,6 +47,7 @@ local current_hdg = 0
 mode = user_prop_add_enum("Unit Mode","PFD, MFD","PFD","Select whether this is the PFD or MFD")                  -- Select unit mode. PFD is default
 logo_used = user_prop_add_enum("Select Logo","Simstrumentation, Garmin","Simstrumentation","Select which logo to display at the top of the bezel")     -- Select which logo to show - Simstrumentation default
 show_ap = user_prop_add_boolean("Show Autopilot", true, "Show autopilot controls on this bezel")                 -- Show AP controls. On is default
+show_alt = user_prop_add_boolean("Show Altitude Knob", true, "Show altitude adustment knob")                 -- Show AP controls. On is default
 play_sounds = user_prop_add_boolean("Play Sounds", true, "Play sounds in Air Manager")                           -- Use sounds in Air Manager    
 
 --[[
@@ -418,6 +419,7 @@ end
 
 knob_alt_outer_id = dial_add("plain_knob_outer.png", 47,793,79,79, knob_alt_outer)
 dial_click_rotate( knob_alt_outer_id, 6)
+visible(knob_alt_outer_id, user_prop_get(show_alt)) 
 
 function knob_alt_inner( direction)
     if direction ==  1 then
@@ -430,6 +432,7 @@ end
 
 knob_alt_inner_id = dial_add("plain_knob_inner.png", 61,807,52,52, knob_alt_inner)
 dial_click_rotate( knob_alt_inner_id, 6)
+visible(knob_alt_inner_id, user_prop_get(show_ap)) 
 -- end alt knob
 
 -- simvar subscriptions for ALT and HDG
@@ -543,7 +546,7 @@ function knob_baro( direction)
     sound_play(dial_snd)
 end
 
-baro_dial  = dial_add("plain_knob_outer.png", 1282,334,82,82, knob_baro)
+baro_dial  = dial_add("plain_knob_outer.png", 1281,333,82,82, knob_baro)
 dial_click_rotate( baro_dial, 6)
 
 function knob_crs( direction)
@@ -555,7 +558,7 @@ function knob_crs( direction)
     sound_play(dial_snd)
 end
 
-crs_dial = dial_add("crs_knob.png", 1296,348, 54, 54, knob_crs)
+crs_dial = dial_add("crs_knob.png", 1294,347, 54, 54, knob_crs)
 dial_click_rotate( crs_dial, 6)
 
 function btn_crs_knob()
