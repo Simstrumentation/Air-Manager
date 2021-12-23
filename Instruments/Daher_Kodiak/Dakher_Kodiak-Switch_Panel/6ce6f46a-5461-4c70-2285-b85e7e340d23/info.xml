@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Daher Kodiak (SWS)</aircraft><type>Switch Panel</type><uuid>6ce6f46a-5461-4c70-2285-b85e7e340d23</uuid><author>Simstrumetation</author><description>    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+
+    Main electrical switch panel for the Daher Kodiak by SimWorks Studios. 
+    
+    NOTE:
+    3-position switches (fuel pump and starter) are activated by touching on the labels
+    above and below the switches and not on the switch itself. </description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1297</prefWidth><prefHeight>602</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
