@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Daher Kodiak (SWS)</aircraft><type>Fuel Valves</type><uuid>6be03214-704d-4860-8ebd-db0436d564ab</uuid><author>Simstrumentation</author><description> Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+
+    Left and right fuel valves for the Daher Kodiak
+    
+    NOTE:
+    toggle the switches by touching / clicking on the black detent nubs 
+    
+    V1.0 - Released 2022-12-23
+    
+    KNOWN ISSUES:
+        - None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>734</prefWidth><prefHeight>378</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
