@@ -1,4 +1,4 @@
-<img align="center" width="100%" <img src="https://user-images.githubusercontent.com/75218511/147607402-14a0a969-5e23-4b55-b15e-27684508b0ef.png">
+<img align="center" width="100%" src="https://user-images.githubusercontent.com/75218511/147607402-14a0a969-5e23-4b55-b15e-27684508b0ef.png">
 <h1 align="center">SIMSTRUMENTATION
 </h1><h2 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!
 </h2><h3 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager
