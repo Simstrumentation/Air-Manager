@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Daher Kodiak (SWS)</aircraft><type>Shoulder Harness Reel Lock Lever</type><uuid>982d1b08-4b3e-4121-2a40-13f3af6f9e5e</uuid><author>Simstrumentation</author><description>******************************************************************************************
+****************** DAHER KODIAK (SWS) SHOULDER HARNESS *********************
+******************************************************************************************
+        Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+
+    Shoulder harness lock lever for the SWS Daher Kodiak
+
+- **v1.0** (12-29-2021)
+    
+NOTES: 
+    - Use user properties to select pilot or copilot side
+    
+KNOWN ISSUES:
+- None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>308</prefWidth><prefHeight>421</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
