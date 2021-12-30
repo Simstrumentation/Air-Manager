@@ -2,7 +2,10 @@
 <h1 align="center">SIMSTRUMENTATION
 </h1><h2 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!
 </h2><h3 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager
-</h3>Our goal is to be able to offer flight simmers a quality collection of Air Manager (AM) instruments to enable a more realistic mouse and keyboard-free simulation experience. Through the use of touch screens and the optional <a href="https://www.siminnovations.com/hardware/product/57-knobster">Knobster</a> from Sim Innovations, you can have a fully interactive cockpit without requiring the use of a mouse in flight.
+</h3>
+<h3 align="center">Join Discord for information and help https://discord.gg/fcvbAeAmgQ
+</h3>
+Our goal is to be able to offer flight simmers a quality collection of Air Manager (AM) instruments to enable a more realistic mouse and keyboard-free simulation experience. Through the use of touch screens and the optional <a href="https://www.siminnovations.com/hardware/product/57-knobster">Knobster</a> from Sim Innovations, you can have a fully interactive cockpit without requiring the use of a mouse in flight.
 We build these instruments for our own use for our personal cockpits. But we've decided to share our work with the public free of charge so every AM user can benefit from our labour.
 Ultimately, we want to have our instruments included in the AM community store (free to users with a valid license, of course) so that they're readily available directly from within the application. This GitHub repo won't be the download source, but will remain the hub around which we develop new instruments, collaborate with other community members who wish to participate in development, and test released before submitting to the AM Store.
 <h6>NOTE - While the download and use of our instruments is free, AM is paid software available at https://www.siminnovations.com/. We are not associated with Sim Innovations in any way and cannot provide users with AM nor can we provide any technical support for AM. No warranties for our work are provided or implied. Our instruments hosted in this repo are offered as-is and are used at the end user's own risk
