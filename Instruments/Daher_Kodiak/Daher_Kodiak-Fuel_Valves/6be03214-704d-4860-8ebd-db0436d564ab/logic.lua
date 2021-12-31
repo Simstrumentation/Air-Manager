@@ -54,8 +54,8 @@ btn_right_off_id = button_add(nil, nil, 400, 90, 80, 80, right_tank_toggle)
 
 function new_left_pos(new_left_pos)
     left_pos = new_left_pos
-    if left_pos == 0 then
-        rotate(lever_left_id, 0, 40, 230, 0, "LOG", 0.04, "CW")
+    if left_pos == 0 then   
+        rotate(lever_left_id, 0, 40, 230, 0, "LOG", 0.02, "CW")
     else
         rotate(lever_left_id, -100, 40, 230, 0, "LOG", 0.02, "CCW")
     end
