@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Daher Kodiak (SWS)</aircraft><type>Oxygen Control Panel</type><uuid>d0f9904c-9a5c-4291-12fd-1a19b52e3899</uuid><author>Simstrumentation</author><description>    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+    
+    O2 control  panel for the Daher Kodiak by SimWorks Studios. 
+    
+    NOTE:
+    
+    V1.0 - Released 2022-01-03
+    
+    KNOWN ISSUES:
+        - NONE</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>362</prefWidth><prefHeight>362</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
