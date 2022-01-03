@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna Citation CJ4 (Working Title Mod)</aircraft><type>Cockpit Lights</type><uuid>17ae927b-80e5-4772-0d9f-b9e364a897ba</uuid><author>SIMSTRUMENTATION</author><description>Cockpit Light Knobs for Virtual Cockpit. 
+See here for contact info and notes: https://github.com/simstrumentation
+
+This has no background associated with it directly.
+Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient 
+Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>110</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>434</prefWidth><prefHeight>150</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
