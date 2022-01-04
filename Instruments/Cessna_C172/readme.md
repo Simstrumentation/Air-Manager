@@ -37,8 +37,8 @@
 
 Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
-Alt Static Air | [8-14-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessna_C172/Cessna_172-Alternate%20Static%20Air/Cessna_172-Alternate%20Static%20Air.siff) | [docs](v) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessna_C172/Cessna_172-Alternate%20Static%20Air/2a5c2a45-2324-4939-0120-72cfec15461e/preview.png?raw=true" width="100"> </p>
-
+Alt Static Air | [8-14-2021 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessna_C172/Cessna_172-Alternate%20Static%20Air/Cessna_172-Alternate%20Static%20Air.siff) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/Cessna_172-Alternate%20Static%20Air) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessna_C172/Cessna_172-Alternate%20Static%20Air/2a5c2a45-2324-4939-0120-72cfec15461e/preview.png?raw=true" width="100"> </p>
+Fuel Cutoff Valve | [2022-01-04 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessna_C172/Cessna_172-Fuel_Cutoff_Valve/Cessna%20172%20-%20Fuel%20Cutoff.siff) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Cessna_C172/Cessna_172-Fuel_Cutoff_Valve) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessna_C172/Cessna_172-Fuel_Cutoff_Valve/1172cff7-d05a-4d2c-9eaf-980aa37091dd/preview.png?raw=true" width="100"> </p>
 
 ## COMING SOON
 N/A
