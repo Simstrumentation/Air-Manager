@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 172</aircraft><type>Fuel Cutoff</type><uuid>1172cff7-d05a-4d2c-9eaf-980aa37091dd</uuid><author>Simstrumentation</author><description> Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+
+    Fuel cutoff valve for Cessna 172 and 182. Also works with the SWS Daher Kodiak
+  
+NOTES:
+    - None
+      
+V1.0 - Released 2022-01-04
+           
+KNOWN ISSUES:
+    - None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>181</prefWidth><prefHeight>283</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
