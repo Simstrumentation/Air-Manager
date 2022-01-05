@@ -2,6 +2,9 @@
   <h1 align="center">SimWorks Studios Daher Kodiak</h1>
 </p>
 
+<img src="https://user-images.githubusercontent.com/75218511/148248535-c8cb3063-37ab-484a-b41d-c2347b320614.png">
+
+
 <p>The Kodiak 100 Series II is a high-wing, single-engine turboprop aircraft, capable of transporting up to 9 passengers or cargo up to a distance of 1,132nm. Equipped with the Pratt & Whitney Canada PT6A-34 engine flat-rated at 750shp, the aircraft is capable of taking off and landing in less than 350ft, enabling it to operate from small, unprepared airstrips all over the world!</p>
 
 This wonderful 3rd party plane can be purchased from SimWorks Studios at this URL: https://simworksstudios.com/kodiak-100-wheels-for-msfs.html
