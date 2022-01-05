@@ -2,8 +2,10 @@
 <p align="center">
   <h1 align="center">Carenado Mooney M20R Ovation</h1>
 </p>
-<p align="center"><img src="https://user-images.githubusercontent.com/75218511/133450810-00e7ae37-2f84-47d4-9b09-e3c3af8996bc.png" width="600"/></p>
-<p>Description to come</p>
+<p><img src="https://user-images.githubusercontent.com/75218511/133450810-00e7ae37-2f84-47d4-9b09-e3c3af8996bc.png" width="600"/></p>
+<p>Sporty, elegant and quick….</p>
+<p>This highly efficient and stable aircraft can take you anywhere very quickly and with style.</p>
+<p>Single engine, four seats, 280 HP, cruise speed of 174 KTS and a maximum range of 1350 NM are its main features.</p>
 
 <!-- TABLE OF CONTENTS 
 <details open="open">
