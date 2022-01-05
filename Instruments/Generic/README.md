@@ -2,7 +2,7 @@
 <p align="center">
   <h1 align="center">GENERIC INSTRUMENTS</h1>
 </p>
-<p>Description to come</p>
+<p>A collection of various instruments that aren't specific to any particular aircraft type.</p>
 
 ## Working Instruments
 
