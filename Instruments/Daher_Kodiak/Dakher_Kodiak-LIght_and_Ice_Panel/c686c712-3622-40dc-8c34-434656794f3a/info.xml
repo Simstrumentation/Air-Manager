@@ -1,12 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Daher Kodiak (SWS)</aircraft><type>Light and Ice Switch Panel</type><uuid>c686c712-3622-40dc-8c34-434656794f3a</uuid><author>Simstrumentation</author><description>    NOTE:
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Daher Kodiak (SWS)</aircraft><type>Light and Ice Switch Panel</type><uuid>c686c712-3622-40dc-8c34-434656794f3a</uuid><author>Simstrumentation</author><description>Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+    Main electrical switch panel for the Daher Kodiak by SimWorks Studios. 
+    
+    NOTE:
     - FOLLOWING CONTROLS CURRENTLY INOP
         - Engine inlet bypass override (INOP in the Kodiak model)
-        - Backup pump
-        - Light potentiometers (will likely get these working in a future release)
-    
-    V1.0 - Released 2022-12-28
+        
+    V1.1 - Released 2022-01-05
+        - added lighting knob functionality
+        
+    V1.0 - Released 2021-12-28
+        - initial release
     
     KNOWN ISSUES:
     - Engine bypass switch works, but does not activate the cockpit animation. Upon
       consultation with the SWS dev, currently it seems to be a limitation of the sim
-      due to this control using a B: variable</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1297</prefWidth><prefHeight>532</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+      due to this control using a B: variable
+    - Backup pump switch INOP. Currently runs on an externally inaccessible I: variable
+    - Light knobs will not animate cockpit knobs due to B: variable inacessibility. </description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>110</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1297</prefWidth><prefHeight>532</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

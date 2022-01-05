@@ -9,16 +9,19 @@
     NOTE:
     - FOLLOWING CONTROLS CURRENTLY INOP
         - Engine inlet bypass override (INOP in the Kodiak model)
-        - Backup pump
-        - Light potentiometers (will likely get these working in a future release)
-    
-    V1.0 - Released 2022-12-28
+        
+    V1.1 - Released 2022-01-05
+        - added lighting knob functionality
+        
+    V1.0 - Released 2021-12-28
+        - initial release
     
     KNOWN ISSUES:
     - Engine bypass switch works, but does not activate the cockpit animation. Upon
       consultation with the SWS dev, currently it seems to be a limitation of the sim
       due to this control using a B: variable
-        
+    - Backup pump switch INOP. Currently runs on an externally inaccessible I: variable
+    - Light knobs will not animate cockpit knobs due to B: variable inacessibility. 
    --******************************************************************************************
 --]]
 
@@ -183,49 +186,91 @@ function new_cabin_pos(cabin)
         visible(cabin_on_id, false)
     end
     cabin_sw_pos = cabin
-    print(cabin)
 end
 
 fs2020_variable_subscribe("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", new_cabin_pos)
 
+--light knob graphics
 
---Instrument Knob
+img_lights_glareshield_knob =   img_add("knob_outer.png", 950, 92, 95,95)
+img_lights_instruments_knob =  img_add("knob_inner.png", 958,100,81,81)
+img_lights_panel_knob = img_add("knob_inner.png", 1084,100,81,81)
 
---inner
-function knob_inst_outer(direction)
-    if direction ==  1 then
-        --fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)
-    elseif direction == -1 then
-        --fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)
-    end
+
+--Glareshield
+function ss_lights_glareshield(value)
+    value = var_round(value,2)
+    rotate (img_lights_glareshield_knob, (value*290),"LOG", 0.1)
+    switch_set_position(sw_lights_glareshield, ((value*200)/10))
+end
+fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number", ss_lights_glareshield)
+
+function callback_lights_glareshield(position, direction)
+    if direction == 1 then
+      fs2020_event("LIGHT_POTENTIOMETER_3_SET", var_cap(((position*5)+5),0,100))
+       fs2020_event("GLARESHIELD_LIGHTS_ON")
+   else
+       fs2020_event("LIGHT_POTENTIOMETER_3_SET", var_cap(((position*5)-5),0,100))
+       if position ==0  then
+            fs2020_event("LIGHT_POTENTIOMETER_3_SET", 0)
+            fs2020_event("GLARESHIELD_LIGHTS_OFF")
+       end
+   end
+end        
+sw_lights_glareshield = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 30, 40, 134, 134, callback_lights_glareshield)
+
+--Instrument Lights
+function ss_lights_instruments(value)
+    value = var_round(value,2)
+    rotate (img_lights_instruments_knob, (value*290),"LOG", 0.1)
+    switch_set_position(sw_lights_instruments, (value*200)/10)
 end
 
-knob_alt_outer_id = dial_add("knob_outer.png", 950, 92, 95,95, knob_inst_outer)
-dial_click_rotate(knob_alt_outer_id, 18)
+fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:2", "Number", ss_lights_instruments)
 
---outer
-function knob_inst_inner( direction)
-    if direction ==  1 then
-        --fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)
-    elseif direction == -1 then
-        --fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)
-    end
+function callback_lights_instruments(position, direction)
+    if direction == 1 then
+       fs2020_event("LIGHT_POTENTIOMETER_2_SET", var_cap(((position*5)+5),0,100))
+       fs2020_event("PANEL_LIGHTS_ON")
+       --fs2020_event("PANEL_LIGHTS_SET")
+       --fs2020_variable_write("L:LIGHTING_PANEL_1_Inc", "Number", 1)
+   else
+       fs2020_event("LIGHT_POTENTIOMETER_2_SET", var_cap(((position*5)-5),0,100))
+       if position == 0  then
+          fs2020_event("PANEL_LIGHTS_OFF")
+          fs2020_event("LIGHT_POTENTIOMETER_2_SET", 0)
+       end
+   end
+end        
+
+sw_lights_instruments = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,  55, 65, 80, 80, callback_lights_instruments)
+
+--Panel Lights
+function ss_lights_panel(value)
+    value = var_round(value,2)
+    rotate (img_lights_panel_knob, (value*290),"LOG", 0.1)
+    switch_set_position(sw_lights_panel, ((value*200)/10))
 end
 
-knob_alt_inner_id = dial_add("knob_inner.png", 958,100,81,81, knob_inst_inner)
-dial_click_rotate( knob_alt_inner_id, 18)
+fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:21", "Number", ss_lights_panel)
 
--- Switch Panel Knob
-function knob_switch_inner( direction)
-    if direction ==  1 then
-        --fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)
-    elseif direction == -1 then
-        --fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)
-    end
-end
+function callback_lights_panel(position, direction)
+    if direction == 1 then
+      fs2020_event("LIGHT_POTENTIOMETER_21_SET", var_cap(((position*5)+5),0,100))
+       fs2020_event("PEDESTRAL_LIGHTS_ON")
+   else
+       fs2020_event("LIGHT_POTENTIOMETER_21_SET", var_cap(((position*5)-5),0,100))
+       if position ==0  then
+            fs2020_event("LIGHT_POTENTIOMETER_21_SET", 0)
+            fs2020_event("PEDESTRAL_LIGHTS_OFF")
+       end
+   end
+end        
 
-knob_switch_inner_id = dial_add("knob_inner.png", 1084,100,81,81, knob_switch_inner)
-dial_click_rotate( knob_alt_inner_id, 18)
+sw_lights_panel = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 200, 40, 120, 120, callback_lights_panel)
+
+
+
 
 -- Engine Inlet Override
 -- INOP
@@ -320,7 +365,7 @@ fs2020_variable_subscribe("WINDSHIELD DEICE SWITCH", "Bool", new_windshield_pos)
 
 --Pump Switch
 function toggle_pump()
-    --todo
+    --INOP
 end
 
 pump_id = switch_add("toggle_down.png","toggle_up.png", 960, 310, 72, 154, toggle_pump)
@@ -343,8 +388,4 @@ function new_ice_light_pos(ice_light)
 end
 fs2020_variable_subscribe("LIGHT WING", "Bool", new_ice_light_pos)
 
---**********NOTES
-
--- vars for lighting
--- (L:SWS_LIGHTING_Switch_Light_Cabin_x, Bool) xE[1,12]
 
