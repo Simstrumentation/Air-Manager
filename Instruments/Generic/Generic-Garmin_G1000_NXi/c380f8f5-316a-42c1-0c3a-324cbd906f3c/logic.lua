@@ -7,7 +7,20 @@
 
 This G1000 bezel is specifically designed for use with Microsoft Flight Simulator (2020)
 and to work with the Working Title G1000 NXi 0.8 or higher. It's compatible with the stock G1000, 
-although some functions (such as VNAV) may be INOP due to not being available in the stock G1000. 
+although some functions (such as VNAV) may be INOP due to not being available in the stock G1000.
+
+INSTRUCTIONS:
+
+When placing G1000NXi bezel into a new panel:
+    1. right click on bezel in panel preview
+    2. Select Unit Mode (PFD or MFD)
+    3. Select which logo you would like displayed
+    4. Select if you want the bezel to have sounds when buttons are pressed
+    5. Select what autopilot controls you would like to show.
+
+
+Version info:
+
 - **v1.0** (August-2021)
     - Original modification of Sim Innovations G1000 to function with Working Title G1000 NXi
     
@@ -20,6 +33,14 @@ although some functions (such as VNAV) may be INOP due to not being available in
 
 - **v2.01** (10-21-2021)
     - Map panning working with WT G1000 NXi
+
+- **v2.1** (1-14-2022)
+    - Bezel graphic update with new textures
+    - added user props for autopilot controls:
+        * show all AP controls
+        * hide AP buttons but show ALT knob
+        * hide AP buttons and ALT knob
+    - lights around knobs now in off state until G1000 unit is powered up. 
     
 NOTES: 
 - Compatible with Working Title G1000 NXi 0.8 and above
@@ -40,14 +61,15 @@ local vs_engaged = nil
 local current_airspeed = 0
 local current_alt = 0
 local current_hdg = 0
+local show_ap_buttons = true
+local show_alt_knob = true
 -- end set local variables
 
 --***********************************************USER PROPERTY CONFIG***********************************************
 -- define user selectable properties
 mode = user_prop_add_enum("Unit Mode","PFD, MFD","PFD","Select whether this is the PFD or MFD")                  -- Select unit mode. PFD is default
 logo_used = user_prop_add_enum("Select Logo","Simstrumentation, Garmin","Simstrumentation","Select which logo to display at the top of the bezel")     -- Select which logo to show - Simstrumentation default
-show_ap = user_prop_add_boolean("Show Autopilot", true, "Show autopilot controls on this bezel")                 -- Show AP controls. On is default
-show_alt = user_prop_add_boolean("Show Altitude Knob", true, "Show altitude adustment knob")                 -- Show AP controls. On is default
+show_ap = user_prop_add_enum("Include autopilot controls", "All,Hide buttons,Hide buttons and ALT knob", "All", "Select how autopilot controls will be displayed")
 play_sounds = user_prop_add_boolean("Play Sounds", true, "Play sounds in Air Manager")                           -- Use sounds in Air Manager    
 
 --[[
@@ -61,7 +83,7 @@ baro_select = user_prop_add_enum("Select Barometer behaviour","Kohlsman,G1000,Bo
 
 -- end define user selectable properties
 
--- set user properties
+-- INITIALIZE USER PROPERTIES
 
 --  unit mode
 if user_prop_get(mode) == "PFD" then
@@ -72,23 +94,34 @@ end
 --  end unit mode
 
 -- show autopilot controls
-if user_prop_get(show_ap) then
-    img_add_fullscreen("bg_ap.png")
-else
+if user_prop_get(show_ap) ==  "All" then                        -- shows all autopilot controls
+    img_add_fullscreen("bg_ap.png")                 
+    knob_lights_id = img_add("backlight_all.png", 1, 1, 1412, 917)    --backlight with alt knob
+    show_ap_buttons = true
+    show_alt_knob = true
+elseif user_prop_get(show_ap) == "Hide buttons" then            -- hides autopilot controls but keeps altitude selector knob
     img_add_fullscreen("bg_noap.png")
+    knob_lights_id = img_add("backlight_all.png", 1, 1, 1412, 917)     --backlight with alt knob
+    show_ap_buttons = false
+    show_alt_knob = true
+else                                                            -- hides autopilot controls and altitude selector knob
+    img_add_fullscreen("bg_noap_noalt.png")                     
+    knob_lights_id = img_add_fullscreen("backlight_no_alt.png") --backlight without alt knob
+    show_ap_buttons = false
+    show_alt_knob  = false
 end
--- end show autopilot controls
+visible(knob_lights_id, true)  --set initial state of backlights off    
+-- end show autopilot control
 
 -- logo to display
 if user_prop_get(logo_used) == "Simstrumentation" then
-    
     img_add("simstrumentation_logo.png",645,11,161,12)                                                  -- Show Simstrumentation logo
 else 
     img_add("garmin-logo-white.png",675,5,100,28)                                                         -- Show Garmin logo
 end
 -- end logo to display
 
--- play sound
+-- play sounds
 if user_prop_get(play_sounds) then
     press_snd = sound_add("click.wav")
     dial_snd = sound_add("dial.wav")
@@ -96,9 +129,53 @@ else
     press_snd = sound_add("silence.wav")
     dial_snd = sound_add("silence.wav")
 end
--- end play sound
+-- end play sounds
+
+-- END INITIALIZE USER PROPERTIES
 
 --*********************************************END USER PROPERTY CONFIG***********************************************
+
+-- make knob backlights turn on when unit is powered on
+function power_on(avionics, mainbus, generator)
+  	--set aircraft main bus power state
+    if (mainbus >= 1 or generator == true ) then
+		power_state = true
+	else
+		power_state = false
+	end
+    
+    --set aircraft avionics power state
+    if (power_state and avionics) then
+        avionics_state = true
+    else
+        avionics_state = false
+    end
+
+    -- set PFD power state
+    if unit_mode == "PFD" then
+        if power_state then
+            opacity(knob_lights_id, 1, "LOG", 0.03)
+        else
+            opacity(knob_lights_id, 0,  "LINEAR", 1)
+        end
+    end
+    -- set MFD power state
+    if unit_mode == "MFD" then
+        if avionics_state then
+            opacity(knob_lights_id, 1, "LOG", 0.03)
+        else
+            opacity(knob_lights_id, 0,  "LINEAR", 1)
+        end
+    end
+end
+
+
+
+fs2020_variable_subscribe("CIRCUIT AVIONICS ON", "BOOL",
+					        "ELECTRICAL MAIN BUS VOLTAGE", "Volts",
+					        "GENERAL ENG GENERATOR SWITCH:1", "BOOL",
+                            power_on)
+-- end make knob backlights turn on when unit is powered on
 
 -- NAV / COMM CHANNELS
 
@@ -255,7 +332,7 @@ function btn_ap()
 end
 
 button_ap = button_add(nil,"ap_pressed.png", 28,470,50,34, btn_ap)
-visible(button_ap, user_prop_get(show_ap))  -- only show if AP buttons shown
+visible(button_ap, show_ap_buttons)  -- only show if AP buttons shown
 -- end ap button
 
 -- heading button
@@ -265,7 +342,7 @@ function btn_hdg()
 end
 
 button_hdg = button_add(nil,"hdg_pressed.png", 28,520,50,34, btn_hdg)
-visible(button_hdg, user_prop_get(show_ap))  -- only show if AP buttons shown
+visible(button_hdg, show_ap_buttons)  -- only show if AP buttons shown
 -- end heading button
 
 -- nav mode button
@@ -275,7 +352,7 @@ function btn_nav()
 end
 
 button_nav = button_add(nil,"nav_pressed.png", 28,570,50,32, btn_nav)
-visible(button_nav, user_prop_get(show_ap)) -- only show if AP buttons shown
+visible(button_nav, show_ap_buttons) -- only show if AP buttons shown
 -- end nav mode button
 
 -- apr mode button
@@ -286,7 +363,7 @@ function btn_apr()
 end
 
 button_apr = button_add(nil,"apr_pressed.png", 28,621,52,33, btn_apr)
-visible(button_apr, user_prop_get(show_ap)) -- only show if AP buttons shown
+visible(button_apr, show_ap_buttons) -- only show if AP buttons shown
 -- end apr mode button
 
 -- vs hold button
@@ -296,7 +373,7 @@ function btn_vs()
 end
 
 button_vs = button_add(nil,"vs_pressed.png", 28,671,50,32, btn_vs)
-visible(button_vs, user_prop_get(show_ap))  -- only show if AP buttons shown
+visible(button_vs, show_ap_buttons)  -- only show if AP buttons shown
 -- end vs hold button
 
 -- Determine state of autopilot - FLC or VS.
@@ -327,7 +404,7 @@ function btn_flc()
 end
 
 button_flc = button_add(nil,"flc_pressed.png", 26,721,54,32, btn_flc)
-visible(button_flc, user_prop_get(show_ap)) -- only show if AP buttons shown
+visible(button_flc, show_ap_buttons) -- only show if AP buttons shown
 
 --simvar subscriptions for FLC and VS operation
 fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", flc_callback)  
@@ -343,7 +420,7 @@ function btn_fd()
 end
 
 button_fd = button_add(nil,"fd_pressed.png", 100,470,50,32, btn_fd)
-visible(button_fd, user_prop_get(show_ap))  -- only show if AP buttons shown
+visible(button_fd, show_ap_buttons)  -- only show if AP buttons shown
 -- end flight director button
 
 -- altitude mode button
@@ -353,7 +430,7 @@ function btn_alt()
 end
 
 button_alt = button_add(nil,"alt_pressed.png", 100,520,50,32, btn_alt)
-visible(button_alt, user_prop_get(show_ap)) -- only show if AP buttons shown
+visible(button_alt, show_ap_buttons) -- only show if AP buttons shown
 -- end altitude mode button
 
 -- vertical navigation mode button
@@ -363,7 +440,7 @@ function btn_vnav()
 end
 
 button_vnv = button_add(nil,"vnv_pressed.png", 98,570,54,32, btn_vnav)
-visible(button_vnv, user_prop_get(show_ap)) -- only show if AP buttons shown
+visible(button_vnv, show_ap_buttons) -- only show if AP buttons shown
 -- end vertical navigation mode button
 
 -- back course button
@@ -373,7 +450,7 @@ function btn_bc()
 end
 
 button_bc = button_add(nil,"bc_pressed.png", 98,621,54,32, btn_bc)
-visible(button_bc, user_prop_get(show_ap))  -- only show if AP buttons shown
+visible(button_bc, show_ap_buttons)  -- only show if AP buttons shown
 -- end back course button
 
 -- nose up button
@@ -389,7 +466,7 @@ function btn_noseup()
 end
 
 btn_noseup_id = button_add(nil,"nsup_pressed.png", 100,671,50,32, btn_noseup)
-visible(btn_noseup_id, user_prop_get(show_ap))   -- only show if AP buttons shown
+visible(btn_noseup_id, show_ap_buttons)   -- only show if AP buttons shown
 -- end nose up button
 
 -- nose down button
@@ -405,7 +482,7 @@ function btn_nosedown()
 end
 
 btn_nosedown_id = button_add(nil,"nsdn_pressed.png", 100,721,50,32, btn_nosedown)
-visible(btn_nosedown_id, user_prop_get(show_ap))   -- only show if AP buttons shown
+visible(btn_nosedown_id, show_ap_buttons)   -- only show if AP buttons shown
 -- end nose down button
 
 -- alt knob
@@ -415,11 +492,12 @@ function knob_alt_outer( direction)
     elseif direction == -1 then
         fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)
     end
+    sound_play(dial_snd)
 end
 
 knob_alt_outer_id = dial_add("plain_knob_outer.png", 47,793,79,79, knob_alt_outer)
 dial_click_rotate( knob_alt_outer_id, 6)
-visible(knob_alt_outer_id, user_prop_get(show_alt)) 
+visible(knob_alt_outer_id, show_alt_knob) 
 
 function knob_alt_inner( direction)
     if direction ==  1 then
@@ -432,7 +510,7 @@ end
 
 knob_alt_inner_id = dial_add("plain_knob_inner.png", 61,807,52,52, knob_alt_inner)
 dial_click_rotate( knob_alt_inner_id, 6)
-visible(knob_alt_inner_id, user_prop_get(show_ap)) 
+visible(knob_alt_inner_id, show_alt_knob) 
 -- end alt knob
 
 -- simvar subscriptions for ALT and HDG

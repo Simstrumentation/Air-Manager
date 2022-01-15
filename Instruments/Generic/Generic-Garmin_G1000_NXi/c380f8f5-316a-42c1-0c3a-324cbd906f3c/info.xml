@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin G1000 NXi</type><uuid>c380f8f5-316a-42c1-0c3a-324cbd906f3c</uuid><author>Simstrumentation</author><description>G1000 NXi for Microsoft Flight Simulator 2020
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin G1000 NXi</type><uuid>c380f8f5-316a-42c1-0c3a-324cbd906f3c</uuid><author>Simstrumentation</author><description>Made by SIMSTRUMENTATION -  https://github.com/simstrumentation
 
-Compatible with both stock G1000 and Working Title G1000 NXi v 0.8.0 or better.
+This G1000 bezel is specifically designed for use with Microsoft Flight Simulator (2020) and to work with the Working Title G1000 NXi 0.8 or higher. It's compatible with the stock G1000, although some functions (such as VNAV) may be INOP due to not being available in the stock G1000.
 
-NOTES: 
-- Map panning currently only works with default G1000. Map panning is not currently active in the WT G1000 NXi v 0.8.0 or older. 
-</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>202</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1412</prefWidth><prefHeight>917</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+INSTRUCTIONS:
+
+When placing G1000NXi bezel into a new panel:
+    1. right click on bezel in panel preview
+    2. Select Unit Mode (PFD or MFD)
+    3. Select which logo you would like displayed
+    4. Select if you want the bezel to have sounds when buttons are pressed
+    5. Select what autopilot controls you would like to show.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>210</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1412</prefWidth><prefHeight>917</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
