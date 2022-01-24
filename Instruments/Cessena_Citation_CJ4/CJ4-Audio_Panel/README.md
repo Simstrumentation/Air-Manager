@@ -9,7 +9,13 @@
 	- Backlighting
 	- Night mode (when used in conjunction with Simstrumentation Ambient Light Control)
 	- Mobiflight events replaced with H: events and L: variables 
-
+	
+- **v2.1** 01-06-22   
+    - Fixed Com1 & Com2 Volume, can set 0-100 or click center to toggle.
+    - Fixed Nav1 & Nav2 Volume
+    - Added Marker Mute Button
+    - Added SPKR Knob (On/Off)
+    - Files capitials renamed for SI Store submittion  
+	
 ## NOTES
-- Most selectors (COM1, COM2, NAV1, NAV2) don't currently work. This is a limitation of both the stock CJ4 which wasn't addresses in the WT mod at the time of publishing of this panel. 
-- If WT fix these issues in a future version of their mod, this panel will be updated accordingly.
+- 

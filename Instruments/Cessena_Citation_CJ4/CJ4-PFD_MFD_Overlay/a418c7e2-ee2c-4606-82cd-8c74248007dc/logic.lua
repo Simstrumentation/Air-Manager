@@ -18,6 +18,8 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
+- **v2.1** 01-16-22 SIMSTRUMENTATION
+    - Resource folder file capitials renamed for SI Store submittion  
 
 ##Left To Do:
     - 

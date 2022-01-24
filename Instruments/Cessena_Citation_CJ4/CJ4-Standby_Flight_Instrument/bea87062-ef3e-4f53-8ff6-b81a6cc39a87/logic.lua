@@ -18,14 +18,23 @@
     - Added backlight logic to account for battery, external power and bus volts status
  **v2.01** 10-6-21
     - Updated preview graphic
+ **v2.1** 01-16-22
+    - Baro knob now adjust Standby Instrument.
+    - Display now dims with SIMSTRUMENTATION Ambient Light Panel by default, there is a user prop to change this to either the PFD1 screen dim value or leave bright always.
+    - Added dial sound.
+    - Resource folder file capitials renamed for SI Store submittion  
+    
+          
 ##Left To Do:
-    - Baro knob adjusts knob on PFD and not Standby Instrument.
+    - 
 	
 ##Notes:
-    - Knob adjusts barometer on the PFD.
- 
+    - 
 ******************************************************************************************
 --]]
+screen_dim = user_prop_add_enum("Dim Display with SIMSTRUMENTATION Ambient Light Dimmer, PFD1 Dimmer, Or Leave Always Bright.", "AmbientLight,PFD1,AlwaysBright", "AmbientLight", "")
+dial_snd = sound_add("dial.wav")
+
 img_screen_dimmer = img_add("background_dim.png", 110, 60, 440, 440)
 img_add_fullscreen("background.png")
 img_bg_night = img_add_fullscreen("background_night.png")
@@ -33,41 +42,42 @@ img_bg_night = img_add_fullscreen("background_night.png")
 function ss_ambient_darkness(value)
     opacity(img_bg_night, value, "LOG", 0.04)
     opacity(dial_baro_night, value, "LOG", 0.04)
-    
+     if user_prop_get(screen_dim) == "AmbientLight" then
+        opacity(img_screen_dimmer, (( (value / 2))), "LOG", 0.04)
+     end
 end
 si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
 img_backlight = img_add_fullscreen("backlight.png")
 
 function ss_backlighting(value, power, extpower, busvolts)
-    value = var_round(value,2)
-    newval = 1.1-((value/2)+0.5)
---    if value == 1.0 or (power == false and extpower == false) then 
-    if value < 1 and (power == true or extpower == true or busvolts > 5) then
-        opacity(img_screen_dimmer, newval, "LOG", 0.04)    
-    end    
-    opacity(img_backlight, 0.1, "LOG", 0.04)
-    
-    if value == 1.0 then
-        opacity(img_screen_dimmer, 0, "LOG", 0.04)
-        opacity(img_backlight, 0, "LOG", 0.04)
-        
+    value = var_round(value,2)      
+    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
+        opacity(img_backlight, 0.1, "LOG", 0.04)
     else
-        if (power == true or extpower == true or busvolts > 5) then
-            opacity(img_backlight, ((value/2)+0.5), "LOG", 0.04)
-        end
+        opacity(img_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)
-						  
+
+function ss_screen_dim(value) 
+    if user_prop_get(screen_dim) == "PFD1" then
+        opacity(img_screen_dimmer, 0.5-(value / 2), "LOG", 0.04)
+    elseif user_prop_get(screen_dim) == "AlwaysBright" then
+        opacity(img_screen_dimmer, 0, "LOG", 0.04)
+    end
+end
+fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:15", "Number", ss_screen_dim)						  						  						  						  
+						  						  						  						  						  						  
 function turn_baroknob_cb (knobdirection)
-    if knobdirection > 0 then
-      fs2020_event("KOHLSMAN_INC")
+   sound_play(dial_snd)
+     if knobdirection > 0 then
+      fs2020_event("KOHLSMAN_INC",2)
     else
-      fs2020_event("KOHLSMAN_DEC")
+      fs2020_event("KOHLSMAN_DEC",2)
     end
   end
   
@@ -75,7 +85,3 @@ function turn_baroknob_cb (knobdirection)
   dial_baro_night = img_add("knob_night.png" , 510 , 496 , 82 , 82)
   dial_click_rotate(dial_baro, 6)
   
- function baro_click()
-   fs2020_event("BAROMETRIC")
-   sound_play(click_snd)
-end

@@ -27,12 +27,22 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
+- **v2.1** 01-14-22 SIMSTRUMENTATION
+    - Changed background image so that AP Disc is not in background image.
+    - Resource folder file capitials renamed for SI Store submittion .
+    - Click and Dial sounds replaced with custom.
+- **v2.2** 01-19-22 SIMSTRUMENTATION
+        - Updated Preview Image (was old screenshots still).
+- **v2.3** 01-23-22 SIMSTRUMENTATION      
+	- Added Acceleration to CRS1, CRS2, IAS, HDG, and ALT.
    
 ##Left To Do:
     - 	
 	
 ##Notes:
-    - The Alt Knob has an outer and inner dials. Outer changes 1000' increments, Inner 100' increments.   
+    - The Alt Knob has an outer and inner dials. Outer changes 1000' increments, Inner 100' increments. 
+    - The VS Speed knob is difficult to use without a knobster. Thus there is a user prop to make the dial two buttons (Down/Up).   
+    - The CRS1 and CRS2 knobs control NAV1 and NAV2 respectively. This is different compared to the Virtural Cockpit as of v0.12.11 where either knob controls either NAV.
     
 ******************************************************************************************    
 --]]
@@ -42,7 +52,6 @@ img_add_fullscreen("background.png")
 
 --SOUNDS
 snd_click = sound_add("click.wav")
-snd_fail = sound_add("beepfail.wav")
 snd_dial = sound_add("dial.wav")
 
 --Locals
@@ -262,6 +271,7 @@ function callback_CRS1_DIAL(direction)
     sound_play(snd_dial)
 end
 dial_crs1 = dial_add("CRS_DIAL.png", 89,112,96,95, callback_CRS1_DIAL, calllback_CRS1_DIAL_click)
+dial_set_acceleration(dial_crs1, 3)
 img_CRS1_dial_backlight = img_add("CRS_DIAL_backlight.png", 89,112,96,95)
 
 --CRS1 PRESS
@@ -299,6 +309,7 @@ function callback_CRS2_DIAL(direction)
     sound_play(snd_dial)
 end
 dial_crs2 = dial_add("CRS_DIAL.png", 1739,112,96,95, callback_CRS2_DIAL, callback_CRS2_DIAL_click)
+dial_set_acceleration(dial_crs2, 3)
 img_CRS2_dial_backlight = img_add("CRS_DIAL_backlight.png", 1739,112,96,95)
 
 --CRS2 PRESS
@@ -323,6 +334,7 @@ function callback_IAS_DIAL(direction)
      rotate(img_IAS_backlight, IAS_angle)
 end
 dial_IAS = dial_add("IAS_DIAL.png", 592,112,96,95, callback_IAS_DIAL, callback_IAS_DIAL_click)
+dial_set_acceleration(dial_IAS, 3)
 img_IAS_backlight = img_add("IAS_DIAL_backlight.png", 592,112,96,95)
 
 --IAS PRESS 
@@ -372,6 +384,7 @@ function hdg_turn_inner( direction)
     rotate(img_HDG_dial_backlight, hdg_angle)
 end
 dial_hdg = dial_add("HDG_DIAL.png", 917,120,90,90, hdg_turn_inner)
+dial_set_acceleration(dial_hdg, 3)
 img_HDG_dial_backlight = img_add("HDG_dial_backlight.png", 917,120,90,90)
 
 --HDG PRESS
@@ -414,6 +427,7 @@ function alt_small_callback(direction)
     sound_play(snd_click)
 end
 dial_alt_outer = dial_add(nil, 1217,117,95,95, alt_large_callback)
+dial_set_acceleration(dial_alt_outer, 3)
 img_alt_dial = img_add("ALT_DIAL.png", 1217,117,95,95)
 img_ALT_dial_backlight = img_add("ALT_dial_backlight.png", 1217,117,95,95)
 dial_click_rotate(dial_alt_outer, 6)

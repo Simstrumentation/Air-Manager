@@ -16,23 +16,28 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-     
+ **v2.1** 01-19-22 SIMSTRUMENTATION
+    - Baro knob fully functional, now changes between user baro and STD.
+    - Resource folder file capitials renamed for SI Store submittion  
+    - Click and Dial sounds replaced with custom.    
+ **v2.2** 01-19-22 SIMSTRUMENTATION with credit to SimInnovations Tony for the suggestion.
+    - Baro knob changed from Switch to Button to allow Knobster push function.            
+
 ##Left To Do:
     - CCP Meanu, Radar Menu, TAWS Menu and Weather Tilt not functional in sim.
-    - In Sim cockpit, Baro knob changes between STD and IN.
 
 ##Notes:
     - 
  
 ****************************************************************************************** 
 --]]
-  
-  
+
+local barosaved = 0  
+local barostate = 0  
 --Backgroud Image before anything else
 img_add_fullscreen("background.png")
 --Sounds   
 click_snd = sound_add("click.wav")
-fail_snd = sound_add("beepfail.wav")
 dial_snd = sound_add("dial.wav")
 
 --ambient light
@@ -110,7 +115,6 @@ button_add(nil,"TFC_pressed.png", 807,30,91,70, callback_tfc)
 --CCP Select    
 function callback_ccp()
    fs2020_event("H:Generic_Upr_Push_CCP")
-   sound_play(fail_snd)
 end
 button_add(nil,"CCP_pressed.png", 273,125,91,70, callback_ccp)
 --REFS Select    
@@ -122,27 +126,40 @@ button_add(nil,"REFS_pressed.png", 273,227,91,70, callback_refs)
 --RADAR Select    
 function callback_radar()
    fs2020_event("H:Generic_Upr_Push_RADAR_MENU")
-   sound_play(fail_snd)
 end
 button_add(nil,"RADAR_pressed.png", 606,125,91,70, callback_radar)
 --TAWS Select    
 function callback_taws()
    fs2020_event("H:Generic_Upr_Push_TAWS_MENU")
-   sound_play(fail_snd)
 end
 button_add(nil,"TAWS_pressed.png", 606,228,91,70, callback_taws)
 --------------------------------------------------
 
 --BARO DIAL
+function ss_barosaved_value(value)
+    barosaved = value
+end
+fs2020_variable_subscribe("L:XMLVAR_Baro1_SavedPressure","number", ss_barosaved_value)
+
 baro_angle = 0
 function callback_baro_turn( direction)
      if direction ==  -1 then 
          baro_angle = baro_angle - 10
-          fs2020_event("KOHLSMAN_DEC")
-          sound_play(dial_snd) 
+         if barostate == 1 then
+             fs2020_variable_write("L:XMLVAR_Baro1_SavedPressure","number",(barosaved-5))
+         else
+             fs2020_event("KOHLSMAN_DEC")     
+             fs2020_variable_write("L:XMLVAR_Baro1_SavedPressure","number",(barosaved-5))
+         end     
+        sound_play(dial_snd) 
      elseif direction == 1 then
           baro_angle = baro_angle + 10
-          fs2020_event("KOHLSMAN_INC")
+         if barostate == 1 then
+             fs2020_variable_write("L:XMLVAR_Baro1_SavedPressure","number",(barosaved+5))                 
+         else
+             fs2020_event("KOHLSMAN_INC")    
+             fs2020_variable_write("L:XMLVAR_Baro1_SavedPressure","number",(barosaved+5))   
+         end 
           sound_play(dial_snd) 
      end
      rotate (img_baro_night, baro_angle)
@@ -152,11 +169,26 @@ dial_baro = dial_add("baro.png", 115,165,120,120, callback_baro_turn)
 img_baro_night = img_add("baro_night.png", 115,165,120,120 )
 img_baro_backlight = img_add("baro_backlight.png", 115,165,120,120)
 --BARO STD PRESS
-function callback_baro_click()
-    fs2020_event("BAROMETRIC")  
-    sound_play(click_snd)
+ function callback_baro_click()
+    if barostate == 0 then    --this is going to std
+        fs2020_variable_write("L:XMLVAR_Baro1_ForcedToSTD","number",1)  
+        fs2020_event("K:BAROMETRIC_STD_PRESSURE")
+        sound_play(click_snd)
+    else  --this is going to user set
+         fs2020_variable_write("L:XMLVAR_Baro1_ForcedToSTD","number",0)  
+        fs2020_event("K:KOHLSMAN_SET", barosaved,1)  
+        fs2020_event("K:KOHLSMAN_SET", barosaved,2)  --setting StandyByFlight
+         sound_play(click_snd)  
+    end
 end    
-button_add(nil,nil, 140,190,70,70, callback_baro_click)
+sw_baro_std = button_add(nil,nil, 140,190,70,70, callback_baro_click)
+
+function ss_baro_std(value)
+    barostate = value     --set value to global local
+end
+fs2020_variable_subscribe("L:XMLVAR_Baro1_ForcedToSTD","number", ss_baro_std)
+
+
 
  --------------------------------------------------
 
@@ -200,11 +232,9 @@ button_add(nil,nil, 450,200,50,50, data_click)
  --TILT DIAL (OUTER)
 function callback_tilt_turn( direction)
      if direction ==  -1 then
-         --fs2020_event("MOBIFLIGHT.xx")
-         sound_play(fail_snd)
+         --fs2020_event("future")
      elseif direction == 1 then
-         --fs2020_event("MOBIFLIGHT.xx")
-         sound_play(fail_snd)
+         --fs2020_event("future")
      end
 end
 dial_tilt = dial_add("TILT_Dial.png", 735,165,120,120, callback_tilt_turn)
@@ -231,7 +261,6 @@ img_range_night = img_add("RANGE_Dial_night.png", 754,182,85,85)
 --TILT PRESS
 function callback_tilt_click()
     fs2020_event("H:Generic_Upr_Tilt_PUSH")  
-    sound_play(fail_snd)
 end    
 button_add(nil,nil, 773,200,50,50, callback_tilt_click) 
 

@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna Citation CJ4 (Working Title Mod)</aircraft><type>Upper DCP Menu</type><uuid>646e2e0b-4014-4add-b572-242aa038b2f1</uuid><author>SIMSTRUMENTATION</author><description>   CJ4 Upper DCP Menu
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna Citation CJ4 (Working Title Mod)</aircraft><type>Upper DCP Menu</type><uuid>646e2e0b-4014-4add-b572-242aa038b2f1</uuid><author>SIMSTRUMENTATION</author><description>CJ4 Upper DCP Menu
+See here for contact info and notes: https://github.com/simstrumentation
+
 
 THIS INSTRUMENT IS ONLY DESIGNED TO WORK USING THE WORKING TITLE CJ4 MOD FOR MSFS2020.
-
 White some functions may work with the default C4 included in MSFS, you must use the Working Title mod for full functionality. 
 
-Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>200</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>981</prefWidth><prefHeight>346</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>ANDROID</platform><platform>RASPBERRY_PI</platform><platform>IPAD</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>220</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>981</prefWidth><prefHeight>346</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>ANDROID</platform><platform>RASPBERRY_PI</platform><platform>IPAD</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

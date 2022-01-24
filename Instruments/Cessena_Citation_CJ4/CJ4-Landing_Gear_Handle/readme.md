@@ -8,7 +8,9 @@
 	- New custom graphics
 	- Backlighting
 	- Night mode (when used in conjunction with Simstrumentation Ambient Light Control)
-
+- **v2.1** 01-16-22 SIMSTRUMENTATION
+    - Added notes in INFO for contact info for SI Store Submission
+	
 ## Left To Do:
 - N/A
 	

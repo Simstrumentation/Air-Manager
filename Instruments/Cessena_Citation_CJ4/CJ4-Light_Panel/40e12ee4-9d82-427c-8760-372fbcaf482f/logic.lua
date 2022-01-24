@@ -27,12 +27,15 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-    																						
+- **v2.1** 01-08-22  SIMSTRUMENTATION
+    - Files capitials renamed for SI Store submittion
+    - Fixed panel dimmer knob skipping when turning all the way to left
+    - Click and Dial sounds replaced with custom.																					
 ##Left To Do:
     - 
 	
 ##Notes:
-    - The Panel Dimmer (BackLighting) in the cockpit allows you to turn all the way to the left and should set A:Light Potentiometer:3 to a Double value of "0.0" but in the game it remains as "0.10", which is the value before, whichi i believe is a bug in the game. Thus this causes this panel to act strange if you overturn to the left.
+    - The Panel Dimmer (BackLighting) in the cockpit allows you to turn all the way to the left and should set A:Light Potentiometer:3 to a Double value of "0.0" but in the game it remains as "0.10", which is the value before, which i believe is a bug in the SIM. Thus this causes this panel to act strange if you overturn to the left.
     - TCAS is INOP in game. Not used.
     - You may have to push the in-game cockpit buttons twice to turn off a light if you turned it on from AirManager. Not sure if a WT issue or Asbro issue. The "toggle" events do not seem to update tooltips, could probably use LVARS as it does update when using ExtController.
 										 					  													   
@@ -43,7 +46,6 @@
 
 img_add_fullscreen("background.png")
 
-snd_fail = sound_add("beepfail.wav")
 snd_click = sound_add("click.wav")
 snd_dial = sound_add("dial.wav")
 
@@ -121,7 +123,6 @@ end
 -------Panel Backlighting
 function ss_backlighting(value, power, extpower, busvolts)
     value = var_round(value,2)
-    --print (value)
     rotate (img_panel_knob, (value*290),"LOG", 0.1)
     rotate (img_panel_knob_night, (value*290),"LOG", 0.1)
     rotate (img_dimmer_indicator, (value*290),"LOG", 0.1)
@@ -450,9 +451,8 @@ function callback_tcas(position)
         --switch_set_position(sw_tcas, 0)
         --INOP
     end
-    sound_play(snd_fail)
 end
-sw_tcas = switch_add(nil,nil, 433, 306, 65, 50, callback_tcas)
+--sw_tcas = switch_add(nil,nil, 433, 306, 65, 50, callback_tcas)
 
 function ss_tcas(sw_on)
     if sw_on == 1 then

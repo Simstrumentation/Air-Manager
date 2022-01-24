@@ -17,7 +17,9 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-
+- **v2.1** 01-16-22 SIMSTRUMENTATION
+    - Added notes in INFO for contact info for SI Store Submission
+    
 ##Left To Do:
     - 
 	

@@ -4,6 +4,8 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
+- **v2.1** 01-16-22
+    - Added notes in info for SI Submittion.
 ]]--
 --PARKING BRAKE
 

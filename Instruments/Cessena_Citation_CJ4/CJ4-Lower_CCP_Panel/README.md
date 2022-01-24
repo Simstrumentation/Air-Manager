@@ -9,10 +9,12 @@
 	- Backlighting
 	- Night mode (when used in conjunction with Simstrumentation Ambient Light Control)
 	- Mobiflight events replaced with H: events and L: variables 
-
+- **v2.1** 01-16-22 SIMSTRUMENTATION
+    - Resource folder file capitials renamed for SI Store submittion  
+    - Click and Dial sounds replaced with custom.
 
 ## Left To Do:
-- N/A
+ - Panning Joystick animation.
 	
 ## Notes:
-- Must use the Simstrumentation Ambient Light Dimmer control in order to use night lighting mode
+ - 

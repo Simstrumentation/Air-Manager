@@ -8,9 +8,12 @@
 	- New custom graphics
 	- Backlighting
 	- Night mode (when used in conjunction with Simstrumentation Ambient Light Control)
+- **v2.1**  01-16-22 SIMSTRUMENTATION
+    - Click sounds replaced with custom.
+    - Resource folder file capitials renamed for SI Store submittion  
 	
 ## Left To Do:
 - N/A
 	
 ## Notes:
-- Must use the Simstrumentation Ambient Light Dimmer control in order to use night lighting mode
+ -  This instrument can be used with most FS2020 planes.  

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Ground Power Unit Knob</type><uuid>a9de14b4-3f6f-4b05-babd-9632374d52b3</uuid><author>SIMSTRUMENTATION</author><description>Ground Power Unit/External Power Knob
+See here for contact info and notes: https://github.com/simstrumentation
+
+- This knob is compatiable with all aircraft that support GPU/External Power. 
+- There is a user option to select aircraft for the purposing of backlighting according to dimmer knob.
+- There is a user option to hide background.
+- This knob is compatiable with SIMSTRUMENTATION Ambient Light Dimmer.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>249</prefWidth><prefHeight>260</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

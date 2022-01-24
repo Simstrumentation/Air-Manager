@@ -18,6 +18,9 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
+- **v2.1** 01-16-22 SIMSTRUMENTATION 
+    - Click sounds replaced with custom.
+    - Resource folder file capitials renamed for SI Store submittion  
 
 ##Left To Do:
     - 	
@@ -30,7 +33,6 @@
 
 --IMPORT ASSETS
 img_add_fullscreen("background.png")
-fail_snd = sound_add("beepfail.wav")
 click_snd=sound_add("click.wav")
 
 --=======Night Lighting=============================================

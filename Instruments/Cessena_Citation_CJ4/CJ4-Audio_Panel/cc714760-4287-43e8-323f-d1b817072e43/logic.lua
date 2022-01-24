@@ -18,13 +18,16 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-  
+- **v2.1** 01-06-22 Simstrumentation  
+    - Fixed Com1 & Com2 Volume, can set 0-100 or click center to toggle.
+    - Fixed Nav1 & Nav2 Volume
+    - Added Marker Mute Button
+    - Added SPKR Knob (On/Off)
+    - Files capitials renamed for SI Store submittion  
+   
 ##Left To Do:
-    - SPKR status unknown. 	
 	
 ##Notes:
-    - COM1 and COM2 Mute not functional.
-    - NAV1 and NAV2 Mute not functional.
 
 ******************************************************************************************    
 --]]
@@ -46,6 +49,7 @@ function ss_ambient_darkness(value)
    opacity(dme2_ind, 1-value, "LOG", 0.04)   
    opacity(adf_ind, 1-value, "LOG", 0.04)   
    opacity(mkr_ind, 1-value, "LOG", 0.04)
+   opacity(mkrMute_ind, 1-value, "LOG", 0.04)   
    opacity(vox_ind, 1-value, "LOG", 0.04)
    opacity(spkr_ind, 1-value, "LOG", 0.04)
 end
@@ -69,6 +73,7 @@ function ss_backlighting(value, power, extpower, busvolts)
         opacity(dme2_ind_backlight,0, "LOG", 0.04) 
         opacity(adf_ind_backlight,0, "LOG", 0.04) 
         opacity(mkr_ind_backlight,0, "LOG", 0.04) 
+        opacity(mkrMute_ind_backlight,0, "LOG", 0.04)         
         opacity(vox_ind_backlight,0, "LOG", 0.04) 
         opacity(spkr_ind_backlight,0, "LOG", 0.04)               
     else
@@ -83,6 +88,7 @@ function ss_backlighting(value, power, extpower, busvolts)
         opacity(dme2_ind_backlight,((value/2)+0.5), "LOG", 0.04)
         opacity(adf_ind_backlight,((value/2)+0.5), "LOG", 0.04)
         opacity(mkr_ind_backlight,((value/2)+0.5), "LOG", 0.04)
+        opacity(mkrMute_ind_backlight,((value/2)+0.5), "LOG", 0.04)        
         opacity(vox_ind_backlight,((value/2)+0.5), "LOG", 0.04)
         opacity(spkr_ind_backlight,((value/2)+0.5), "LOG", 0.04)
         end
@@ -143,6 +149,10 @@ adf_ind_backlight = img_add("smallknob_off_backlight.png", 606,257,55,55)
 mkr_ind = img_add("smallknob_off.png", 498,257,55,55)
 mkr_ind_backlight = img_add("smallknob_off_backlight.png", 498,257,55,55)
 
+--MKRMute
+mkrMute_ind = img_add("mute.png", 498,387,55,55)
+mkrMute_ind_backlight = img_add("mute_night.png", 498,387,55,55)
+
 --VOX
 vox_ind = img_add("smallknob_off.png", 394,385,55,55)
 vox_ind_backlight = img_add("smallknob_off_backlight.png", 394,385,55,55)
@@ -159,8 +169,6 @@ function callback_com1()
    sound_play(click_snd)
 end
  button_add(nil,nil, 87,36,41,39, callback_com1)
-
-
 --Com2 TX Select    
 function callback_com2()
    fs2020_event("COM2_TRANSMIT_SELECT")
@@ -183,137 +191,217 @@ function ss_comtx_inuse(com1active)
 end
 fs2020_variable_subscribe("COM TRANSMIT:1","Bool", ss_comtx_inuse)
 
--- In CJ4, COM 1 monitor is always active. Permanently set switch position to on
--- if this gets fixed in the sim, changes will be required 
-rotate(com1_ind, 240, "LOG", 0.05)
-rotate(com1_ind_backlight, 240, "LOG", 0.05)  
-
-function ss_com2_mon(com2_mon)
-     if com2_mon == true then
-           rotate(com2_ind, 240, "LOG", 0.05)  
-           rotate(com2_ind_backlight, 240, "LOG", 0.05)    
-         else
-            rotate(com2_ind, 0, "LOG", 0.05)
-           rotate(com2_ind_backlight, 0, "LOG", 0.05)  
-         end
+function ss_com1_vol(value)
+           value = var_round(value,2)
+           rotate(com1_ind, value*2.5, "LOG", 0.1)  
+           rotate(com1_ind_backlight, value*2.5, "LOG", 0.1)    
+           switch_set_position(sw_com1_vol, value/5)
 end
-fs2020_variable_subscribe("COM RECIEVE ALL", "Bool", ss_com2_mon)
+fs2020_variable_subscribe("A:COM VOLUME:1", "Percent", ss_com1_vol) 
+
+function ss_com2_vol(value)
+           value = var_round(value,2)
+           rotate(com2_ind, value*2.5, "LOG", 0.1)  
+           rotate(com2_ind_backlight, value*2.5, "LOG", 0.1)    
+            switch_set_position(sw_com2_vol, value/5)
+end
+fs2020_variable_subscribe("A:COM VOLUME:2", "Percent", ss_com2_vol)
+
+--NAV VOLUME
+function ss_nav1_vol(value)
+           value = var_round(value,2)
+           rotate(nav1_ind, value*2.5, "LOG", 0.1)  
+           rotate(nav1_ind_backlight, value*2.5, "LOG", 0.1)    
+           switch_set_position(sw_nav1_vol, value/5)
+end
+fs2020_variable_subscribe("A:NAV VOLUME:1", "Percent", ss_nav1_vol) 
+
+function ss_nav2_vol(value)
+           value = var_round(value,2)
+           rotate(nav2_ind, value*2.5, "LOG", 0.1)  
+           rotate(nav2_ind_backlight, value*2.5, "LOG", 0.1)    
+            switch_set_position(sw_nav2_vol, value/5)
+end
+fs2020_variable_subscribe("A:NAV VOLUME:2", "Percent", ss_nav2_vol)
 
 --HF Select    
 function callback_hf()
    fs2020_event("HF_TRANSMIT_SELECT")
    sound_play(fail_snd)
 end
-button_add(nil,"Buttons1.png", 401,36,41,39, callback_hf)
+button_add(nil,"button.png", 401,36,41,39, callback_hf)
 
 --PA Select    
 function callback_pa()
    fs2020_event("PA_TRANSMIT_SELECT")
    sound_play(fail_snd)
 end
-button_add(nil,"Buttons1.png", 719,36,41,39, callback_pa)
+button_add(nil,"button.png", 719,36,41,39, callback_pa)
 
 -----------------------------------
 -----BUTTONS-----
---Com1 Receive All 
-function callback_mid_com1()
-   --fs2020_event("COM1_TRANSMIT_SELECT")
-   sound_play(fail_snd)
+--Com1 Receive
+function callback_com1_vol(position,direction)
+    if direction == 1 then
+        fs2020_event("COM1_VOLUME_SET", var_cap(((position*5)+5),0,100))
+    else
+        fs2020_event("COM1_VOLUME_SET", var_cap(((position*5)-5),0,100))
+    end
 end
-button_add(nil,nil, 86,127,55,55, callback_mid_com1)
+sw_com1_vol=switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 86,127,55,55, callback_com1_vol)
 
---Com2 Receive All 
-function callback_mid_com2()
-   fs2020_event("COM_RECEIVE_ALL_TOGGLE")
-   sound_play(fail_snd)
+function callback_com1_vol_click()
+    position = switch_get_position(sw_com1_vol)
+    if position <= 0 then
+        fs2020_event("COM1_VOLUME_SET",100)
+        sound_play(click_snd)
+    else 
+        fs2020_event("COM1_VOLUME_SET",0)
+        sound_play(click_snd)
+     end
 end
-button_add(nil,nil, 184,127,55,55, callback_mid_com2)
-
---Nav Buttons   
-function callback_nav1_btn()
-   fs2020_event("RADIO_VOR1_IDENT_TOGGLE")
-   sound_play(fail_snd)
+button_add(nil,nil, 92,137,40,40,callback_com1_vol_click)
+--Com2 Receive 
+function callback_com2_vol(position,direction)
+    if direction == 1 then
+        fs2020_event("COM2_VOLUME_SET", var_cap(((position*5)+5),0,100))
+    else
+        fs2020_event("COM2_VOLUME_SET", var_cap(((position*5)-5),0,100))
+    end
 end
-button_add(nil,nil, 77,257,55,55, callback_nav1_btn)
-
-function callback_nav2_btn()
-   fs2020_event("RADIO_VOR2_IDENT_TOGGLE")
-   sound_play(fail_snd)
+sw_com2_vol=switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 180,127,55,55, callback_com2_vol)
+function callback_com2_vol_click()
+    position = switch_get_position(sw_com2_vol)
+    if position <= 0 then
+        fs2020_event("COM2_VOLUME_SET",100)
+        sound_play(click_snd)
+    else 
+        fs2020_event("COM2_VOLUME_SET",0)
+        sound_play(click_snd)
+     end
 end
-button_add(nil,nil, 183,257,55,55, callback_nav2_btn)
+button_add(nil,nil, 190,137,40,40,callback_com2_vol_click)
 
-
---DME Button  
-function callback_dme_btn()
-   fs2020_event("RADIO_SELECTED_DME_IDENT_TOGGLE")
+--Nav Volumes 
+function callback_nav1_vol(position,direction)
+    if direction == 1 then
+        fs2020_event("NAV1_VOLUME_SET_EX1", var_cap(((position*5)+5),0,100))
+    else
+        fs2020_event("NAV1_VOLUME_SET_EX1", var_cap(((position*5)-5),0,100))
+    end
 end
-button_add(nil,nil, 289,255,55,55, callback_dme_btn)
+sw_nav1_vol=switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 77,257,55,55, callback_nav1_vol)
+
+function callback_nav2_vol(position,direction)
+    if direction == 1 then
+        fs2020_event("NAV2_VOLUME_SET_EX1", var_cap(((position*5)+5),0,100))
+    else
+        fs2020_event("NAV2_VOLUME_SET_EX1", var_cap(((position*5)-5),0,100))
+    end
+end
+sw_nav2_vol=switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 183,257,55,55, callback_nav2_vol)
+
+--DME1 Button  
+function callback_dme1_btn()
+   fs2020_event("RADIO_DME1_IDENT_TOGGLE")
+end
+button_add(nil,nil, 289,255,55,55, callback_dme1_btn)
+--DME2 Button  
+function callback_dme2_btn()
+   fs2020_event("RADIO_DME2_IDENT_TOGGLE")
+end
+button_add(nil,nil, 389,255,55,55, callback_dme2_btn)
 --ADF Button 
 function callback_adf_btn()
    fs2020_event("RADIO_ADF_IDENT_TOGGLE")
 end
 button_add(nil,nil, 605,257,55,55, callback_adf_btn)
---Mute Button 
-function callback_mute_btn()
+--Marker Button 
+function callback_marker_btn()
    fs2020_event("MARKER_SOUND_TOGGLE")
 end
-button_add(nil,nil, 500,257,55,55, callback_mute_btn)
-
-
-----Indicators------------
-
---Test if Nav1 is On         
-function ss_nav1_snd(nav1_sndch) 
-    if nav1_sndch == true then 
-       rotate(nav1_ind, 240, "LOG", 0.05)
-       rotate(nav1_ind_backlight, 240, "LOG", 0.05)
-    else 
-       rotate(nav1_ind, 0, "LOG", 0.05)
-       rotate(nav1_ind_backlight, 0, "LOG", 0.05)
+button_add(nil,nil, 500,257,55,55, callback_marker_btn)
+--Mute Button 
+function callback_markermute_btn(position)
+   if position == 1 then
+       fs2020_event("MARKER_BEACON_TEST_MUTE",1)
+   else 
+       fs2020_event("MARKER_BEACON_TEST_MUTE",0)
     end
-  end
-fs2020_variable_subscribe("NAV SOUND:1","Bool", ss_nav1_snd) 
---Test if Nav2 is On    
-function ss_nav2_snd(nav2_sndch) 
-    if nav2_sndch == true then 
-       rotate(nav2_ind, 240, "LOG", 0.05) 
-       rotate(nav2_ind_backlight , 240, "LOG", 0.05)
-    else 
-       rotate(nav2_ind, 0, "LOG", 0.05)
-       rotate(nav2_ind_backlight , 0, "LOG", 0.05)
-    end
-  end 
-fs2020_variable_subscribe("NAV SOUND:2","Bool", ss_nav2_snd)  
---Test if DME is On    
+end
+sw_markermute = switch_add(nil,nil, 500,380,55,55, callback_markermute_btn)
+--Speaker Button 
+function callback_speaker_btn()
+   fs2020_event("TOGGLE_SPEAKER")
+end
+button_add(nil,nil, 600,387,65,65, callback_speaker_btn)
+
+
+--Test if DME1 is On    
 function ss_dme_snd(dme_sndch) 
     if dme_sndch == true then 
-         rotate(dme_ind, 240, "LOG", 0.05)
-         rotate(dme_ind_backlight, 240, "LOG", 0.05)
+         rotate(dme_ind, 240, "LOG", 0.1)
+         rotate(dme_ind_backlight, 240, "LOG", 0.1)
     else 
-       rotate(dme_ind, 0, "LOG", 0.05)
-       rotate(dme_ind_backlight, 0, "LOG", 0.05)
+       rotate(dme_ind, 0, "LOG", 0.1)
+       rotate(dme_ind_backlight, 0, "LOG", 0.1)
     end
   end 
-fs2020_variable_subscribe("DME SOUND","Bool", ss_dme_snd)  
+fs2020_variable_subscribe("DME SOUND:1","Bool", ss_dme_snd)  
+--Test if DME2 is On    
+function ss_dme2_snd(dme_sndch) 
+    if dme_sndch == true then 
+         rotate(dme2_ind, 240, "LOG", 0.1)
+         rotate(dme2_ind_backlight, 240, "LOG", 0.1)
+    else 
+       rotate(dme2_ind, 0, "LOG", 0.1)
+       rotate(dme2_ind_backlight, 0, "LOG", 0.1)
+    end
+  end 
+fs2020_variable_subscribe("DME SOUND:2","Bool", ss_dme2_snd)  
 --Test if ADF is On    
 function ss_adf_snd(adf_sndch) 
   if adf_sndch == true then 
-         rotate(adf_ind, 240, "LOG", 0.05)
-         rotate(adf_ind_backlight, 240, "LOG", 0.05)
+         rotate(adf_ind, 240, "LOG", 0.1)
+         rotate(adf_ind_backlight, 240, "LOG", 0.1)
     else 
-       rotate(adf_ind, 0, "LOG", 0.05)
-       rotate(adf_ind_backlight, 0, "LOG", 0.05)
+       rotate(adf_ind, 0, "LOG", 0.1)
+       rotate(adf_ind_backlight, 0, "LOG", 0.1)
     end
   end  
 fs2020_variable_subscribe("ADF SOUND:1","Bool", ss_adf_snd)  
---Test if Marker Mute is On    
-function ss_mute_snd(mute_sndch) 
-    if mute_sndch == true then 
-        rotate(mkr_ind, 240, "LOG", 0.05)
-        rotate(mkr_ind_backlight , 240, "LOG", 0.05)
+--Test Marker Volume    
+function ss_marker_snd(marker_sndch) 
+    if marker_sndch == true then 
+        rotate(mkr_ind, 240, "LOG", 0.1)
+        rotate(mkr_ind_backlight , 240, "LOG", 0.1)
     else 
-       rotate(mkr_ind, 0, "LOG", 0.05)
-       rotate(mkr_ind_backlight , 0, "LOG", 0.05)
+       rotate(mkr_ind, 0, "LOG", 0.1)
+       rotate(mkr_ind_backlight , 0, "LOG", 0.1)
     end
   end  
-fs2020_variable_subscribe("MARKER SOUND","Bool", ss_mute_snd)
+fs2020_variable_subscribe("MARKER SOUND","Bool", ss_marker_snd)
+--Test Marker Mute    
+function ss_mute_snd(mute_sndch) 
+    if mute_sndch == true then 
+        visible(mkrMute_ind, false)
+        visible(mkrMute_ind_backlight, true)
+        switch_set_position(sw_markermute, 0)
+    else 
+        visible(mkrMute_ind, true)
+        visible(mkrMute_ind_backlight , false)
+        switch_set_position(sw_markermute, 1)
+    end
+  end  
+fs2020_variable_subscribe("MARKER BEACON TEST MUTE", "Bool", ss_mute_snd) 
+--Test if SPKR is On    
+function ss_spkr_snd(position) 
+  if position == true then 
+         rotate(spkr_ind, 240, "LOG", 0.1)
+         rotate(spkr_ind_backlight, 240, "LOG", 0.1)
+    else 
+       rotate(spkr_ind, 0, "LOG", 0.1)
+       rotate(spkr_ind_backlight, 0, "LOG", 0.1)
+    end
+  end  
+fs2020_variable_subscribe("SPEAKER ACTIVE","Bool", ss_spkr_snd)  

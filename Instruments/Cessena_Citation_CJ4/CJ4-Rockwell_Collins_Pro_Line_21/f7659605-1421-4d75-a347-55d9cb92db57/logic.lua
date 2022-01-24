@@ -26,9 +26,14 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
+- **v2.1** 12-30-21    
+    - Prepare for SI Submission to store
+    - Added note to Github link in Info
+    - Replaced sounds with custom built sounds
+    - Renamed graphics to remove capitals
 
 ##Left To Do:
-    - 	Brightness BRT/DIM Buttons not active due to BVars not accessible.
+    - 	Brightness BRT/DIM Buttons not active due to vars not accessible.
 	
 ##Notes:
     -   
@@ -60,70 +65,68 @@ fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)
-						  
 
 --Sounds   
-snd_click = sound_add("knobclick.wav")
-snd_fail = sound_add("beepfail.wav")
+snd_click = sound_add("click.wav")
 
 --Button Graphics
-    SelectorButtonPressed = "Selector_btn_pressed.png"
-    CLRButtonPressed = "CLR_btn_pressed.png"
-    MSGButtonPressed = "MSG_btn_pressed.png"
-    DIRButtonPressed = "DIR_btn_pressed.png"
-    IDXButtonPressed = "IDX_btn_pressed.png"
-    TUNButtonPressed = "TUN_btn_pressed.png"
-    FPLNButtonPressed = "FPLN_btn_pressed.png"
-    LEGSButtonPressed = "LEGS_btn_pressed.png"
-    DEPARRButtonPressed = "DEPARR_btn_pressed.png"
-    PERFButtonPressed = "PERF_btn_pressed.png"
-    DSPL_MENUButtonPressed = "DSPL_MENU_btn_pressed.png"
-    MFD_ADVButtonPressed = "MFD_ADV_btn_pressed.png"
-    MFD_DATAButtonPressed = "MFD_DATA_btn_pressed.png"
-    PREVPAGEButtonPressed = "PREVPAGE_btn_pressed.png"
-    NEXTPAGEButtonPressed = "NEXTPAGE_btn_pressed.png"
-    EXECButtonPressed = "EXEC_btn_pressed.png"
-    DIVButtonPressed = "DIV_btn_pressed.png"
+    SelectorButtonPressed = "selector_btn_pressed.png"
+    CLRButtonPressed = "clr_btn_pressed.png"
+    MSGButtonPressed = "msg_btn_pressed.png"
+    DIRButtonPressed = "dir_btn_pressed.png"
+    IDXButtonPressed = "idx_btn_pressed.png"
+    TUNButtonPressed = "tun_btn_pressed.png"
+    FPLNButtonPressed = "fpln_btn_pressed.png"
+    LEGSButtonPressed = "legs_btn_pressed.png"
+    DEPAPRButtonPressed = "deparr_btn_pressed.png"
+    PERFButtonPressed = "perf_btn_pressed.png"
+    DSPL_MENUButtonPressed = "dspl_menu_btn_pressed.png"
+    MFD_ADVButtonPressed = "mfd_adv_btn_pressed.png"
+    MFD_DATAButtonPressed = "mfd_data_btn_pressed.png"
+    PREVPAGEButtonPressed = "prevpage_btn_pressed.png"
+    NEXTPAGEButtonPressed = "nextpage_btn_pressed.png"
+    EXECButtonPressed = "exec_btn_pressed.png"
+    DIVButtonPressed = "div_btn_pressed.png"
     
-    AButtonPressed = "A_btn_pressed.png"
-    BButtonPressed = "B_btn_pressed.png"
-    CButtonPressed = "C_btn_pressed.png"
-    DButtonPressed = "D_btn_pressed.png"
-    EButtonPressed = "E_btn_pressed.png"
-    FButtonPressed = "F_btn_pressed.png"
-    GButtonPressed = "G_btn_pressed.png"
-    HButtonPressed = "H_btn_pressed.png"
-    IButtonPressed = "I_btn_pressed.png"
-    JButtonPressed = "J_btn_pressed.png"
-    KButtonPressed = "K_btn_pressed.png"
-    LButtonPressed = "L_btn_pressed.png"
-    MButtonPressed = "M_btn_pressed.png"
-    NButtonPressed = "N_btn_pressed.png"
-    OButtonPressed = "O_btn_pressed.png"
-    PButtonPressed = "P_btn_pressed.png"
-    QButtonPressed = "Q_btn_pressed.png"
-    RButtonPressed = "R_btn_pressed.png"
-    SButtonPressed = "S_btn_pressed.png"
-    TButtonPressed = "T_btn_pressed.png"
-    UButtonPressed = "U_btn_pressed.png"
-    VButtonPressed = "V_btn_pressed.png"
-    WButtonPressed = "W_btn_pressed.png"
-    XButtonPressed = "X_btn_pressed.png"
-    YButtonPressed = "Y_btn_pressed.png"
-    ZButtonPressed = "Z_btn_pressed.png"
-    ONEButtonPressed = "ONE_btn_pressed.png"
-    TWOButtonPressed = "TWO_btn_pressed.png"
-    THREEButtonPressed = "THREE_btn_pressed.png"
-    FOURButtonPressed = "FOUR_btn_pressed.png"
-    FIVEButtonPressed = "FIVE_btn_pressed.png"
-    SIXButtonPressed = "SIX_btn_pressed.png"
-    SEVENButtonPressed = "SEVEN_btn_pressed.png"
-    EIGHTButtonPressed = "EIGHT_btn_pressed.png"
-    NINEButtonPressed = "NINE_btn_pressed.png"
-    DOTButtonPressed = "DOT_btn_pressed.png"
-    ZEROButtonPressed = "ZERO_btn_pressed.png"
-    PLUSMINUSButtonPressed = "PLUSMINUS_btn_pressed.png"
-    SPButtonPressed = "SP_btn_pressed.png"
+    AButtonPressed = "a_btn_pressed.png"
+    BButtonPressed = "b_btn_pressed.png"
+    CButtonPressed = "c_btn_pressed.png"
+    DButtonPressed = "d_btn_pressed.png"
+    EButtonPressed = "e_btn_pressed.png"
+    FButtonPressed = "f_btn_pressed.png"
+    GButtonPressed = "g_btn_pressed.png"
+    HButtonPressed = "h_btn_pressed.png"
+    IButtonPressed = "i_btn_pressed.png"
+    JButtonPressed = "j_btn_pressed.png"
+    KButtonPressed = "k_btn_pressed.png"
+    LButtonPressed = "l_btn_pressed.png"
+    MButtonPressed = "m_btn_pressed.png"
+    NButtonPressed = "n_btn_pressed.png"
+    OButtonPressed = "o_btn_pressed.png"
+    PButtonPressed = "p_btn_pressed.png"
+    QButtonPressed = "q_btn_pressed.png"
+    RButtonPressed = "r_btn_pressed.png"
+    SButtonPressed = "s_btn_pressed.png"
+    TButtonPressed = "t_btn_pressed.png"
+    UButtonPressed = "u_btn_pressed.png"
+    VButtonPressed = "v_btn_pressed.png"
+    WButtonPressed = "w_btn_pressed.png"
+    XButtonPressed = "x_btn_pressed.png"
+    YButtonPressed = "y_btn_pressed.png"
+    ZButtonPressed = "z_btn_pressed.png"
+    ONEButtonPressed = "one_btn_pressed.png"
+    TWOButtonPressed = "two_btn_pressed.png"
+    THREEButtonPressed = "three_btn_pressed.png"
+    FOURButtonPressed = "four_btn_pressed.png"
+    FIVEButtonPressed = "five_btn_pressed.png"
+    SIXButtonPressed = "six_btn_pressed.png"
+    SEVENButtonPressed = "seven_btn_pressed.png"
+    EIGHTButtonPressed = "eight_btn_pressed.png"
+    NINEButtonPressed = "nine_btn_pressed.png"
+    DOTButtonPressed = "dot_btn_pressed.png"
+    ZEROButtonPressed = "zero_btn_pressed.png"
+    PLUSMINUSButtonPressed = "plusminus_btn_pressed.png"
+    SPButtonPressed = "sp_btn_pressed.png"
 
 --START OF BUTTONS************
 
@@ -305,18 +308,13 @@ button_add(nil,CLRButtonPressed, 683,696,51,47, FMC_1_BTN_CLR_Start, FMC_1_BTN_C
 
 --BRT Button **DOESN'T WORK
 function FMC_1_BTN_BRT()
-  --TESTING:
-   --fs2020_variable_write("I:XMLVAR_MCDU_1_Brightness", "Int", 1)
-   -- fs2020_event("I:XMLVAR_MCDU_1_Brightness",1)
-   --fs2020_event("O:XMLVAR_FMC_CJ4_1_Button_BRT_DIM",1)
-   --fs2020_variable_write("O:XMLVAR_FMC_CJ4_1_Button_BRT_DIM", "Int", 1)
-   --sound_play(snd_fail)
+    --Ready when variables accessible.
 end
 button_add(nil,nil, 733,755,42,42, FMC_1_BTN_BRT)
+
 --DIM Button **DOESN'T WORK
 function FMC_1_BTN_DIM()
-  -- fs2020_event("O:XMLVAR_FMC_CJ4_1_Button_BRT_DIM",0)
-   --sound_play(snd_fail)
+    --Ready when variables accessible.
 end
 button_add(nil,nil, 733,804,42,42, FMC_1_BTN_DIM)
 
