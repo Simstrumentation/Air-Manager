@@ -5,6 +5,12 @@ This collection of Cessna Citation CJ4 instruments is currently our flagship and
 <h4>NOTE - THESE INSTRUMENTS ARE DESIGNED TO BE USED WITH THE WORKING TITLE CJ4 MODIFICATION. Some functions may work with the stock CJ4 or other planes, but most won't. Those aren't officially supported and there are no plans to make these instruments work with the stock CJ4. 
 </h4>While some of these instruments may function correctly with the stock CJ4 provided with MSFS, many functions are specific to the Working Title CJ4 modification and won't work on the stock aircraft. If you fly the CJ4 and aren't using the Working Title mod, you're most definitely missing out on one of the most complete and realistic flying experiences that MSFS has to offer. You can download the WT CJ4 mod package from <a href="https://www.workingtitle.aero/packages/cj4/" target="_blank">the Working Title CJ4 page</a>
 
+
+## EASY SINGLE IMPORT DOWNLOAD
+This is a single file that includes all the files in the table below as of 01-24-2022.
+This single file download does not automatically get update so be sure to check the date.
+- [CLICK HERE TO DOWNLOAD SINGLE IMPORT FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4_ALL_INSTRUMENTS.siff)
+
 ## Main Panels & Instruments
 
 | Instrument | Download Current Version | Documentation | Preview |
