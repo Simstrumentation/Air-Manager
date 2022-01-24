@@ -11,7 +11,7 @@ It's also now possible to dim Hue Lights through an arudino.
 
 |  |  |
 | -------------------------------------------------- | ----------- |
-| Ambient Light Panel | [v1.2 01-17-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Generic-Ambient_Light_Dimmer.siff) | <img src="f8f83fd0-af45-4991-38cc-4eabc21e872d/preview.png" width="100"> |
+| Ambient Light Panel | [v1.2 01-17-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Generic-Ambient_Light_Dimmer.siff?raw=true) | <img src="f8f83fd0-af45-4991-38cc-4eabc21e872d/preview.png" width="100"> |
 |
 
 | Aircraft Panels Currently Supporting the ALD |  |
