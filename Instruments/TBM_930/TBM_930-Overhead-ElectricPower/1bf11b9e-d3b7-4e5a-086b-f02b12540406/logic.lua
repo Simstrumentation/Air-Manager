@@ -175,5 +175,5 @@ button_add(nil, nil, 550, 145, 100, 120, cb_set_generator)
 --Crashbar image at end to be on top of everything.
 img_crashdn= img_add("crash_dn.png", 242, 80, 466, 119)
 img_crashup = img_add("crash_up.png", 242, 80, 466, 119)
-opacity(img_crashdn, 0)
-opacity(img_crashup, 1)
+opacity(img_crashdn, 1)
+opacity(img_crashup, 0)
