@@ -8,7 +8,8 @@
    
 - **v1.0**  01-21-2022 SIMSTRUMENTATION
     - Original Panel Created
-
+- **v1.0**  01-24-2022 
+    - Commented out all subscribes that are not working as it's causing a CTD when MIXMUGZ MOD is installed.
 
 ## Left To Do:
     - GPU Is INOP due to variables not read/writable.
@@ -33,12 +34,12 @@ visible(src_gpu, false)
 
 function toggle_cb_callback()
     if crashbar_position == 1 then    
-        fs2020_variable_write("L:XMLVAR_CrashLeverPos", "Number", 1)
+        --fs2020_variable_write("L:XMLVAR_CrashLeverPos", "Number", 1)
         crashbar_position = 0
        opacity(img_crashdn, 0, "LOG", 0.1)        --SET UNTIL VARIABLES ARE AVAILABLE
        opacity(img_crashup, 1, "LOG", 0.1)        --SET UNTIL VARIABLES ARE AVAILABLE
     else
-        fs2020_variable_write("L:XMLVAR_CrashLeverPos", "Number", 0)
+        --fs2020_variable_write("L:XMLVAR_CrashLeverPos", "Number", 0)
         fs2020_event("MASTER_BATTERY_OFF")
        -- fs2020_variable_write("L:XMLVAR_Battery_GPU_On", "Number", 0)            --causing crash 
         fs2020_event("ALTERNATOR_OFF")
@@ -53,6 +54,7 @@ switch_add(nil, nil, 650, 80, 75, 150, toggle_cb_callback)
 
 crashbar_position = 1 --SET UNTIL VARIABLES ARE AVAILABLE
 
+--[[                                                                     --MIXMUGZ CAUSING CRASH
 function new_cb_position(cb)
     if cb == 0 then
       crashbar_position = 0
@@ -65,7 +67,7 @@ function new_cb_position(cb)
     end
 end
 fs2020_variable_subscribe("L:XMLVAR_CrashLeverPos", "Number", new_cb_position)
-
+]]
 
 --source switch
 --[[
@@ -75,20 +77,25 @@ SWICH POSITION
     2 = OFF
 ]]--
 
-function new_src_pos(gpu, battery)
-    if (gpu == 1) or (battery) then
+--function new_src_pos(gpu, battery)        --MIXMUGZ CAUSING CRASH
+function new_src_pos(battery)
+--    if (gpu == 1) or (battery) then            --MIXMUGZ CAUSING CRASH
+    if  (battery) then
         visible(src_off, false)
         crashbar_position = 0
       opacity(img_crashdn, 0, "LOG", 0.1)   --SET UNTIL VARIABLES ARE AVAILABLEL 
       opacity(img_crashup, 1, "LOG", 0.1)    --SET UNTIL VARIABLES ARE AVAILABLE
-        if gpu==1 then
+--[[        if gpu==1 then
             visible(src_gpu, true)
             visible(src_batt, false)
-        elseif battery then
+       elseif battery then
             visible(src_gpu, false)
             visible(src_batt, true)
          end
-      else
+ --]] 
+            visible(src_gpu, false)        --ADDED UNTIL MIXMUGZ DON"T CRASH
+            visible(src_batt, true)        --ADDED UNTIL MIXMUGZ DON"T CRASH
+     else
           visible(src_off, true)
           visible(src_gpu, false)
           visible(src_batt, false)
@@ -96,16 +103,22 @@ function new_src_pos(gpu, battery)
     
 end
 
+--[[   *****CAUSING CRASH WITH MIXMUGZ MOD
 fs2020_variable_subscribe("L:XMLVAR_Battery_GPU_On", "Number",
                                                 "Electrical Master Battery:1", "Bool",
                                                  new_src_pos)
+--]]
+fs2020_variable_subscribe("Electrical Master Battery:1", "Bool",
+                                                 new_src_pos)
+
+
 
 -- source switch touch zones
 --battery
 function cb_set_battery()
     if (crashbar_position == 0) then
         fs2020_event("MASTER_BATTERY_ON")
-        fs2020_variable_write("L:XMLVAR_Battery_GPU_On", "Number", 0)
+        --fs2020_variable_write("L:XMLVAR_Battery_GPU_On", "Number", 0)
     end        
 end
 button_add(nil, nil, 325,145, 90, 90, cb_set_battery)
