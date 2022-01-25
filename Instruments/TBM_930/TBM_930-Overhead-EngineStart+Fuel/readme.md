@@ -10,4 +10,4 @@
     - As of 1-20-22 Starter switch in VC (SIM Virtural Cockpit) moves to ON for 3 seconds then moves to OFF 
       and doesn't allow you to turn starter OFF. This panel is working correctly and does allow starter to be turned off.
     - Ignition switch in VC does not move.
-    - Fuel SEL is INOP due to commads not available.   
+    - Fuel SEL is INOP due to commands not available. This is a sim limitation unfortunately. 
