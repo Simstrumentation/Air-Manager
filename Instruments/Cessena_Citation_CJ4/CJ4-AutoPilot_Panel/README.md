@@ -15,6 +15,8 @@
         - Updated Preview Image (was old screenshots still).
 - **v2.3** 01-23-22      
 	- Added Acceleration to CRS1, CRS2, IAS, HDG, and ALT.
+- **v2.4** 01-26-22      
+    - Changed how acceleration was implemented
 	
 ## Left To Do:
 - N/A

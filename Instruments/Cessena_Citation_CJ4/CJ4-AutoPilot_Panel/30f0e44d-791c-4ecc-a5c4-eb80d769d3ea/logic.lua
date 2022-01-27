@@ -32,10 +32,12 @@
     - Resource folder file capitials renamed for SI Store submittion .
     - Click and Dial sounds replaced with custom.
 - **v2.2** 01-19-22 SIMSTRUMENTATION
-        - Updated Preview Image (was old screenshots still).
+    - Updated Preview Image (was old screenshots still).
 - **v2.3** 01-23-22 SIMSTRUMENTATION      
-	- Added Acceleration to CRS1, CRS2, IAS, HDG, and ALT.
-   
+    - Added Acceleration to CRS1, CRS2, IAS, HDG, and ALT.
+- **v2.4** 01-26-22 SIMSTRUMENTATION   
+    - Changed how acceleration was implemented
+      
 ##Left To Do:
     - 	
 	
@@ -243,7 +245,7 @@ else
              sound_play(snd_dial)
          end
     end
-    dial_VS = dial_add(nil, 437,42,40,148, callback_VS_DIAL)
+    dial_VS = dial_add(nil, 437,42,40,148,2,callback_VS_DIAL)
 end
 
 --CRS1 DIAL (PILOT)
@@ -270,8 +272,8 @@ function callback_CRS1_DIAL(direction)
     fs2020_event("VOR1_SET", orignav1_obs)
     sound_play(snd_dial)
 end
-dial_crs1 = dial_add("CRS_DIAL.png", 89,112,96,95, callback_CRS1_DIAL, calllback_CRS1_DIAL_click)
-dial_set_acceleration(dial_crs1, 3)
+dial_crs1 = dial_add("CRS_DIAL.png", 89,112,96,95,2,callback_CRS1_DIAL, calllback_CRS1_DIAL_click)
+
 img_CRS1_dial_backlight = img_add("CRS_DIAL_backlight.png", 89,112,96,95)
 
 --CRS1 PRESS
@@ -308,8 +310,8 @@ function callback_CRS2_DIAL(direction)
     fs2020_event("VOR2_SET", orignav2_obs)
     sound_play(snd_dial)
 end
-dial_crs2 = dial_add("CRS_DIAL.png", 1739,112,96,95, callback_CRS2_DIAL, callback_CRS2_DIAL_click)
-dial_set_acceleration(dial_crs2, 3)
+dial_crs2 = dial_add("CRS_DIAL.png", 1739,112,96,95,2, callback_CRS2_DIAL, callback_CRS2_DIAL_click)
+
 img_CRS2_dial_backlight = img_add("CRS_DIAL_backlight.png", 1739,112,96,95)
 
 --CRS2 PRESS
@@ -333,8 +335,8 @@ function callback_IAS_DIAL(direction)
      end
      rotate(img_IAS_backlight, IAS_angle)
 end
-dial_IAS = dial_add("IAS_DIAL.png", 592,112,96,95, callback_IAS_DIAL, callback_IAS_DIAL_click)
-dial_set_acceleration(dial_IAS, 3)
+dial_IAS = dial_add("IAS_DIAL.png", 592,112,96,95,2, callback_IAS_DIAL, callback_IAS_DIAL_click)
+
 img_IAS_backlight = img_add("IAS_DIAL_backlight.png", 592,112,96,95)
 
 --IAS PRESS 
@@ -382,9 +384,10 @@ function hdg_turn_inner( direction)
             fs2020_event("HEADING_BUG_SET", NewHdg)
     end
     rotate(img_HDG_dial_backlight, hdg_angle)
+    sound_play(snd_dial)    
 end
-dial_hdg = dial_add("HDG_DIAL.png", 917,120,90,90, hdg_turn_inner)
-dial_set_acceleration(dial_hdg, 3)
+dial_hdg = dial_add("HDG_DIAL.png", 917,120,90,90,2, hdg_turn_inner)
+
 img_HDG_dial_backlight = img_add("HDG_dial_backlight.png", 917,120,90,90)
 
 --HDG PRESS
@@ -411,7 +414,7 @@ function alt_large_callback(direction)
     end
 	rotate(img_ALT_dial_backlight, alt_knob_angle)
 	rotate(img_alt_dial,  alt_knob_angle)
-	sound_play(snd_click)
+	sound_play(snd_dial)
 end
 
 function alt_small_callback(direction)
@@ -424,10 +427,10 @@ function alt_small_callback(direction)
     end
     rotate(img_ALT_dial_backlight, alt_knob_angle)
     rotate(img_alt_dial,  alt_knob_angle)
-    sound_play(snd_click)
+    sound_play(snd_dial)
 end
 dial_alt_outer = dial_add(nil, 1217,117,95,95, alt_large_callback)
-dial_set_acceleration(dial_alt_outer, 3)
+
 img_alt_dial = img_add("ALT_DIAL.png", 1217,117,95,95)
 img_ALT_dial_backlight = img_add("ALT_dial_backlight.png", 1217,117,95,95)
 dial_click_rotate(dial_alt_outer, 6)
@@ -466,6 +469,3 @@ function callback_AP_DIS()
     end
 end
  button_add(nil,nil, 1515,127,170,68, callback_AP_DIS)
-
-
-
