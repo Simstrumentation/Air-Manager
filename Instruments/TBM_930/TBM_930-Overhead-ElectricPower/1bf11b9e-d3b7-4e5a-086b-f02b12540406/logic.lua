@@ -22,7 +22,7 @@
 
 img_add_fullscreen("background.png")
 
-local crashbar_position = 0
+local crashbar_position = 1
 
 src_off = img_add("slvr_switch_dn.png", 350, 109, 79, 163)
 src_batt = img_add("slvr_switch_md.png", 350, 110, 79, 163)
