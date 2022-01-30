@@ -8,7 +8,7 @@
 </h1><h2 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!
 </h2><h3 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager
 </h3>
-<h3 align="center">Join Discord for information and help https://discord.gg/fcvbAeAmgQ
+<h3 align="center">Join Discord for information and help https://discord.gg/dSTJSX9P2E
 </h3>
 Our goal is to be able to offer flight simmers a quality collection of Air Manager (AM) instruments to enable a more realistic mouse and keyboard-free simulation experience. Through the use of touch screens and the optional <a href="https://www.siminnovations.com/hardware/product/57-knobster">Knobster</a> from Sim Innovations, you can have a fully interactive cockpit without requiring the use of a mouse in flight.
 We build these instruments for our own use for our personal cockpits. But we've decided to share our work with the public free of charge so every AM user can benefit from our labour.
