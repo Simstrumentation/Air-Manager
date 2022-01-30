@@ -11,15 +11,17 @@ Windows only.No compatibility with Xplane, FSX nor P3D is planned
 - **v1.0** (03-02-2021)
     - Original Panel Created by Rob Verdon
     
-- **v2.0** (10-22-2021)
+- **v2.0** (10-22-2021) SIMSTRUMENTATION
     - New custom graphics
     - New custom sounds
     - More working events
-
+    
+- **v2.1** (01-30-2022) SIMSTRUMENTATION
+    - Added SPKR button
+    - Resource folder file capitials renamed for SI Store submittion  
 
 ## NOTES
 - There a lot of INOP's that are inop in the sim itself. If you hear the "fail" sound that button or function is inop.
-- In SimUpdate6 (Released 10-19-21) You can no longer use the SimConnect events for Mute and HiSens.
     
 
 ATTRIBUTION:
@@ -176,22 +178,20 @@ end
 button_add(nil,"tel_pressed.png", 122,310,90, 66, mid_tel)
 
 --PA
-function pa()
+function pa_btn()
    --currently INOP
    --fs2020_event("H:AS1000_MID_PA_Push")
    --sound_play(click_snd)
    sound_play(fail_snd)
 end
-button_add(nil,"pa_pressed.png", 18,400,89, 64, pa)
+button_add(nil,"pa_pressed.png", 18,400,89, 64, pa_btn)
 
 --Spkr
-function spkr()
-   --currently INOP
-   --fs2020_event("H:AS1000_MID_SPKR_Push")
-   --sound_play(click_snd)
-   sound_play(fail_snd)
+function spkr_btn()
+   fs2020_event("K:Toggle_SPEAKER")
+   sound_play(click_snd)
 end
-button_add(nil,"spkr_pressed.png", 122,399,89, 64, spkr)
+button_add(nil,"spkr_pressed.png", 122,399,89, 64, spkr_btn)
 
 --Hi Sens
 function hisens_btn()
@@ -354,7 +354,17 @@ function com_inuse(com1active,com_rec_all)
            visible(com2select, true) 
     end   
      end
-         
+     
+     
+--Test if SPKR is On    
+function spkr_snd(spkr_snd) 
+    if spkr_snd == true then 
+        visible(spkr, true)
+    else 
+        visible(spkr, false)
+    end
+  end         
+   
 --Test if Nav1 is On         
 function nav1_snd(nav1_sndch) 
     if nav1_sndch == true then 
@@ -420,6 +430,7 @@ end
 
 fs2020_variable_subscribe("COM TRANSMIT:1","Bool",
                            "COM RECIEVE ALL","Bool", com_inuse)
+fs2020_variable_subscribe("SPEAKER ACTIVE","Bool", spkr_snd)                               
 fs2020_variable_subscribe("NAV SOUND:1","Bool", nav1_snd)    
 fs2020_variable_subscribe("NAV SOUND:2","Bool", nav2_snd)    
 fs2020_variable_subscribe("DME SOUND","Bool", dme_snd)  

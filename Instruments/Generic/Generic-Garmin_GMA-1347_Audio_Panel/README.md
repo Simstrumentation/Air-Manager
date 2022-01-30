@@ -10,6 +10,9 @@
     - More working events
 	- SU6 Updates for Mute and HiSens
 
+- **v2.1** 01-30-2022
+    - Added SPKR button
+    - Resource folder file capitials renamed for SI Store submittion  	
+
 ## NOTES
 - There a lot of INOP's that are inop in the sim itself. If you hear the "fail" sound that button or function is inop.
-- In SimUpdate6 (Released 10-19-21) You can no longer use the SimConnect events for Mute and HiSens.
