@@ -1,13 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin GFC 700</type><uuid>aa2ee646-72fd-49aa-13c5-29292fd24cb8</uuid><author>Simstrumentation</author><description>    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin GFC 710</type><uuid>aa2ee646-72fd-49aa-13c5-29292fd24cb8</uuid><author>Simstrumentation</author><description>    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
     GitHub: https://github.com/simstrumentation
 
-   Gamin GFC 700 autopilot module. Will work in various aircraft such at the TBM, King Air
-   Longitude, or SWS Daher Kodiak
-    
-    NOTE:
-    
-        V1.0 - Released 2022-01-05
+   Gamin GFC 710 autopilot module. Will work in various aircraft such at the TBM, King Air, Longitude, or SWS Daher Kodiak
            
 KNOWN ISSUES:
 - Several buttons are INOP due to lacking SDK functionality. Said functionality will be added once said SDK functions are available. INOP buttons and knobs will play a &quot;fail&quot; sound when used to indicate their INOP status.
-- CRS1 knob currently tied to G1000 CRS1 function. May not function in planes not equipped with a G1000</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1316</prefWidth><prefHeight>230</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>120</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1316</prefWidth><prefHeight>230</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

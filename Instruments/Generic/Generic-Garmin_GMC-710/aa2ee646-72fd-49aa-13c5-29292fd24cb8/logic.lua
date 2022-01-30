@@ -9,18 +9,23 @@
    Gamin GMC 710 autopilot module. Will work in various aircraft such at the TBM, King Air
    Longitude, or SWS Daher Kodiak
     
-    NOTE:
-        V1.1 - Released 2022-01-29
-        V1.0 - Released 2022-01-05
-           
-    KNOWN ISSUES: 
-        - Several buttons are INOP due to lacking SDK functionality. Said functionality will be
+- **v1.0** 01-05-2022
+    - Original Panel Created
+- **v1.1** (01-29-2021)
+    - Uploaded to Github
+- **v1.2** (01-30-2021)
+    - Fixed CRS1 Knobs-Thanks to "sean14reynolds" 
+    - Added Knob acceleration   
+    
+## Left To Do:
+    - Several buttons are INOP due to lacking SDK functionality. Said functionality will be
 		  added once said SDK functions are available. INOP buttons and knobs will play a "fail"
 		  sound when used to indicate their INOP status.
-        - CRS1 knob currently tied to G1000 CRS1 function. May not function in planes not equipped
-           with a G1000. CRS2 is INOP
-        - XFER button INOP
-        - Bank switch INOP
+    - XFER button INOP
+    - Bank switch INOP
+    	
+## Notes:
+    - N/A
            
    --******************************************************************************************
 --]]
@@ -104,7 +109,7 @@ function dial_HDG_turned(direction)
     sound_play(knobScroll)
 end
 
-dial_HDG = dial_add("knob_hdg.png" , 81 ,97 , 70 , 70 , dial_HDG_turned)
+dial_HDG = dial_add("knob_hdg.png" , 81 ,97 , 70 , 70 , 3, dial_HDG_turned)
 
 --hdg knob press
 function click_press_callback_HDG_PUSH()
@@ -113,6 +118,7 @@ function click_press_callback_HDG_PUSH()
 end
 
 button_add(nil, nil, 95 , 120 , 30 , 30, click_press_callback_HDG_PUSH)
+
 
 -- Crs 1 knob
 function dial_CRS1_turned(direction)
@@ -124,7 +130,7 @@ function dial_CRS1_turned(direction)
 	sound_play(knobScroll)
 end
 
-dial_CRS1 = dial_add("knob_basic.png" , 289 , 97 , 70 , 70 , dial_CRS1_turned)
+dial_CRS1 = dial_add("knob_basic.png" , 289 , 97 , 70 , 70 , 3, dial_CRS1_turned)
 
 --Crs 1 knob press
 function click_press_callback_CRS1()
@@ -264,7 +270,7 @@ function dial_ALT_turned(direction)
 
 end
 
-dial_ALT = dial_add("knob_basic.png" , 729 , 97 , 70 , 70 , dial_ALT_turned)
+dial_ALT = dial_add("knob_basic.png" , 729 , 97 , 70 , 70 , 3, dial_ALT_turned)
 dial_click_rotate(dial_ALT, 6)
 
 
@@ -302,13 +308,15 @@ img_add("shadow.png", 948, 37,28,162)
 function dial_CRS2_turned(direction)
 	if direction ==  1 then
         fs2020_event("VOR2_OBI_INC")
+						
     elseif direction == -1 then
         fs2020_event("VOR2_OBI_DEC")
     end
 	sound_play(knobScroll)
+	
 end
 
-dial_CRS2 = dial_add("knob_basic.png" , 1167 , 98 , 70 , 70 , dial_CRS2_turned)
+dial_CRS2 = dial_add("knob_basic.png" , 1167 , 98 , 70 , 70 , 3, dial_CRS2_turned)
 
 
 function click_press_callback_CRS2()
