@@ -1,3 +1,7 @@
+![GitHub last commit](https://img.shields.io/github/last-commit/Simstrumentation/air-Manager)
+![GitHub forks](https://img.shields.io/github/forks/SIMSTRUMENTATION/Air-Manager?style=social)
+![GitHub Repo stars](https://img.shields.io/github/stars/SIMSTRUMENTATION/Air-Manager?style=social)
+![Discord](https://img.shields.io/discord/926177167551901696)
 <img align="center" width="100%" src="https://user-images.githubusercontent.com/75218511/147607402-14a0a969-5e23-4b55-b15e-27684508b0ef.png">
 <h1 align="center">SIMSTRUMENTATION
 </h1><h2 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!
@@ -52,13 +56,4 @@ See the [open issues](https://github.com/Simstrumentation/Air-Manager/issues) fo
 Panel Names should not have spaces.
 When Export out of AirManger remove the "-" that AirManager Exporter puts in between the Plane Name and Model.
 
-\[contributors\-shield\]: https://img\.shields\.io/github/contributors/Simstrumentation/Air\-Manager\.svg?style=for\-the\-badge
-\[contributors\-url\]: https://github\.com/Simstrumentation/Air\-Manager/graphs/contributors
-\[forks\-shield\]: https://img\.shields\.io/github/forks/Simstrumentation/Air\-Manager\.svg?style=for\-the\-badge
-\[forks\-url\]: https://github\.com/Simstrumentation/Air\-Manager/network/members
-\[stars\-shield\]: https://img\.shields\.io/github/stars/Simstrumentation/Air\-Manager\.svg?style=for\-the\-badge
-\[stars\-url\]: https://github\.com/Simstrumentation/Air\-Manager/stargazers
-\[issues\-shield\]: https://img\.shields\.io/github/issues/Simstrumentation/Air\-Manager\.svg?style=for\-the\-badge
-\[issues\-url\]: https://github\.com/Simstrumentation/Air\-Manager/issues
-\[license\-shield\]: https://img\.shields\.io/github/license/Simstrumentation/Air\-Manager\.svg?style=for\-the\-badge
-\[license\-url\]: https://github\.com/Simstrumentation/Air\-Manager/blob/master/LICENSE\.txt
+
