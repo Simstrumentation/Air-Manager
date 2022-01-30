@@ -114,13 +114,12 @@ end
 
 button_add(nil, nil, 95 , 120 , 30 , 30, click_press_callback_HDG_PUSH)
 
-
 -- Crs 1 knob
 function dial_CRS1_turned(direction)
 	if direction ==  1 then
-        fs2020_event("H:AS1000_PFD_CRS_INC")
+        fs2020_event("VOR1_OBI_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_PFD_CRS_DEC")
+        fs2020_event("VOR1_OBI_DEC")
     end
 	sound_play(knobScroll)
 end
@@ -129,10 +128,10 @@ dial_CRS1 = dial_add("knob_basic.png" , 289 , 97 , 70 , 70 , dial_CRS1_turned)
 
 --Crs 1 knob press
 function click_press_callback_CRS1()
-	sound_play(errorSound)
+fs2020_event("K:VOR1_SET", current_hdg)
 	sound_play(knobClick)
 end
-
+                            
 button_add(nil, nil, 303 , 122 , 30 , 30, click_press_callback_CRS1, click_release_callback_CRS1)
 
 
@@ -301,17 +300,23 @@ img_add("shadow.png", 948, 37,28,162)
 
 --CRS 2
 function dial_CRS2_turned(direction)
-	if direction == 1 then 
-		--INOP
-		sound_play(errorSound)
-	elseif direction == -1 then 
-		--INOP
-		sound_play(errorSound)
-	end
+	if direction ==  1 then
+        fs2020_event("VOR2_OBI_INC")
+    elseif direction == -1 then
+        fs2020_event("VOR2_OBI_DEC")
+    end
+	sound_play(knobScroll)
 end
 
 dial_CRS2 = dial_add("knob_basic.png" , 1167 , 98 , 70 , 70 , dial_CRS2_turned)
 
+
+function click_press_callback_CRS2()
+fs2020_event("K:VOR2_SET", current_hdg)
+	sound_play(knobClick)
+end
+                            
+button_add(nil, nil, 1187 , 122 , 30 , 30, click_press_callback_CRS2, click_release_callback_CRS2)
 
 --Indicator lights
 img_hdg_active   = img_add("led.png", 145, 16, 18, 45)	
