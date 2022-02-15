@@ -8,7 +8,7 @@
 </h1><h2 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!
 </h2><h3 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager
 </h3>
-<h3 align="center">Join Discord for information and help https://discord.gg/dSTJSX9P2E
+<h3 align="center">Join Discord for information and help https://discord.gg/6xkCXe5pMn
 </h3>
 Our goal is to be able to offer flight simmers a quality collection of Air Manager (AM) instruments to enable a more realistic mouse and keyboard-free simulation experience. Through the use of touch screens and the optional <a href="https://www.siminnovations.com/hardware/product/57-knobster">Knobster</a> from Sim Innovations, you can have a fully interactive cockpit without requiring the use of a mouse in flight.
 We build these instruments for our own use for our personal cockpits. But we've decided to share our work with the public free of charge so every AM user can benefit from our labour.
@@ -34,7 +34,7 @@ This is a list of the different aircraft in MSFS 2020 that we currently have wor
 | [Mooney M20R Ovation (Carenado)](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Mooney_M20R/) | <img src="https://user-images.githubusercontent.com/75218511/133450810-00e7ae37-2f84-47d4-9b09-e3c3af8996bc.png" width="300"> |
 | [Piper Arrow Series](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Piper_Arrow_III) | <img src="https://user-images.githubusercontent.com/75218511/133791509-3c8ae5d0-b01e-46c7-9998-3d718a728f12.png" width="300"> |
 | [TBM 930](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/TBM_930/) | <img src="https://user-images.githubusercontent.com/75218511/133437825-439d90a5-4129-45f0-a48d-a30ea18aefad.png" width="300"> |
-
+| [Aerosoft CRJ](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/CRJ/) | <img src="![image](https://user-images.githubusercontent.com/38576265/153980237-9595da57-864a-4816-b289-7c6e44db409a.png)" width="300"> |
 ## Examples of Air Manager Panel Layouts
 
 
