@@ -11,7 +11,8 @@
 - **v2.1**  01-16-22 SIMSTRUMENTATION
     - Click sounds replaced with custom.
     - Resource folder file capitials renamed for SI Store submittion  
-	
+- **v2.2**  03-05-22 SIMSTRUMENTATION
+    - Update to work with Sim Update 8 and new WT CJ4 0.12.12
 ## Left To Do:
 - N/A
 	

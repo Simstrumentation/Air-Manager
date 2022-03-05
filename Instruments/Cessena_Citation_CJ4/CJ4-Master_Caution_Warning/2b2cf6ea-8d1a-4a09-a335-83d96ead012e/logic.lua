@@ -18,6 +18,8 @@
 - **v2.1**  01-16-22 SIMSTRUMENTATION
     - Click sounds replaced with custom.
     - Resource folder file capitials renamed for SI Store submittion  
+- **v2.2**  03-05-22 SIMSTRUMENTATION
+    - Update to work with Sim Update 8 and new WT CJ4 0.12.12
 ##Left To Do:
     - 
 	
@@ -50,14 +52,14 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
 --Warning Select    
 function callback_Warning()
-   fs2020_event("H:Generic_Master_Warning_Push")
+   fs2020_event("K:MASTER_WARNING_ACKNOWLEDGE")
    sound_play(click_snd)
 end
 button_add(nil,"warning.png", 15,15,188,160, callback_Warning)
 
 --Caution Select    
 function callback_Caution()
-    fs2020_event("H:Generic_Master_Caution_Push")
+    fs2020_event("K:MASTER_CAUTION_ACKNOWLEDGE")
     sound_play(click_snd)
 end
 button_add(nil,"caution.png", 248,15,188,160, callback_Caution)
