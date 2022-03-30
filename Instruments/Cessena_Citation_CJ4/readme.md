@@ -7,7 +7,7 @@ This collection of Cessna Citation CJ4 instruments is currently our flagship and
 
 
 ## EASY SINGLE IMPORT DOWNLOAD
-This is a single file that includes all the files in the table below as of 01-24-2022.
+This is a single file that includes all the files in the table below as of 03-29-2022.
 This single file download does not automatically get update so be sure to check the date.
 - [CLICK HERE TO DOWNLOAD SINGLE IMPORT FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4_ALL_INSTRUMENTS.siff?raw=true)
 
@@ -19,7 +19,7 @@ This single file download does not automatically get update so be sure to check 
 | Autopilot Panel | [v2.4 1-26-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-AutoPilot_Panel/Cessna_Citation_CJ4_(Working_Title_Mod)-AutoPilot_Panel.siff?raw=true) | [docs](CJ4-AutoPilot_Panel/) | <img src="CJ4-AutoPilot_Panel/30f0e44d-791c-4ecc-a5c4-eb80d769d3ea/preview.png" width="100"> |
 | Climate Control Knob | [v2.1 01-08-2022 ](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Climate_Control/Cessna_Citation_CJ4_(Working_Title_Mod)-Climate_Control_Switch.siff?raw=true) | [docs](CJ4-Climate_Control/) | <img src="CJ4-Climate_Control/f90941ea-f1d4-43ad-09d9-794be2092d77/preview.PNG" width="100"> |
 | Cockpit Lights Knob | [v1.2 01-14-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Cockpit_Lights/Cessna_Citation_CJ4_(Working_Title_Mod)-Cockpit_Lights.siff?raw=true) | [docs](CJ4-Cockpit_Lights/) | <img src="CJ4-Cockpit_Lights/17ae927b-80e5-4772-0d9f-b9e364a897ba/preview.png" width="100"> |
-| Electrical Panel | [v2.0 10-06-2021](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Electrical_Panel/Cessna_Citation_CJ4_(Working_Title_Mod)-Electrical_Panel.siff?raw=true) | [docs](CJ4-Electrical_Panel/) | <img src="CJ4-Electrical_Panel/3c5dcdca-9a40-4fec-19b5-c0e435f00653/preview.png" width="100"> |
+| Electrical Panel | [v2.3 03-28-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Electrical_Panel/Cessna_Citation_CJ4_(Working_Title_Mod)-Electrical_Panel.siff?raw=true) | [docs](CJ4-Electrical_Panel/) | <img src="CJ4-Electrical_Panel/3c5dcdca-9a40-4fec-19b5-c0e435f00653/preview.png" width="100"> |
 | Ice Protection Panel | [v2.1 01-16-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Ice_Protection_Panel/Cessna_Citation_CJ4_(Working_Title_Mod)-Ice_Protection_Panel.siff?raw=true) | [docs](CJ4-Ice_Protection_Panel/) | <img src="CJ4-Ice_Protection_Panel/9d628764-3c98-4426-172e-5d672c0aa47a/preview.png" width="100"> |
 | Landing Gear Handle | [v2.1 01-16-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Landing_Gear_Handle/Cessna_Citation_CJ4_(Working_Title_Mod)-Landing_Gear_Handle.siff?raw=true) | [docs](CJ4-Landing_Gear_Handle/) | <img src="CJ4-Landing_Gear_Handle/ec2057fa-5839-42d6-1f55-35c13e0feb9f/preview.png" width="100"> |
 | Light Panel | [v2.1 01-08-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Cessena_Citation_CJ4/CJ4-Light_Panel/Cessna_Citation_CJ4_(Working_Title_Mod)-Light_Panel.siff?raw=true) | [docs](CJ4-Light_Panel/) | <img src="CJ4-Light_Panel/40e12ee4-9d82-427c-8760-372fbcaf482f/preview.png" width="100" data-tomark-pass > |  

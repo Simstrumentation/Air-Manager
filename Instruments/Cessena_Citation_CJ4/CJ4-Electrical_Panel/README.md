@@ -2,21 +2,21 @@
 - **v1.0** 
   Released 3-4-21
 	- Original Panel Created
-
 - **v2.0** 
   Released 10-06-2021-8-2021
 	- New custom graphics
 	- Backlighting
 	- Night mode (when used in conjunction with Simstrumentation Ambient Light Control)
 	- Mobiflight events replaced with H: events and L: variables
-	
+ - **v2.1** 01-16-22 SIMSTRUMENTATION
+     - Resource folder file capitials renamed for SI Store submittion  
+     - Battery EMER is functional but requires Air Manager 4.1 for full functionality. If using AM4.0.1 EMER turns on actual battery.
+ - **v2.2** 03-28-22 SIMSTRUMENTATION
+     - Switch Graphics replaced 
+	 
 ## Left To Do:
 
 - N/A
 
 ## Notes:
-- STBY FTL Test position is INOP in game.
-- EMER Lights ON position is INOP in game.
-- Battery to EMER position INOP in game.
-- Generator reset position INOP in game
-	
+- N/A

@@ -21,16 +21,21 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
- 
+ - **v2.1** 01-16-22 SIMSTRUMENTATION
+     - Resource folder file capitials renamed for SI Store submittion  
+     - Battery EMER is functional but requires Air Manager 4.1 for full functionality. If using AM4.0.1 EMER turns on actual battery.
+ - **v2.2** 03-28-22 SIMSTRUMENTATION
+     - Switch Graphics replaced 
+     
 ##Left To Do:
-    - 	
+    - 
 	
 ##Notes:
     - 
 			 					  													   					 					  													   
 ******************************************************************************************
 --]]
-
+local batterystatus = 0
 --Backgroud Image before anything else
 img_add_fullscreen("background.png")
 img_bg_night = img_add_fullscreen("background_night.png")
@@ -39,37 +44,24 @@ img_bg_night = img_add_fullscreen("background_night.png")
 img_labels_backlight = img_add_fullscreen("backlight.png")
 
 --Day graphics
-img_LGen_On = img_add("Gen_On.png", 148,82,94,94)
-img_RGen_On = img_add("Gen_On.png", 513,82,94,94)
-img_Battery_On = img_add("Battery_On.png", 325,56,102,125)
-img_AVI_On = img_add("AVI_On.png", 500,296,110,121)
-img_AVI_Dispatch = img_add("AVI_Dispatch.png", 505,319,120,160)
-visible(img_AVI_Dispatch, false)
-img_Emergency_Armed = img_add("Emergency_Armed.png", 135,299,110,121)
-img_StandbyDisplay_On = img_add("StandyDisplay_On.png", 316,299,110,121)
+img_LGen_On = img_add("sml_blk_switch_up.png", 121,28,148,203)
+img_RGen_On = img_add("sml_blk_switch_up.png", 485,28,148,203)
+img_Battery_On = img_add("red_switch.png", 301,28,148,203)
+img_Battery_EMER = img_add("red_switch_dn.png", 301,28,148,203)
+img_AVI_On = img_add("blk_switch_up.png", 485,265,148,203)
+img_AVI_Dispatch = img_add("blk_switch_dn.png", 485,265,148,203)
+img_Emergency_Armed = img_add("blk_switch_up.png", 121,265,148,203)
+img_StandbyDisplay_On = img_add("blk_switch_up.png", 301,265,148,203)
 
 --Night Graphics
-img_LGen_On_night = img_add("Gen_On_night.png", 148,82,94,94)
-img_RGen_On_night = img_add("Gen_On_night.png", 513,82,94,94)
-img_Battery_On_night = img_add("Battery_On_night.png", 325,56,102,125)
-img_AVI_On_night = img_add("AVI_On_night.png", 500,296,110,121)
-img_AVI_Dispatch_night = img_add("AVI_Dispatch_night.png", 505,319,120,160)
-img_Emergency_Armed_night = img_add("Emergency_Armed_night.png", 135,299,110,121)
-img_StandbyDisplay_On_night = img_add("StandyDisplay_On_night.png", 316,299,110,121)
-
-
---[[
--- Switches reflecting panel lighting 
--- needs more work. Future version change - Joe
-
-img_LGen_On_glow = img_add("Gen_On_glow.png", 148,82,94,94)
-img_RGen_On_glow = img_add("Gen_On_glow.png", 513,82,94,94)
-img_Battery_On_glow = img_add("Battery_On_glow.png", 325,56,102,125)
-img_AVI_On_glow = img_add("AVI_On_glow.png", 500,296,110,121)
---img_AVI_Dispatch_glow = img_add("AVI_Dispatch_glow.png", 505,319,120,160)
-img_Emergency_Armed_glow = img_add("Emergency_Armed_glow.png", 135,299,110,121)
-img_StandbyDisplay_On_glow = img_add("StandyDisplay_On_glow.png", 316,299,110,121)
-]]--
+img_LGen_On_night = img_add("sml_blk_switch_up_dark.png", 121,28,148,203)
+img_RGen_On_night = img_add("sml_blk_switch_up_dark.png", 485,28,148,203)
+img_Battery_On_night = img_add("red_switch_up_dark.png", 301,28,148,203)
+img_Battery_EMER_night = img_add("red_switch_dn_dark.png", 301,28,148,203)
+img_AVI_On_night = img_add("blk_switch_up_dark.png", 485,265,148,203)
+img_AVI_Dispatch_night = img_add("blk_switch_dn_dark.png", 485,265,148,203)
+img_Emergency_Armed_night = img_add("blk_switch_up_dark.png", 121,265,148,203)
+img_StandbyDisplay_On_night = img_add("blk_switch_up_dark.png",  301,265,148,203)
 
 -- Ambient Light Control
 function ss_ambient_darkness(value)
@@ -77,6 +69,7 @@ function ss_ambient_darkness(value)
     opacity(img_LGen_On_night, value, "LOG", 0.04)
     opacity(img_RGen_On_night, value, "LOG", 0.04)
     opacity(img_Battery_On_night, value, "LOG", 0.04)
+    opacity(img_Battery_EMER_night, value, "LOG", 0.04)    
     opacity(img_AVI_On_night, value, "LOG", 0.04)
     opacity(img_AVI_Dispatch_night, value, "LOG", 0.04)
     opacity(img_Emergency_Armed_night, value, "LOG", 0.04)
@@ -89,24 +82,8 @@ function ss_backlighting(value, power, extpower, busvolts)
     value = var_round(value,2)      
     if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
         opacity(img_labels_backlight, 0, "LOG", 0.04)
- --[[       opacity(img_LGen_On_glow, 0, "LOG", 0.04)
-         opacity(img_RGen_On_glow, 0, "LOG", 0.04)
-         opacity(img_Battery_On_glow, 0, "LOG", 0.04)
-         opacity(img_AVI_On_glow, 0, "LOG", 0.04)
- --        opacity(img_AVI_Dispatch_glow, value, "LOG", 0.04)
-         opacity(img_Emergency_Armed_glow, 0, "LOG", 0.04)
-         opacity(img_StandbyDisplay_On_glow, 0, "LOG", 0.04)
- ]]--
      else
-        opacity(img_labels_backlight, ((value/2)+0.5), "LOG", 0.04)
- --[[       opacity(img_LGen_On_glow, ((value/2)+0.5), "LOG", 0.04)
-        opacity(img_RGen_On_glow, ((value/2)+0.5), "LOG", 0.04)
-        opacity(img_Battery_On_glow, ((value/2)+0.5), "LOG", 0.04)
-        opacity(img_AVI_On_glow, ((value/2)+0.5), "LOG", 0.04)
---        opacity(img_AVI_Dispatch_glow, ((value/2)+0.5), "LOG", 0.04)
-        opacity(img_Emergency_Armed_glow, ((value/2)+0.5), "LOG", 0.04)
-        opacity(img_StandbyDisplay_On_glow, ((value/2)+0.5), "LOG", 0.04)
- ]]--       
+        opacity(img_labels_backlight, ((value/2)+0.5), "LOG", 0.04)     
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
@@ -125,28 +102,41 @@ function callback_RGen()
 end
 button_add(nil,nil, 511,84,94,94, callback_RGen)
 
---BatteryOn     
+--BatteryOn     baterystatus = 1
 function callback_BatteryOn()
-   fs2020_event("TOGGLE_MASTER_BATTERY")
+    if (batterystatus ==  0) then
+       fs2020_event("MASTER_BATTERY_ON")
+    end
 end
 button_add(nil,nil, 330,35,94,60, callback_BatteryOn)
-
---BatteryEmer (NOT WORKING) 
+--BatteryOff     baterystatus = 0
+function callback_BatteryOff()
+    if (batterystatus ==  1) then
+        fs2020_variable_write("L:XMLVAR_Essential_Bus_On", "number", 0)
+        fs2020_event("MASTER_BATTERY_OFF")
+    elseif (batterystatus ==  2) then
+        fs2020_variable_write("L:XMLVAR_Essential_Bus_On", "number", 0)
+        fs2020_event("MASTER_BATTERY_OFF")
+        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,3)
+        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,2)        
+        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",2,3)
+    end
+end
+button_add(nil,nil, 330,97,94,60, callback_BatteryOff)
+--BatteryEmer baterystatus = 2
 function callback_BatteryEMER()
-   --fs2020_event("TOGGLE_MASTER_BATTERY")
-   --fs2020_event("mobiflight.WT_CJ4_MASTER_BATTERY_EMER")
-   --fs2020_variable_write("A:ELECTRICAL MASTER BATTERY:1", "Bool",true) 
-   --fs2020_variable_write("L:XMLVAR_Essential_Bus_On","Int",1)
-   --fs2020_event("K:TOGGLE_MASTER_BATTERY")
-   --fs2020_variable_write("A:ELECTRICAL MASTER BATTERY:1")
+    if (batterystatus ==  0) then 
+        fs2020_variable_write("L:XMLVAR_Essential_Bus_On", "number", 1)
+        fs2020_event("MASTER_BATTERY_ON")
+        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,3)
+        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,2)        
+        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",2,3)
+       
+    end
 end
 button_add(nil,nil, 330,160,94,60, callback_BatteryEMER)
 
---BatteryOff     
-function callback_BatteryOff()
-   fs2020_event("TOGGLE_MASTER_BATTERY")
-end
-button_add(nil,nil, 330,90,94,60, callback_BatteryOff)
+
 --AVIOn   
 function callback_AVI_On()
     fs2020_event("AVIONICS_MASTER_1_SET",1)
@@ -192,59 +182,63 @@ function ss_Gen_Status(Gen1_Status,Gen2_Status)
     if Gen1_Status == true then 
         visible(img_LGen_On, true)
         visible(img_LGen_On_night, true)
- --       visible(img_LGen_On_glow, true)
     else 
         visible(img_LGen_On, false)
         visible(img_LGen_On_night, false)
- --        visible(img_LGen_On_glow, false)
     end
     if Gen2_Status == true then 
         visible(img_RGen_On, true)
         visible(img_RGen_On_night, true)
- --       visible(img_RGen_On_glow, true)
     else 
         visible(img_RGen_On, false)
         visible(img_RGen_On_night, false)
- --       visible(img_RGen_On_glow, false)
     end
 end
 fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1","Bool",
                           "GENERAL ENG MASTER ALTERNATOR:2","Bool",ss_Gen_Status)
                           
 --Test if Batt is On         
-function ss_Battery_Status(Battery_Status1) 
-    if Battery_Status1 == true then 
+function ss_Battery_Status(Battery_Status1,EMER) 
+    if ((Battery_Status1 == true) and (EMER == 0)) then 
+        batterystatus = 1
         visible(img_Battery_On, true)
         visible(img_Battery_On_night, true)
- --       visible(img_Battery_On_glow, true)
-    else 
+        visible(img_Battery_EMER, false)
+        visible(img_Battery_EMER_night, false)
+    elseif ((Battery_Status1 == true) and (EMER == 1)) then 
+        batterystatus = 2
         visible(img_Battery_On, false)
         visible(img_Battery_On_night, false)
---        visible(img_Battery_On_glow, false)
+        visible(img_Battery_EMER, true)
+        visible(img_Battery_EMER_night, true)
+    else 
+        batterystatus = 0
+        visible(img_Battery_On, false)
+        visible(img_Battery_On_night, false)
+        visible(img_Battery_EMER, false)
+        visible(img_Battery_EMER_night, false)
     end 
 end
-fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY","Bool", ss_Battery_Status)
+fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY","Bool",
+                                              "L:XMLVAR_Essential_Bus_On", "number", ss_Battery_Status)
 
 --Test if AVI is On         
 function ss_AVI_Status(AVI_Bus_1,AVI_Bus_2) 
     if AVI_Bus_1 == true then 
         visible(img_AVI_On, true)
         visible(img_AVI_On_night, true)
---        visible(img_AVI_On_glow, true)
         visible(img_AVI_Dispatch, false)
         visible(img_AVI_Dispatch_night, false)
         --AVI_OnOff = true
     elseif AVI_Bus_2 == true then 
         visible(img_AVI_On, false)
         visible(img_AVI_On_night, false)
---        visible(img_AVI_On_glow, false)
         visible(img_AVI_Dispatch, true)
         visible(img_AVI_Dispatch_night, true)
        -- AVI_OnOff = true
     else 
         visible(img_AVI_On, false)
         visible(img_AVI_On_night, false)
---        visible(img_AVI_On_glow, false)
         visible(img_AVI_Dispatch, false)
         visible(img_AVI_Dispatch_night, false)
        -- AVI_OnOff = false
