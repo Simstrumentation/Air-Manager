@@ -1,1 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Daher Kodiak (SWS)</aircraft><type>ESI500 Backup Instrument Bezel Overlay</type><uuid>9d5461a2-532b-4a73-2203-af1cbd520971</uuid><author>Simstrumentation</author><description></description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>478</prefWidth><prefHeight>470</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Daher Kodiak (SWS)</aircraft><type>ESI500 Backup Instrument Bezel Overlay</type><uuid>9d5461a2-532b-4a73-2203-af1cbd520971</uuid><author>Simstrumentation</author><description>    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+
+    ESI500 Backup Flight Display Overlay
+    
+    V1.01 - Released 2022-01-04
+        - Fixed incorrect behaviour on knob
+        - Clicking knob resets altimeter to std when menu not showing
+        
+    V1.0 - Released 2022-31-03
+           
+    KNOWN ISSUES:
+        - None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>478</prefWidth><prefHeight>470</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
