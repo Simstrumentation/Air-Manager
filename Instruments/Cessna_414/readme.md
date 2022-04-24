@@ -2,7 +2,7 @@
 <p align="center">
   <h1 align="center">Cessna 414 Chancellor (Flysimware)</h1>
 </p>
-![image](https://user-images.githubusercontent.com/75218511/164995387-41b02153-ce4f-4e64-8384-41b1daea60bf.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/75218511/164995387-41b02153-ce4f-4e64-8384-41b1daea60bf.png" width="600"/></p>
 
 
 <!-- ABOUT THE PROJECT -->
