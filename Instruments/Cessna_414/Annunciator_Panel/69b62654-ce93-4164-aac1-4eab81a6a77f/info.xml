@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414 (FSW)</aircraft><type>Annunciator Panel</type><uuid>69b62654-ce93-4164-aac1-4eab81a6a77f</uuid><author>Simstrumentation</author><description>******************************************************************************************
-***************CESSNA 414 CHANCELLOW ANNUNCIATOR PANEL ********************
-******************************************************************************************
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414 (FSW)</aircraft><type>Annunciator Panel</type><uuid>69b62654-ce93-4164-aac1-4eab81a6a77f</uuid><author>Simstrumentation</author><description>
+***************CESSNA 414 CHANCELLOR ANNUNCIATOR PANEL ********************
+
     Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
     GitHub: https://github.com/simstrumentation
 
 Annunciator panel for the Cessna 414 Chancellow by FlySimware
 
-
 Version info:
 
-- **v1.0** (April 2022)
+- **v1.0** (24 April, 2022)
     - Original release
     
 NOTES: 

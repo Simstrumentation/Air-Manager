@@ -1,6 +1,6 @@
 --[[
 ******************************************************************************************
-***************CESSNA 414 CHANCELLOW ANNUNCIATOR PANEL ********************
+***************CESSNA 414 CHANCELLOR ANNUNCIATOR PANEL ********************
 ******************************************************************************************
     Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
     GitHub: https://github.com/simstrumentation
