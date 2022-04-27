@@ -22,7 +22,9 @@
 - **v2.1** 01-16-22 SIMSTRUMENTATION
     - Resource folder file capitials renamed for SI Store submittion  
     - Click and Dial sounds replaced with custom.
-
+- **v2.2** 04-27-22 SIMSTRUMENTATION
+    - Fixed dial night mode not spinning correctly
+    
 ##Left To Do:
     - Panning Joystick animation.
 	
@@ -45,8 +47,8 @@ img_labels_backlight = img_add_fullscreen("backlight.png")
 -- Ambient Light Control
 function ss_ambient_darkness(value)
     opacity(img_bg_night, value, "LOG", 0.04)
-    opacity(dial_menu_night, value, "LOG", 0.04)
-    opacity(dial_data_night, value, "LOG", 0.04)
+    opacity(img_menu_night, value, "LOG", 0.04)
+    opacity(img_data_night, value, "LOG", 0.04)
 end
 si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
@@ -188,29 +190,37 @@ button_add(nil,"rotate_pressed.png",451,103,80,58, callback_ROTATE)
 
 
 --MENU DIAL (OUTER)
+local menu_angle = 0
 function callback_menu_turn( direction)
      if direction ==  -1 then
+         menu_angle =menu_angle - 10     
          fs2020_event("H:Generic_Lwr_MENU_ADV_DEC")
          sound_play(dial_snd)
      elseif direction == 1 then
+         menu_angle =menu_angle + 10          
          fs2020_event("H:Generic_Lwr_MENU_ADV_INC")
          sound_play(dial_snd)
      end
+     rotate (img_menu_night, menu_angle)      
 end
 dial_menu = dial_add("menu_dial.png", 215,125,90,90, callback_menu_turn)
-dial_menu_night = dial_add("menu_dial_night.png", 215,125,90,90, callback_menu_turn)
+img_menu_night = img_add("menu_dial_night.png", 215,125,90,90)
 --DATA DIAL (INNER)
+local data_angle = 0
 function callback_data_turn( direction)
      if direction ==  -1 then
+         data_angle =data_angle - 10
          fs2020_event("H:Generic_Lwr_Data_DEC")
          sound_play(dial_snd)
      elseif direction == 1 then
+         data_angle =data_angle + 10     
          fs2020_event("H:Generic_Lwr_Data_INC")
          sound_play(dial_snd)
      end
+     rotate (img_data_night, data_angle)     
 end
 dial_data = dial_add("data_dial.png", 230,140,60,60, callback_data_turn) 
-dial_data_night =dial_add("data_dial_night.png", 230,140,60,60, callback_data_turn) 
+img_data_night =img_add("data_dial_night.png", 230,140,60,60) 
 
 --DATA PRESS
 function data_click()

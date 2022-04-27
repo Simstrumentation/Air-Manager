@@ -12,7 +12,9 @@
 - **v2.1** 01-16-22 SIMSTRUMENTATION
     - Resource folder file capitials renamed for SI Store submittion  
     - Click and Dial sounds replaced with custom.
-
+- **v2.2** 04-27-22 SIMSTRUMENTATION
+    - Fixed dial night mode not spinning correctly
+	
 ## Left To Do:
  - Panning Joystick animation.
 	
