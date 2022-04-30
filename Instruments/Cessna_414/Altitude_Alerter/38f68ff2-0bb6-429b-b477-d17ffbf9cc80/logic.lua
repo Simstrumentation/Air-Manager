@@ -9,15 +9,23 @@ Altitude alterter / preselector panel for the Cessna 414 Chancellow by FlySimwar
 
 Version info:
 
+- **v1.01** (30 April, 2022)
+    - Fixed bug where altitude high indicator conditions would illuminate low indicator
+    - linked instrument to annunciator panel instrument so that pressing the annunciator
+      test button will illuminate annunciators on the alerter as well. This won't do anything
+      unless you also use the Simstrumentation annunciator panel
+    
 - **v1.0** (24 April, 2022)
     - Original release
     
 NOTES: 
 - Will only work with the Flysimware Cessna 414 Chancellor
+- Currently in ßETA / Early access. Please report any issues on our Discord server. 
 
 KNOWN ISSUES:
-- None
-
+- On rare occassions, ARMED button seems to occasionally stop responding to 
+   input in Air Manager. Still unsure whether this is a bug in this instrument or the
+   plane code itself. Investigation in progress. 
 ATTRIBUTION:
 All code, artwork and sound effects are original creations by Simstrumentation
 Sharing or re-use of any code or assets is not permitted without credit to the original authors.
@@ -28,9 +36,9 @@ http://www.fontsaddict.com/font/MilSpec33558.html
 ]]--
     
 --declare variables
- local tenthousanths
- local thousanths
- local hundreths
+local tenthousanths
+local thousanths
+local hundreths
 local alerter_armed
 
 --Add graphics
@@ -165,26 +173,50 @@ function get_vars(tenthou, thou, hun, armed, alt_lock, alt_indicated, mainbusvol
        visible(altalertlight, false)
    end
    
-    --High light
-     if mainbusvoltage > 1 and alt_diff <=  300 and alt_diff >= 1000then
-       visible(hilight, true)
-   else
-       visible(hilight, false)
-   end
-   
-     --low light
-     if mainbusvoltage > 1 and alt_diff >=  300 and alt_diff <= 1000then
-       visible(lolight, true)
-   else
-       visible(lolight, false)
-   end
+    --High / low indicators
+    if alt_indicated > alt_lock then        -- current altitude is greater than selected altitude
+        if mainbusvoltage > 1 and (alt_diff >=  300 and alt_diff <= 1000) then
+            visible(hilight, true)
+        else
+            visible(hilight, false)
+        end
+    elseif alt_indicated > alt_lock then    -- current altitude is lower than selected altitude
+        if mainbusvoltage > 1 and (alt_diff >=  300 and alt_diff <= 1000) then
+            visible(lolight, true)
+        else
+            visible(lolight, false)
+        end
+    end
 end
 
 fs2020_variable_subscribe("L:Alerter_GENERIC_ALERTER_TEN_THOUSANDTHS", "Number", 
-                                                "L:Alerter_GENERIC_ALERTER_THOUSANDTHS", "Number", 
-                                                "L:Alerter_GENERIC_ALERTER_HUNDREDTHS", "Number", 
-                                                "L:Alt_Arm_Switch", "Number",
-                                                "A:AUTOPILOT ALTITUDE LOCK VAR", "FEET",
-                                                "A:INDICATED ALTITUDE", "FEET", 
-                                                "A:ELECTRICAL MAIN BUS VOLTAGE", "Volts",                                               
-                                                get_vars)
+                        "L:Alerter_GENERIC_ALERTER_THOUSANDTHS", "Number", 
+                        "L:Alerter_GENERIC_ALERTER_HUNDREDTHS", "Number", 
+                        "L:ALT_ARM_SWITCH", "Number",
+                        "A:AUTOPILOT ALTITUDE LOCK VAR", "FEET",
+                        "A:INDICATED ALTITUDE", "FEET", 
+                        "A:ELECTRICAL MAIN BUS VOLTAGE", "Volts",                                               
+                        get_vars)
+                        
+ 
+--test mode
+--  linked to the annunciator panel test button. Pressing test button
+--  will light up indicators on this instrument as well to test function. 
+
+function cb_indicator_test(testval)
+    if testval then
+        visible(lolight, true)
+        visible(hilight, true)
+        visible(altalertlight, true)
+        visible(armedlight, true)
+        visible(cpldlight, true)     
+    else
+        visible(lolight, false)
+        visible(hilight, false)
+        visible(altalertlight, false)
+        visible(armedlight, false)        
+        visible(cpldlight, false)
+    end 
+end
+
+si_variable_subscribe("systest", "BOOL", cb_indicator_test)

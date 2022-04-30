@@ -9,6 +9,11 @@ Annunciator panel for the Cessna 414 Chancellow by FlySimware
 
 
 Version info:
+- **v1.01** (30 April, 2022)
+    - Fixed a bug affecting the L and R Alt annunciator lights under certain conditions
+    - Added a global inter-instrument variable to that other Cessna 414 instrument 
+      indicator lights will also illuminate when test button is pressed. 
+
 
 - **v1.0** (24 April, 2022)
     - Original release
@@ -29,17 +34,24 @@ http://www.fontsaddict.com/font/MilSpec33558.html
 
 ]]--
 
+--create global inter-instrument var for the test button
+
+systems_test = si_variable_create("systest","BOOL", false)
+
+
 --background graphics
 img_add_fullscreen("bg.png")
 
 -- Annunciator test button
 function cb_test_pressed()
     fs2020_variable_write("L:ANUNNCIATOR_TEST_SWITCH", "Number", 1)
+    si_variable_write(systems_test, true)
  end
 
 function cb_test_released()
      fs2020_variable_write("L:ANUNNCIATOR_TEST_SWITCH", "Number", 0)
      visible(txt_spare1_on, false)
+     si_variable_write(systems_test, false)
 end
 testbtn = button_add("button_up.png", "button_dn.png", 20, 848, 100, 100, cb_test_pressed, cb_test_released)
 
@@ -148,7 +160,7 @@ txt_surf_on = txt_add("SURF DEICE", "font:roboto_bold.ttf; size:34; color: #37df
 visible(txt_surf_on, false)
 
 
-function toggle_indicators(test, volts, door, alt_l, alt_r, cabin, hyd_press, l_hyd, r_hyd, l_fuel, r_fuel, ac_on, ws, surf, court, pedestal, gearpos, prop_l, prop_r)
+function toggle_indicators(test, volts, door, alt_l, alt_l_state, alt_r, alt_r_state, cabin, hyd_press, l_hyd, r_hyd, l_fuel, r_fuel, ac_on, ws, surf, court, pedestal, gearpos, prop_l, prop_r)
     -- low voltage
     if volts > 1 and (volts < 25 or  test == 1) then
         visible(txt_low_volt_on, true)
@@ -164,14 +176,15 @@ function toggle_indicators(test, volts, door, alt_l, alt_r, cabin, hyd_press, l_
     end
     
     --alternator left
-    if volts > 1 and ( alt_l == 0 or  test == 1) then
+    if volts > 1 and ( (alt_l_state == false or alt_l < 18) or  test == 1) then
         visible(txt_l_alt_on, true)
     else
         visible(txt_l_alt_on, false)
+        
     end
-    
+    print (alt_l)
     --alternator right
-    if volts > 1 and (alt_r == 0 or  test == 1) then
+    if volts > 1 and ( (alt_r_state == false or alt_r< 18) or  test == 1) then
         visible(txt_r_alt_on, true)
     else
         visible(txt_r_alt_on, false)
@@ -273,10 +286,12 @@ function toggle_indicators(test, volts, door, alt_l, alt_r, cabin, hyd_press, l_
 end
 
 fs2020_variable_subscribe("L:ANUNNCIATOR_TEST_SWITCH", "NUMBER", 
-                                               "A:ELECTRICAL MAIN BUS VOLTAGE", "Volts",
+                                               "A:ELECTRICAL MAIN BUS VOLTAGE", "VOLTS",
                                                "L:DOOR_HANDLE_UPPER_INSIDE_ENABLED", "NUMBER",
-                                               "A:GENERAL ENG MASTER ALTERNATOR:1", "NUMBER", 
-                                               "A:GENERAL ENG MASTER ALTERNATOR:2", "NUMBER", 
+                                               "A:ELECTRICAL GENALT BUS VOLTAGE:1", "VOLTS", 
+                                               "A:GENERAL ENG MASTER ALTERNATOR:1", "BOOL",
+                                               "A:ELECTRICAL GENALT BUS VOLTAGE:2", "VOLTS", 
+                                               "A:GENERAL ENG MASTER ALTERNATOR:2", "BOOL",
                                                "A:PRESSURIZATION CABIN ALTITUDE", "NUMBER", 
                                                "A:GEAR HYDRAULIC PRESSURE:1", "NUMBER", 
                                                "A:Hydraulic Pressure:1", "Number", 

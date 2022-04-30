@@ -1,12 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414 (FSW)</aircraft><type>Annunciator Panel</type><uuid>69b62654-ce93-4164-aac1-4eab81a6a77f</uuid><author>Simstrumentation</author><description>
-***************CESSNA 414 CHANCELLOR ANNUNCIATOR PANEL ********************
-
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414 (FSW)</aircraft><type>Annunciator Panel</type><uuid>69b62654-ce93-4164-aac1-4eab81a6a77f</uuid><author>Simstrumentation</author><description>***************CESSNA 414 CHANCELLOR ANNUNCIATOR PANEL ********************
+******************************************************************************************
     Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
     GitHub: https://github.com/simstrumentation
 
 Annunciator panel for the Cessna 414 Chancellow by FlySimware
 
+
 Version info:
+- **v1.01** (30 April, 2022)
+    - Fixed a bug affecting the L and R Alt annunciator lights under certain conditions
+    - Added a global inter-instrument variable to that other Cessna 414 instrument 
+      indicator lights will also illuminate when test button is pressed. 
+
 
 - **v1.0** (24 April, 2022)
     - Original release
@@ -15,4 +20,4 @@ NOTES:
 - Will only work with the Flysimware Cessna 414 Chancellor
 
 KNOWN ISSUES:
-- None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>600</prefWidth><prefHeight>1007</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+- None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>600</prefWidth><prefHeight>1007</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
