@@ -22,6 +22,7 @@ Deice and Exterior Light Panel | [2022-04-04 v1.0](https://github.com/Simstrumen
 
 ## Coming Soon
 
-Main switch panel (Master / Starter / Magnetos)
+- Main switch panel (Master / Starter / Magnetos)
+- Fuel valves
 
 
