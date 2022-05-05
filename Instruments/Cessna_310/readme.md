@@ -11,6 +11,8 @@ From the Milviz product page:
 
 Milviz seem to have hit it out of the park with what is easily one of the best GA twins currently available for MSFS. The level of immersion and depth is beyond anything currently available for MSFS. You won't be disappointed with this plane!
 
+You can get it from the developer at this URL: https://milviz.com/flight/products/MV310R2020/index.php
+
 ## Working Instruments
 
 Instrument | Current Version | Documentation | Preview 
