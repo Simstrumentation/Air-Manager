@@ -4,7 +4,7 @@
 
 <img src="https://user-images.githubusercontent.com/75218511/166848551-80cd9393-5af1-415b-8c32-7dff3a4a3631.png">
 
-## About
+<br><br>
 
 From the Milviz product page:
 <i>Immensely popular, this familiar looking twin evokes the classic grace of the most popular light aircraft, embodying all the style and class you would hope to find in your simulated skies, along with unrivalled flight dynamics, exquisite attention to detail, and a whole host of immersive features.</i>
