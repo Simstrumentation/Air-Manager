@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 310 (Milviz)</aircraft><type>Light and De-Ice Switch Panel</type><uuid>661ef18d-e63e-4cae-0096-2ef1f6ee2cf1</uuid><author>Simstrumentation</author><description>Cessna 310R Deice and Light Panel (Milviz)
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+    
+    De-ice and exterior light switch panel for Cessna 130R
+    
+    NOTE:
+        Will only work with Milviz C130
+    
+    V1.0 - Released 2022-04-22
+
+    KNOWN ISSUES:
+    - None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1420</prefWidth><prefHeight>181</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
