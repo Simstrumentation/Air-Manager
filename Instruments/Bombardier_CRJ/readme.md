@@ -2,10 +2,15 @@
 </h1><br>
 <p align="center"><img src="https://user-images.githubusercontent.com/38576265/153980237-9595da57-864a-4816-b289-7c6e44db409a.png" width="600"></p>
 
-See Discord for Beta Versions. https://discord.gg/6xkCXe5pMn
+The Aerosoft CRJ set of planes are payware available for purchase as a bundle here: https://www.aerosoft.com/en/microsoft-flight-simulator/msfs-aircraft/3305/aerosoft-aircraft-crj-bundle?number=AS15238
 
 
-<br>
+
+## EASY SINGLE IMPORT DOWNLOAD
+These are single file import that contains all the instruments noted below for the section and date as noted.
+This single file download does not automatically get updated so be sure to check the date.
+- [Overhead 5-07-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead-ALL_Panels_5-7-22?raw=true)
+
 ## Main Panels & Instruments
 
 | Instrument | Download Current Version | Documentation | Preview |
@@ -18,7 +23,7 @@ See Discord for Beta Versions. https://discord.gg/6xkCXe5pMn
 | Overhead-Electrical Power Panel | [v1.0 02-09-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Overhead-Electrical_Power_Panel/Bombardier_CRJ-Overhead-Electrical_Power_Panel.siff?raw=true) | [docs](CRJ-Overhead-Electrical_Power_Panel/) | <img src="CRJ-Overhead-Electrical_Power_Panel/3a0e0903-67de-4a51-aab7-c16fceae0e41/preview.png" width="100"> |
 | Overhead-External Lights Panel | [v1.0 03-16-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Overhead-External_Light_Panel/Bombardier_CRJ-Overhead-External_Lights_Panel.siff?raw=true) | [docs](CRJ-Overhead-External_Light_Panel/) | <img src="CRJ-Overhead-External_Light_Panel/79f96408-7aa1-4b81-9b42-8f9b7c18dd01/preview.png" width="100"> |
 | Overhead-Fire Test Panel | [v1.0 03-16-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Overhead-Fire_Test_Panel/Bombardier_CRJ-Overhead-Fire_Test_Panel.siff?raw=true) | [docs](CRJ-Overhead-Fire_Test_Panel/) | <img src="CRJ-Overhead-Fire_Test_Panel/715ce57d-5c6c-4a74-b9e8-a24352e17714/preview.png" width="100"> |
-| Overhead-Fuel Panel | [v1.0 04-22-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Overhead-Fuel_Panel/Bombardier_CRJ-Overhead-Fuel_Panel.siff?raw=true) | [docs](CRJ-Overhead-Fuel_Panel/) | <img src="CRJ-Overhead-Fire_Test_Panel/2057f58b-27ce-43fa-061a-822e4eb49815/preview.png" width="100"> |
+| Overhead-Fuel Panel | [v1.0 04-22-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Overhead-Fuel_Panel/Bombardier_CRJ-Overhead-Fuel_Panel.siff?raw=true) | [docs](CRJ-Overhead-Fuel_Panel/) | <img src="CRJ-Overhead-Fuel_Panel/2057f58b-27ce-43fa-061a-822e4eb49815/preview.png" width="100"> |
 | Overhead-Hydraulic SOV Panel | [v1.0 03-27-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Overhead-Hydraulic_SOV_Panel/Bombardier_CRJ-Overhead-Hydraulic_SOV_Panel.siff?raw=true) | [docs](CRJ-Overhead-Hydraulic_SOV_Panel/) | <img src="CRJ-Overhead-Hydraulic_SOV_Panel/c649a940-9d77-4e5f-0bd5-c177430f1d29/preview.png" width="100"> |
 | Overhead-Hydraulic Switches Panel | [v1.0 03-16-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Overhead-Hydraulic_Switches_Panel/Bombardier_CRJ-Overhead-Hydraulic_Switches_Panel.siff?raw=true) | [docs](CRJ-Overhead-Hydraulic_Switches_Panel/) | <img src="CRJ-Overhead-Hydraulic_Switches_Panel/346066f5-be39-4d35-b77e-1a43ff4ce5c4/preview.png" width="100"> |
 | Overhead-Ignition Panel | [v1.0 03-26-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Overhead-Ignition_Panel/Bombardier_CRJ-Overhead-Ignition_Panel.siff?raw=true) | [docs](CRJ-Overhead-Ignition_Panel/) | <img src="CRJ-Overhead-Ignition_Panel/72d30aa4-9606-4e15-8e5a-615b59538f41/preview.png" width="100"> |
