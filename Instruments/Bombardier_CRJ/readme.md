@@ -9,7 +9,7 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 ## EASY SINGLE IMPORT DOWNLOAD
 These are single file import that contains all the instruments noted below for the section and date as noted.
 This single file download does not automatically get updated so be sure to check the date.
-- [Overhead 5-07-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead-ALL_Panels_5-7-22?raw=true)
+- [Overhead 5-07-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead-ALL_Panels_5-7-22.siff?raw=true)
 
 ## Main Panels & Instruments
 
