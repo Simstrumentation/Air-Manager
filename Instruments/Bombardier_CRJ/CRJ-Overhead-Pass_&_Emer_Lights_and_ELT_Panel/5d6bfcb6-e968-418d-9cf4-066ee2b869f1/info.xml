@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Bombardier CRJ</aircraft><type>Overhead-Pass &amp; Emer Lights and ELT Panel</type><uuid>5d6bfcb6-e968-418d-9cf4-066ee2b869f1</uuid><author>Simstrumentation</author><description>Bombardier CRJ-Overhead-Pass &amp; Emer Lights and ELT Panel
+See here for contact info and notes: https://github.com/simstrumentation
+
+
+Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>639</prefWidth><prefHeight>228</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
