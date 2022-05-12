@@ -25,6 +25,6 @@ Main Electrical and Starter Switch Panel | [2022-05-05 v1.0](https://github.com/
 
 ## Coming Soon
 
-- Fuel valves
+- TBA
 
 
