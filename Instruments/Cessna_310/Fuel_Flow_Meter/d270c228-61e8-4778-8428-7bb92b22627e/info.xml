@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 310 (Milviz)</aircraft><type>Fuel Flow Meter</type><uuid>d270c228-61e8-4778-8428-7bb92b22627e</uuid><author>Greg Jackson (Arathald)</author><description>Made by Greg Jackson (Arathald) and SIMSTRUMENTATION
+    GitHub: https://github.com/simstrumentation
+    Fuel flow meter for Cessna 130R by Milviz
+    NOTE:
+        - Only guaranteed to work correctly with Milviz C130R 
+    V1.0 - Released 2022-05-15
+    KNOWN ISSUES:
+        - none 
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>623</prefWidth><prefHeight>623</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
