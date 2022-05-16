@@ -105,10 +105,10 @@ local rotation_target_left = 0
 local rotation_target_right = 0
 local current_rotation_left = 0
 local current_rotation_right = 0
-local rotation_timer = timer_start(0, nil) -- initialize the timer
 
 local timer_period = 33.33 -- 30 fps
 local max_degrees_per_second = 40 -- hand tuned to closely match the in-game instrument
+local rotation_timer
 local prev_timer_tick
 
 function set_flow(ff1, ff2)
@@ -159,3 +159,5 @@ end
 ---------------------------------------------
 fs2020_variable_subscribe("L:C310_Fuel_Flow_Left", "Pounds per hour",
                           "L:C310_Fuel_Flow_Right", "Pounds per hour", set_flow)
+
+set_flow(0,0)
