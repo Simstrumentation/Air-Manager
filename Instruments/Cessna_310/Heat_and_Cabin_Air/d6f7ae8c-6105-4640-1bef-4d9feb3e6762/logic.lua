@@ -10,6 +10,8 @@
     NOTE:
         Will only work with Milviz C130
     
+    V1.01 - Released 2022-05-20
+        - fixed choppy movement of the dials
     V1.0 - Released 2022-05-07
 
     KNOWN ISSUES:
@@ -79,7 +81,7 @@ defrost_image = img_add("triangle_knob.png", 42, 250, 148, 148)
 
 function defrost_dial(defrost_dial)
     defrost_percent = defrost_dial
-    rotate(defrost_image, (defrost_dial * 2.75))
+    rotate(defrost_image, (defrost_dial * 2.75), "LINEAR", 0.04)
 end
 fs2020_variable_subscribe("L:C310_SW_DEFROST", "Number", defrost_dial)
 
@@ -102,7 +104,7 @@ temp_image = img_add("triangle_knob.png", 222, 250, 148, 148)
 
 function temp_dial(temp_dial)
     temp_percent = temp_dial
-    rotate(temp_image, (temp_dial * 2.75))
+    rotate(temp_image, (temp_dial * 2.75), "LINEAR", 0.04)
 end
 fs2020_variable_subscribe("L:C310_SW_TEMP_CONTROL", "Number", temp_dial)
 
@@ -125,7 +127,7 @@ cabin_image = img_add("triangle_knob.png", 402, 250, 148, 148)
 
 function cabin_dial(cabin_dial)
     cabin_percent = cabin_dial
-    rotate(cabin_image, (cabin_dial * 2.75))
+    rotate(cabin_image, (cabin_dial * 2.75), "LINEAR", 0.04)
 end
 fs2020_variable_subscribe("L:C310_SW_CABIN_AIR", "Number", cabin_dial)
 
@@ -148,6 +150,6 @@ fwd_cabin_image = img_add("triangle_knob.png", 582, 250, 148, 148)
 
 function fwd_cabin_dial(fwd_cabin_dial)
     fwd_cabin_percent = fwd_cabin_dial
-    rotate(fwd_cabin_image, (fwd_cabin_dial * 2.75))
+    rotate(fwd_cabin_image, (fwd_cabin_dial * 2.75), "LINEAR", 0.04)
 end
 fs2020_variable_subscribe("L:C310_SW_FWD_CABIN_AIR", "Number", fwd_cabin_dial)
