@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414</aircraft><type>Digital Altitude Alerter</type><uuid>d3e9d575-ba69-4924-9a23-02d8522cfdc4</uuid><author>Simstrumentation</author><description>    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+
+Digital altitude alterter / preselector panel for the Cessna 414 Chancellow by FlySimware
+
+Version info:
+
+- **v1.0** (24 April, 2022)
+    - Original release
+    
+NOTES: 
+- Will only work with the Flysimware Cessna 414 Chancellor
+- Currently in ßETA / Early access. Please report any issues on our Discord server. 
+
+KNOWN ISSUES:
+- None
+    
+ATTRIBUTION:
+All code and artwork  are original creations by Simstrumentation
+Sharing or re-use of any code or assets is not permitted without credit to the original authors.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>6</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>616</prefWidth><prefHeight>280</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
