@@ -2,7 +2,7 @@
   <h1 align="center">Milviz Cessna 310R</h1>
 </p>
 
-<img src="https://user-images.githubusercontent.com/75218511/167229975-ae8a1f26-10ec-49fa-9fb5-f48209c25b1f.jpg">
+<img src="https://user-images.githubusercontent.com/75218511/166848551-80cd9393-5af1-415b-8c32-7dff3a4a3631.png">
 <br>
 
 From the Milviz product page:
