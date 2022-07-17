@@ -5,7 +5,11 @@
     
     RELEASES: 
     
-        V1.0 - Released 2022-07-16
+        V1.01 - Released 2022-07-17
+		- adjusted grapphical issues
+		- knob graphics - still inop
+		- adjusted state issue with pitot switch
+	V1.0 - Released 2022-07-16
         
     NOTES:
         - Background graphic by Andrew Kena from the MSFS forum. 
@@ -13,4 +17,4 @@
     
     KNOWN ISSUES:
         - Light potentiometers currently INOP. Will come in a future version
-</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>690</prefWidth><prefHeight>750</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>690</prefWidth><prefHeight>750</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

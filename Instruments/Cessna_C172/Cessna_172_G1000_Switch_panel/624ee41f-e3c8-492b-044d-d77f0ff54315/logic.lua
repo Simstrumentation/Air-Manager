@@ -9,9 +9,14 @@
     Main switch panel for the Cessna 172 G1000 Edition
     
     RELEASES: 
-    
-        V1.0 - Released 2022-07-16
         
+        V1.01 - Released 2022-07-17
+		- adjusted grapphical issues
+		- knob graphics - still inop
+		- adjusted state issue with pitot switch
+		
+        V1.0 - Released 2022-07-16
+                - initial release
     NOTES:
         - Background graphic by Andrew Kena from the MSFS forum. 
   
@@ -34,7 +39,7 @@ img_add_fullscreen("sw_panel1.png")
 
 --STANDBY BATTERY SECTION
 test_indicator = img_add("test_indicator.png", 199, 120, 28, 28)
-
+opacity(test_indicator, 0)
 sw_mid_id = img_add("red knob mid.png", 144, 90, 28, 88 )
 sw_down_id = img_add("red knob off.png", 144, 90, 28, 88)
 sw_up_id = img_add("red knob.png", 144, 90, 28, 88)
@@ -190,11 +195,11 @@ fs2020_variable_subscribe("LIGHT STROBE", "Bool", cb_strobe)
 -- END STROBE SWITCH
 
 -- FUEL PUMP SWITCH
-function pitot_click_callback(position)
+function pump_click_callback(position)
     fs2020_event("TOGGLE_ELECT_FUEL_PUMP")
 end
 
-pump_switch_id = switch_add("white knob off.png", "white knob.png", 308,602,28,98, pitot_click_callback)
+pump_switch_id = switch_add("white knob off.png", "white knob.png", 308,602,28,98, pump_click_callback)
 
 function cb_pump(sw_pos)
     switch_set_position(pump_switch_id, sw_pos) 
@@ -206,21 +211,15 @@ fs2020_variable_subscribe("GENERAL ENG FUEL PUMP SWITCH:1", "Bool", cb_pump)
 
 -- PITOT HEAT SWITCH
 function pitot_click_callback(position)
-    if position == 0 then
-        fs2020_event("PITOT_HEAT_ON")
-    elseif position == 1 then
-        fs2020_event("PITOT_HEAT_OFF")
-    end
+    fs2020_event("PITOT_HEAT_TOGGLE", 1)
 end
 
-pitot_switch_id = switch_add("green knob off.png", "green knob.png", 368,602,28,98, pitot_click_callback)
+pitot_switch_id = switch_add("green knob off.png", "green knob.png", 368,602,28,98, new_pitot_pos)
 
-function cb_pitot(sw_pos)
-     switch_set_position(pitot_switch_id, sw_pos)
+function new_pitot_pos(pitot)
+    switch_set_position(pitot_id, pitot)
 end
-
-
-fs2020_variable_subscribe("PITOT HEAT", "Bool", cb_pitot)
+fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_pos)
 -- END PITOT HEAT SWITCH
 
 -- CABIN POWER SWITCH
@@ -325,12 +324,37 @@ fs2020_variable_subscribe("AVIONICS MASTER SWITCH:1", "Bool",
                                                cb_avionics)
 -- END AVIONICS 
 
--- LIGHT DIALS
-function cb_playerror()
+
+
+--DIMMING 
+
+    --panels
+function cb_panel()
+    --inop
     sound_play(snd_inop)
-end
-button_add(nil, nil, 90, 495, 157, 200, cb_playerror)
--- END LIGHT DIALS
+end    
+knob_panel_id = dial_add("delta_knob.png", 90, 498, 64, 64, cb_panel)    
 
+-- stdb instruments
 
+function cb_inst()
+    --inop
+    sound_play(snd_inop)
+end    
+knob_inst_id = dial_add("delta_knob.png", 180, 498, 64, 64, cb_inst)    
+
+    --pedestal
+function cb_pedestal()
+    --inop
+    sound_play(snd_inop)
+end    
+knob_pedestal_id = dial_add("delta_knob.png", 90, 604, 64, 64, cb_pedestal)    
+
+    --avionics
+function cb_avionics()
+    --inop
+    sound_play(snd_inop)
+end    
+knob_avionics_id = dial_add("delta_knob.png", 180, 604, 64, 64, cb_avionics)    
+--END DIMMING
 
