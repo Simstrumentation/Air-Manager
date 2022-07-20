@@ -35,7 +35,7 @@ local batt1_pos
 local batt2_pos
 snd_inop = sound_add("beepfail.wav")
 
-img_add_fullscreen("sw_panel1.png")
+img_add_fullscreen("bg.png")
 
 --STANDBY BATTERY SECTION
 test_indicator = img_add("test_indicator.png", 199, 120, 28, 28)
@@ -143,7 +143,7 @@ function landing_click_callback(position)
         fs2020_event("LANDING_LIGHTS_OFF")
     end
 end
-landing_switch_id = switch_add("white knob off.png", "white knob.png", 368,460,28,98, landing_click_callback)
+landing_switch_id = switch_add("white knob off.png", "white knob.png", 379,460,28,98, landing_click_callback)
 
 function cb_landing_switch(sw_pos)
     switch_set_position(landing_switch_id, sw_pos)
@@ -155,7 +155,7 @@ fs2020_variable_subscribe("LIGHT LANDING", "Bool", cb_landing_switch)
 function taxi_click_callback(position)
     fs2020_event("TOGGLE_TAXI_LIGHTS")
 end
-taxi_switch_id = switch_add("white knob off.png", "white knob.png", 426,460,28,98,  taxi_click_callback)
+taxi_switch_id = switch_add("white knob off.png", "white knob.png", 449,460,28,98,  taxi_click_callback)
 
 function cb_taxi(sw_pos)
     switch_set_position(taxi_switch_id, sw_pos)
@@ -167,7 +167,7 @@ fs2020_variable_subscribe("LIGHT TAXI", "Bool", cb_taxi)
 function nav_click_callback(position)
     fs2020_event("TOGGLE_NAV_LIGHTS")
 end
-nav_switch_id = switch_add("white knob off.png", "white knob.png", 486,460,28,98, nav_click_callback)
+nav_switch_id = switch_add("white knob off.png", "white knob.png", 518,460,28,98, nav_click_callback)
 
 function cb_nav(sw_pos)
     switch_set_position(nav_switch_id,sw_pos)
@@ -184,7 +184,7 @@ function strobe_click_callback(position)
     end
 end
 
-strobe_switch_id = switch_add("white knob off.png", "white knob.png", 544,460,28,98, strobe_click_callback)
+strobe_switch_id = switch_add("white knob off.png", "white knob.png", 593,460,28,98, strobe_click_callback)
 
 function cb_strobe(sw_pos)
     switch_set_position(strobe_switch_id, sw_pos)
@@ -214,7 +214,7 @@ function pitot_click_callback(position)
     fs2020_event("PITOT_HEAT_TOGGLE", 1)
 end
 
-pitot_switch_id = switch_add("green knob off.png", "green knob.png", 368,602,28,98, new_pitot_pos)
+pitot_switch_id = switch_add("green knob off.png", "green knob.png", 380,602,28,98, new_pitot_pos)
 
 function new_pitot_pos(pitot)
     switch_set_position(pitot_id, pitot)
@@ -228,7 +228,7 @@ function cb_power(position)
     sound_play(snd_inop)
 end
 
-power_switch_id = switch_add("white knob off.png", "white knob.png", 426,602,28,98, cb_power)
+power_switch_id = switch_add("white knob off.png", "white knob.png", 447,602,28,98, cb_power)
 
 function new_pitot_switch_pos(sw_on)
 
@@ -247,8 +247,6 @@ function new_pitot_switch_pos_fsx(sw_on)
 
 end
 
-xpl_dataref_subscribe("sim/cockpit2/switches/pitot_heat_on","INT", new_pitot_switch_pos)
-fsx_variable_subscribe("PITOT HEAT", "Bool", new_pitot_switch_pos_fsx)
 fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_switch_pos_fsx)
 -- END CABIN POWER SWITCH
 
@@ -264,7 +262,7 @@ function alt_click_callback(position)
 
 end
 
-alt_switch_id = switch_add("master_right_off.png", "master_right_on.png", 76,263, 60,150,alt_click_callback)
+alt_switch_id = switch_add("master_right_off.png", "master_right_on.png", 70,263, 72,150,alt_click_callback)
 
 function cb_alternator(sw_pos)
 
@@ -285,7 +283,7 @@ function bat_click_callback(position)
     end
 end
 
-bat_switch_id = switch_add("master_left_off.png", "master_left_on.png",109,263, 60,150,bat_click_callback)
+bat_switch_id = switch_add("master_left_off.png", "master_left_on.png",110,263, 72,150,bat_click_callback)
 
 function cb_battery(sw_pos)
     switch_set_position(bat_switch_id, sw_pos)
@@ -302,7 +300,7 @@ function avionics1_click(position)
         fs2020_variable_write("A:CIRCUIT SWITCH ON:24", "Enum", 1)
     end
 end
-avion_1_switch_id = switch_add("white_rock_off.png", "white_rock_on.png",206,275, 32,121, avionics1_click)
+avion_1_switch_id = switch_add("white_rock_off.png", "white_rock_on.png",227,275, 37,121, avionics1_click)
 
 function avionics2_click(position)
     if sw2_pos then
@@ -311,7 +309,7 @@ function avionics2_click(position)
         fs2020_variable_write("A:CIRCUIT SWITCH ON:25", "Enum", 1)
     end
 end
-avion_2_switch_id = switch_add("white_rock_off.png", "white_rock_on.png",242,275, 32,121, avionics2_click)
+avion_2_switch_id = switch_add("white_rock_off.png", "white_rock_on.png",268,275, 37,121, avionics2_click)
 
 function cb_avionics(sw_1, sw_2)
     sw1_pos = sw_1
