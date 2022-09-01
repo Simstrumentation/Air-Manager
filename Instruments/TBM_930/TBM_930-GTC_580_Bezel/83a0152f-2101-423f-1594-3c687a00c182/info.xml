@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>TBM 930</aircraft><type>GTC 580 Overlay</type><uuid>83a0152f-2101-423f-1594-3c687a00c182</uuid><author>Simstrumentation and Russ Barlow - based on work by Yves Levesque</author><description>***************************Garmin GTC580 Overlay Bezel*******************************
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    http://www.simstrumentation.com
+
+This GTC580 bezel is specifically designed for use with Microsoft Flight Simulator (2020)
+and to work with both the Asobo (stock) and Working Title G3000. 
+
+DOES NOT WORK WITH X-PLANE, FSX or P3D
+
+INSTRUCTIONS:
+
+THIS INSTRUMENT IS ONLY AN OVERLAY. It does not generate the GTC580 screen content. It must be used in conjunction with pop out instrument from Microsoft Flight Simulator. Right Alt + Click on the GTC580 screen in MSFS to pop out the windows. 
+
+Version info:
+
+- **v1.0** (August 31 2022)
+    - Original release
+      
+NOTES: 
+- N/A
+
+KNOWN ISSUES:
+- None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1200</prefWidth><prefHeight>753</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
