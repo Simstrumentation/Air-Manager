@@ -9,6 +9,9 @@ Annunciator panel for the Cessna 414 Chancellow by FlySimware
 
 
 Version info:
+- **v1.02** (21 Sept, 2022)
+    - Fixed a bug for courtesy light due to the variable used being changed at some point
+      
 - **v1.01** (30 April, 2022)
     - Fixed a bug affecting the L and R Alt annunciator lights under certain conditions
     - Added a global inter-instrument variable to that other Cessna 414 instrument 
@@ -182,7 +185,7 @@ function toggle_indicators(test, volts, door, alt_l, alt_l_state, alt_r, alt_r_s
         visible(txt_l_alt_on, false)
         
     end
-    print (alt_l)
+
     --alternator right
     if volts > 1 and ( (alt_r_state == false or alt_r< 18) or  test == 1) then
         visible(txt_r_alt_on, true)
@@ -259,7 +262,8 @@ function toggle_indicators(test, volts, door, alt_l, alt_l_state, alt_r, alt_r_s
     end
     
     --Courtesy light
-    if volts > 1 and ((court == 1 or pedestal == 13)   or  test == 1) then
+    if volts > 8 and ((court == 1 )   or  test == 1) then
+
         visible(txt_court_on, true)
     else
         visible(txt_court_on, false)
@@ -301,7 +305,7 @@ fs2020_variable_subscribe("L:ANUNNCIATOR_TEST_SWITCH", "NUMBER",
                                                "L:GENERIC_Monentary_AIRCON_COOL_SWITCH_1", "Number",  
                                                "A:WINDSHIELD DEICE SWITCH", "NUMBER",
                                                "L:STRUCTURAL_DEICE_CYCLE", "NUMBER",
-                                               "A:LIGHT CABIN POWER SETTING", "NUMBER",
+                                               "A:LIGHT PEDESTRAL:10", "NUMBER",
                                                "A:LIGHT PEDESTAL:13", "NUMBER",  
                                                "A: GEAR CENTER POSITION:1", "PERCENT", 
                                                "A:PROP RPM:1", "RPM",
