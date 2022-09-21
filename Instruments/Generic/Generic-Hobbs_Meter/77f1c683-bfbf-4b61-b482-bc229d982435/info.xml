@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Hobbs Meter</type><uuid>77f1c683-bfbf-4b61-b482-bc229d982435</uuid><author>Simstrumentation</author><description>*******************************GENERIC HOBBS METER*******************************
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://github.com/simstrumentation
+
+Hobbs meter for MSFS. Includes 2 styles - round and rectangular
+
+Version info:
+- **v1.0** (9/21/2022)
+
+NOTES: 
+- Select Instrument Style  user property to select the color of your text labels based on your panel background color
+
+KNOWN ISSUES:
+- None</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>102</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>500</prefWidth><prefHeight>500</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
