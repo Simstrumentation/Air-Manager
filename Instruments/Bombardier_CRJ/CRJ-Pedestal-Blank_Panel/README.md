@@ -1,5 +1,5 @@
-## Bombardier CRJ-Pedestal-Aileron Rudder Trim Panel
-- **v1.0** 06-17-2022
+## Bombardier CRJ-Pedestal-Blank Panel
+- **v1.0** 09-19-2022
     - Original Panel Created
 
 

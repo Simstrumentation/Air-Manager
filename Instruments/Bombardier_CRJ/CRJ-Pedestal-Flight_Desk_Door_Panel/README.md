@@ -1,5 +1,5 @@
-## Bombardier CRJ-Pedestal-Aileron Rudder Trim Panel
-- **v1.0** 06-17-2022
+## Bombardier CRJ-Pedestal-Flight Desk Door Panel
+- **v1.0** 04-18-2022
     - Original Panel Created
 
 

@@ -1,4 +1,4 @@
-## Bombardier CRJ-ATC Transponder Panel
+## Bombardier CRJ-Pedestal-ATC Transponder Panel
 - **v1.0** 06-07-2022
     - Original Panel Created
 
