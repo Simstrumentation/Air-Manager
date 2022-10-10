@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Bombardier CRJ</aircraft><type>Pedestal-Radio Tuning Unit Panel</type><uuid>8982338a-fcc6-4c1b-8ae6-319a9868c771</uuid><author>Simstrumentation</author><description>Bombardier CRJ-Pedestal-Radio Tuning Unit Panel
+See here for contact info and notes: https://github.com/simstrumentation
+
+    - This instrument has a user prop to control either the Pilot or CoPilot side unit.  
+
+Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>360</prefWidth><prefHeight>260</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
