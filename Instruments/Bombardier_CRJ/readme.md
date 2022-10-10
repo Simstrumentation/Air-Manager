@@ -6,17 +6,6 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 
 
 
-## EASY SINGLE IMPORT DOWNLOAD
-These are single file import that contains all the instruments noted below for the section and date as noted.
-This single file download does not automatically get updated so be sure to check the date.
-- [Overhead Instruments 5-09-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead-ALL_Panels_5-9-22.siff?raw=true) 
-- [Pedestal Instruments 10-09-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Pedestal-ALL_Panels_10-9-22.siff?raw=true) 
-
-
-To save time, we've created a portrait and landscape layout (Air Manager calls them "Panels") with the instruments already layed out. Just download and import the file linked below, then click the button to add a new Panel, in the search type in "CRJ".
-- [Overhead Landscape or Portrait Layout CLICK HERE TO DOWNLOAD](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead_Panel_Layout.siff?raw=true)
-- [Pedestal Layout CLICK HERE TO DOWNLOAD](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Pedestal_Panel_Layout.siff?raw=true)
-
 ## Screenshots
 | Overhead Day | Overhead Night |
 | ------------- |:-------------:|
@@ -76,6 +65,13 @@ To save time, we've created a portrait and landscape layout (Air Manager calls t
 | Pedestal-Yaw Damper Panel | [v1.0 06-19-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Pedestal-Yaw_Damper_Panel/Bombardier_CRJ-Pedestal-Yaw_Damper_Panel.siff?raw=true) | [docs](CRJ-Pedestal-Yaw_Damper_Panel/) | <img src="CRJ-Pedestal-Yaw_Damper_Panel/c0d47b6d-a0b2-4a5f-b851-7908b038f8e9/preview.png" width="100"> |
 
 
+## Other Instruments
+
+| Instrument | Download Current Version | Documentation | Preview |
+| ---------- | ------------------------ | ------------- | ------- |
+| PFD MFD Overlay Bezel | [v1.0 02-06-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-PFD_MFD_Overlay_Bezel/Bombardier_CRJ-PDF_MDF_Overlay_Bezel.siff?raw=true) | [docs](CRJ-PFD_MFD_Overlay_Bezel/) | <img src="CRJ-PFD_MFD_Overlay_Bezel/ac6cde1a-ce4a-45f6-a963-33a511424ecc/preview.png" width="100"> |
+| Side Panel | [v1.0 06-21-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Side_Panel/Bombardier_CRJ-Side_Panel.siff?raw=true) | [docs](CRJ-Side_Panel/) | <img src="CRJ-Side_Panel/d9b2c1c9-ec3d-404f-b03b-935aa0b2630a/preview.png" width="100"> |
+
 ## Ambient Light Dimming - Full Day / Night Cycle On Your CRJ Instruments
 
 
@@ -89,7 +85,16 @@ This instrument, will automatically follow ambient lighting in the sim and dim a
 
 
 
+## EASY SINGLE IMPORT DOWNLOAD
+These are single file import that contains all the instruments noted below for the section and date as noted.
+This single file download does not automatically get updated so be sure to check the date.
+- [Overhead Instruments 5-09-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead-ALL_Panels_5-9-22.siff?raw=true) 
+- [Pedestal Instruments 10-09-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Pedestal-ALL_Panels_10-9-22.siff?raw=true) 
 
+
+To save time, we've created a portrait and landscape layout (Air Manager calls them "Panels") with the instruments already layed out. Just download and import the file linked below, then click the button to add a new Panel, in the search type in "CRJ".
+- [Overhead Landscape or Portrait Layout CLICK HERE TO DOWNLOAD](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead_Panel_Layout.siff?raw=true)
+- [Pedestal Layout CLICK HERE TO DOWNLOAD](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Pedestal_Panel_Layout.siff?raw=true)
 
 
 
