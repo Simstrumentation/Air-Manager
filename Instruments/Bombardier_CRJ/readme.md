@@ -47,6 +47,7 @@ To save time, we've created a portrait and landscape layout (Air Manager calls t
 | Instrument | Download Current Version | Documentation | Preview |
 | ---------- | ------------------------ | ------------- | ------- |
 | Pedestal-ATC Transponder Panel | [v1.0 06-07-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Pedestal-ATC_Transponder_Panel/Bombardier_CRJ-Pedestal-ATC_Transponder_Panel.siff?raw=true) | [docs](CRJ-Pedestal-ATC_Transponder_Panel/) | <img src="CRJ-Pedestal-ATC_Transponder_Panel/7092474c-db27-4ad2-1406-4ca936fcbb3f/preview.png" width="100"> |
+| Pedestal-ATC Transponder Panel | [v1.0 06-07-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Pedestal-Aileron_Rudder_Trim_Panel/Bombardier_CRJ-Aileron_Rudder_Trim_Panel.siff?raw=true) | [docs](CRJ-Pedestal-Aileron_Rudder_Trim_Panel/) | <img src="CRJ-Pedestal-Aileron_Rudder_Trim_Panel/71d0316c-ab82-44d9-8eea-c5aeb9d99cbb/preview.png" width="100"> |
 
 ## Ambient Light Dimming - Full Day / Night Cycle On Your CRJ Instruments
 
