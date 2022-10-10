@@ -9,14 +9,25 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 ## EASY SINGLE IMPORT DOWNLOAD
 These are single file import that contains all the instruments noted below for the section and date as noted.
 This single file download does not automatically get updated so be sure to check the date.
-- [Overhead 5-09-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead-ALL_Panels_5-9-22.siff?raw=true) 
+- [Overhead Instruments 5-09-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead-ALL_Panels_5-9-22.siff?raw=true) 
+- [Pedestal Instruments 10-09-22 CLICK HERE TO DOWNLOAD SINGLE FILE](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Pedestal-ALL_Panels_10-9-22.siff?raw=true) 
 
 
-To save time, we've created a portrait and landscape layout (Air Manager calls them "Panels") with the instruments already layed out. Just download and import the file linked below, then click the button to add a new Panel, in the search type in "CRJ" and you'll get a selection of either Landscape or Portrait for a 1920x1080 montior.
+To save time, we've created a portrait and landscape layout (Air Manager calls them "Panels") with the instruments already layed out. Just download and import the file linked below, then click the button to add a new Panel, in the search type in "CRJ".
 - [Overhead Landscape or Portrait Layout CLICK HERE TO DOWNLOAD](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Overhead_Panel_Layout.siff?raw=true)
+- [Pedestal Layout CLICK HERE TO DOWNLOAD](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/Bombardier_CRJ-Pedestal_Panel_Layout.siff?raw=true)
 
 ## Screenshots
-<img src="https://user-images.githubusercontent.com/38576265/167281420-f4e90f92-68e5-4df3-af05-6b9b4b62f75e.png" width="300"> | <img src="https://user-images.githubusercontent.com/38576265/167281508-8890e130-0692-44d9-b698-c40f4e5fb75f.png" width="300">
+| Overhead Day | Overhead Night |
+| ------------- |:-------------:|
+<img src="https://user-images.githubusercontent.com/38576265/167281420-f4e90f92-68e5-4df3-af05-6b9b4b62f75e.png" width="300"> | <img src="https://user-images.githubusercontent.com/38576265/167281508-8890e130-0692-44d9-b698-c40f4e5fb75f.png" width="300"> |
+
+| Pedestal Day | Pedestal Night |
+| ------------- |:-------------:|
+<img src="https://user-images.githubusercontent.com/38576265/194793845-57c0413e-9cc9-4f8c-9f04-2f9d2953b120.png" width="300"> | <img src="https://user-images.githubusercontent.com/38576265/194793957-471b2663-2ba4-4425-b8b5-0cd9724e3616.png" width="300"> |
+
+<br/>
+<br/>
 
 
 ## Overhead Instruments
