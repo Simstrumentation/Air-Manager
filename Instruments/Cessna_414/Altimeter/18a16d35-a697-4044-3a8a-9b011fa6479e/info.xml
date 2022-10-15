@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414AW (FSW)</aircraft><type>Altimeter </type><uuid>18a16d35-a697-4044-3a8a-9b011fa6479e</uuid><author></author><description>CESSNA 414AW CHANCELLOR ALTIMETER
+
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://simstrumentation.com
+
+Altimeter for the Cessna 414AW Chancellor by FlySimware
+
+NOTES: 
+- Modelled after the instrument in the Flysimware C414AW
+- Front bezel glass and internal reflection can be disabled in the user properties
+- Should work on other MSFS aircraft but compatibility not guaranteed
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>600</prefWidth><prefHeight>600</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

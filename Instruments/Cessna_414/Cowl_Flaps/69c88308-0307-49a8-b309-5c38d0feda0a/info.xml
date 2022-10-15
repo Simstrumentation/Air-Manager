@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414AW (FSW)</aircraft><type>Cowl Flaps</type><uuid>69c88308-0307-49a8-b309-5c38d0feda0a</uuid><author>Simstrumentation</author><description>CESSNA 414AW CHANCELLOR COWL FLAP CONTROLS
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://simstrumentation.com
+
+Cowl flap controls for the Cessna 414AWChancellor by FlySimware
+
+NOTES: 
+- Designed to match the appearance of the C414AW
+- User property can select to show or hide the background
+- Should work on other MSFS aircraft but compatibility not guaranteed
+
+KNOWN ISSUES:
+- On flight restart, there may be a sync loss between the plane and instrument. Activating
+   the instrument in the virtual cockpit will re-sync</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>800</prefWidth><prefHeight>400</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

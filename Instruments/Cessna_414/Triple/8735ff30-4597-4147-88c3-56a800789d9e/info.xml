@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414AW (FSW)</aircraft><type>Triple Gauge</type><uuid>8735ff30-4597-4147-88c3-56a800789d9e</uuid><author>Snake Stack Simulations</author><description>CESSNA 414AW CHANCELLOR TRIPLE ENGINE GAUGE
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://simstrumentation.com
+
+Triple engine gauge for the Cessna 414AWChancellor by FlySimware
+
+NOTES: 
+- Designed to match the appearance of the C414AW
+- Select which engine the gauge will be assigned to from the instrument user properties
+- Front bezel glass and internal reflection can be disabled in the user properties
+- Should work on other MSFS aircraft but compatibility not guaranteed</description><compatibleFSX>true</compatibleFSX><compatibleP3D>true</compatibleP3D><compatibleXPL>true</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>103</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>600</prefWidth><prefHeight>600</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

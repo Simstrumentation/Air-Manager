@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414AW (FSW)</aircraft><type>Digital Altitude Alerter</type><uuid>d3e9d575-ba69-4924-9a23-02d8522cfdc4</uuid><author>Simstrumentation</author><description>CESSNA 414 CHANCELLOR DIGITAL ALTITUDE ALERTER 
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://simstrumentation.com
+
+Digital altitude alterter / preselector panel for the Cessna 414 Chancellow by FlySimware
+
+NOTES: 
+- Designed for the C414 Chancellor. May work with other planes, but compatibility not guaranteed nor supported. 
+- BONUS FEATURE: Includes a press on the alt knob to square up the heading bug</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>616</prefWidth><prefHeight>280</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

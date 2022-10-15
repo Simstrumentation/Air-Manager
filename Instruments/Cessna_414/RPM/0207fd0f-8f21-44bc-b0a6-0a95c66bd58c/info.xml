@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414AW (FSW)</aircraft><type>RPM gauge</type><uuid>0207fd0f-8f21-44bc-b0a6-0a95c66bd58c</uuid><author>Simstrumentation</author><description>CESSNA 414AW CHANCELLOR RPM GUAGE WITH PROP SYNC
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://simstrumentation.com
+
+RPM gauge for the Cessna 414AWChancellor by FlySimware
+
+NOTES: 
+- Select Text Color user property to select the color of your text labels based on your panel background color
+- Front bezel glass and internal reflection can be disabled in the user properties
+- Will only work with the Flysimware Cessna 414 Chancellor</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>600</prefWidth><prefHeight>600</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

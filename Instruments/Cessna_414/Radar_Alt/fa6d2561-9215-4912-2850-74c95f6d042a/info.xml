@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414AW (FSW)</aircraft><type>Radar altimeter</type><uuid>fa6d2561-9215-4912-2850-74c95f6d042a</uuid><author>Simstrumentation</author><description>CESSNA 414AW CHANCELLOR RADAR ALTIMETER
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://simstrumentation.com
+
+Radar altimeter for the Cessna 414AWChancellor by FlySimware
+
+NOTES: 
+- Designed to match the appearance of the C414AW
+- Front bezel glass and internal reflection can be disabled in the user properties
+- Should work on other MSFS aircraft but compatibility not guaranteed
+
+NOTES: 
+- Will only work with the FlySimWare Cessna 414AW for Microsoft Flight Simulator
+- Front bezel glass and internal reflection can be disabled in the user properties
+- Should work on other MSFS aircraft but compatibility not guaranteed</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>600</prefWidth><prefHeight>600</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

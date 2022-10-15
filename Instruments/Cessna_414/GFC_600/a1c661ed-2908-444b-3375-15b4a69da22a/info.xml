@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414AW (FSW)</aircraft><type>Garmin GFC 600 Overlay</type><uuid>a1c661ed-2908-444b-3375-15b4a69da22a</uuid><author>Simstrumentation</author><description>CESSNA 414 CHANCELLOR GARMIN GFC 600 OVERLAY
+
+    Made by SIMSTRUMENTATION &quot;EXTERMINATE THE MICE FROM YOUR COCKPIT!&quot;
+    GitHub: https://simstrumentation.com
+
+Garmin GC 600 autopilot OVERLAY for the Cessna 414 Chancellow by FlySimware
+NOTES: 
+- Will only work with the Flysimware Cessna 414 Chancellor
+- Requires the use of the popout from the autopilot screen in MSFS (Right Alt + click) for its display. </description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>960</prefWidth><prefHeight>250</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
