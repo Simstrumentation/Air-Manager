@@ -3,7 +3,10 @@
   <h1 align="center">Cessna 414 Chancellor (Flysimware)</h1>
 </p>
 <p align="center"><img src="https://user-images.githubusercontent.com/75218511/164995387-41b02153-ce4f-4e64-8384-41b1daea60bf.png" width="600"/></p>
+## About
+This is a collection of instrument's for Flysimware's amazing Cessna 414AW Chancellor. This is an incredible plane to fly and easily one of the best 3rd party aircraft for MSFS so far. 
 
+Due to popular demand for the very specific instruments in this plane not easily replicated by generic instruments available in the Air Manager Community Store, we've gone ahead and built a set of essential instruments for this aircraft. It should cover the vast majority of essential functions required for this aircraft's various systems. 
 
 <!-- ABOUT THE PROJECT -->
 ## Working Instruments
