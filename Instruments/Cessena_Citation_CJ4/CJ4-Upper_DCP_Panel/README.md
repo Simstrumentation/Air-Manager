@@ -15,6 +15,8 @@
     - Click and Dial sounds replaced with custom.    
 - **v2.2** 01-19-2022  with credit to SimInnovations Tony for the suggestion.
     - Baro knob changed from Switch to Button to allow Knobster push function.  
+- **v2.3** 10-19-22 SIMSTRUMENTATION 
+    - Added acceleration to Baro Knob. Request from sunbeam60.  	
 
 ## Notes:
 - Must use the Simstrumentation Ambient Light Dimmer control in order to use night lighting mode

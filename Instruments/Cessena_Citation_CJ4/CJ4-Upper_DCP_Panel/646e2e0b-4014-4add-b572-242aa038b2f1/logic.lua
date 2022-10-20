@@ -21,7 +21,9 @@
     - Resource folder file capitials renamed for SI Store submittion  
     - Click and Dial sounds replaced with custom.    
  **v2.2** 01-19-22 SIMSTRUMENTATION with credit to SimInnovations Tony for the suggestion.
-    - Baro knob changed from Switch to Button to allow Knobster push function.            
+    - Baro knob changed from Switch to Button to allow Knobster push function.    
+ **v2.3** 10-19-22 SIMSTRUMENTATION 
+    - Added acceleration to Baro Knob. Request from sunbeam60.                
 
 ##Left To Do:
     - CCP Meanu, Radar Menu, TAWS Menu and Weather Tilt not functional in sim.
@@ -162,10 +164,13 @@ function callback_baro_turn( direction)
          end 
           sound_play(dial_snd) 
      end
+     rotate (img_baro_day, baro_angle)     
      rotate (img_baro_night, baro_angle)
      rotate (img_baro_backlight, baro_angle)
 end
-dial_baro = dial_add("baro.png", 115,165,120,120, callback_baro_turn)
+dial_baro = dial_add(nil, 115,165,120,120, callback_baro_turn)
+dial_set_acceleration(dial_baro, 3) 
+img_baro_day = img_add("baro.png", 115,165,120,120 )
 img_baro_night = img_add("baro_night.png", 115,165,120,120 )
 img_baro_backlight = img_add("baro_backlight.png", 115,165,120,120)
 --BARO STD PRESS
