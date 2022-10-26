@@ -284,8 +284,7 @@ button_add(ButtonOverlay,LSKButtonPressed, 604,406,LSKWidth,LSKHeight,
 ----------ACTION BUTTONS----------------------------------------------------
 button_add(ButtonOverlay,MSGButtonPressed, 23,526,ActionWidth,ActionHeight, 
     function () fs2020_variable_write(controlside.."MSG","number",1)sound_play(snd_click)
-             --   timer_start(button_delay, function() fs2020_variable_write(controlside.."MSG","number",0) end) 
-             end)              
+    timer_start(button_delay, function() fs2020_variable_write(controlside.."MSG","number",0) end) end)              
 button_add(ButtonOverlay,IDXButtonPressed, 23,579,ActionWidth,ActionHeight,
     function () fs2020_variable_write(controlside.."INDEX","number",1) sound_play(snd_click) 
     timer_start(button_delay, function() fs2020_variable_write(controlside.."INDEX","number",0) end) end)   
