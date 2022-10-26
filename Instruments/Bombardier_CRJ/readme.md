@@ -7,6 +7,7 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 
 
 ## Screenshots
+
 | Overhead Day | Overhead Night |
 | ------------- |:-------------:|
 <img src="https://user-images.githubusercontent.com/38576265/167281420-f4e90f92-68e5-4df3-af05-6b9b4b62f75e.png" width="300"> | <img src="https://user-images.githubusercontent.com/38576265/167281508-8890e130-0692-44d9-b698-c40f4e5fb75f.png" width="300"> |
@@ -15,9 +16,18 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 | ------------- |:-------------:|
 <img src="https://user-images.githubusercontent.com/38576265/194793845-57c0413e-9cc9-4f8c-9f04-2f9d2953b120.png" width="300"> | <img src="https://user-images.githubusercontent.com/38576265/194793957-471b2663-2ba4-4425-b8b5-0cd9724e3616.png" width="300"> |
 
-<br/>
-<br/>
+<br>
+<br>
 
+## Instruments
+
+| Instrument | Download Current Version | Documentation | Preview |
+| ---------- | ------------------------ | ------------- | ------- |
+| PFD MFD Overlay Bezel | [v1.0 02-06-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-PFD_MFD_Overlay_Bezel/Bombardier_CRJ-PDF_MDF_Overlay_Bezel.siff?raw=true) | [docs](CRJ-PFD_MFD_Overlay_Bezel/) | <img src="CRJ-PFD_MFD_Overlay_Bezel/ac6cde1a-ce4a-45f6-a963-33a511424ecc/preview.png" width="100"> |
+| Side Panel | [v1.0 06-21-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Side_Panel/Bombardier_CRJ-Side_Panel.siff?raw=true) | [docs](CRJ-Side_Panel/) | <img src="CRJ-Side_Panel/d9b2c1c9-ec3d-404f-b03b-935aa0b2630a/preview.png" width="100"> |
+| FMS MCDU Overlay | [v1.1 10-25-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-FMS_MCDU_Overlay/Bombardier_CRJ-FMS_MCDU_Overlay.siff?raw=true) | [docs](CRJ-FMS_MCDU_Overlay/) | <img src="CRJ-FMS_MCDU_Overlay/1226eaeb-0fbc-49e7-1dcc-83f016101849/preview.png" width="100"> |
+
+<br>
 
 ## Overhead Instruments
 
@@ -65,12 +75,7 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 | Pedestal-Yaw Damper Panel | [v1.0 06-19-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Pedestal-Yaw_Damper_Panel/Bombardier_CRJ-Pedestal-Yaw_Damper_Panel.siff?raw=true) | [docs](CRJ-Pedestal-Yaw_Damper_Panel/) | <img src="CRJ-Pedestal-Yaw_Damper_Panel/c0d47b6d-a0b2-4a5f-b851-7908b038f8e9/preview.png" width="100"> |
 
 
-## Other Instruments
 
-| Instrument | Download Current Version | Documentation | Preview |
-| ---------- | ------------------------ | ------------- | ------- |
-| PFD MFD Overlay Bezel | [v1.0 02-06-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-PFD_MFD_Overlay_Bezel/Bombardier_CRJ-PDF_MDF_Overlay_Bezel.siff?raw=true) | [docs](CRJ-PFD_MFD_Overlay_Bezel/) | <img src="CRJ-PFD_MFD_Overlay_Bezel/ac6cde1a-ce4a-45f6-a963-33a511424ecc/preview.png" width="100"> |
-| Side Panel | [v1.0 06-21-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Side_Panel/Bombardier_CRJ-Side_Panel.siff?raw=true) | [docs](CRJ-Side_Panel/) | <img src="CRJ-Side_Panel/d9b2c1c9-ec3d-404f-b03b-935aa0b2630a/preview.png" width="100"> |
 
 ## Ambient Light Dimming - Full Day / Night Cycle On Your CRJ Instruments
 

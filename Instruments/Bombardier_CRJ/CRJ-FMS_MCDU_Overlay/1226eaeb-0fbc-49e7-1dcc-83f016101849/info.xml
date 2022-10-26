@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Bombardier CRJ</aircraft><type>FMS MCDU Overlay</type><uuid>1226eaeb-0fbc-49e7-1dcc-83f016101849</uuid><author>Simstrumentation</author><description>Bombardier CRJ-FMS MCDU Overlay
+See here for contact info and notes: https://github.com/simstrumentation
+
+THIS INSTRUMENT IS ONLY AN OVERLAY. It must be used in conjunction with pop out instrument from Microsoft Flight Simulator. Right Alt + Click on the FMS screens in MSFS to pop out the windows. 
+
+This instrument has a user prop to control either the Pilot or CoPilot FMS.  
+
+Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>700</prefWidth><prefHeight>990</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
