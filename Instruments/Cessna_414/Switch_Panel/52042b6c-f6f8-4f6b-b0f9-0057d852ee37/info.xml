@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna 414AW (FSW)</aircraft><type>Switch Panel</type><uuid>52042b6c-f6f8-4f6b-b0f9-0057d852ee37</uuid><author>Simstrumentation</author><description>CESSNA 414AW CHANCELLOR MAIN SWITCH PANEL
+***************************************************************************************
+Primary switch panel with Master, magnetos, starter, lights, fuel pumps, and de-ice controls
+
+NOTES: 
+- Will only work with the FlySimWare Cessna 414AW Chancellor.
+
+KNOWN ISSUES:
+- None
+
+ATTRIBUTION:
+All code and graphics original work by Simstrumentation
+Sharing or re-use of any code or assets is not permitted without credit to the original authors.
+
+Font : Mil Spec 33558
+http://www.fontsaddict.com/font/MilSpec33558.html
+******************************************************************************************</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>624</prefWidth><prefHeight>1080</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
