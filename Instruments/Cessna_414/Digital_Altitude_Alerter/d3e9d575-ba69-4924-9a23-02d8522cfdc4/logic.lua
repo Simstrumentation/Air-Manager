@@ -8,7 +8,9 @@
 Digital altitude alterter / preselector panel for the Cessna 414 Chancellow by FlySimware
 
 Version info:
-
+- **v1.01** - 2022-10-22
+    - Fixed compatibility with non-WTT versions of the plane
+    
 - **v1.0** - 2022-10-15
     - Original release
     
@@ -41,18 +43,22 @@ opacity(txt_select, 0)
 --FUNCTIONS
 function knobTurnOuter(dir)
     if (dir) == 1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)
+        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)     --for WTT verison
+        fs2020_event("AP_ALT_VAR_INC")                                                   --for non-WTT version
     elseif(dir) == -1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)
+        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)     --for WTT verison
+        fs2020_event("AP_ALT_VAR_DEC")                                                  --for non-WTT version
     end
     dial_click_rotate(knob_outer, 5)
 end
 
 function knobTurnInner(dir)
     if (dir) == 1 then
-       fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)
+       fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)    --for WTT verison
+       fs2020_event("AP_ALT_VAR_INC")                                                 --for non-WTT version
     elseif(dir) == -1 then
-       fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)
+       fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)        --for WTT verison
+       fs2020_event("AP_ALT_VAR_DEC")                                                    --for non-WTT version
     end
     dial_click_rotate(knob_inner, 5)
 end
