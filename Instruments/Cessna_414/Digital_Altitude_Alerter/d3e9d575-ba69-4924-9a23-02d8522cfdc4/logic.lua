@@ -8,6 +8,9 @@
 Digital altitude alterter / preselector panel for the Cessna 414 Chancellow by FlySimware
 
 Version info:
+- **v1.02** - 2022-11-06
+    - Fixed compatibility bug with non-WTT versions of the plane
+
 - **v1.01** - 2022-10-22
     - Fixed compatibility with non-WTT versions of the plane
     
