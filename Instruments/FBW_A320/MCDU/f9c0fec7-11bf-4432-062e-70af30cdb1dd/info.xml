@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>A32NX FlyByWire</aircraft><type>FMS</type><uuid>f9c0fec7-11bf-4432-062e-70af30cdb1dd</uuid><author>SIMSTRUMENTATION</author><description>See here for contact info and notes: https://github.com/simstrumentation
+
+THIS INSTRUMENT IS ONLY DESIGNED TO WORK USING THE FLY BY WIRE A32NX MOD FOR MSFS2020.
+
+Tested with Developmental Version Only. 
+
+
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>210</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>814</prefWidth><prefHeight>1294</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
