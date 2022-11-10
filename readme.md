@@ -24,7 +24,7 @@ This is a list of the different aircraft in MSFS 2020 that we currently have wor
 
 | Aircraft<br>(click to view instruments for this plane) | Plane image |
 | -------------------------------------------------- | ----------- |
-| [A32NX (FlyByWire)](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/FBW_A320/) | <img src = "!https://user-images.githubusercontent.com/75218511/200994333-f5655247-6b9a-4480-ad01-a20883e8abf2.png" width=300> |
+| [A32NX (FlyByWire)](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/FBW_A320/) | <img src = "https://user-images.githubusercontent.com/75218511/200994333-f5655247-6b9a-4480-ad01-a20883e8abf2.png" width=300> |
 | [Airbus A320 (Fenix)](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/A320%20(Fenix)) | <img src="https://user-images.githubusercontent.com/75218511/171276472-36f56195-fe58-40a9-85aa-9b3fbf0a1fc2.png" width="300"> |
 | [Beechcraft Bonanza G36](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Bonanza) | <img src="https://user-images.githubusercontent.com/75218511/133450330-9ba0b3b8-0130-4f72-8687-c1b635c61387.png" width="300"> |
 | [Beech H35 (BRSimDesigns)](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/BRSimDesigns%20Beech%20H35) | <img src="https://user-images.githubusercontent.com/75218511/147691445-09bcaff8-4635-41ba-8e3d-ba48c21d89a4.png" width="300"> |
