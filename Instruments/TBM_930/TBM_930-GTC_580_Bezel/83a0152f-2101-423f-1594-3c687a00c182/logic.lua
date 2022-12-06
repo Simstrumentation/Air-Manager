@@ -15,7 +15,11 @@ in conjunction with pop out instrument from Microsoft Flight Simulator. Right Al
 screen in MSFS to pop out the windows. 
 
 Version info:
-
+- **v1.03** (Dec 6, 2022)
+    - Added compatibility with AAU I and the revamp of the TBM 930. 
+    - WILL NO LONGER WORK WITH PRE-AAU I VERSIONS OF THE TBM
+- **v1.02** (Sept 6 2022)
+    - Removed warning message temporarily
 - **v1.0** (August 31 2022)
     - Original release
       
@@ -31,46 +35,17 @@ Code by Simstrumentation in collaboration with Russ Barlow. Based on work by Yve
 Sharing or re-use of any code or assets is not permitted without credit to the original authors.
 ]]--
 
---***********************************************PLATFORM WARNING MESSAGES***********************************************
+unit_pos = user_prop_add_enum("Position", "Left,Right", "Left", "Choose bezel position")
 
--- Message for Raspberry Pi and tablet versions
-if instrument_prop("PLATFORM") == "RASPBERRY_PI" or instrument_prop("PLATFORM") == "ANDROID" or instrument_prop("PLATFORM") == "IPAD" then
-    canvas_add(0, 0, 1200, 753, function()
-        _rect(0,0,1034,775)
-        _fill("black")
-    end)
-    canv_message = canvas_add(110, 110, 1034, 775, function()
-        _rect(0,0,1034,775)
-        _fill("blue")
-        _txt("THIS FS2020 GTC 580 OVERLAY", "font:roboto_bold.ttf; size:40; color: white; halign:center;", 517, 298)
-        _txt("WORKS ON THE DESKTOP ONLY", "font:roboto_bold.ttf; size:40; color: white; halign:center;", 517, 348)
-        _txt("BUTTONS AND DIALS STILL WORK", "font:roboto_bold.ttf; size:70; color: white; halign:center;", 517, 398)
-        _txt("CLICK HERE TO HIDE THIS MESSAGE", "font:roboto_bold.ttf; size:40; color: white; halign:center;", 517, 548)
-    end)
-    butn_hide = button_add(nil, nil, 189, 47, 1034, 775, function()
-        visible(canv_message, false)
-        visible(butn_hide, false)
-    end)
+local bezel_pos
+
+--  unit position
+if user_prop_get(unit_pos) == "Left" then
+	bezel_pos = 1
+else
+	bezel_pos = 2
 end
 
--- Message for desktop
-pers_msg_read = persist_add("msg_read", false)
-if (instrument_prop("PLATFORM") == "WINDOWS" or instrument_prop("PLATFORM") == "MAC" or instrument_prop("PLATFORM") == "LINUX") and not persist_get(pers_msg_read) then
-    canv_message = canvas_add(110, 110, 1200, 753, function()
-        _rect(0,0,1034,775)
-        _fill("blue")
-        _txt("THIS IS AN OVERLAY ONLY", "font:roboto_bold.ttf; size:40; color: white; halign:center;", 517, 298)
-        _txt("IT REQUIRES THE GTC 580 POP OUT FROM MSFS", "font:roboto_bold.ttf; size:40; color: white; halign:center;", 517, 348)
-        _txt("SEE SIM INNOVATIONS WIKI FOR MORE INFORMATION", "font:roboto_bold.ttf; size:40; color: white; halign:center;", 517, 398)
-        _txt("CLICK HERE TO HIDE THIS MESSAGE", "font:roboto_bold.ttf; size:40; color: white; halign:center;", 517, 548)
-    end)
-    butn_hide = button_add(nil, nil, 189, 47, 1034, 775, function()
-        visible(canv_message, false)
-        visible(butn_hide, false)
-        persist_put(pers_msg_read, true)
-    end)
-end
---*********************************************END PLATFORM WARNING MESSAGES**********************************************
 --background images
 img_add_fullscreen("bg.png")
 knob_lights_id = img_add_fullscreen("lights.png")
@@ -107,9 +82,9 @@ button_add(nil,"softkey_pressed.png", 1070,441,88,65, sc_3_click)
 
 function big_dial_top_callback(direction)
     if direction ==  1 then
-        fs2020_event("H:AS3000_TSC_Horizontal_TopKnob_Large_INC")
+        fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Large_INC")
     elseif direction == -1 then
-	fs2020_event("H:AS3000_TSC_Horizontal_TopKnob_Large_DEC")
+	fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Large_DEC")
     end
     sound_play(dial_snd)
 end
@@ -117,9 +92,9 @@ dial_big_top = dial_add("dialbig.png", 1035,82,161,161, big_dial_top_callback)
 
 function small_dial_top_callback(direction)
     if direction ==  1 then
-        fs2020_event("H:AS3000_TSC_Horizontal_TopKnob_Small_INC")
+        fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Small_INC")
     elseif direction == -1 then
-	fs2020_event("H:AS3000_TSC_Horizontal_TopKnob_Small_DEC")
+	fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Small_DEC")
     end
     sound_play(dial_snd)
 end
@@ -128,17 +103,17 @@ dial_small_top = dial_add("dialsmall.png", 1079,126,75,75, small_dial_top_callba
 function timer_top_cb()
     --if the com timer has not been cancelled, trigger the long push event
     --fs2020_event("AS3000_TSC_Horizontal_TopKnob_Push_Long")
-		if comMode==1 then
-			fs2020_event("COM_STBY_RADIO_SWAP")
-		else	
-			fs2020_event("COM2_RADIO_SWAP")
-		end
+	if comMode==1 then
+		fs2020_event("COM_STBY_RADIO_SWAP")
+	else	
+		fs2020_event("COM2_RADIO_SWAP")
+	end
 end
 
 function dial_top_release()
 	if  timer_running (timer_top) then  -- if the timer is still running, then it is a short push
         timer_stop(timer_top)
-	    fs2020_event("H:AS3000_TSC_Horizontal_TopKnob_Push")
+	    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Push")
 		if comMode==1 then
 			comMode = 2
 		else	
@@ -157,16 +132,16 @@ button_add(nil,nil,  1088,156,40,40,dial_top_click, dial_top_release)
 
 function small_dial_bottom_callback(direction)
     if direction ==  1 then
-        fs2020_event("H:AS3000_TSC_Horizontal_BottomKnob_Small_INC")
+        fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Small_INC")
     elseif direction == -1 then
-	fs2020_event("H:AS3000_TSC_Horizontal_BottomKnob_Small_DEC")
+	fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Small_DEC")
     end
     sound_play(dial_snd)
 end
 dial_small_bottom = dial_add("dialsmall.png",1077,567,76,76, small_dial_bottom_callback)
 
 function dial_bottom_click()
-    fs2020_event("H:AS3000_TSC_Horizontal_BottomKnob_Push")
+    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Push")
     sound_play(click_snd)
 end
 button_add(nil,nil,  1077,567,46,46,dial_bottom_click)
