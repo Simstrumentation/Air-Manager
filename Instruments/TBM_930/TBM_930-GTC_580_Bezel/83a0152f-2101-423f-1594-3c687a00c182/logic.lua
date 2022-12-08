@@ -60,19 +60,19 @@ local comMode = 1
 power_state = 0
 
 function sc_1_click()
-    fs2020_event("H:AS3000_TSC_Horizontal_SoftKey_1")
+    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_1")
     sound_play(click_snd)
 end
 button_add(nil,"softkey_pressed.png", 1070,271,88,66, sc_1_click)
 
 function sc_2_click()
-    fs2020_event("H:AS3000_TSC_Horizontal_SoftKey_2")
+    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_2")
     sound_play(click_snd)
 end
 button_add(nil,"softkey_pressed.png", 1070,358,88,65, sc_2_click)
 
 function sc_3_click()
-    fs2020_event("H:AS3000_TSC_Horizontal_SoftKey_3")
+    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_3")
     sound_play(click_snd)
 end
 button_add(nil,"softkey_pressed.png", 1070,441,88,65, sc_3_click)
