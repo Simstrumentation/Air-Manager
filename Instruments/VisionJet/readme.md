@@ -17,7 +17,7 @@ With this collection of instruments, plus our new G3000, GTC 580 bezels, and GFC
 
 Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
-Flap Actuator | [12-11-2022 v1.0](#?raw=true) | [docs](#) | <p align="center"><img src="#.png" width="100"> </p>
+Flap Actuator | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Flap_Actuator/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Flap%20Actuator.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Flap_Actuator) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Flap_Actuator/f5e4d7b5-91c1-49aa-07fb-e7416539411a/preview.png" width="100"> </p>
 Fuel Selector | [12-11-2022 v1.0](#?raw=true) | [docs](#) | <p align="center"><img src="#.png" width="100"> </p>
 GFC 500 Autopilot | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500/Generic%20-%20Garmin%20GFC%20500%20autopilot.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Generic/Generic-GFC500/c154321a-72e7-44bd-8c39-7dc86b1c66c6/preview.png" width="100"> </p>
 Landing Gear | [12-11-2022 v1.0](#?raw=true) | [docs](#) | <p align="center"><img src="#.png" width="100"> </p>
