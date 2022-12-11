@@ -4,10 +4,10 @@
 	
 - **v1.1** (01-29-2021)
     - Uploaded to Github
-	
-- **v1.2** (01-30-2021)
-    - Fixed CRS1 Knobs-Thanks to "sean14reynolds" 
+	- Fixed CRS1 Knobs-Thanks to "sean14reynolds" 
     - Added Knob acceleration     	
+- **v1.11** (12-11-2022)
+    -Added acceleration to knobs
 
 ## Left To Do:
  - Several buttons are INOP due to lacking SDK functionality. Said functionality will be
