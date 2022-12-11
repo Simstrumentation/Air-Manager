@@ -25,7 +25,7 @@ Switch Panel | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager
 
 ##Extra instruments for this plane
 
-These instruments are classified as "Generic" because they can be used in multiple planes, but are required for a complete SF50 cockpit layout.
+These instruments are classified as "Generic" because they can be used in multiple planes, but are integral parts of the SF50 cockpit layout.
 
 
 Instrument | Current Version | Documentation | Preview
