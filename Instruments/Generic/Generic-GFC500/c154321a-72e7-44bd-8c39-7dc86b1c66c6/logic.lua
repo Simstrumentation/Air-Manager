@@ -17,6 +17,9 @@ NOTES:
 KNOWN ISSUES:
 - None
 
+TO DO LIST:
+- Make thumbwheel Knobster-accessible. Offer user property to use as either a touch wheel or Knobster.
+
 ATTRIBUTION:
 Based on an instrument from Russ Barlow / Sim Innovations.
 
