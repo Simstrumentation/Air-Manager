@@ -19,22 +19,22 @@ Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
 Flap Actuator | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Flap_Actuator/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Flap%20Actuator.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Flap_Actuator) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Flap_Actuator/f5e4d7b5-91c1-49aa-07fb-e7416539411a/preview.png" width="100"> </p>
 Fuel Selector | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Fuel_Selector/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Fuel%20Selector.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Fuel_Selector) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Fuel_Selector/69ce6794-f483-4522-924e-77dc95705746/preview.png" width="100"> </p>
-GFC 500 Autopilot | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500/Generic%20-%20Garmin%20GFC%20500%20autopilot.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Generic/Generic-GFC500/c154321a-72e7-44bd-8c39-7dc86b1c66c6/preview.png" width="100"> </p>
 Landing Gear | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Landing_Gear/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Landing%20Gear%20Panel.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Landing_Gear) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Landing_Gear/13dd84d6-fa45-4d2a-b3e7-6f786c0fed83/preview.png" width="100"> </p>
 Start Control | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Start_Control/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Start%20Controls.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Start_Control) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Start_Control/27ade212-7209-4d53-3b19-52cf286a8ec6/preview.png" width="100"> </p>
 Switch Panel | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Switch_Panel/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Switch%20Panel%20.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Switch_Panel) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Switch_Panel/41ee8a43-e056-4bb4-a1b2-5f1babd492fc/preview.png" width="100"> </p>
+
+##Extra instruments for this plane
+
+These instruments are classified as "Generic" because they can be used in multiple planes, but are integral parts of the SF50 cockpit layout.
+
+
+Instrument | Current Version | Documentation | Preview
+-------------|-----------------|--------------|--------------
+G3000 / 5000 Bezel| [12-06-2022 v1.2](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-Garmin_G3000-5000_Bezel/Generic%20-%20Garmin%20G3000%20and%20G5000%20%20PFD%20MFD%20Bezel%20Overlay.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/Generic-Garmin_G3000-5000_Bezel) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-Garmin_G3000-5000_Bezel/3f24eb91-44e3-4d7c-1f45-b412646a19d8/preview.png" width="100"> </p>
+GTC 580 Touch Panel Overlay| [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GTC580/Generic%20-%20GTC%20580%20Overlay.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/Generic-GTC580) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GTC580/83a0152f-2101-423f-1594-3c687a00c182/preview.png" width="100"> </p>
+GFC 500 Autopilot | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500/Generic%20-%20Garmin%20GFC%20500%20autopilot.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Generic/Generic-GFC500/c154321a-72e7-44bd-8c39-7dc86b1c66c6/preview.png" width="100"> </p>
 
 
 ## COMING SOON
 - Auto-throttle controls  - Currently WIP
 - Environmental controls  - Will be started soon
-
-
-
-
-
-
-
-
-
-
