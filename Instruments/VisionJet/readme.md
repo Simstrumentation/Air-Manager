@@ -23,7 +23,7 @@ Landing Gear | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager
 Start Control | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Start_Control/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Start%20Controls.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Start_Control) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Start_Control/27ade212-7209-4d53-3b19-52cf286a8ec6/preview.png" width="100"> </p>
 Switch Panel | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Switch_Panel/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Switch%20Panel%20.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Switch_Panel) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Switch_Panel/41ee8a43-e056-4bb4-a1b2-5f1babd492fc/preview.png" width="100"> </p>
 
-##Extra instruments for this plane
+## Extra instruments for this plane
 
 These instruments are classified as "Generic" because they can be used in multiple planes, but are integral parts of the SF50 cockpit layout.
 
