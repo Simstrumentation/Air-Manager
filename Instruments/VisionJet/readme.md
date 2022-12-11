@@ -18,14 +18,11 @@ With this collection of instruments, plus our new G3000, GTC 580 bezels, and GFC
 Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
 Flap Actuator | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Flap_Actuator/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Flap%20Actuator.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Flap_Actuator) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Flap_Actuator/f5e4d7b5-91c1-49aa-07fb-e7416539411a/preview.png" width="100"> </p>
-Fuel Selector | [12-11-2022 v1.0](#?raw=true) | [docs](#) | <p align="center"><img src="#.png" width="100"> </p>
+Fuel Selector | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Fuel_Selector/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Fuel%20Selector.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Fuel_Selector) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Fuel_Selector/69ce6794-f483-4522-924e-77dc95705746/preview.png" width="100"> </p>
 GFC 500 Autopilot | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500/Generic%20-%20Garmin%20GFC%20500%20autopilot.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Generic/Generic-GFC500/c154321a-72e7-44bd-8c39-7dc86b1c66c6/preview.png" width="100"> </p>
-Landing Gear | [12-11-2022 v1.0](#?raw=true) | [docs](#) | <p align="center"><img src="#.png" width="100"> </p>
-Start Control | [12-11-2022 v1.0](#?raw=true) | [docs](#) | <p align="center"><img src="#.png" width="100"> </p>
-Switch Panel | [12-11-2022 v1.0](#?raw=true) | [docs](#) | <p align="center"><img src="#.png" width="100"> </p>
-
-
-
+Landing Gear | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Landing_Gear/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Landing%20Gear%20Panel.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Landing_Gear) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Landing_Gear/13dd84d6-fa45-4d2a-b3e7-6f786c0fed83/preview.png" width="100"> </p>
+Start Control | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Start_Control/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Start%20Controls.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Start_Control) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Start_Control/27ade212-7209-4d53-3b19-52cf286a8ec6/preview.png" width="100"> </p>
+Switch Panel | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Switch_Panel/Cirrus%20SF50%20Vision%20Jet%20(FlightFX)%20-%20Switch%20Panel%20.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/VisionJet/Switch_Panel) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/VisionJet/Switch_Panel/41ee8a43-e056-4bb4-a1b2-5f1babd492fc/preview.png" width="100"> </p>
 
 
 ## COMING SOON
