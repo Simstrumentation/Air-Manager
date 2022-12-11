@@ -1,8 +1,13 @@
-G3000 / 5000 Overlay
+G3000 / 5000  Bezel Overlay
 
-Original author: Yves Levesque
-Modified for G5000 by  Joe Gilker
+Version info:
+- **v2.0** - 2022-12-11
 
-An overlay for the PFD / MFD for the Garmin G3000 and G5000
+NOTES: 
+The following options are available and can be set via user properties in the instrument once
+placed in your panel layout:
 
-User property to select graphcis with or without the bottom soft keys to use as either the 3000 or 5000.
+- Select Pilot PFD or MFD
+- Show / hid softkeys
+- Display a raised metallic or inset Garmin logo 
+- show light glare on the screen.

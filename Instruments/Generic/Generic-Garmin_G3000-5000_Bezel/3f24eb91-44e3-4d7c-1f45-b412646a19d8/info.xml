@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin G3000 / 5000  PFD MFD Bezel Overlay</type><uuid>3f24eb91-44e3-4d7c-1f45-b412646a19d8</uuid><author>Yves Levesque - modified by Joe &quot;Cruchmeister&quot; Gilker</author><description>Bezel overlay for G3000 and G5000 screens. Can be used as a G3000 or a buttonless G5000 unit.
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin G3000 / 5000  PFD MFD Bezel Overlay</type><uuid>3f24eb91-44e3-4d7c-1f45-b412646a19d8</uuid><author>Yves Levesque - modified by Joe &quot;Cruchmeister&quot; Gilker</author><description>GENERIC GARMIN G3000 / 5000 Bezel Overlay
 
-Which unit type can be selected by the user property in the instrument configuration. 
-</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>120</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1440</prefWidth><prefHeight>969</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+Made by SIMSTRUMENTATION - http://simstrumentation.com
+
+
+Version info:
+- **v2.0** - 2022-12-11
+
+NOTES: 
+The following options are available and can be set via user properties in the instrument once
+placed in your panel layout:
+
+- Select Pilot PFD or MFD
+- Show / hid softkeys
+- Display a raised metallic or inset Garmin logo 
+- show light glare on the screen.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>200</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1440</prefWidth><prefHeight>969</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
