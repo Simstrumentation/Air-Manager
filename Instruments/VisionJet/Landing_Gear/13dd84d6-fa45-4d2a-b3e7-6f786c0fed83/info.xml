@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (FlightFX)</aircraft><type>Landing Gear Panel</type><uuid>13dd84d6-fa45-4d2a-b3e7-6f786c0fed83</uuid><author>Simstrumentation &amp; Russ Barlow</author><description>CIRRUS SF50 VISION JET LANDING GEAR 
+Made by SIMSTRUMENTATION - https://simstrumentation.com
+
+Landing gear panel for the Vision Jet by FlightFX
+
+Version info:
+- **v1.0** - 2022-12-11
+
+NOTES: 
+- Compatible with the FlightFX SF50 Vision Jet. Compatibility with other aircraft possible but not guaranteed.
+
+KNOWN ISSUES:
+- None
+
+ATTRIBUTION:
+Based on code and graphics from Russ Barlow. Used with permission. 
+
+Sharing or re-use of any code or assets is not permitted without credit to the original authors.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>219</prefWidth><prefHeight>1131</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

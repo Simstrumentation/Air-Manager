@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (FlightFX)</aircraft><type>Switch Panel </type><uuid>41ee8a43-e056-4bb4-a1b2-5f1babd492fc</uuid><author>Simstrumentation &amp; Russ Barlow</author><description>CIRRUS SF50 VISION JET  SWITCH PANEL
+
+Made by SIMSTRUMENTATION : https://simstrumentation.com
+
+NOTES: 
+- BONUS FEATURE! Touching the hex screw to the left of the panel will remove all the aircraft covers and put on your headphones so you don't have to do it from the VAMS menu in the GTC580
+- Playing or muting of sounds can be adjusted via instrument user properties
+- Will only work with the FlightFX Vision Jet  </description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1497</prefWidth><prefHeight>300</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

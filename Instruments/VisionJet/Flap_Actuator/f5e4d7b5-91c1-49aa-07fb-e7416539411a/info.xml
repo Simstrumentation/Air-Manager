@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (FlightFX)</aircraft><type>Flap Actuator</type><uuid>f5e4d7b5-91c1-49aa-07fb-e7416539411a</uuid><author>Russ Barlow &amp; Simstrumentation</author><description>CIRRUS SF50 VISION JET FLAP ACTUATOR
+
+    Made by SIMSTRUMENTATION and Russ Barlow
+    GitHub: https://simstrumentation.com
+
+Flap actuator for the Vision Jet by FlightFX
+
+Version info:
+- **v1.0** - 2022-12-11
+
+NOTES: 
+- Made for the FlightFX Vision Jet
+- Should work in most MSFS GA aircraft, but compatibility not guaranteed. 
+
+KNOWN ISSUES:
+- None
+
+ATTRIBUTION:
+Based on code and graphics from Russ Barlow. Used with permission. 
+Sharing or re-use of any code or assets is not permitted without credit to the original authors.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>true</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>673</prefWidth><prefHeight>604</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
