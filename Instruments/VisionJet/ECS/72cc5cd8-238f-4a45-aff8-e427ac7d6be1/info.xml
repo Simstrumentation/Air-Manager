@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (FlightFX)</aircraft><type>Evironmental Control System</type><uuid>72cc5cd8-238f-4a45-aff8-e427ac7d6be1</uuid><author>Simstrumentation</author><description>CIRRUS SF50 VISION JET ENVIRONMENTAL CONTROL SYSTEMS
+
+Made by SIMSTRUMENTATION - https://simstrumentation.com
+
+ECS panel for the Vision Jet by FlightFX
+
+Version info:
+- **v1.0** - 2022-12-13
+
+NOTES: 
+- Will only work with the FlightFX Vision Jet. Compatibility with other aircraft not guaranteed. 
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>650</prefWidth><prefHeight>820</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
