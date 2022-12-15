@@ -57,4 +57,4 @@ GFC 500 Autopilot | [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Ma
 
 
 ## COMING SOON
-- Auto-throttle controls  - Currently WIP
+- Cosmetic update to some of the older converted instruments.
