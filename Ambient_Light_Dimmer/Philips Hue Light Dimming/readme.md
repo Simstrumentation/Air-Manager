@@ -15,19 +15,25 @@ ___
 + You must have a Philips Hue Bridge (either 1st or 2nd Generation should work).
 + From the Philips Hue App, make sure your hue bridge is registered to your Phone App. This isn't a requirement, but helpful to find your Hue Hub IP Address.
 + You must either reserve the DHCP address of your Philips Hue Bridge in your Router, or to set it to a static IP in the Hue App. For the short term, can you see what the IP is in the Hue App.
-  + To see the Hue Bridge IP, go to *Settings*, choose your Hue Bridge, click the "i" icon.![IMG_1983](https://user-images.githubusercontent.com/38576265/208324694-977bdb60-aac2-44ff-ad1c-68df274c12e8.PNG)![IMG_1984](https://user-images.githubusercontent.com/38576265/208324698-c059901d-64da-4dec-a706-639cc77844db.PNG)![IMG_1989](https://user-images.githubusercontent.com/38576265/208324703-d885d9ba-6c66-4ab6-b6bd-b4281ca698a6.PNG)
-
-
-
+  + To see the Hue Bridge IP, go to *Settings*, choose your Hue Bridge, click the "i" icon.  
+     <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208324694-977bdb60-aac2-44ff-ad1c-68df274c12e8.PNG" width="150"> <img src="https://user-images.githubusercontent.com/38576265/208324698-c059901d-64da-4dec-a706-639cc77844db.PNG" width="150"> <img src="https://user-images.githubusercontent.com/38576265/208324703-d885d9ba-6c66-4ab6-b6bd-b4281ca698a6.PNG" width="150"></p>
   + To set a static IP address on your bridge, go to *Settings*, scroll down to *Bridge settings*, choose *Network settings*, unselect *DHCP*, and enter a static IP Address. 
+  
+    <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208325002-25440495-04e1-4662-8793-55bf8729f4a6.PNG" width="150"> <img src="https://user-images.githubusercontent.com/38576265/208325010-98706b46-c5a4-4dc5-abcd-3c4eea224c63.PNG" width="150"> <img src="https://user-images.githubusercontent.com/38576265/208325019-2aa9cdcf-af3c-4f69-936d-68765dc7989c.PNG" width="150"> <img src="https://user-images.githubusercontent.com/38576265/208325020-a4f869c2-bcb9-471f-b6ad-f582048c5296.PNG" width="150"> </p>
+
 + The Arduino script was wrote with using groups in mind, or "Rooms" as it's called in the Hue App. This allows multiple Hue Lights to be controlled at the same time. You'll see that this script was tested with 2 Hue Play lights in a room called "FlightSim".  
 + Make sure the Hue Lights you'd like to control are in a Room. A "Zone" should also work as it gets a group ID number the same as a room does. The Arduino script will control the room or zone by it's ID number.
 ##### Creating a API Key
 + You need to create an API Key (also called username) to make sure the requests that the Arduino does are authenticated.
 + Once you know the Hue Hub IP address, on a computer browse your hub webpage http://192.168.1.117/debug/clip.html (replacing 192.168.1.117 with your Hub IP Address).
 + Click *Get* and you should see some generic information in the Response.
+  
+  <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208325172-eb779474-d5a1-4905-9937-ed608c17171f.png" width="400"></p>
+
 + Enter in `/api/ArduinoAM` in the *URL* and `{"devicetype":"my_hue_app#ArduinoAM app"}` into the *Message Body*. 
   + Press *Put* and you should receieve an error message saying "link button not pressed" or "unauthorized user".
+  <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208325348-fc421d28-03a6-4684-8710-cf320b24e2d7.png" width="400"></p>
+
   + Go to your Hue Hub and physically press the top link button.
   + Now press *Put* again, and you should see a success message with a new API Key. **COPY THIS KEY AND SAVE IT TO A TEXT FILE FOR REFERENCE.**
 ##### Getting Hue Room ID Number
