@@ -15,7 +15,10 @@ ___
 + You must have a Philips Hue Bridge (either 1st or 2nd Generation should work).
 + From the Philips Hue App, make sure your hue bridge is registered to your Phone App. This isn't a requirement, but helpful to find your Hue Hub IP Address.
 + You must either reserve the DHCP address of your Philips Hue Bridge in your Router, or to set it to a static IP in the Hue App. For the short term, can you see what the IP is in the Hue App.
-  + To see the Hue Bridge IP, go to *Settings*, choose your Hue Bridge, click the "i" icon.
+  + To see the Hue Bridge IP, go to *Settings*, choose your Hue Bridge, click the "i" icon.![IMG_1983](https://user-images.githubusercontent.com/38576265/208324694-977bdb60-aac2-44ff-ad1c-68df274c12e8.PNG)![IMG_1984](https://user-images.githubusercontent.com/38576265/208324698-c059901d-64da-4dec-a706-639cc77844db.PNG)![IMG_1989](https://user-images.githubusercontent.com/38576265/208324703-d885d9ba-6c66-4ab6-b6bd-b4281ca698a6.PNG)
+
+
+
   + To set a static IP address on your bridge, go to *Settings*, scroll down to *Bridge settings*, choose *Network settings*, unselect *DHCP*, and enter a static IP Address. 
 + The Arduino script was wrote with using groups in mind, or "Rooms" as it's called in the Hue App. This allows multiple Hue Lights to be controlled at the same time. You'll see that this script was tested with 2 Hue Play lights in a room called "FlightSim".  
 + Make sure the Hue Lights you'd like to control are in a Room. A "Zone" should also work as it gets a group ID number the same as a room does. The Arduino script will control the room or zone by it's ID number.
