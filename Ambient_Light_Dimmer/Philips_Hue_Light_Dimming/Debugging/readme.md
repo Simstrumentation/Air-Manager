@@ -10,3 +10,6 @@ To achomplish this, A second arduino is needed. In this test case, a regular Ard
 The SerialMonitor script is was is uploaded to the 2nd arduino. And you can open the serial monitor in Arduino IDE, making sure the com port is selected for the 2nd Arduino, to see the incoming messages of the MessagePort Arduino.
 
 <img align="center" width="100%" src="https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Philips_Hue_Light_Dimming/Debugging/DebugArduino.png">
+
+
+![Screenshot 2022-12-18 210921](https://user-images.githubusercontent.com/38576265/208334235-f4177b69-dfb7-4413-8fc0-e51db4bd7b59.png)
