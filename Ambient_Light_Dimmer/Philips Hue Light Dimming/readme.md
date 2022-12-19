@@ -71,7 +71,15 @@ ___
 ##### Verify Compiling and Uploading
 + At this point, the script should compile without errors, click the Verify checkmark icon in the top ribbon bar to verify the code before compiling and writing it to the Arduino. 
 + If you get a clean verify, as indicated by the "Done Compiling" message at the bottom of the Arduino IDE screen and no red errors message, write the script to the Arudino by choosing Upload (the arrow) from the top ribbon bar.
++ The Arduino is now programed. You should close Arduino IDE to free up the Comm port.
 
+## Air Manager Setup
++ In Air Manager, at the bottom of your panel list, you should now see `Ardunio Nano (A)`. If you select that Arduino, it should say "Mode: Message Port" and "State: Connected".
+  <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208330466-ee79f8b8-e2dc-4daf-a1b4-61351dae9139.png" width="400"></p>
++ Assuming you already have the Ambient Light Dimmer instrument on a panel, go to that instrument, scroll down to the User Prop options and checkmark "Enable Ambient Light to Send to Philips Hue Light".
+  <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208330708-663d5e70-db5a-4555-8b14-8fdebe5d8d93.png" width="400"></p>
+  
++ THATS IT! If you have MSFS2020 running, you should be able to dim your Philip Hue Lights as you change the Ambient Light instrument dial, or if in *Auto* mode, as dusk/dawn sets in.
 
 
 
