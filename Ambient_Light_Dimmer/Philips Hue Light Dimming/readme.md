@@ -31,19 +31,24 @@ ___
   <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208325172-eb779474-d5a1-4905-9937-ed608c17171f.png" width="400"></p>
 
 + Enter in `/api/ArduinoAM` in the *URL* and `{"devicetype":"my_hue_app#ArduinoAM app"}` into the *Message Body*. 
-  + Press *Put* and you should receieve an error message saying "link button not pressed" or "unauthorized user".
-  <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208325348-fc421d28-03a6-4684-8710-cf320b24e2d7.png" width="400"></p>
+  + Press *POST* and you should receieve an error message saying "link button not pressed". If you get an "unauthorized user" message, you're probably clicking Put instead of Post..
+  <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208327452-74929c0c-0232-4bd2-9d64-a935edaf11d7.png" width="400"></p>
 
   + Go to your Hue Hub and physically press the top link button.
-  + Now press *Put* again, and you should see a success message with a new API Key. **COPY THIS KEY AND SAVE IT TO A TEXT FILE FOR REFERENCE.**
+  + Now press *POST* again, and you should see a success message with a new API Key. **COPY THIS KEY AND SAVE IT TO A TEXT FILE FOR REFERENCE.**
 ##### Getting Hue Room ID Number
 + Now that you have a API Key, replace *ArduinoAM* in the *URL* line with your new API Key, clear the text out of the *Message Body* and press *Get*.
   + You should get a response in JSON format that includes all of your Hue Hub and Hue Lights information.
-  + To find your group (either a Room or a Zone) ID Number, the easist thing to do is do a search (CTRL-F) for the name of your room. In this example, my room is named "FlightSim" and you'll see the ID Number above the name, my example is ID "3".
-  + If you'd like to test the control of this group, in the *URL* line enter in `/api/YOUR_API_KEY_HERE/groups/3/action/` and in the *Message Body* line enter `{"on":true}` or `{"on":false}` depending if you want to turn the lights On or Off, and press *Put*.
+  + To find your group (either a Room or a Zone) ID Number, the easist thing to do is do a search (CTRL-F) for the name of your room. In this example, my room is named "FlightSim" (previously setup in the Hue App) and you'll see the ID Number above the name, my example is ID "3".
+    <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208327925-c485c399-5c42-48b9-bc30-b78bbca85f15.png" width="400"></p>
+
+  + If you'd like to test the control of this group, in the *URL* line enter in `/api/YOUR_API_KEY_HERE/groups/3/action/`, where `3` is your group number, and in the *Message Body* line enter `{"on":true}` or `{"on":false}` depending if you want to turn the lights On or Off, and press *Put*.
     + If you get a Success message but your lights aren't doing anything, turn the lights on and set the Brightness to Max in the Hue App.
+    + You can also adjust saturation, brightness, and hue. `{"on":true, "sat":50, "bri":254,"hue":8418}`
+    <p align="center"><img src="https://user-images.githubusercontent.com/38576265/208328176-269c8db0-727e-4fea-bd60-c935da945577.png" width="400"></p>
+
   + You now have all the relavant information to control the Hub, the webpage is no longer needed and can be closed.
-##### Setting up Arduino IDE
+## Setting up Arduino
 + Download the [Arudino script from Github](https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Philips%20Hue%20Light%20Dimming/HueArduinoScript/HueArduinoScript.ino)
 + Open the script using Arduino IDE 
   + Arduino IDE Available for [download here](https://docs.arduino.cc/software/ide-v1)
