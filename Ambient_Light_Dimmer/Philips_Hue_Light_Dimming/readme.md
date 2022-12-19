@@ -81,6 +81,8 @@ ___
   
 + THATS IT! If you have MSFS2020 running, you should be able to dim your Philip Hue Lights as you change the Ambient Light instrument dial, or if in *Auto* mode, as dusk/dawn sets in.
 
+## Debugging
++ [See here](https://github.com/Simstrumentation/Air-Manager/tree/main/Ambient_Light_Dimmer/Philips_Hue_Light_Dimming/Debugging)
 
 
 
