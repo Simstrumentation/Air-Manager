@@ -16,6 +16,10 @@ Ultimately, we want to have our instruments included in the AM community store (
 <h6>NOTE - While the download and use of our instruments is free, AM is paid software available at https://www.siminnovations.com/. We are not associated with Sim Innovations in any way and cannot provide users with AM nor can we provide any technical support for AM. No warranties for our work are provided or implied. Our instruments hosted in this repo are offered as-is and are used at the end user's own risk
 </h6>
 
+## Ambient Light Dimmer
+[Ambient Light Dimmer Main Page](https://github.com/Simstrumentation/Air-Manager/tree/main/Ambient_Light_Dimmer)
+
+
 ## Aircraft Instrument Categories
 
 This is a list of the different aircraft in MSFS 2020 that we currently have working instruments for.

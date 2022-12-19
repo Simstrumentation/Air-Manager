@@ -5,7 +5,6 @@
 
     Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
     GitHub: https://github.com/simstrumentation
-
    
 - **v1.0** 9-18-21 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker
     - Original Panel Created
@@ -20,12 +19,17 @@
     - Clean up code and add more commenting for sumbission to AM store   
 - **v2.1** 01-17-22 SIMSTRUMENTATION
     - Changed to "Generic" aircraft and  New ID (If you have old version this does not over write existing Ambient Light Dimmer)
-    - Added User Prop option to select Aircraft. Currently CJ4 and Longitude are available (however not all longitude panels are created as of yet).
+    - Added User Prop option to select Aircraft. Currently CJ4 and CRJ are available.
     - Seperated variable subscribes for backlighting and power into each aircraft.
     - Made it so the User Prop Hide option hides the background as well
     - Added Philips Hue Light Option (See https://github.com/simstrumentation)
     - Resource folder file capitials renamed for SI Store submittion  
-    - Click and Dial sounds replaced with custom.    
+    - Click and Dial sounds replaced with custom.
+- **v2.2** 12-18-22 SIMSTRUMENTATION
+    - Updated code to reflect AAU1 being released in 2023Q1     
+    - Remove Longitude option   
+    - Added CRJ backlighting options: Overhead,Pedestal,SidePanel
+        
 --******************************************************************************************
 --]]
 
@@ -34,7 +38,7 @@ snd_click = sound_add("click.wav")
 snd_dial = sound_add("dial.wav")
 
 -- Create user props
-prop_aircraft = user_prop_add_enum("Select Aircraft to match", "WT CJ4,Longitude", "WT CJ4", "Used for backlighting and power.")
+prop_aircraft = user_prop_add_enum("Select Aircraft to match for backlight dimming", "CJ4,CRJ-Overhead,CRJ-Pedestal,CRJ-SidePanel", "CJ4", "Only used for panel backlighting.")
 prop_BG = user_prop_add_boolean("Display Background",true,"Show grey background")
 prop_hide = user_prop_add_boolean("Hide Ambient Light Insturment and Auto Dim",false,"Useful if you don't want to see this instrument and always want the panels to auto dim.")
 prop_huelight = user_prop_add_boolean("Enable Ambient Light to Send to Philips Hue Lights",false,"(Arduino Required) Set to Enable and make sure name string below is set to the the right Arduino. See Simstrumentation GitHub for documentation.")
@@ -86,9 +90,9 @@ img_night_indicator = img_add("button_indicator.png", 157, 164, 74, 45)
 img_auto_indicator= img_add("button_indicator.png", 82, 216, 74, 45)
 
 -- Get backlight value and power information from sim and apply to images
-function ss_backlighting_CJ4(value, power, extpower, busvolts)
+function ss_backlighting_CJ4(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)      
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then -- set backlighting to off levels
+    if  panellight == false  or (power == false and extpower == false and busvolts < 5) then -- set backlighting to off levels
         opacity(img_labels_backlight, 0.1, "LOG", 0.04)
         opacity(img_ambient_knob_indicator_backlight , 0.0, "LOG", 0.04)
     else -- adjust to intermediate level
@@ -96,26 +100,43 @@ function ss_backlighting_CJ4(value, power, extpower, busvolts)
         opacity(img_ambient_knob_indicator_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-function ss_backlighting_Longitude(value, power)
-    value = var_round(value,2)         
+function ss_backlighting_CRJ_OvhPed(value, power)
+    value = var_round(value*10,2)      
     if (power == false ) then -- set backlighting to off levels
         opacity(img_labels_backlight, 0.1, "LOG", 0.04)
         opacity(img_ambient_knob_indicator_backlight , 0.0, "LOG", 0.04)
     else -- adjust to intermediate level
-        opacity(img_labels_backlight, var_cap((value/100),0.35,1.0), "LOG", 0.04)
-        opacity(img_ambient_knob_indicator_backlight, var_cap((value/100),0.35,1.0), "LOG", 0.04)
+        opacity(img_labels_backlight, value, "LOG", 0.04)
+        opacity(img_ambient_knob_indicator_backlight, value, "LOG", 0.04)
+    end
+end
+function ss_backlighting_CRJ_SP(value, power)
+    value = var_round(value,2)      
+    if (power == false ) then -- set backlighting to off levels
+        opacity(img_labels_backlight, 0.1, "LOG", 0.04)
+        opacity(img_ambient_knob_indicator_backlight , 0.0, "LOG", 0.04)
+    else -- adjust to intermediate level
+        opacity(img_labels_backlight, value, "LOG", 0.04)
+        opacity(img_ambient_knob_indicator_backlight, value, "LOG", 0.04)
     end
 end
 
-if  (user_prop_get(prop_aircraft) =="WT CJ4") then
+if  (user_prop_get(prop_aircraft) =="CJ4") then
     fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                               "LIGHT PANEL","Bool",
                               "ELECTRICAL MASTER BATTERY","Bool",
                               "EXTERNAL POWER ON:1", "Bool",
                               "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting_CJ4)
                               
- elseif   (user_prop_get(prop_aircraft) =="Longitude") then
-    fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
-                              "CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting_Longitude)
+ elseif   (user_prop_get(prop_aircraft) =="CRJ-Overhead") then
+    fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+                              "CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting_CRJ_OvhPed)
+ elseif   (user_prop_get(prop_aircraft) =="CRJ-Pedestal") then
+    fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+                              "CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting_CRJ_OvhPed)
+ elseif   (user_prop_get(prop_aircraft) =="CRJ-SidePanel") then
+    fs2020_variable_subscribe("A:Light Potentiometer:5", "Number",
+                              "CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting_CRJ_SP)                              
 end
 --====================================================
 --Ambient lighting/darkness adjustments

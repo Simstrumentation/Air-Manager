@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Ambient Light Dimmer</type><uuid>f8f83fd0-af45-4991-38cc-4eabc21e872d</uuid><author>SIMSTRUMENTATION</author><description>Ambient Light Knob
-See here for contact info and notes: https://github.com/simstrumentation
+See here for contact info and notes: http://simstrumentation.com
 
-This instruement controls the ambient lighting of all CJ4 SIMSTRUMENTATION instruments and more.
+This instruement controls the ambient lighting of some SIMSTRUMENTATION instruments and more.
 See User Props for special settings.
 
 This instrument can also be used to set a Philips Hue Light to control lights for realistic dimming. An Arduino is required to send the Philips Hue Lights commands over wifi to the Philips Hue Hub. See https://github.com/simstrumentation for info.
 
-</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>210</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>249</prefWidth><prefHeight>260</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>220</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>249</prefWidth><prefHeight>260</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
