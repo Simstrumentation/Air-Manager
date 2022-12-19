@@ -7,7 +7,7 @@ The ALD talks to the other Air Manager panels and dims the panels according to t
 
 As the sky light dims you're panels now dim automatically.
 
-[It's also now possible to dim Philips Hue Lights through an arudino!](https://github.com/Simstrumentation/Air-Manager/tree/main/Ambient_Light_Dimmer/Philips%20Hue%20Light%20Dimming)
+[It's also now possible to dim Philips Hue Lights through an arudino!](https://github.com/Simstrumentation/Air-Manager/tree/main/Ambient_Light_Dimmer/Philips_Hue_Light_Dimming)
 
 
 |  |  |
