@@ -9,6 +9,9 @@ Because Air Manager has control over the serial connection, you can't have the A
 To achomplish this, A second arduino is needed. In this test case, a regular Arduino Nano was used. 
 The SerialMonitor script is was is uploaded to the 2nd arduino. And you can open the serial monitor in Arduino IDE, making sure the com port is selected for the 2nd Arduino, to see the incoming messages of the MessagePort Arduino.
 
+[Click here for Arduino Serial Monitor Script](https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Philips_Hue_Light_Dimming/Debugging/SerialMonitor/SerialMonitor.ino?raw=true)
+
+
 <img align="center" width="100%" src="https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Philips_Hue_Light_Dimming/Debugging/DebugArduino.png">
 
 
