@@ -3,7 +3,6 @@
 </h1><h2 align="center">AMBIENT LIGHT DIMMER (ALD)
 </h2>
 <p align="center">
-<p align="center">
 <img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/f8f83fd0-af45-4991-38cc-4eabc21e872d/preview.PNG?raw=true" width="100">
 
 [Download Ambient Light Dimmer Latest Version v2.2  12-18-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Generic-Ambient_Light_Dimmer.siff?raw=true)</h4>
@@ -13,11 +12,14 @@ The ALD talks to the other Air Manager panels and dims the panels according to t
 
 As the sky light dims you're panels now dim automatically.
 
+<img src="https://user-images.githubusercontent.com/38576265/208344794-a6a2ab4e-ac3d-4a19-b105-debafe712b5e.jpg">
+
 It's also now possible to dim Philips Hue Lights through an arudino! Have your entire room, or backlight monitor dim just as your instruments dim according to the Sim's environmental conditions. [Click here for Information](https://github.com/Simstrumentation/Air-Manager/tree/main/Ambient_Light_Dimmer/Philips_Hue_Light_Dimming)
-</p>
 
 
+
 </p>
+
 <h3 align="center">Aircraft Panels Currently Supporting the ALD</h3>
 
 | Aircraft Collection | Image |
