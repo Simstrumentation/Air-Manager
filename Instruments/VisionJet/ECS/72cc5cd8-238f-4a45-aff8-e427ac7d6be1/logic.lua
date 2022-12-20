@@ -265,6 +265,8 @@ function lightPot(val, panel, pot, power)
     panelLight = panel
     if power  then
         opacity(backlit_labels, (pot/100), "LOG", 0.1)  
+    else
+        opacity(backlit_labels, 0, "LOG", 0.1)  
     end
 end
 

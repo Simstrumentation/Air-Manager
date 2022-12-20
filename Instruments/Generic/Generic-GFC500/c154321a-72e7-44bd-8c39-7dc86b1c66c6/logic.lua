@@ -11,6 +11,7 @@ Version info:
 - **v1.1** - 2022-12-
     - Graphics update
     - Added backlighting
+    - Added optional sounds
 - **v1.0** - 2022-12-11
 
 NOTES: 
@@ -31,11 +32,26 @@ Sharing or re-use of any code or assets is not permitted without credit to the o
 -- User Properties
 up_yd_shown = user_prop_add_boolean("Show Yaw Damper", true, "Show YD button and annunciator")                           -- Use sounds in Air Manager    
 knobster_prop = user_prop_add_boolean("Use Knobster for thumbwheel", false, "Choose whether to use Knobster or touch control for the thumb wheel")
+play_sounds = user_prop_add_boolean("Play Sounds", true, "Play sounds in Air Manager")                           -- Use sounds in Air Manager    
+
+
+--    sound config
+if user_prop_get(play_sounds) then
+    press_snd = sound_add("press.wav")
+    release_snd = sound_add("release.wav")
+    dial_snd = sound_add("dial.wav")
+else
+    press_snd = sound_add("silence.wav")
+    release_snd = sound_add("silence.wav")
+    dial_snd = sound_add("silence.wav")
+end
+
 -- Global variables
 local scroll_vs_mode = true -- Should the scroll wheel control vertical speed (true) or should it control IAS (false)?
 local currentHeading = 0
 local currentAltitude = 0
 local power = false
+
 -- Add images
 img_add("blackback.png",1, 1, 650, 230)
 img_backlight = img_add("whiteback.png",10, 10, 630, 200)
@@ -49,35 +65,40 @@ opacity(alt_dial_shadow, 0.75)
 
 
 -- Button callbacks
+
+function release()
+    sound_play(release_snd)
+end
 function callback_hdg()
-
    fs2020_event("AP_PANEL_HEADING_HOLD")
-
+   sound_play(press_snd)
 end
 
 function callback_nav()
-
     fs2020_event("AP_NAV1_HOLD")
+    sound_play(press_snd)
 end
 
 
 function callback_ap()
      fs2020_event("AP_MASTER")   
+     sound_play(press_snd)
  end
 
 function callback_lvl()
-	fs2020_event("AP_WING_LEVELER_ON")
+    fs2020_event("AP_WING_LEVELER_ON")
+    sound_play(press_snd)
 end
 
 -- Required code for proper FLC speed capture and set
 
-        function callback_flc(flcstate)
-            FLCState = flcstate 
-        end
+function callback_flc(flcstate)
+    FLCState = flcstate 
+end
         
-        function vs_callback(vsenabled)
-            VSenabled = vsenabled  
-        end
+function vs_callback(vsenabled)
+    VSenabled = vsenabled  
+end
 -- flc current state variable
 fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", callback_flc)  
 
@@ -89,38 +110,45 @@ function callback_flc()
             fs2020_event("FLIGHT_LEVEL_CHANGE_ON")                --enable FLC
             fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
         end
-    end
+        sound_play(press_snd)
+end
 
-	function aspd_callback(asindicated)
-		AirspeedIndicated = asindicated  
-		return AirspeedIndicated    
-	end
+function aspd_callback(asindicated)
+    AirspeedIndicated = asindicated  
+    return AirspeedIndicated    
+end
 
 fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
 -- End required code for proper FLC speed capture and set
 
 function callback_alt()
     fs2020_event("AP_PANEL_ALTITUDE_HOLD")
+    sound_play(press_snd)
 end
 
 function callback_apr()
    fs2020_event("AP_APR_HOLD")
+   sound_play(press_snd)
 end
 
 function callback_fd()
     fs2020_event("TOGGLE_FLIGHT_DIRECTOR")   
+    sound_play(press_snd)
 end
 
 function callback_vs()
       fs2020_event("AP_PANEL_VS_HOLD")
+      sound_play(press_snd)
  end
 
 function callback_vnv()
-	fs2020_event("H:AS1000_VNAV_TOGGLE")
+    fs2020_event("H:AS1000_VNAV_TOGGLE")
+    sound_play(press_snd)
 end
 
 function callback_yd()
     fs2020_event("YAW_DAMPER_TOGGLE")
+    sound_play(press_snd)
 end
 
 function altitude_input(direction)
@@ -129,6 +157,7 @@ function altitude_input(direction)
 	else
  		fs2020_event("AP_ALT_VAR_DEC")
 	end
+	sound_play(dial_snd)
 end
 
 function heading_input(direction)
@@ -137,64 +166,58 @@ function heading_input(direction)
     else
  		fs2020_event("HEADING_BUG_DEC")
     end
+    sound_play(dial_snd)
 end
 
 function vs_callback(direction)
-
     if direction == 1 then
         if scroll_vs_mode then
-			fs2020_event("AP_VS_VAR_INC")
-      else
+	    fs2020_event("AP_VS_VAR_INC")
+        else
             fs2020_event("AP_SPD_VAR_INC")
         end
     else
         if scroll_vs_mode then
- 			fs2020_event("AP_VS_VAR_DEC")
+ 	    fs2020_event("AP_VS_VAR_DEC")
          else
             fs2020_event("AP_SPD_VAR_DEC")
          end
     end
+    sound_play(dial_snd)
 end
 
--- Create a new scroll wheel
-
-
-
 -- Add the buttons
-button_hdg = button_add(nil , "autopilot_button_in.png", 63, 173, 60, 43, callback_hdg)
-button_nav = button_add(nil , "autopilot_button_in.png", 147, 173, 60, 43, callback_nav)
-button_ap = button_add(nil , "autopilot_button_in.png", 230, 66, 60, 43,  callback_ap)
-button_lvl = button_add(nil , "autopilot_button_in.png", 310, 66, 60, 43,  callback_lvl)
-button_flc = button_add(nil , "autopilot_button_in.png", 477, 34, 60, 43,  callback_flc)
-button_alt = button_add(nil , "autopilot_button_in.png", 567, 175, 60, 43,  callback_alt)
-button_apr = button_add(nil , "autopilot_button_in.png", 147, 39, 60, 43, callback_apr)
-button_fd = button_add(nil , "autopilot_button_in.png", 232, 139, 60, 43,  callback_fd)
-button_vs = button_add(nil , "autopilot_button_in.png", 477, 175, 60, 43, callback_vs)
-button_vnv = button_add(nil , "autopilot_button_in.png", 477, 105, 60, 43, callback_vnv)
+button_hdg = button_add(nil , "autopilot_button_in.png", 63, 173, 60, 43, callback_hdg, release)
+button_nav = button_add(nil , "autopilot_button_in.png", 147, 173, 60, 43, callback_nav, release)
+button_ap = button_add(nil , "autopilot_button_in.png", 230, 66, 60, 43,  callback_ap, release)
+button_lvl = button_add(nil , "autopilot_button_in.png", 310, 66, 60, 43,  callback_lvl, release)
+button_flc = button_add(nil , "autopilot_button_in.png", 477, 34, 60, 43,  callback_flc, release)
+button_alt = button_add(nil , "autopilot_button_in.png", 567, 175, 60, 43,  callback_alt, release)
+button_apr = button_add(nil , "autopilot_button_in.png", 147, 39, 60, 43, callback_apr, release)
+button_fd = button_add(nil , "autopilot_button_in.png", 232, 139, 60, 43,  callback_fd, release)
+button_vs = button_add(nil , "autopilot_button_in.png", 477, 175, 60, 43, callback_vs, release)
+button_vnv = button_add(nil , "autopilot_button_in.png", 477, 105, 60, 43, callback_vnv, release)
 
 if user_prop_get(up_yd_shown) then
     img_add("YD_Button.png", 310, 136, 63, 40)
-    button_yd= button_add(nil , "autopilot_button_in.png", 310, 139, 60, 43, callback_yd)
+    button_yd= button_add(nil , "autopilot_button_in.png", 310, 139, 60, 43, callback_yd, release)
     img_yd_active   = img_add("white_triangle_lit.png", 328, 120, 26, 16, "visible:false")
     yd_label = img_add("yd_label.png", 310, 136, 63, 40)
     opacity(yd_label, 0)
 end 
 
-
 function sync_heading_pressed()
 	fs2020_event("HEADING_BUG_SET", currentHeading)	
+	sound_play(press_snd)
 end
-
 
 function sync_altitude_pressed()
- 	fs2020_event("AP_ALT_VAR_SET_ENGLISH", currentAltitude)	
+ 	fs2020_event("AP_ALT_VAR_SET_ENGLISH", currentAltitude)
+ 	sound_play(press_snd)	
 end
 
-
-
--- Active mode lights
+-- Annunciator
 img_hdg_active  = img_add("white_triangle_lit.png", 78, 153, 26, 16, "visible:false")
---img_trk_active  = img_add("white_triangle_lit.png", 165, 153, 26, 16, "visible:false")
 img_nav_active  = img_add("white_triangle_lit.png", 165, 153, 26, 16, "visible:false")
 img_apr_active  = img_add("white_triangle_lit.png", 165, 17, 26, 16, "visible:false")
 img_ap_active   = img_add("white_triangle_lit.png", 245, 47, 26, 16, "visible:false")
@@ -206,9 +229,8 @@ img_vs_active   = img_add("white_triangle_lit.png", 495, 155, 26, 16, "visible:f
 img_alt_active  = img_add("white_triangle_lit.png", 583, 155, 26, 16, "visible:false")
 
 
-
+-- set local variable values based on subscriptions. 
 function ap_cb (hdg,  nav, apr, ap_mode, fd_mode,  yaw, ias,  vs, alt, heading, altitude, avionics, battery,generator, vnv, mainbus, battpower)
-
 	if (vnv == 1) then
 	    vnv_on = true
 	else
@@ -312,6 +334,7 @@ function setSpeedKnobster(direction)
             fs2020_event("AP_SPD_VAR_DEC")
          end
     end
+    sound_play(dial_snd)
 end
 
 if user_prop_get(knobster_prop) then
@@ -319,5 +342,7 @@ speedDial = dial_add(nil,  423, 61, 34, 124, setSpeedKnobster)
 end
 
 img_add("thumbwheel_shadow.png", 424,61,28,124)
-button_add( nil,nil,78,71,31,31, sync_heading_pressed)
-button_add( nil,nil,580,71,31,31, sync_altitude_pressed)
+button_add( nil,nil,78,71,31,31, sync_heading_pressed, release)
+button_add( nil,nil,580,71,31,31, sync_altitude_pressed, release)
+
+

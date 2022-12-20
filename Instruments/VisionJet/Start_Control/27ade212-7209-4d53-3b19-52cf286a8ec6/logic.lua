@@ -108,7 +108,8 @@ function lightPot(val, panel, pot, power)
     panelLight = panel
     if power  then
         opacity(backlight_group, (pot/100), "LOG", 0.1)  
-
+    else
+        opacity(backlight_group, 0, "LOG", 0.1)  
     end
 end
 

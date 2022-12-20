@@ -82,7 +82,6 @@ if user_prop_get(toga_prop) then
 end
 
 
-
 --BUTTONS
 
 
@@ -216,21 +215,25 @@ end
 function moveThrottle(pos)
         slider_set_position(throttle_id, 1-(pos/100))    
 end
-
 fs2020_variable_subscribe("GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", moveThrottle)
 
 -- backlight
 backlight_labels = img_add_fullscreen("backlight_labels.png")
-
-backlit_labels_group = group_add(backlight_labels, txt_toga_backlit)
-
-opacity(backlit_labels_group, 0)
+opacity(backlight_labels, 0)
 function lightPot(val, panel, pot, power)
     lightKnob = val
     panelLight = panel
     backlight = pot
     if power  then
-        opacity(backlit_labels_group, (pot/100), "LOG", 0.1)  
+        opacity(backlight_labels, (pot/100), "LOG", 0.1)  
+        if user_prop_get(toga_prop) then
+            opacity(txt_toga_backlit, (pot/100), "LOG", 0.1)
+        end    
+    else
+        opacity(backlight_labels, 0, "LOG", 0.1)  
+        if user_prop_get(toga_prop) then
+            opacity(txt_toga_backlit, 0, "LOG", 0.1)
+        end 
     end
 end
 
