@@ -4,6 +4,9 @@ Made by SIMSTRUMENTATION - http://simstrumentation.com
 Auto throttle for the Vision Jet by FlightFX
 
 Version info:
+- **v1.1** - 2022-12-14
+    - added backlighting
+
 - **v1.0** - 2022-12-14
 
 NOTES: 
@@ -14,4 +17,4 @@ NOTES:
             * Hidden TOGA button was added to the nub to the left of the AT 
                button for those who don't have a button available on their
                throttle quadrant. By default the label is shown. If you wish to hide
-               it since it isn't in the real aircraft, select this option</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>865</prefWidth><prefHeight>826</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+               it since it isn't in the real aircraft, select this option</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>110</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>865</prefWidth><prefHeight>826</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

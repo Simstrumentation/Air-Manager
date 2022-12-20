@@ -8,7 +8,11 @@
 Fuel selector lever for the Vision Jet by FlightFX
 
 Version info:
+- **v1.1** - 2022-12-
+    - Graphics update
+    - Added backlighting
 - **v1.0** - 2022-12-11
+    - Original release
 
 NOTES: 
 - Made for the FlightFX Vision Jet. Will not work with other MSFS aircraft. 
@@ -23,7 +27,7 @@ Sharing or re-use of any code or assets is not permitted without credit to the o
 ******************************************************************************************
 ]]--
 
-img_add_fullscreen( "fuel_control_background.png")
+img_add_fullscreen( "bg.png")
 local tank = 0
 
 function move_selector(position, direction)
@@ -53,14 +57,18 @@ function move_selector(position, direction)
 	end
 
 end
-fuel_sel_sw = switch_add( nil, nil, nil, 55,112,192,197, move_selector)
+
+--    backlight graphics to maintain z-order
+backlight_labels = img_add_fullscreen("labels_backlight.png")
+opacity(backlight_labels, 0)
+fuel_sel_sw = switch_add( nil, nil, nil, 50,112,192,197, move_selector)
 shadow = img_add("shadow.png" ,60,127,192,197)
-fuel_lever = img_add("fuel_select.png" ,55,112,192,197)
+fuel_lever = img_add("fuel_select.png" ,50,112,192,197)
 
 function setFuelPosition(left, right, auto)
 	if left == 1 then 
-		rotate(fuel_lever, -33, 95, 130, 0, "LINEAR", 0.1, "DIRECT")
-		rotate(shadow, -33, 95, 130, 0, "LINEAR", 0.1, "DIRECT")		
+		rotate(fuel_lever, -30, 95, 130, 0, "LINEAR", 0.1, "DIRECT")
+		rotate(shadow, -30, 95, 130, 0, "LINEAR", 0.1, "DIRECT")		
 		tank = 0
 	elseif right == 1 then 
 		rotate(fuel_lever, 30, 95, 130, 0,"LINEAR", 0.1, "DIRECT")	
@@ -78,3 +86,17 @@ fs2020_variable_subscribe("L:SF50_fuel_selector_left", "Number",
                                               "L:SF50_fuel_selector_auto", "Number", 
                                               setFuelPosition)
 
+-- backlight
+function lightPot(val, panel, pot, power)
+    lightKnob = val
+    panelLight = panel
+    if power  then
+        opacity(backlight_labels, (pot/100), "LOG", 0.1)  
+    end
+end
+
+fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+                                                "A:LIGHT PANEL:1", "Bool", 
+                                                "A:LIGHT POTENTIOMETER:3", "Percent", 
+                                                "A:ELECTRICAL MASTER BATTERY", "Bool",
+                                                 lightPot)

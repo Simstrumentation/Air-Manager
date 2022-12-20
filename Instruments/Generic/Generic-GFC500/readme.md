@@ -5,5 +5,6 @@
 
 ## NOTES
 
-- This autopilot module should work with most MSFS aircraft that use all standard simvars and events. 
-- Some variants come with a Yaw Damper button, others not. You can show / hide the Yaw Damper button via user properties to match the layout of the unit in the plane you fly. 
+- Should work in most aircraft with a GFC500 or similar autopilot. 
+- Yaw Damper button can be hidden or shown to match your plane's AP module via user property
+- Thumb wheel can be selected to work with Knobster from user property

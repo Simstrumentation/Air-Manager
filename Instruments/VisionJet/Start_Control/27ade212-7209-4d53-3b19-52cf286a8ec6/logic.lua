@@ -1,6 +1,6 @@
 --[[
 ******************************************************************************************
-************************ CIRRUS SF50 VISION JET STAR CONTROL *****************************
+************************ CIRRUS SF50 VISION JET START CONTROL *****************************
 ******************************************************************************************
     Made by SIMSTRUMENTATION in collaboration with Russ Barlow
     GitHub: https://simstrumentation.com
@@ -8,7 +8,11 @@
 Start control for the Vision Jet by FlightFX
 
 Version info:
+- **v1.1** - 2022-12-
+    - Graphics update
+    - Added backlighting
 - **v1.0** - 2022-12-11
+    - Original release
 
 NOTES: 
 - Will only work with the FlightFX Vision Jet
@@ -17,7 +21,7 @@ KNOWN ISSUES:
 - None
 
 ATTRIBUTION:
--Based on code and graphics from Russ Barlow. Used with permission. 
+-Based on code from Russ Barlow. Used with permission. 
 -Sharing or re-use of any code or assets is not permitted without credit to the original authors.
 
 ******************************************************************************************
@@ -25,8 +29,13 @@ ATTRIBUTION:
 ]]--
 
 local arm_pos = 0
+local lightKnob = 0
+local panelLight = 0
 
-img_add_fullscreen("eng_start_background.png")
+img_add("bg.png", 1, 1, 364, 611)
+bg_labels = img_add_fullscreen("bg_labels_on.png")
+
+img_add_fullscreen("knob_base.png")
 play_sounds = user_prop_add_boolean("Play Sounds", true, "Play sounds in Air Manager")                           -- Use sounds in Air Manager    
 
 -- play sound
@@ -60,7 +69,8 @@ function start_push_pressed()
         sound_play(press_snd)
 end
 
-button_add(nil, "eng_start_button_push.png", 25,41,229,196, start_push_pressed, release)  
+button_add("start_btn.png", "start_btn_pressed.png", 35,51,227,183, start_push_pressed, release)  
+start_label = img_add("start_btn_label.png", 35,51,227,183)
 
 function ignition()
     if arm_pos == 0then
@@ -73,16 +83,37 @@ function ignition()
 end
 
 start_sw = switch_add(nil, nil, 46,290,232,232, ignition)
-start_knob = img_add("start_knob.png", 46,290,232,232)
+start_knob = img_add("start_knob.png", 56,300,232,232)
+start_knob_backlight = img_add("start_knob_backlight.png", 56,300,232,232)
 
+start_knob_group = group_add(start_knob, start_knob_backlight)
 function set_start_switch_fs2020(position)
     if position == 0 then
-        rotate(start_knob, 0, "LINEAR", 0.1)
+        rotate(start_knob_group, 0, "LINEAR", 0.1)
         arm_pos = 0
     else
-        rotate(start_knob, 45, "LINEAR", 0.1)
+        rotate(start_knob_group, 41, "LINEAR", 0.1)
         arm_pos = 1
     end
 end
 
 fs2020_variable_subscribe("L:SF50_knob_stop_run", "Enum", set_start_switch_fs2020)
+
+backlight_group = group_add(bg_labels, start_label, start_knob_backlight)
+opacity(backlight_group, 0)
+
+-- backlight
+function lightPot(val, panel, pot, power)
+    lightKnob = val
+    panelLight = panel
+    if power  then
+        opacity(backlight_group, (pot/100), "LOG", 0.1)  
+
+    end
+end
+
+fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+                                                "A:LIGHT PANEL:1", "Bool", 
+                                                "A:LIGHT POTENTIOMETER:3", "Percent", 
+                                                "A:ELECTRICAL MASTER BATTERY", "Bool",
+                                                 lightPot)
