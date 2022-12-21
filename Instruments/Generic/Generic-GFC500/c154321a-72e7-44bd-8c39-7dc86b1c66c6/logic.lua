@@ -8,7 +8,9 @@
 GFC 500 Autopilot module
 
 Version info:
-- **v1.1** - 2022-12-
+- **v1.11** - 2022-12-21
+    - VNAV for Vision Jet added    
+- **v1.1** - 2022-12-20
     - Graphics update
     - Added backlighting
     - Added optional sounds
@@ -34,6 +36,9 @@ up_yd_shown = user_prop_add_boolean("Show Yaw Damper", true, "Show YD button and
 knobster_prop = user_prop_add_boolean("Use Knobster for thumbwheel", false, "Choose whether to use Knobster or touch control for the thumb wheel")
 play_sounds = user_prop_add_boolean("Play Sounds", true, "Play sounds in Air Manager")                           -- Use sounds in Air Manager    
 
+--local variables
+local isVisionJet = false
+local vnav_enable = 0
 
 --    sound config
 if user_prop_get(play_sounds) then
@@ -142,7 +147,16 @@ function callback_vs()
  end
 
 function callback_vnv()
-    fs2020_event("H:AS1000_VNAV_TOGGLE")
+
+    if isVisionJet then
+        if vnav_enable == 1 then
+            fs2020_variable_write("L:SF50_vnav_enable", "Int", 0)
+        else
+            fs2020_variable_write("L:SF50_vnav_enable", "Int", 1)
+        end
+    else
+        fs2020_event("H:AS1000_VNAV_TOGGLE")
+    end   
     sound_play(press_snd)
 end
 
@@ -254,9 +268,15 @@ function ap_cb (hdg,  nav, apr, ap_mode, fd_mode,  yaw, ias,  vs, alt, heading, 
     visible(img_fd_active, fd_mode and power)
     visible(img_ias_active, ias and power )
     scroll_vs_mode = vs and power
-    visible(img_vs_active, vs and power)
+    if isVisionJet then
+        --    correct behaviour for Vision Jet
+        visible(img_vs_active, (vs and power) and vnav_enable ==0) 
+    else
+        -- correct behaviour for other planes
+        visible(img_vs_active, vs and power) 
+    end
     visible(img_alt_active, alt  and power)
-    visible(img_vnav_active, vnv_on  and power)
+    visible(img_vnav_active, (vnv_on or vnav_enable ==1)  and power)
     
  --if yd enabled
      visible(img_yd_active, yd_on  and power and user_prop_get(up_yd_shown))
@@ -345,4 +365,20 @@ img_add("thumbwheel_shadow.png", 424,61,28,124)
 button_add( nil,nil,78,71,31,31, sync_heading_pressed, release)
 button_add( nil,nil,580,71,31,31, sync_altitude_pressed, release)
 
+-- possibly temporary code to determine if this is the Vision Jet or another plane
+-- for proper VNAV functionality.
 
+function showType(type)
+    testPlaneType= string.find(type, "Vision")
+    if testPlaneType == nil then         
+        isVisionJet = false
+    else
+        isVisionJet = true
+    end
+end
+fs2020_variable_subscribe("TITLE", "STRING", showType)
+
+function getVnavState(state)
+    vnav_enable = state
+end
+fs2020_variable_subscribe("L:SF50_vnav_enable", "Int", getVnavState)

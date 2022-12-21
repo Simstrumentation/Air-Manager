@@ -3,7 +3,9 @@
 GFC 500 Autopilot module
 
 Version info:
-- **v1.1** - 2022-12-
+- **v1.11** - 2022-12-21
+    - VNAV for Vision Jet added    
+- **v1.1** - 2022-12-20
     - Graphics update
     - Added backlighting
 - **v1.0** - 2022-12-11
@@ -13,4 +15,4 @@ NOTES:
 - Yaw Damper button can be hidden or shown to match your plane's AP module via 
    user property
 - Thumb wheel can be selected to work with Knobster from user property
-</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>110</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>687</prefWidth><prefHeight>255</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>111</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>687</prefWidth><prefHeight>255</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
