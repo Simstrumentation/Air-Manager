@@ -81,9 +81,7 @@ if user_prop_get(toga_prop) then
     opacity(txt_toga_backlit, 0)  
 end
 
-
 --BUTTONS
-
 
 function release()
     sound_play(release_snd)
@@ -101,7 +99,6 @@ function atSelect()
     sound_play(press_snd)
 end
 at_btn = button_add(nil, "btn_pressed.png", 205, 95, 113, 90, atSelect, release)
-
 
 function manSelect()
     currentIAS = math.floor(ias)
@@ -124,7 +121,6 @@ function fmsRelease()
     sound_play(release_snd)
 end
 fms_btn = button_add(nil, "btn_pressed.png", 320, 265, 113, 90, fmsSelect, release)
-
 
 function setSpeed(direction)
     if direction == 1 then
@@ -150,20 +146,16 @@ end
 
 img_add("thumbwheel_shadow.png", 153, 442, 23, 208)
 
---annunciators
-
-at_annun = img_add("annunciator.png", 230, 60, 62, 26)
-visible(at_annun, false)
-man_annun = img_add("annunciator.png", 120, 235, 62, 26)
-visible(man_annun, false)
-fms_annun = img_add("annunciator.png", 342, 235, 62, 26)
-visible(fms_annun, false)
-
+--annunciator graphics
+at_annun = img_add("annunciator.png", 230, 60, 62, 26, "visible:false")
+man_annun = img_add("annunciator.png", 120, 235, 62, 26, "visible:false")
+fms_annun = img_add("annunciator.png", 342, 235, 62, 26, "visible:false")
 
 --set auto throttle states and annunciators
 function setFMSAn(manFMS, atActive)
-
     atArmed = atActive
+    print(atArmed)
+    print(manFMS)
    --    set state of manual FMS mode
      if manFMS == 1 and power then
         atManual = true        
@@ -186,12 +178,14 @@ function setFMSAn(manFMS, atActive)
 
 --    fms annunciator
     if atFMS then
+    print(atFMS)
         visible(fms_annun, true)
     else
         visible(fms_annun, false)
     end
 --    manual annunciator    
     if atManual then
+        print(atManual)
         visible(man_annun, true)
     else
         visible(man_annun, false)
@@ -219,18 +213,22 @@ fs2020_variable_subscribe("GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", mo
 
 -- backlight
 backlight_labels = img_add_fullscreen("backlight_labels.png")
+
+backlight_group = group_add(backlight_labels)
 opacity(backlight_labels, 0)
-function lightPot(val, panel, pot, power)
+function lightPot(val, panel, pot, masterBattery)
     lightKnob = val
     panelLight = panel
     backlight = pot
+    power = masterBattery
+    
     if power  then
-        opacity(backlight_labels, (pot/100), "LOG", 0.1)  
+        opacity(backlight_group, (pot/100), "LOG", 0.1)  
         if user_prop_get(toga_prop) then
             opacity(txt_toga_backlit, (pot/100), "LOG", 0.1)
         end    
     else
-        opacity(backlight_labels, 0, "LOG", 0.1)  
+        opacity(backlight_group, 0, "LOG", 0.1)  
         if user_prop_get(toga_prop) then
             opacity(txt_toga_backlit, 0, "LOG", 0.1)
         end 
