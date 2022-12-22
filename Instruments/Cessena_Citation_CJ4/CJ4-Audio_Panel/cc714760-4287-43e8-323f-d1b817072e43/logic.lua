@@ -24,10 +24,13 @@
     - Added Marker Mute Button
     - Added SPKR Knob (On/Off)
     - Files capitials renamed for SI Store submittion  
-   
+- **v2.2** 12-06-22 Simstrumentation  
+    - Updated code to reflect AAU1 being released in 2023Q1
+    
 ##Left To Do:
-	
+	N/A
 ##Notes:
+	N/A
 
 ******************************************************************************************    
 --]]
@@ -58,10 +61,9 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 --=======Back  Lighting============
 img_labels_backlight = img_add_fullscreen("backlight.png")
 
-function ss_backlighting(value, power, extpower, busvolts)
+function ss_backlighting(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)
-    
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
+    if panellight == false or (power == false and extpower == false and busvolts < 5) then 
         opacity(img_labels_backlight, 0, "LOG", 0.04)  
         opacity(com1_ind_backlight,0, "LOG", 0.04) 
         opacity(com2_ind_backlight,0, "LOG", 0.04) 
@@ -94,6 +96,7 @@ function ss_backlighting(value, power, extpower, busvolts)
         end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                          "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)
@@ -104,8 +107,8 @@ fail_snd = sound_add("beepfail.wav")
 dial_snd = sound_add("dial.wav")
 
 --COM Channel Indicator
-img_com1_light = img_add("COM_Light.png", 97,11,20,21)
-img_com2_light = img_add("COM_Light.png", 200,11,20,21)
+img_com1_light = img_add("com_light.png", 97,11,20,21)
+img_com2_light = img_add("com_light.png", 200,11,20,21)
 
 
 ----ADD KNOWB INDICATOR GRAPHICS

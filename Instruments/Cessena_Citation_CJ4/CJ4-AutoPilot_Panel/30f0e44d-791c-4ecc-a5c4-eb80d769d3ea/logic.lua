@@ -37,9 +37,11 @@
     - Added Acceleration to CRS1, CRS2, IAS, HDG, and ALT.
 - **v2.4** 01-26-22 SIMSTRUMENTATION   
     - Changed how acceleration was implemented
-      
+- **v2.5** 12-5-22 SIMSTRUMENTATION   
+    - Updated code to reflect AAU1 being released in 2023Q1
+            
 ##Left To Do:
-    - 	
+    - 	N/A
 	
 ##Notes:
     - The Alt Knob has an outer and inner dials. Outer changes 1000' increments, Inner 100' increments. 
@@ -62,6 +64,7 @@ local current_heading = 0
 local yd_state = nil
 local ap_max_bank = nil
 local ap_xfr_state = nil
+local ap_vnav_state = nil
 local orignav1_obs = nil
 local orignav2_obs = nil
 local ias_mach_state = nil
@@ -89,11 +92,10 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 --=======Back  Lighting=============================================
 img_labels_backlight = img_add_fullscreen("backlight.png")
 
-function ss_backlighting(value, power, extpower, busvolts)
+function ss_backlighting(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)
     
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
-     
+    if  panellight == false  or (power == false and extpower == false and busvolts < 5) then 
         opacity(img_labels_backlight, 0, "LOG", 0.04)       
         opacity(img_labels_backlight, 0, "LOG", 0.04)
         opacity(img_ALT_dial_backlight, 0, "LOG", 0.04)
@@ -111,6 +113,7 @@ function ss_backlighting(value, power, extpower, busvolts)
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                          "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)
@@ -127,39 +130,39 @@ function callback_FD()
 end
 button_add(nil,"FD_pressed.png",  103,37,63,48, callback_FD)
 button_add(nil,"FD_pressed.png",  1751,37,63,48, callback_FD)
---Virticle Speed    
+--Verticle Speed    
 function callback_VS()
-   fs2020_event("H:WT_CJ4_AP_VS_PRESSED")
+   fs2020_event("AP_VS_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"VS_pressed.png", 270,37,63,48, callback_VS)
 --FLC    
 function callback_FLC()
-   fs2020_event("H:WT_CJ4_AP_FLC_PRESSED")
+   fs2020_event("FLIGHT_LEVEL_CHANGE")
    sound_play(snd_click)
 end
 button_add(nil,"FLC_pressed.png", 607,37,63,48, callback_FLC) 
 --NAV    
 function callback_NAV()
-   fs2020_event("H:WT_CJ4_AP_NAV_PRESSED")
+   fs2020_event("AP_NAV1_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"NAV_pressed.png", 775,37,63,48, callback_NAV) 
 --HDG    
 function callback_HDG()
-   fs2020_event("H:WT_CJ4_AP_HDG_PRESSED")
+   fs2020_event("AP_HDG_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"HDG_pressed.png", 935,37,63,48, callback_HDG) 
 --APPR    
 function callback_APPR()
-   fs2020_event("H:WT_CJ4_AP_APPR_PRESSED")
+   fs2020_event("AP_APR_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"APPR_pressed.png", 1085,37,63,48, callback_APPR) 
 --ALT    
 function callback_ALT()
-   fs2020_event("H:WT_CJ4_AP_ALT_PRESSED")
+   fs2020_event("AP_PANEL_ALTITUDE_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"ALT_pressed.png", 1236,37,63,48, callback_ALT) 
@@ -183,12 +186,18 @@ function callback_AP()
    sound_play(snd_click)
 end
 button_add(nil,"AP_pressed.png", 1569,37,63,48, callback_AP) 
+
 --VNAV    
+function ss_ap_vnav(val)
+    ap_vnav_state = val
+end
+fs2020_variable_subscribe("L:XMLVAR_VNAVButtonValue","Int", ss_ap_vnav)
 function callback_VNAV()
-   fs2020_event("H:WT_CJ4_AP_VNAV_PRESSED")
+  fs2020_variable_write("L:XMLVAR_VNAVButtonValue","Int",fif(ap_vnav_state==1, 0, 1))
    sound_play(snd_click)
 end
-button_add(nil,"VNAV_pressed.png", 270,135,63,48, callback_VNAV) 
+button_add(nil,"VNAV_pressed.png", 270,135,63,48, callback_VNAV)
+ 
 --BANK  
 function ss_ap_bank(val)
     ap_max_bank = val
@@ -205,7 +214,7 @@ end
 button_add(nil,"BANK_pressed.png", 775,135,63,48, callback_BANK) 
 --BackCourse    
 function callback_BC()
-   fs2020_event("H:WT_CJ4_AP_BC_PRESSED")
+   fs2020_event("AP_BC_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"BC_pressed.png", 1085,135,63,48, callback_BC) 
@@ -340,17 +349,8 @@ dial_IAS = dial_add("IAS_DIAL.png", 592,112,96,95,2, callback_IAS_DIAL, callback
 img_IAS_backlight = img_add("IAS_DIAL_backlight.png", 592,112,96,95)
 
 --IAS PRESS 
-function ss_ias_mach_callback(var)
-     ias_mach_state = var
-end
-fs2020_variable_subscribe("XMLVAR_AirSpeedIsInMach","Double", ss_ias_mach_callback)
-
 function callback_IAS_DIAL_click()
-     if ias_mach_state == 1 then
-         fs2020_variable_write("L:XMLVAR_AirSpeedIsInMach","Double",0.0) 
-     else
-         fs2020_variable_write("L:XMLVAR_AirSpeedIsInMach","Double",1.0)
-     end
+     fs2020_event("AP_MANAGED_SPEED_IN_MACH_TOGGLE" )  
     sound_play(snd_click)
  end    
 button_add(nil,nil, 607,140,40,40, callback_IAS_DIAL_click) 
@@ -441,11 +441,11 @@ dial_click_rotate(dial_alt_inner, 6)
 --ALT PRESS
 --[[
 function ALT_DIAL_click()
-    fs2020_event("HEADING_BUG_SET")  
+    fs2020_event("AP_ALT_HOLD_OFF")  
     sound_play(snd_click)
 end    
-button_add(nil,nil, 940,140,40,40, ALT_DIAL_click) 
-]]--
+button_add(nil,nil, 1240,140,45,45, ALT_DIAL_click) 
+--]]
 
 --AP_DIS
 function  ss_AP_DIS_STATUS(AP_DIS_STATUS1)
