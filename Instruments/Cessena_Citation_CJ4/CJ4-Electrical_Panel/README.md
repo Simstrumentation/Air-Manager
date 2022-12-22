@@ -13,10 +13,11 @@
      - Battery EMER is functional but requires Air Manager 4.1 for full functionality. If using AM4.0.1 EMER turns on actual battery.
  - **v2.2** 03-28-22 SIMSTRUMENTATION
      - Switch Graphics replaced 
+- **v2.3** 12-06-22 SIMSTRUMENTATION
+    - Updated code to reflect AAU1 being released in 2023Q1	 
 	 
 ## Left To Do:
-
-- N/A
-
+  - N/A
+	
 ## Notes:
-- N/A
+  - N/A

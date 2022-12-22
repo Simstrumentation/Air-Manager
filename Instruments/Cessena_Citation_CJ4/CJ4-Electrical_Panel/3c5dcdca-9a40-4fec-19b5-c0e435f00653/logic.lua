@@ -21,21 +21,25 @@
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
- - **v2.1** 01-16-22 SIMSTRUMENTATION
-     - Resource folder file capitials renamed for SI Store submittion  
-     - Battery EMER is functional but requires Air Manager 4.1 for full functionality. If using AM4.0.1 EMER turns on actual battery.
- - **v2.2** 03-28-22 SIMSTRUMENTATION
-     - Switch Graphics replaced 
-     
-##Left To Do:
-    - 
+- **v2.1** 01-16-22 SIMSTRUMENTATION
+    - Resource folder file capitials renamed for SI Store submittion  
+    - Battery EMER is functional but requires Air Manager 4.1 for full functionality. If using AM4.0.1 EMER turns on actual battery.
+- **v2.2** 03-28-22 SIMSTRUMENTATION
+    - Switch Graphics replaced 
+- **v2.3** 12-06-22 SIMSTRUMENTATION
+    - Updated code to reflect AAU1 being released in 2023Q1
+    
+## Left To Do:
+  - N/A
 	
-##Notes:
-    - 
+## Notes:
+  - N/A
 			 					  													   					 					  													   
 ******************************************************************************************
 --]]
 local batterystatus = 0
+local emerlts_state = nil
+
 --Backgroud Image before anything else
 img_add_fullscreen("background.png")
 img_bg_night = img_add_fullscreen("background_night.png")
@@ -78,15 +82,16 @@ end
 si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
 --backlighting
-function ss_backlighting(value, power, extpower, busvolts)
+function ss_backlighting(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)      
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
+    if panellight == false or (power == false and extpower == false and busvolts < 5) then 
         opacity(img_labels_backlight, 0, "LOG", 0.04)
      else
         opacity(img_labels_backlight, ((value/2)+0.5), "LOG", 0.04)     
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)
@@ -157,11 +162,11 @@ end
 button_add(nil,nil, 501,385,120,50, callback_AVI_Dispatch)
 -- EmergencyLightsArmed
 function callback_Emerg_Lights_Armed()
-	fs2020_variable_write("L:WT_CJ4_EMER_LIGHT_ARMED", "Int",1)
+     fs2020_variable_write("L:CJ4_EMER_LIGHT_ARMED","Int",fif(emerlts_state==1, 0, 1)) 
 end
 button_add(nil,nil, 110,250,180,160, callback_Emerg_Lights_Armed)
 function callback_Emerg_Lights_Off()
-    fs2020_variable_write("L:WT_CJ4_EMER_LIGHT_ARMED", "Int",0) 
+        fs2020_variable_write("L:CJ4_EMER_LIGHT_ARMED","Int",fif(emerlts_state==1, 0, 1))
 end
 button_add(nil,nil, 100,330,240,100, callback_Emerg_Lights_Off)
 --Stand By Display On
@@ -249,6 +254,7 @@ fs2020_variable_subscribe("AVIONICS MASTER SWITCH:1","Bool",
                           
 --Test if Emergency Lights Armed
 function ss_Emerg_Lights_Status(emlights_armed)
+    emerlts_state = emlights_armed
     if emlights_armed == 1 then
          visible(img_Emergency_Armed, true)
          visible(img_Emergency_Armed_night, true)
@@ -257,7 +263,7 @@ function ss_Emerg_Lights_Status(emlights_armed)
         visible(img_Emergency_Armed_night, false)
     end
 end
-fs2020_variable_subscribe("L:WT_CJ4_EMER_LIGHT_ARMED", "Int", ss_Emerg_Lights_Status)
+fs2020_variable_subscribe("L:CJ4_EMER_LIGHT_ARMED", "Int", ss_Emerg_Lights_Status)
 
 --Test if Standy By Display ON
 function ss_Standby_Display_Status(standby_on)

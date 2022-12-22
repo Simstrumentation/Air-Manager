@@ -9,14 +9,15 @@
 	- Backlighting
 	- Night mode (when used in conjunction with Simstrumentation Ambient Light Control)
 	- Mobiflight events replaced with H: events and L: variables 
-- **v2.1** 01-16-22 SIMSTRUMENTATION
+- **v2.1** 01-16-2022 SIMSTRUMENTATION
     - Resource folder file capitials renamed for SI Store submittion  
-
+- **v2.2** 12-06-2022 SIMSTRUMENTATION      
+   - Updated code to reflect AAU1 being released in 2023Q1
+   - Added PFD2 & MFD2 as user prop options.
+   - Added screen power affect based on circuit power.
+   
 ## Left To Do:
-- N/A
+  - N/A
 	
 ## Notes:
-- Offers both a full size and condensed size version for smaller screen sizes. This option can be selected in the user properties of the panel
-- You must select if the unit is either the PFD or MFD in the user properties in order for dimming controls (either from the virtual cockpit or from the Simstrumentation CJ4 Light Control Panel)
-- Must be used with the popped out pilot side PFD and MFD screens from the sim
-- Must use the Simstrumentation Ambient Light Dimmer control in order to use night lighting mode
+  - There is a userprop to set overlay as PFD1, PFD2, MFD1, or MFD2. This is only used for display dimming by Light Panel or Virtural Cockpit Light Panel.  

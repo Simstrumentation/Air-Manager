@@ -15,13 +15,16 @@
     - Click and Dial sounds replaced with custom.    
 - **v2.2** 01-19-2022  with credit to SimInnovations Tony for the suggestion.
     - Baro knob changed from Switch to Button to allow Knobster push function.  
-- **v2.3** 10-19-22 SIMSTRUMENTATION 
+- **v2.3** 10-19-2022 SIMSTRUMENTATION 
     - Added acceleration to Baro Knob. Request from sunbeam60.  	
-
-## Notes:
-- Must use the Simstrumentation Ambient Light Dimmer control in order to use night lighting mode
-- CCP Meanu, Radar Menu, TAWS Menu and Weather Tilt not functional in sim.
-
+- **v2.3** 10-19-2022 SIMSTRUMENTATION 
+    - Added acceleration to Baro Knob. Request from sunbeam60.                
+- **v2.4** 12-06-2022 Joe "Crunchmeister" Gilker       
+    - Updated code to reflect AAU1 being released in 2023Q1
+   
 ## Left To Do:
-- N/A
+  - N/A
+	
+## Notes:
+  - N/A
 	

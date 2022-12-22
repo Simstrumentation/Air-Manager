@@ -1,11 +1,28 @@
 --[[
---*********END OF INTERNAL ALPHA TESTING****************
+******************************************************************************************
+******************Cessna Citation CJ4 Parking Brake************************************
+******************************************************************************************
+
+    Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
+    GitHub: https://github.com/simstrumentation
+   
+- **v1.0** 03-07-2021 Joe "Crunchmeister" Gilker
+    - Original Panel Created
 - **v2.0** 10-5-21 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
 - **v2.1** 01-16-22
     - Added notes in info for SI Submittion.
+- **v2.2** 12-06-2022 Joe "Crunchmeister" Gilker       
+   - Updated code to reflect AAU1 being released in 2023Q1    
+
+## Left To Do:
+  - N/A
+	
+## Notes:
+  - N/A
+            
 ]]--
 --PARKING BRAKE
 
@@ -26,15 +43,16 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", pos_ambient_darkness)
 
 --dimming
 
-function ss_backlighting(value, power, extpower, busvolts)
+function ss_backlighting(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)      
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
+    if  panellight == false  or (power == false and extpower == false and busvolts < 5) then 
 		opacity(labels_backlight, 0, "LOG", 0.04)
     else
         opacity(labels_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)

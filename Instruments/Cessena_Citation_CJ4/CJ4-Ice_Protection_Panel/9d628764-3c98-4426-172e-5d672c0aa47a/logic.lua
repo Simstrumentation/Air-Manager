@@ -21,12 +21,14 @@
 - **v2.1** 01-16-22 SIMSTRUMENTATION 
     - Click sounds replaced with custom.
     - Resource folder file capitials renamed for SI Store submittion  
-
-##Left To Do:
-    - 	
+- **v2.2** 12-06-22 SIMSTRUMENTATION 
+    - Updated code to reflect AAU1 being released in 2023Q1
+    
+## Left To Do:
+  - N/A
 	
-##Notes:
-    - 
+## Notes:
+  - N/A
 
 ******************************************************************************************
 ]]--
@@ -45,15 +47,16 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
 --=======Back Lighting=============================================
 img_labels_backlight = img_add_fullscreen("backlight.png")
-function ss_backlighting(value, power, extpower, busvolts)
+function ss_backlighting(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)      
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
+    if panellight == false or (power == false and extpower == false and busvolts < 5) then 
         opacity(img_labels_backlight, 0.1, "LOG", 0.04)
     else
         opacity(img_labels_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)

@@ -20,7 +20,8 @@
 - **v2.2** 12-06-22 Simstrumentation  
     - Updated code to reflect AAU1 being released in 2023Q1
     
-##Left To Do:
-	N/A
-##Notes:
-	N/A
+## Left To Do:
+  - N/A
+	
+## Notes:
+  - N/A

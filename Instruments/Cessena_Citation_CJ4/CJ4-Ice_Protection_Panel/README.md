@@ -12,7 +12,9 @@
 - **v2.1** 01-16-22 SIMSTRUMENTATION 
     - Click sounds replaced with custom.
     - Resource folder file capitials renamed for SI Store submittion  
-	
+- **v2.2** 12-06-22 SIMSTRUMENTATION 
+    - Updated code to reflect AAU1 being released in 2023Q1	
+
 ## Left To Do:
 - N/A
 

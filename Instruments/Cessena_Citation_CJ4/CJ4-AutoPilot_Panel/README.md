@@ -19,11 +19,11 @@
 - **v2.5** 12-5-22 SIMSTRUMENTATION   
     - Updated code to reflect AAU1 being released in 2023Q1
          	
-##Left To Do:
-    - 	N/A
+## Left To Do:
+  - N/A
 	
-##Notes:
-    - The Alt Knob has an outer and inner dials. Outer changes 1000' increments, Inner 100' increments. 
-    - The VS Speed knob is difficult to use without a knobster. Thus there is a user prop to make the dial two buttons (Down/Up).   
-    - The CRS1 and CRS2 knobs control NAV1 and NAV2 respectively. This is different compared to the Virtural Cockpit as of v0.12.11 where either knob controls either NAV.
+## Notes:
+  - The Alt Knob has an outer and inner dials. Outer changes 1000' increments, Inner 100' increments. 
+  - The VS Speed knob is difficult to use without a knobster. Thus there is a user prop to make the dial two buttons (Down/Up).   
+  - The CRS1 and CRS2 knobs control NAV1 and NAV2 respectively. This is different compared to the Virtural Cockpit as of v0.12.11 where either knob controls either NAV.
     

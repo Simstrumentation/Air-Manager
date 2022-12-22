@@ -4,7 +4,7 @@
 ******************************************************************************************
 
     Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
-    GitHub: https://github.com/simstrumentation
+    GitHub: https://simstrumentation.com
 
 - **v1.0** 08-22-2021 Rob "FlightLevelRob" Verdon 
     - Original Instrument Created
@@ -20,11 +20,14 @@
     - Resource folder file capitials renamed for SI Store submittion  
 - **v2.2**  03-05-22 SIMSTRUMENTATION
     - Update to work with Sim Update 8 and new WT CJ4 0.12.12
-##Left To Do:
-    - 
+- **v2.3** 12-06-2022 Joe "Crunchmeister" Gilker       
+   - Updated code to reflect AAU1 being released in 2023Q1    
+   
+## Left To Do:
+  - N/A
 	
-##Notes:
-    -  This instrument can be used with most FS2020 planes.  
+## Notes:
+  -  This instrument can be used with most FS2020 planes.  
    
 ******************************************************************************************   
 --]]
@@ -66,25 +69,25 @@ button_add(nil,"caution.png", 248,15,188,160, callback_Caution)
 
 --Test if Gen is On         
 function ss_warningtrue(warningactive,Battery_Status,ExtPower_Status, busvolts) 
-  if (warningactive == 1 and (Battery_Status == true or ExtPower_Status == true or busvolts > 5)) then 
+  if (warningactive == true and (Battery_Status == true or ExtPower_Status == true or busvolts > 5)) then 
         visible(img_Warning_On, true)
   else 
         visible(img_Warning_On, false)
   end
 end
-fs2020_variable_subscribe("L:Generic_Master_Warning_Active","Int", 
+fs2020_variable_subscribe("Master Warning Active","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_warningtrue)
                           
 function ss_cautiontrue(cautionactive,Battery_Status,ExtPower_Status, busvolts) 
-    if (cautionactive == 1 and (Battery_Status == true or ExtPower_Status == true or busvolts > 5)) then 
+    if (cautionactive == true and (Battery_Status == true or ExtPower_Status == true or busvolts > 5)) then 
         visible(img_Caution_On, true)
     else 
         visible(img_Caution_On, false)
     end
 end       
-fs2020_variable_subscribe("L:Generic_Master_Caution_Active","Int",
+fs2020_variable_subscribe("Master Caution Active","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_cautiontrue)
