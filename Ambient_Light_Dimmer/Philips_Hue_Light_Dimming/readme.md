@@ -49,7 +49,7 @@ ___
 
   + You now have all the relavant information to control the Hub, the webpage is no longer needed and can be closed.
 ## Setting up Arduino
-+ Download the [Arudino script from Github](https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Philips%20Hue%20Light%20Dimming/HueArduinoScript/HueArduinoScript.ino)
++ Download the [Arudino script from Github](https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Philips_Hue_Light_Dimming/HueArduinoScript/HueArduinoScript.ino)
 + Open the script using Arduino IDE 
   + Arduino IDE Available for [download here](https://docs.arduino.cc/software/ide-v1)
 + Once the script is open in Arudino IDE, go to *Tools* menu, and set the Board model from the drop down as well as *Port* Channel from the next drop down. (Use Windows Device Manager to find the Comm port number if you need too.
