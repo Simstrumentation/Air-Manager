@@ -23,7 +23,7 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 
 | Instrument | Download Current Version | Documentation | Preview |
 | ---------- | ------------------------ | ------------- | ------- |
-| PFD MFD Overlay Bezel | [v1.0 02-06-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-PFD_MFD_Overlay_Bezel/Bombardier_CRJ-PDF_MDF_Overlay_Bezel.siff?raw=true) | [docs](CRJ-PFD_MFD_Overlay_Bezel/) | <img src="CRJ-PFD_MFD_Overlay_Bezel/ac6cde1a-ce4a-45f6-a963-33a511424ecc/preview.png" width="100"> |
+| PFD MFD EICAS Overlay Bezel | [v1.2 12-22-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-PFD_MFD_Overlay_Bezel/Bombardier_CRJ-PDF_MDF_Overlay_Bezel.siff?raw=true) | [docs](CRJ-PFD_MFD_Overlay_Bezel/) | <img src="CRJ-PFD_MFD_Overlay_Bezel/ac6cde1a-ce4a-45f6-a963-33a511424ecc/preview.png" width="100"> |
 | Side Panel | [v1.0 06-21-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Side_Panel/Bombardier_CRJ-Side_Panel.siff?raw=true) | [docs](CRJ-Side_Panel/) | <img src="CRJ-Side_Panel/d9b2c1c9-ec3d-404f-b03b-935aa0b2630a/preview.png" width="100"> |
 | FMS MCDU Overlay | [v1.1 10-25-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-FMS_MCDU_Overlay/Bombardier_CRJ-FMS_MCDU_Overlay.siff?raw=true) | [docs](CRJ-FMS_MCDU_Overlay/) | <img src="CRJ-FMS_MCDU_Overlay/1226eaeb-0fbc-49e7-1dcc-83f016101849/preview.png" width="100"> |
 
