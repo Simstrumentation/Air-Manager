@@ -9,9 +9,9 @@
     - Added Pop Warning
     
 ## Left To Do:
-    - N/A
+  - N/A
 	
 ## Notes:
-    - There is a user prop to set position to Pilot or CoPilot or EICAS.
-    - There is a user prop to show or hide a dimmer knob to control the PFD/MFD brightness.
+  - There is a user prop to set position to Pilot or CoPilot or EICAS.
+  - There is a user prop to show or hide a dimmer knob to control the PFD/MFD brightness.
    
