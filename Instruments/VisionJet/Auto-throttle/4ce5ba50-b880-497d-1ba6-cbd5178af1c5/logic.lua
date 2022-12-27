@@ -7,7 +7,9 @@
 Auto throttle for the Vision Jet by FlightFX
 
 Version info:
-- **v1.1** - 2022-12-
+- **v1.11** - 2022-12-21
+    - Fixed indicators not working
+- **v1.1** - 2022-12-14
     - Added backlighting
 - **v1.0** - 2022-12-11
     - Original release
@@ -214,7 +216,9 @@ fs2020_variable_subscribe("GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", mo
 -- backlight
 backlight_labels = img_add_fullscreen("backlight_labels.png")
 
+
 backlight_group = group_add(backlight_labels)
+annunciator_group = group_add(at_annun, man_annun, fms_annun)
 opacity(backlight_labels, 0)
 function lightPot(val, panel, pot, masterBattery)
     lightKnob = val
@@ -226,7 +230,12 @@ function lightPot(val, panel, pot, masterBattery)
         opacity(backlight_group, (pot/100), "LOG", 0.1)  
         if user_prop_get(toga_prop) then
             opacity(txt_toga_backlit, (pot/100), "LOG", 0.1)
-        end    
+        end
+        if pot < 75 then
+            opacity(annunciator_group, 0.75, "LOG", 0.1)  
+         else
+            opacity(annunciator_group, (pot/100), "LOG", 0.1)  
+         end    
     else
         opacity(backlight_group, 0, "LOG", 0.1)  
         if user_prop_get(toga_prop) then
