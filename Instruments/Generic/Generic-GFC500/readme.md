@@ -10,6 +10,8 @@
 - Thumb wheel can be selected to work with Knobster from user property
 
 ## CHANGE LOG
+- **v1.12** - 2022-12-21
+    - Minor graphic correction
 
 - **v1.11** - 2022-12-21
     - VNAV for Vision Jet added    
