@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Bombardier CRJ</aircraft><type>AFCS - Autopilot</type><uuid>a95429e4-1181-4ea0-0fec-1c2c86982f8e</uuid><author>Simstrumentation</author><description>Bombardier CRJ-AFCS - Autopilot
+See here for contact info and notes: https://github.com/simstrumentation
+
+**Special Thanks to Mike Murphy/&quot;Helibrewer&quot;
+
+Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>110</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1460</prefWidth><prefHeight>180</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
