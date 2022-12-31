@@ -44,7 +44,7 @@ end
 fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 -----------------------------------------------------------------
---]]
+
 --Day Graphics
 img_dial_synch= img_add("round_knob.png",63, 58,80,80)
 img_highpwr= img_add("pwr_on.png", 217, 76, 59, 49)
