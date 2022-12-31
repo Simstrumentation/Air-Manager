@@ -54,7 +54,7 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 
 <br>
 
-## Pedestal Instruments
+## Lower Center Pedestal Instruments
 
 | Instrument | Download Current Version | Documentation | Preview |
 | ---------- | ------------------------ | ------------- | ------- |
