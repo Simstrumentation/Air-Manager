@@ -8,6 +8,10 @@
 GFC 500 Autopilot module
 
 Version info:
+- **v1.13** - 2022-12-31
+    - Minor graphic correction
+- **v1.12** - 2022-12-21
+    - Minor graphic correction
 - **v1.11** - 2022-12-21
     - VNAV for Vision Jet added    
 - **v1.1** - 2022-12-20

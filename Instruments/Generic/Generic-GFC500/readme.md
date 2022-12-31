@@ -10,6 +10,9 @@
 - Thumb wheel can be selected to work with Knobster from user property
 
 ## CHANGE LOG
+- **v1.13** - 2022-12-31
+    - Minor graphic correction
+
 - **v1.12** - 2022-12-21
     - Minor graphic correction
 
