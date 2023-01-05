@@ -4,142 +4,76 @@
 ******************************************************************************************
     
     Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
-    GitHub: https://github.com/simstrumentation
+    GitHub: http://simstrumentation.com
    
 - **v1.0**  01-21-2022 SIMSTRUMENTATION
     - Original Panel Created
 - **v1.1**  01-24-2022 
     - Commented out all subscribes that are not working as it's causing a CTD when MIXMUGZ MOD is installed.
+- **v1.2**  01-04-2023 
+    - Update for Aircraft and Avionics Update I. Works with the new TBM.
 
-## Left To Do:
-    - GPU Is INOP due to variables not read/writable.
-    - STBY Generator Is INOP due to variables not read/writable.
-    - Main/Stby Gen RESET is INOP due to variables not read/writable.
-    	
 ## Notes:
     - YOU MUST CLICK EITHER END OF THE CRASHBAR TO RAISE OR LOWER IT.
+
+KNOWN ISSUES    
+    - Under certain conditions, crashbar will not lower. Other switches are all operative despite this. 
 --]]
 
 img_add_fullscreen("background.png")
 
-local crashbar_position = 1
+local crashbar_position = 0
+local genState = 0
+local sourceState = 0
 
+--SOURCE SWITCH
 src_off = img_add("slvr_switch_dn.png", 350, 109, 79, 163)
 src_batt = img_add("slvr_switch_md.png", 350, 110, 79, 163)
 visible(src_batt, false)
 src_gpu = img_add("slvr_switch_up.png", 350, 110, 79, 163)
 visible(src_gpu, false)
 
---crash bar
-
-function toggle_cb_callback()
-    if crashbar_position == 1 then    
-        --fs2020_variable_write("L:XMLVAR_CrashLeverPos", "Number", 1)
-        crashbar_position = 0
-       opacity(img_crashdn, 0, "LOG", 0.1)        --SET UNTIL VARIABLES ARE AVAILABLE
-       opacity(img_crashup, 1, "LOG", 0.1)        --SET UNTIL VARIABLES ARE AVAILABLE
-    else
-        --fs2020_variable_write("L:XMLVAR_CrashLeverPos", "Number", 0)
-        fs2020_event("MASTER_BATTERY_OFF")
-       -- fs2020_variable_write("L:XMLVAR_Battery_GPU_On", "Number", 0)            --causing crash 
-        fs2020_event("ALTERNATOR_OFF")
-        crashbar_position = 1
-       opacity(img_crashdn, 1, "LOG", 0.1)        --SET UNTIL VARIABLES ARE AVAILABLE
-       opacity(img_crashup, 0, "LOG", 0.1)       --SET UNTIL VARIABLES ARE AVAILABLE    
-    end
-end
-
-switch_add(nil, nil, 220, 80, 75, 150, toggle_cb_callback)
-switch_add(nil, nil, 650, 80, 75, 150, toggle_cb_callback)
-
-crashbar_position = 1 --SET UNTIL VARIABLES ARE AVAILABLE
-
---[[                                                                     --MIXMUGZ CAUSING CRASH
-function new_cb_position(cb)
-    if cb == 0 then
-      crashbar_position = 0
-      opacity(img_crashdn, 0, "LOG", 0.1)
-      opacity(img_crashup, 1, "LOG", 0.1)
-    else
-      crashbar_position =1 
-      opacity(img_crashdn, 1, "LOG", 0.1)
-      opacity(img_crashup, 0, "LOG", 0.1)
-    end
-end
-fs2020_variable_subscribe("L:XMLVAR_CrashLeverPos", "Number", new_cb_position)
-]]
-
---source switch
---[[
-SWICH POSITION
-    0 = GPU    
-    1 = BATTERY
-    2 = OFF
-]]--
-
---function new_src_pos(gpu, battery)        --MIXMUGZ CAUSING CRASH
-function new_src_pos(battery)
---    if (gpu == 1) or (battery) then            --MIXMUGZ CAUSING CRASH
-    if  (battery) then
+function new_src_pos(battery) 
+    if  (battery) == 1 then
         visible(src_off, false)
-        crashbar_position = 0
-      opacity(img_crashdn, 0, "LOG", 0.1)   --SET UNTIL VARIABLES ARE AVAILABLEL 
-      opacity(img_crashup, 1, "LOG", 0.1)    --SET UNTIL VARIABLES ARE AVAILABLE
---[[        if gpu==1 then
-            visible(src_gpu, true)
-            visible(src_batt, false)
-       elseif battery then
-            visible(src_gpu, false)
-            visible(src_batt, true)
-         end
- --]] 
-            visible(src_gpu, false)        --ADDED UNTIL MIXMUGZ DON"T CRASH
-            visible(src_batt, true)        --ADDED UNTIL MIXMUGZ DON"T CRASH
-     else
-          visible(src_off, true)
-          visible(src_gpu, false)
-          visible(src_batt, false)
-    end
-    
+        visible(src_gpu, false)        --ADDED UNTIL MIXMUGZ DON"T CRASH
+        visible(src_batt, true)        --ADDED UNTIL MIXMUGZ DON"T CRASH
+    elseif battery == 2 then
+        visible(src_off, false)
+        visible(src_gpu, true)
+        visible(src_batt, false)
+    else
+        visible(src_off, true)
+        visible(src_gpu, false)
+        visible(src_batt, false)
+    end    
 end
-
---[[   *****CAUSING CRASH WITH MIXMUGZ MOD
-fs2020_variable_subscribe("L:XMLVAR_Battery_GPU_On", "Number",
-                                                "Electrical Master Battery:1", "Bool",
+fs2020_variable_subscribe("L:XMLVAR_Elec_Source_Switch_State", "Enum",
                                                  new_src_pos)
---]]
-fs2020_variable_subscribe("Electrical Master Battery:1", "Bool",
-                                                 new_src_pos)
-
-
 
 -- source switch touch zones
+    --off
+function cb_set_off()
+    fs2020_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 0)  
+end
+button_add(nil, nil, 345,235, 90, 90, cb_set_off)
+
 --battery
 function cb_set_battery()
-    if (crashbar_position == 0) then
-        fs2020_event("MASTER_BATTERY_ON")
-        --fs2020_variable_write("L:XMLVAR_Battery_GPU_On", "Number", 0)
-    end        
+    fs2020_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
+    fs2020_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 1)
 end
-button_add(nil, nil, 325,145, 90, 90, cb_set_battery)
---off
-function cb_set_off()
-    fs2020_event("MASTER_BATTERY_OFF")
-    --fs2020_variable_write("L:XMLVAR_Battery_GPU_On", "Number", 0)
+button_add(nil, nil, 345,145, 90, 90, cb_set_battery)
+
+function cb_set_GPU()
+    fs2020_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
+    fs2020_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 2) 
 end
-button_add(nil, nil, 325,235, 90, 90, cb_set_off)
+
+button_add(nil, nil, 345,55, 90, 90, cb_set_GPU)
 
 
-function cb_set_gpu() --NOT OPERATIONAL AS OF SU7
-    if (crashbar_position == 0) then
-        fs2020_event("MASTER_BATTERY_OFF")
-      --  fs2020_variable_write("L:XMLVAR_Battery_GPU_On", "Number", 1)
-    end        
-end
-button_add(nil, nil, 325,85, 90, 90, cb_set_gpu)
-
---------------------------------------------------------------------------------------
---Generator
+--GENERATOR SWITCH
 gen_off = img_add("slvr_switch_dn.png", 540, 109, 79, 163)
 gen_main = img_add("slvr_switch_md.png", 540, 110, 79, 163)
 visible(gen_main, false)
@@ -147,33 +81,69 @@ gen_stby = img_add("slvr_switch_up.png", 540, 110, 79, 163)
 visible(gen_stby, false)
 
 function ss_Generator(alt)
-    if alt == false then
+    genState = alt
+    if genState == 0  then
         visible(gen_off,  true)
         visible(gen_main, false)
         visible(gen_stby, false)
-    elseif  alt == true then
-        crashbar_position = 0
-        opacity(img_crashdn, 0, "LOG", 0.1)   --SET UNTIL VARIABLES ARE AVAILABLEL 
-        opacity(img_crashup, 1, "LOG", 0.1)    --SET UNTIL VARIABLES ARE AVAILABLE
+    elseif  genState == 1 then
         visible(gen_off, false)
         visible(gen_main, true)
         visible(gen_stby, false)
-    end
+    elseif  genState == 2 then
+        visible(gen_off, false)
+        visible(gen_main, false)
+        visible(gen_stby, true)
+    end 
 end
-fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1", "bool", ss_Generator)
+fs2020_variable_subscribe("L:XMLVAR_Elec_Generator_Switch_state", "Enum", ss_Generator)
 
-
-function cb_set_generator()
-    if (crashbar_position == 0) then
-        fs2020_event("TOGGLE_MASTER_ALTERNATOR")
-    end        
+--    generator switch touch zones
+function genOff()
+    fs2020_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 0)
 end
-button_add(nil, nil, 550, 145, 100, 120, cb_set_generator)
+ function genOn()
+     fs2020_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 1)
+ end
+ 
+ function genStdby()
+     fs2020_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 2)
+ end
+button_add(nil, nil, 535, 235, 90, 90, genOff)
+
+button_add(nil, nil, 535, 145, 90, 90, genOn)
+
+button_add(nil, nil, 535, 55, 90, 90, genStdby)
 
 
---------------------------------------------------------------------------------------
---Crashbar image at end to be on top of everything.
+--CRASHBAR
+
 img_crashdn= img_add("crash_dn.png", 242, 80, 466, 119)
 img_crashup = img_add("crash_up.png", 242, 80, 466, 119)
-opacity(img_crashdn, 1)
-opacity(img_crashup, 0)
+
+function setCB(state)
+    crashbar_position = state
+    if state == 1 then
+        visible(img_crashdn, false)    
+        visible(img_crashup, true)    
+    else
+        visible(img_crashdn, true)    
+        visible(img_crashup, false)   
+    end
+end
+fs2020_variable_subscribe("L:XMLVAR_Elec_CrashBar_State", "Number", setCB)
+
+--crash bar toggle
+function toggle_cb_callback()
+    if crashbar_position== 0 then
+        fs2020_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
+    else
+        fs2020_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 0)  
+        fs2020_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 0)
+        fs2020_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 0)
+
+    end
+end
+switch_add(nil, nil, 220, 80, 75, 150, toggle_cb_callback)
+switch_add(nil, nil, 650, 80, 75, 150, toggle_cb_callback)
+
