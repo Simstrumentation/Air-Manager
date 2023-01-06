@@ -1,20 +1,28 @@
 ## Generic Garmin 710 AUTOPILOT
-- **v1.0** 01-05-2022
-    - Original Panel Created
-	
-- **v1.1** (01-29-2021)
-    - Uploaded to Github
-	- Fixed CRS1 Knobs-Thanks to "sean14reynolds" 
-    - Added Knob acceleration     	
-- **v1.11** (12-11-2022)
-    -Added acceleration to knobs
 
-## Left To Do:
- - Several buttons are INOP due to lacking SDK functionality. Said functionality will be
-		  added once said SDK functions are available. INOP buttons and knobs will play a "fail"
-		  sound when used to indicate their INOP status.
- - XFER button INOP
- - Bank switch INOP
-    	
+Gamin GMC 710 autopilot module. Will work in various aircraft such at the TBM, King Air, Longitude, or SWS Daher Kodiak. Designed for the TBM 930, but most functionality will work in most MSFS aircraft. 100% compatibility  / functionalith with other aircraft is not guaranteed.     
+        
+## CHANGE LOG:
+    V1.2 - Released 2023-01-06
+        AAU I COMPATIBILITY  with TBM 930
+        - Bank mode now operational
+        - SPD mode now operational
+        - added option to use dual encoder on Knobster for ALT knob via user property
+        - added option to use Knobster for thumbwheel
+        - fixed annunciator lights for SPD and Bank 
+        - XFR button / mode now active
+        - updated some sound events
+        - graphics update for backplate and thumbwheel
+
+    V1.11 - Released 2022-12-11
+        -added acceleration to knobs. 
+    V1.1 - Released 2022-01-29
+
+    V1.0 - Released 2022-01-05
+    
+KNOWN ISSUES: 
+- CRS1 knob currently tied to G1000 CRS1 function. May not function in planes not equipped
+    with a G1000. CRS2 is INOP
+
 ## Notes:
     - N/A

@@ -10,6 +10,17 @@
    Longitude, or SWS Daher Kodiak
     
     NOTE:
+        V1.2 - Released 2023-01-05
+            AAU I COMPATIBILITY  with TBM 930
+            - Bank mode now operational
+            - SPD mode now operational
+            - added option to use dual encoder on Knobster for ALT knob via user property
+            - added option to use Knobster for thumbwheel
+            - fixed annunciator lights for SPD and Bank 
+            - XFR button / mode now active
+            - updated some sound events
+            
+ 
         V1.11 - Released 2022-12-11
             -added acceleration to knobs. 
         V1.1 - Released 2022-01-29
@@ -28,17 +39,23 @@
 --]]
 
 -- USER PROPERTIES
+knobster_prop = user_prop_add_boolean("Use Knobster for speed thumbwheel", false, "Choose whether to use Knobster or touch control for the thumb wheel")
+altitude_prop = user_prop_add_boolean("Use dual encoder for altitude knob", false, "Choose whether to use alt knob as dual encoder with both 100 and 1000 ft increments.")
 sound_prop = user_prop_add_boolean("Sound", true, "Play sounds when activating buttons and knobs")
     
 if user_prop_get(sound_prop) then
-   buttonClick = sound_add("ButtonClick.wav")
-   knobClick = sound_add("KnobClick.wav")
+   buttonClick = sound_add("buttonPress.wav")
+   buttonRelease = sound_add("buttonRelease.wav")
+   knobClick = sound_add("knobPress.wav")
+   knobRelease = sound_add("knobRelease.wav")
    knobScroll = sound_add("KnobScroll.wav")
    errorSound = sound_add("beepfail.wav")
 else
-     buttonClick = sound_add("knobclick_silent.wav")
-     knobClick = sound_add("knobclick_silent.wav")
-     knobScroll = sound_add("knobclick_silent.wav")
+     buttonClick = sound_add("silence.wav")
+     buttonRelease = sound_add("silence.wav")
+     knobClick = sound_add("silence.wav")
+     knobRelease = sound_add("silence.wav")
+     knobScroll = sound_add("silence.wav")
 end
 
 --BEZEL GRAPHICS
@@ -50,6 +67,8 @@ local current_alt = 0
 local current_hdg = 0
 local FLCState
 local VSenabled
+local bankState = false
+local xfrMode = 0
 
 
 -- Initialize local variables with sim values
@@ -61,7 +80,16 @@ fs2020_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet",
                           end
                         )
                         
-                        
+--release functions
+
+function cbKnobRelease()
+    sound_play(knobRelease)
+end
+
+function cbButtonRelease()
+    sound_play(buttonRelease)
+end
+                                                                                                
 --ADD BUTTONS AND KNOBS
 
 --hdg
@@ -70,7 +98,7 @@ function click_press_callback_btn_HDG()
 	sound_play(buttonClick)
 end
 
-button_add("hdg.png", "hdg.png", 85 , 20 , 60 , 40, click_press_callback_btn_HDG, click_release_callback_btn_HDG)
+button_add("hdg.png", "hdg.png", 85 , 20 , 60 , 40, click_press_callback_btn_HDG, cbButtonRelease)
 
 --apr
 function click_press_callback_btn_APR()
@@ -78,7 +106,7 @@ function click_press_callback_btn_APR()
 	sound_play(buttonClick)
 end
 
-button_add("apr.png", "apr.png", 180 , 20 , 60 , 40, click_press_callback_btn_APR, click_release_callback_btn_APR)
+button_add("apr.png", "apr.png", 180 , 20 , 60 , 40, click_press_callback_btn_APR, cbButtonRelease)
 
 --nav
 function click_press_callback_btn_NAV()
@@ -86,7 +114,7 @@ function click_press_callback_btn_NAV()
 	sound_play(buttonClick)
 end
 
-button_add("nav.png", "nav.png", 290 , 20 , 60 , 40, click_press_callback_btn_NAV, click_release_callback_btn_NAV)
+button_add("nav.png", "nav.png", 290 , 20 , 60 , 40, click_press_callback_btn_NAV, cbButtonRelease)
 
 --bc
 function click_press_callback_btn_BC()
@@ -94,7 +122,7 @@ function click_press_callback_btn_BC()
 	sound_play(buttonClick)
 end
 
-button_add("bc.png", "bc.png", 180 , 126 , 60 , 40, click_press_callback_btn_BC, click_release_callback_btn_BC)
+button_add("bc.png", "bc.png", 180 , 126 , 60 , 40, click_press_callback_btn_BC, cbButtonRelease)
 
 --hdg knob
 function dial_HDG_turned(direction)
@@ -114,7 +142,7 @@ function click_press_callback_HDG_PUSH()
 	sound_play(knobClick)
 end
 
-button_add(nil, nil, 95 , 120 , 30 , 30, click_press_callback_HDG_PUSH)
+button_add(nil, nil, 95 , 120 , 30 , 30, click_press_callback_HDG_PUSH, cbKnobRelease)
 
 
 -- Crs 1 knob
@@ -135,7 +163,7 @@ function click_press_callback_CRS1()
 	sound_play(knobClick)
 end
 
-button_add(nil, nil, 303 , 122 , 30 , 30, click_press_callback_CRS1, click_release_callback_CRS1)
+button_add(nil, nil, 303 , 122 , 30 , 30, click_press_callback_CRS1, cbKnobRelease)
 
 
 --FD
@@ -144,25 +172,33 @@ function click_press_callback_btn_FD()
 	sound_play(buttonClick)
 end
 
-button_add("fd.png", "fd.png", 405 , 20 , 60 , 40, click_press_callback_btn_FD, click_release_callback_btn_FD)
+button_add("fd.png", "fd.png", 405 , 20 , 60 , 40, click_press_callback_btn_FD, cbButtonRelease)
 
 
 --Bank
 function click_press_callback_btn_BANK()
-	--INOP
-	sound_play(errorSound)
+    if bankState then
+        fs2020_event("K:AP_MAX_BANK_SET", 0)
+    else
+        fs2020_event("K:AP_MAX_BANK_SET", 0)
+    end
+    sound_play(buttonClick)
 end
 
-button_add("bank.png", "bank.png", 405 , 125 , 60 , 40, click_press_callback_btn_BANK, nil)
+button_add("bank.png", "bank.png", 405 , 125 , 60 , 40, click_press_callback_btn_BANK, cbButtonRelease)
 
 
 --XFR
 function click_press_callback_btn_XFR()
-	-- INOP
-	sound_play(errorSound)
+	if xfrMode then
+	    fs2020_variable_write("L:XMLVAR_PushXFR", "Number", 0)
+	else
+	    fs2020_variable_write("L:XMLVAR_PushXFR", "Number", 1)
+	end
+	sound_play(buttonClick)
 end
 
-button_add("xfr.png", "xfr.png", 560 , 20 , 60 , 40, click_press_callback_btn_XFR, click_release_callback_btn_XFR)
+button_add("xfr.png", "xfr.png", 560 , 20 , 60 , 40, click_press_callback_btn_XFR,  cbButtonRelease)
 
 
 --AP Master
@@ -171,7 +207,7 @@ function click_press_callback_btn_AP()
 	sound_play(buttonClick)
 end
 
-button_add("ap.png", "ap.png", 510 , 125 , 60 , 40, click_press_callback_btn_AP, click_release_callback_btn_AP)
+button_add("ap.png", "ap.png", 510 , 125 , 60 , 40, click_press_callback_btn_AP,  cbButtonRelease)
 
 
 --YD
@@ -180,7 +216,7 @@ function click_press_callback_btn_YD()
 	sound_play(buttonClick)
 end
 
-button_add("yd.png", "yd.png", 605 , 125 , 60 , 40, click_press_callback_btn_YD, click_release_callback_btn_YD)
+button_add("yd.png", "yd.png", 605 , 125 , 60 , 40, click_press_callback_btn_YD, cbButtonRelease)
 
 
 --Alt
@@ -189,7 +225,7 @@ function click_press_callback_btn_ALT()
 	sound_play(buttonClick)
 end
 
-button_add("alt.png", "alt.png", 730 , 20 , 60 , 40, click_press_callback_btn_ALT, click_release_callback_btn_ALT)
+button_add("alt.png", "alt.png", 730 , 20 , 60 , 40, click_press_callback_btn_ALT, cbButtonRelease)
 
 
 --VS
@@ -199,7 +235,7 @@ function click_press_callback_btn_VS()
     sound_play(buttonClick)
 end
 
-button_add("vs.png", "vs.png", 830 , 20 , 60 , 40, click_press_callback_btn_VS, click_release_callback_btn_VS)
+button_add("vs.png", "vs.png", 830 , 20 , 60 , 40, click_press_callback_btn_VS, cbButtonRelease)
 
 --FLC
 function flc_callback(flcstate)
@@ -242,34 +278,56 @@ function click_press_callback_btn_VNV()
 	sound_play(buttonClick)
 end
 
-button_add("vnv.png", "vnv.png", 830 , 125 , 60 , 40, click_press_callback_btn_VNV, click_release_callback_btn_VNV)
+button_add("vnv.png", "vnv.png", 830 , 125 , 60 , 40, click_press_callback_btn_VNV, cbButtonRelease)
 
 
 --Spd
 function click_press_callback_btn_SPD()
-        AirspeedDecimal = math.floor(AirspeedIndicated)        -- read current airspeed and convert variable
-        fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
+        --[[AirspeedDecimal = math.floor(AirspeedIndicated)        -- read current airspeed and convert variable
+        fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed]]--
+        fs2020_event("K:AP_MANAGED_SPEED_IN_MACH_TOGGLE")
 	sound_play(buttonClick)
 end
 
-button_add("spd.png", "spd.png", 1040 , 125 , 60 , 40, click_press_callback_btn_SPD, click_release_callback_btn_SPD)
+button_add("spd.png", "spd.png", 1040 , 125 , 60 , 40, click_press_callback_btn_SPD, cbButtonRelease)
 
 --ALT knob
 
-local ap_altitude = 0
-
-function dial_ALT_turned(direction)
+function dialSingle(direction)
 	if direction == 1 then
            fs2020_event("AP_ALT_VAR_INC")
         elseif direction == -1 then
            fs2020_event("AP_ALT_VAR_DEC")
         end
-
 end
 
-dial_ALT = dial_add("knob_basic.png" , 729 , 97 , 70 , 70 , 3, dial_ALT_turned)
-dial_click_rotate(dial_ALT, 6)
+function dialDualOuter( direction)
+    if direction ==  1 then
+        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)
+    elseif direction == -1 then
+        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)
+    end
+    sound_play(knobScroll)
+end
 
+function dialDualInner( direction)
+    if direction ==  1 then
+        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)
+    elseif direction == -1 then
+        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)
+    end
+    sound_play(knobScroll)
+end
+
+
+if user_prop_get(altitude_prop) then
+    knobOuter = dial_add("knob_basic.png" , 729 , 97 , 70 , 70 , 3, dialDualOuter) 
+    knobInner = dial_add(nil , 739 , 107 , 50 , 50 , 3, dialDualInner) 
+    dial_click_rotate(knobOuter, 6)   
+else
+    dial_ALT = dial_add("knob_basic.png" , 729 , 97 , 70 , 70 , 3, dialSingle)
+    dial_click_rotate(dial_ALT, 6)
+end
 
 --Alt button
 function click_press_callback_ALT()
@@ -277,7 +335,7 @@ function click_press_callback_ALT()
 	sound_play(knobClick)
 end
 
-button_add(nil, nil, 742 , 122 , 40 , 30, click_press_callback_ALT, click_release_callback_ALT)
+button_add(nil, nil, 742 , 122 , 40 , 30, click_press_callback_ALT, cbButtonRelease)
 
 
 --VS / FLC scroll wheel
@@ -300,6 +358,9 @@ end
 vs_scrollwheel = scrollwheel_add_ver("vs_thumb.png", 949, 37, 28, 154, 34, 34, vs_callback)
 img_add("shadow.png", 948, 37,28,162)
 
+if user_prop_get(knobster_prop) then
+    speedDial = dial_add(nil, 949, 37, 28, 154, vs_callback)
+end
 
 --CRS 2
 function dial_CRS2_turned(direction)
@@ -320,20 +381,19 @@ img_hdg_active   = img_add("led.png", 145, 16, 18, 45)
 img_apr_active   = img_add("led.png", 245, 16, 18, 45)		
 img_nav_active   = img_add("led.png", 355, 16, 18, 45)	
 img_BC_active = img_add("led.png", 245, 127, 18, 45)
+img_FD_active = img_add("led.png", 470, 16, 18, 45)
 img_BANK_active = img_add("led.png", 470, 126, 18, 45)
 img_AP_pilot_active = img_add("ledL.png", 523, 19, 40, 38)
 img_AP_copilot_active = img_add("ledR.png", 620, 19, 40, 38)
-visible (img_AP_copilot_active, false)
 img_ap_active    = img_add("led.png", 575, 126, 18, 45)			
 img_yd_active    = img_add("led.png", 670, 126, 18, 45)
 img_alt_active   = img_add("led.png", 795, 16, 18, 45)			--
 img_vs_active    = img_add("led.png", 890, 16, 18, 45)			--
 img_vnav_active  = img_add("led.png", 890, 126, 18, 45)		--
 img_ias_active   = img_add("led.png", 1105, 16, 18, 45)		--
+img_spd_active   = img_add("led.png", 1105, 126, 18, 45)
 
-
-function ap_cb (hdg,  nav, apr, ap_mode, fd_mode,  yaw, ias,  vs, alt, heading, altitude, avionics, battery,generator, vnv, bank, bc)
-	
+function ap_cb (hdg,  nav, apr, ap_mode, fd_mode,  yaw, ias,  vs, alt, heading, altitude, avionics, battery,generator, vnv, bank, bc, spd, xfr)
 	--set vnv state
 	if (vnv == 1) then
 	    vnv_on = true
@@ -346,8 +406,22 @@ function ap_cb (hdg,  nav, apr, ap_mode, fd_mode,  yaw, ias,  vs, alt, heading, 
 	else
 		power = false
 	end
+	if bank == 1 then
+	    bankState = true
+	else
+	    bankState = false
+	end
 	
-    --power = true
+	if xfr == 1 then
+	    xfrMode = true
+            visible(img_AP_pilot_active, false)
+            visible(img_AP_copilot_active, true)
+	else
+	    xfrMode = false
+	    visible(img_AP_pilot_active, true)
+            visible(img_AP_copilot_active, false)
+	end
+    
     visible(img_hdg_active, hdg and power)
     visible(img_nav_active, nav and power )
     visible(img_apr_active, apr and power)
@@ -358,9 +432,10 @@ function ap_cb (hdg,  nav, apr, ap_mode, fd_mode,  yaw, ias,  vs, alt, heading, 
     visible(img_vs_active, vs and power)
     visible(img_alt_active, alt  and power)
     visible(img_vnav_active, vnv_on  and power)
-    visible(img_BANK_active, bank  and power)
+    visible(img_FD_active, fd_mode and power)
+    visible(img_BANK_active, bankState  and power)
     visible(img_BC_active, bc  and power)
-    
+    visible(img_spd_active, spd  and power)
     currentHeading = heading
     currentAltitude = altitude
 end
@@ -381,11 +456,13 @@ fs2020_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
 					        "ELECTRICAL BATTERY BUS VOLTAGE", "Volts",
 					        "GENERAL ENG GENERATOR SWITCH:1", "BOOL",
 					        "L:XMLVAR_VNAVBUTTONVALUE", "Number",
-					        "AUTOPILOT BANK HOLD", "Bool", 
+					        "A:AUTOPILOT MAX BANK ID", "Number", 
 					        "AUTOPILOT BACKCOURSE HOLD", "Bool",
+					        "A:AUTOPILOT MANAGED SPEED IN MACH", "Bool",
+					        "L:XMLVAR_PushXFR", "Number",
 						ap_cb)
 
-
+--"AUTOPILOT BANK HOLD", "Bool", 
 function aspd_callback(asindicated)
 	AirspeedIndicated = asindicated  
 end
