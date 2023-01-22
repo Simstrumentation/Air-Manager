@@ -1,16 +1,4 @@
 <!-- PROJECT LOGO -->
-<p align="center">
-  <h1 align="center">Cirrus SF50 Vision Jet G2(Flight FX)</h1>
-</p>
-<p align="center"><img src="https://user-images.githubusercontent.com/75218511/206914004-5a53b5ea-9d26-4b97-95ee-03f94bfbb8a3.png" width="600"/></p>
-
-## About
-This is a collection of instruments for the incredible Cirrus SF50 Vision Jet by FlightFX. This jet is the ultimate rich person's toy. It allows said person with <em>F-you</em> money to literally be able to look down on other rich people in their exotic cars from above and call them peasants! 
-
-All kidding aside, the Vision Jet is indeed the ultimate personal jet. Its high-tech Garmin G3000 and triple GTC580 cockpit have earned it the nickname of "Flying iPad", and it makes it incredibly easy to operate for a single pilot. It can fly to FL300 and get its pilot from Point A to Point B in not a lot of time. FlightFX have done an incredible job of bringing this incredible little piece of machinery to MSFS for all of us to enjoy. 
-
-With this collection of instruments, plus our new G3000, GTC 580 bezels, and GFC500 Autopilot unit, you should have all the essential instruments required to fly the Vision Jet with minimal mouse and keyboard clicking required. 
-
 
 <!-- ABOUT THE PROJECT -->
 
