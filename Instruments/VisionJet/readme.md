@@ -13,10 +13,7 @@ With this collection of instruments, plus our new G3000, GTC 580 bezels, and GFC
 
 
 <!-- ABOUT THE PROJECT -->
-## Working Instruments
 
-Instrument | Current Version | Documentation | Preview
--------------|-----------------|--------------|--------------
 <!-- PROJECT LOGO -->
 <p align="center">
   <h1 align="center">Cirrus SF50 Vision Jet G2(Flight FX)</h1>
