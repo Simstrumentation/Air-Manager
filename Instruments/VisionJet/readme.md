@@ -42,4 +42,4 @@ GFC 500 Autopilot | [12-21-2022 v1.11](https://github.com/Simstrumentation/Air-M
 
 
 ## COMING SOON
-- Cosmetic update to some of the older converted instruments.
+- N/A. This collection is complete. 
