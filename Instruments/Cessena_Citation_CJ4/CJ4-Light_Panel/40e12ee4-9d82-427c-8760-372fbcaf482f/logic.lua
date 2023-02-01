@@ -6,38 +6,41 @@
     Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
     GitHub: https://github.com/simstrumentation
 
-- **v1.0** 08-2-21 Joe "Crunchmeister" Gilker
+- **v1.0** 08-2-2021 Joe "Crunchmeister" Gilker
     - Original Panel Created
-- **v1.1** 08-29-21 Todd "Toddimus831" Lorey 
+- **v1.1** 08-29-2021 Todd "Toddimus831" Lorey 
     - Added seatbelt, safety and pulse light functionality
-- **v1.2** 08-30-21 Rob "FlightLevelRob" Verdon 
+- **v1.2** 08-30-2021 Rob "FlightLevelRob" Verdon 
     - Added variable subscribe for lights: Beacon,Nav,Strobe,Taxi,LNDG,Logo,Belt,Safety,RecLt. 
     - Removed toggle code now that variable subscribe is working.
-- **v1.3** 09-9-21 Herbert Puukka
+- **v1.3** 09-9-2021 Herbert Puukka
     - Repalced Background Graphic to remove back edges.		
-- **v1.4** 09-13-21 Rob "FlightLevelRob" Verdon 			
+- **v1.4** 09-13-2021 Rob "FlightLevelRob" Verdon 			
     - Added panel dimming functionality
 - **v1.5** 09-15-2021 Joe "Crunchmeister" Gilker
     - Total custom graphics overhaul    
-- **v2.0** 09-18-21 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker		
+- **v2.0** 09-18-2021 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker		
     - Added PFD/MFD dimming functionality    			
     - Rewrote code to define what variables are.
 --*********END OF INTERNAL ALPHA TESTING****************
-- **v2.0** 10-5-21 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
+- **v2.0** 10-5-2021 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-- **v2.1** 01-08-22  SIMSTRUMENTATION
+- **v2.1** 01-08-2022  SIMSTRUMENTATION
     - Files capitials renamed for SI Store submittion
     - Fixed panel dimmer knob skipping when turning all the way to left
-    - Click and Dial sounds replaced with custom.																					
-##Left To Do:
-    - 
+    - Click and Dial sounds replaced with custom.		
+- **v2.2** 12-10-2022  SIMSTRUMENTATION    																			
+    - Updated code to reflect AAU1 being released in 2023Q1
+    - Added code to control PFD2 & MFD2 brightness on overlay panel.
+    
+## Left To Do:
+  - N/A
 	
-##Notes:
-    - The Panel Dimmer (BackLighting) in the cockpit allows you to turn all the way to the left and should set A:Light Potentiometer:3 to a Double value of "0.0" but in the game it remains as "0.10", which is the value before, which i believe is a bug in the SIM. Thus this causes this panel to act strange if you overturn to the left.
-    - TCAS is INOP in game. Not used.
-    - You may have to push the in-game cockpit buttons twice to turn off a light if you turned it on from AirManager. Not sure if a WT issue or Asbro issue. The "toggle" events do not seem to update tooltips, could probably use LVARS as it does update when using ExtController.
+## Notes:
+  - TCAS is INOP in game. Not used.
+  - You may have to push the in-game cockpit buttons twice to turn off a light if you turned it on from AirManager. Not sure if a WT issue or Asbro issue. The "toggle" events do not seem to update tooltips, could probably use LVARS as it does update when using ExtController.
 										 					  													   
 ******************************************************************************************
 --]]
@@ -96,6 +99,8 @@ img_small_knob_inner_right_night = img_add("smallKnob_inner_night.png",493,73,57
 --Global SI Variables
 sivar_overlay_pfd1 = si_variable_create("sivar_overlay_pfd1_dim", "FLOAT", 0.0)
 sivar_overlay_mfd1 = si_variable_create("sivar_overlay_mfd1_dim", "FLOAT", 0.0)
+sivar_overlay_pfd2 = si_variable_create("sivar_overlay_pfd2_dim", "FLOAT", 0.0)
+sivar_overlay_mfd2 = si_variable_create("sivar_overlay_mfd2_dim", "FLOAT", 0.0)
 
 --===========User Props==============================
 --UserProp to Set if PFD/MFD's dim with dials.
@@ -116,36 +121,62 @@ function write_to_overlay_mfd1(mfd1_value)
         si_variable_write(sivar_overlay_mfd1, mfd1_value) 
     end
 end
-
+--Should PFD2 Dim with Dials?
+function write_to_overlay_pfd2(pfd2_value)
+    if user_prop_get (prop_pfdmfd_dim_with_dial) == true then
+        si_variable_write(sivar_overlay_pfd2, pfd2_value) 
+    end
+end    
+--Should MFD2 Dim with Dials?
+function write_to_overlay_mfd2(mfd2_value)
+    if user_prop_get (prop_pfdmfd_dim_with_dial) == true then
+        si_variable_write(sivar_overlay_mfd2, mfd2_value) 
+    end
+end
 
 
 --******************************************************************************************
 -------Panel Backlighting
-function ss_backlighting(value, power, extpower, busvolts)
+function ss_backlighting(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)
-    rotate (img_panel_knob, (value*290),"LOG", 0.1)
-    rotate (img_panel_knob_night, (value*290),"LOG", 0.1)
-    rotate (img_dimmer_indicator, (value*290),"LOG", 0.1)
-    switch_set_position(sw_backlighting, (value * 10)) 
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
+     if panellight == false then
+        rotate (img_panel_knob, (285),"LOG", 0.1)
+        rotate (img_panel_knob_night, (285),"LOG", 0.1)
+        rotate (img_dimmer_indicator, (285),"LOG", 0.1)
+        switch_set_position(sw_backlighting, 11)     
+     else
+        rotate (img_panel_knob, (value*260),"LOG", 0.1)
+        rotate (img_panel_knob_night, (value*260),"LOG", 0.1)
+        rotate (img_dimmer_indicator, (value*260),"LOG", 0.1)
+        switch_set_position(sw_backlighting, (value * 10))
+    end 
+    if panellight == false or (power == false and extpower == false and busvolts < 5) then 
         opacity(img_labels_backlight, 0.0, "LOG", 0.04)
         opacity(img_dimmer_indicator, 0.0, "LOG", 0.04)
     else
         opacity(img_labels_backlight, ((value/2)+0.5), "LOG", 0.04)
         opacity(img_dimmer_indicator, ((value/2)+0.5), "LOG", 0.04)
-        
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                          "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)
 						  
 
 function callback_backlighting(position, direction)
-        fs2020_variable_write("L:LIGHTING_Knob_Master", "Int", var_cap((var_round((position + direction), 0) * 10),0,100))
+    if (var_cap((var_round((position + direction), 0) * 10),0,110)) <= 100 then
+        fs2020_event("PANEL_LIGHTS_SET", 1,1)
+          fs2020_variable_write("L:LIGHTING_PANEL_1", "Number",var_cap((var_round((position + direction), 0) * 10),5,110))
+          fs2020_event("LIGHT_POTENTIOMETER_SET", 3, var_cap((var_round((position + direction), 0) * 10),5,110))
+    else 
+         fs2020_event("PANEL_LIGHTS_SET", 0,1)
+     end
+
+        
 end
-sw_backlighting = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 285, 40, 140, 140, callback_backlighting)
+sw_backlighting = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 285, 40, 140, 140, callback_backlighting)
 
 
 ---------PFD1 Dimming
@@ -178,6 +209,7 @@ function ss_pfd2_dimming(value)
      rotate (img_small_knob_outer_right, (value*290),"LOG", 0.1)
      switch_set_position(sw_pfd2_dimming, (value * 10))
      value_pfd2_position = (value * 10)
+     write_to_overlay_pfd2(0.5-(value / 2))     
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:16", "Number", ss_pfd2_dimming)
 
@@ -221,6 +253,7 @@ function ss_mfd2_dimming(value)
      rotate (img_small_knob_inner_right, (value*290),"LOG", 0.1)
      switch_set_position(sw_mfd2_dimming, (value * 10))
      value_mfd2_position = (value * 10)
+     write_to_overlay_mfd2(0.5-(value / 2))     
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:18", "Number", ss_mfd2_dimming)
 
@@ -397,9 +430,9 @@ fs2020_variable_subscribe("LIGHT LOGO ON", "Bool", ss_logo)
 img_belt_indicator = img_add("button_on.png", 445, 232, 47, 15)
 function callback_belt(position)
     if position == 0 then
-		fs2020_variable_write("L:SEATBELT_LIGHT_ON", "Int",1)         
+        fs2020_event("CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE",0)
     elseif position == 1 then
-		fs2020_variable_write("L:SEATBELT_LIGHT_ON", "Int",0)
+        fs2020_event("CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE",1)
      end
     sound_play(snd_click)
 end
@@ -414,16 +447,16 @@ function ss_belt(sw_on)
         visible(img_belt_indicator, false) 
     end
 end 
-fs2020_variable_subscribe("L:SEATBELT_LIGHT_ON", "Int", ss_belt)
+fs2020_variable_subscribe("A:CABIN SEATBELTS ALERT SWITCH", "Number", ss_belt)
 -- END BELT LIGHT
 
 -- SAFETY LIGHT
 img_safety_indicator = img_add("button_on.png", 542, 232, 47, 15)
 function callback_safety(position)
     if position == 0 then
-		fs2020_variable_write("L:SAFETY_LIGHT_ON", "Int",1)         
+	fs2020_event("CABIN_NO_SMOKING_ALERT_SWITCH_TOGGLE",0)
     elseif position == 1 then
-		fs2020_variable_write("L:SAFETY_LIGHT_ON", "Int",0) 
+        fs2020_event("CABIN_NO_SMOKING_ALERT_SWITCH_TOGGLE",1)
     end
     sound_play(snd_click)
 end
@@ -438,7 +471,7 @@ function ss_safety(sw_on)
         visible(img_safety_indicator, false)         
     end
 end    
-fs2020_variable_subscribe("L:SAFETY_LIGHT_ON", "Int", ss_safety)
+fs2020_variable_subscribe("A:CABIN NO SMOKING ALERT SWITCH", "Number", ss_safety)
 -- END SAFETY LIGHT
 
 -- TCAS 

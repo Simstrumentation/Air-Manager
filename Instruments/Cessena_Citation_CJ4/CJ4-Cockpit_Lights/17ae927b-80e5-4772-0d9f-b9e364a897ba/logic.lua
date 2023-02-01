@@ -6,21 +6,24 @@
     Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
     GitHub: https://github.com/simstrumentation
 
-- **v1.0** 10-16-21 Rob "FlightLevelRob" Verdon 
+- **v1.0** 10-16-2021 Rob "FlightLevelRob" Verdon 
     - Original Panel Created
-- **v1.1** 01-02-22 Simstrumentation 
+- **v1.1** 01-02-2022 Simstrumentation 
     - Made knobs size smaller to allow easier dragging of panel
     - Knob sound wasn't working
     - Added cabin lights toggle on center push with click sound
-- **v1.2** 01-14-22 Simstrumentation     
+- **v1.2** 01-14-2022 Simstrumentation     
     - Added note about when first loading aircraft in sim and knobs being out of sync.
-    																						
-##Left To Do:
-    - 
+- **v1.3** 12-06-2022 Simstrumentation     
+    - Updated code to reflect AAU1 being released in 2023Q1
+        																						
+## Left To Do:
+    - N/A
 	
-##Notes:
+## Notes:
     - This has no background associated with it directly. You may use the AirManager settings to create one.
     - The aircraft loads in the sim with the potentiometers already set to 1.0 but the lights are off, thus causing the knobs to already be maxed out even though the light is off. Recomend just turning them all the way of and then back off when you start the sim. If they resolve this in future releases, the knobs will start off correctly.						   
+    
 ******************************************************************************************
 --]]
 
@@ -50,9 +53,9 @@ img_light_copilot_knob_night = img_add("panel_dimmer_night.png", 290, 5, 134, 13
 img_light_copilot_dimmer_indicator = img_add("panel_dimmer_inidicator.png", 290, 3, 134, 134)
 
 -------Panel Backlighting
-function ss_backlighting(value, power, extpower, busvolts)
+function ss_backlighting(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
+    if panellight == false  or (power == false and extpower == false and busvolts < 5) then 
         opacity(img_light_flood_dimmer_indicator, 0.0, "LOG", 0.04)
         opacity(img_light_pilot_dimmer_indicator, 0.0, "LOG", 0.04)
         opacity(img_light_copilot_dimmer_indicator, 0.0, "LOG", 0.04)                
@@ -63,6 +66,7 @@ function ss_backlighting(value, power, extpower, busvolts)
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)

@@ -13,8 +13,11 @@
     - Resource folder file capitials renamed for SI Store submittion  
 - **v2.2**  03-05-22 SIMSTRUMENTATION
     - Update to work with Sim Update 8 and new WT CJ4 0.12.12
+- **v2.3** 12-06-2022 Joe "Crunchmeister" Gilker       
+   - Updated code to reflect AAU1 being released in 2023Q1    
+   
 ## Left To Do:
-- N/A
+  - N/A
 	
 ## Notes:
- -  This instrument can be used with most FS2020 planes.  
+  -  This instrument can be used with most FS2020 planes.   

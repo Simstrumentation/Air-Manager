@@ -13,18 +13,20 @@
     - Added night mode
     - Added backlight dimming
 --*********END OF INTERNAL ALPHA TESTING****************
-- **v2.0** 10-5-21 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
+- **v2.0** 10-05-2021 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-- **v2.1** 01-16-22 SIMSTRUMENTATION
+- **v2.1** 01-16-2022 SIMSTRUMENTATION
     - Added notes in INFO for contact info for SI Store Submission
-    
-##Left To Do:
-    - 
+- **v2.2** 12-06-2022 Joe "Crunchmeister" Gilker       
+    - Updated code to reflect AAU1 being released in 2023Q1   
+   
+## Left To Do:
+  - N/A
 	
-##Notes:
-    - 
+## Notes:
+  - N/A
 
 ******************************************************************************************
 ]]--
@@ -44,15 +46,16 @@ img_gear_handle_night = img_add("handleup_night.png", 115, 288, 123, 421)
 
 
 --Backlighting
-function ss_backlighting(value, power, extpower, busvolts)
+function ss_backlighting(value, panellight, power, extpower, busvolts)
     value = var_round(value,2)      
-    if value == 1.0 or (power == false and extpower == false and busvolts < 5) then 
+    if  panellight == false  or (power == false and extpower == false and busvolts < 5) then 
         opacity(img_backlight, 0.1, "LOG", 0.04)
     else
         opacity(img_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
 fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_backlighting)

@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna Citation CJ4 (Working Title Mod)</aircraft><type>Trim and Engine Control Panel</type><uuid>c5e5c1b1-d600-44a3-901d-2f8f6e086a3d</uuid><author>SIMSTRUMENTATION</author><description>CJ4 Controls Panel
-See here for contact info and notes: https://github.com/simstrumentation
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna Citation CJ4</aircraft><type>Trim and Engine Control Panel</type><uuid>c5e5c1b1-d600-44a3-901d-2f8f6e086a3d</uuid><author>SIMSTRUMENTATION</author><description>CJ4 Controls Panel
+See here for contact info and notes: http://simstrumentation.com
 
 Touch the hinges on the Engine Run/Stop buttons in order to open the covers. You cannot operate the buttons with the covers closed.
 
 Secondary Elev Trim is inop.
 
-THIS INSTRUMENT IS ONLY DESIGNED TO WORK USING THE WORKING TITLE CJ4 MOD FOR MSFS2020.
-White some functions may work with the default C4 included in MSFS, you must use the Working Title mod for full functionality. 
-
-Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>210</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>664</prefWidth><prefHeight>860</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>220</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>664</prefWidth><prefHeight>860</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
