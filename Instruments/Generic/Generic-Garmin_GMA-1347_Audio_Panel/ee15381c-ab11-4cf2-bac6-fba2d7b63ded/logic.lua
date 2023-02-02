@@ -322,7 +322,7 @@ pilot_vol= dial_add("vol_inner.png", 76, 1099, 78, 78, plt_vol)
 
 -- display backup 
 function display_backup()
-    fs2020_event("H:AS1000_MID_Display_Backup_Push")
+    fs2020_event("AS1000_MID_Display_Backup_Set")
     sound_play(fail_snd)
 end
 dsp_bkup= button_add(nil, "red_button_pressed.png", 83, 1225, 64,  65, display_backup)
