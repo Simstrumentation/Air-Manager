@@ -1,6 +1,6 @@
 --[[
 ******************************************************************************************
-******************Cessna Citation CJ4 Climate Control Switch***************************
+******************Cessna Citation CJ4 Climate Control Knob***************************
 ******************************************************************************************
 
     Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
@@ -15,20 +15,23 @@
 - **v2.0**   09-19-2021 Joe "Crunchmeister" Gilke
     - Added new graphics       
 --*********END OF INTERNAL ALPHA TESTING****************
-- **v2.0** 10-5-21 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
+- **v2.0** 10-5-2021 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-- **v2.1** 01-08-22 SIMSTRUMENTATION
+- **v2.1** 01-08-2022 SIMSTRUMENTATION
     - Files capitials renamed for SI Store submittion
-- **v2.2** 02-06-23 SIMSTRUMENTATION
+- **v2.2** 02-06-2023 SIMSTRUMENTATION
     - Update for MSFS2020 AAUI Update
+- **v2.3** 02-11-2023 SIMSTRUMENTATION
+    - Centered Knob and Title 
+    - Updated Preview    
 		
-##Left To Do:
-    - 	N/A
-	
-##Notes:
-    - N/A
+## Left To Do:
+- N/A
+
+## Notes:
+- N/A
 										 					  													   
 ******************************************************************************************
 --]]
@@ -43,10 +46,10 @@ end
 
 img_labels = img_add_fullscreen("labels.png")
 img_labels_backlight = img_add_fullscreen("labels_backlight.png")
-img_climate_knob = img_add("knob.png", 62, 75, 125, 125)
-img_climate_knob_night = img_add("knob_night.png", 62, 75, 125, 125)
+img_climate_knob = img_add("knob.png", 62, 98, 125, 125)
+img_climate_knob_night = img_add("knob_night.png", 62, 98, 125, 125)
 
-img_climate_knob_indicator_backlight = img_add("knob_inidicator_backlight.png", 62, 75, 125, 125)
+img_climate_knob_indicator_backlight = img_add("knob_inidicator_backlight.png", 62, 98, 125, 125)
 
 
 --******************************************************************************************
@@ -83,19 +86,19 @@ fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
 function ss_climate_control(sw_on)
     if sw_on == 0 then
         switch_set_position(sw_climate_control, 0)
-        rotate (img_climate_knob, -58)   
-        rotate (img_climate_knob_night, -58)    
-        rotate (img_climate_knob_indicator_backlight, -58)         
+        rotate (img_climate_knob, -58, "LOG", 0.1)   
+        rotate (img_climate_knob_night, -58, "LOG", 0.1)    
+        rotate (img_climate_knob_indicator_backlight, -58, "LOG", 0.1)         
     elseif  sw_on == 1 then
         switch_set_position(sw_climate_control, 1)
-	rotate (img_climate_knob, 0) 
-        rotate (img_climate_knob_night, 0)    
-        rotate (img_climate_knob_indicator_backlight, 0) 
+	rotate (img_climate_knob, 0, "LOG", 0.1) 
+        rotate (img_climate_knob_night, 0, "LOG", 0.1)    
+        rotate (img_climate_knob_indicator_backlight, 0, "LOG", 0.1) 
     elseif  sw_on == 2 then
         switch_set_position(sw_climate_control, 2)
-        rotate (img_climate_knob, 58)
-        rotate (img_climate_knob_night, 58)    
-        rotate (img_climate_knob_indicator_backlight, 58) 
+        rotate (img_climate_knob, 58, "LOG", 0.1)
+        rotate (img_climate_knob_night, 58, "LOG", 0.1)    
+        rotate (img_climate_knob_indicator_backlight, 58, "LOG", 0.1) 
     end
 end 
 fs2020_variable_subscribe("L:WT_CJ4_CLIMATE_CONTROL", "Int", ss_climate_control)
@@ -118,7 +121,7 @@ function callback_climate_control(position, direction)
 	end
    end
 end
-sw_climate_control = switch_add(nil,nil,nil, 62, 75, 125, 125, callback_climate_control)
+sw_climate_control = switch_add(nil,nil,nil, 62, 98, 125, 125, callback_climate_control)
 -- END CLIMATE CONTROL
 
 
