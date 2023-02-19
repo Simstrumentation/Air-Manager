@@ -12,7 +12,7 @@ The instruments below only work with the stock CJ4.
 TIP:Don't forget to remove the WTCJ4 Mod from your Community Folders! </h3>
 </font>
 
-There are several features that are no longer supported in the new AAU CJ4, and thus the Ground Power Unit and Climate Control Knob has been removed. 
+There are several features that are no longer supported in the new AAU CJ4, and thus the Ground Power Unit Knob has been removed. 
 
 ## EASY SINGLE IMPORT DOWNLOAD
 This is a single file that includes all the files in the table below as of <b>12-21-2022</b>.
@@ -39,6 +39,9 @@ This single file download does not automatically get update so be sure to check 
 | Standby Flight Instrument Display | [v2.2 12-06-2022](CJ4-Standby_Flight_Instrument/Cessna_Citation_CJ4-Standby_Flight_Instrument_Overlay.siff?raw=true) | [docs](CJ4-Standby_Flight_Instrument/) | <img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Cessena_Citation_CJ4/CJ4-Standby_Flight_Instrument/bea87062-ef3e-4f53-8ff6-b81a6cc39a87/preview.png" width="100"> |
 | Trim and Engine Control | [v2.2 12-06-2022](CJ4-Trim_and_Engine_Control/Cessna_Citation_CJ4-Trim_and_Engine_Control_Panel.siff?raw=true) | [docs](CJ4-Trim_and_Engine_Control/) | <img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Cessena_Citation_CJ4/CJ4-Trim_and_Engine_Control/c5e5c1b1-d600-44a3-901d-2f8f6e086a3d/preview.png" width="100"> |
 | Upper DCP | [v2.4 12-06-2022](CJ4-Upper_DCP_Panel/Cessna_Citation_CJ4-Upper_DCP_Menu.siff?raw=true) | [docs](CJ4-Upper_DCP_Panel/) | <img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Cessena_Citation_CJ4/CJ4-Upper_DCP_Panel/646e2e0b-4014-4add-b572-242aa038b2f1/preview.png" width="100"> |
+| Climate Control Knob | [v2.3 02-11-2023](CJ4-Climate_Control_Knob/Cessna_Citation_CJ4-Climate_Control_Knob.siff?raw=true) | [docs](CJ4-Climate_Control_Knob/) | <img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Cessena_Citation_CJ4/CJ4-Climate_Control_Knob/f90941ea-f1d4-43ad-09d9-794be2092d77/preview.png" width="100"> |
+| Fuel Transfer Knob | [v1.0 02-11-2023](CJ4-Fuel_Transfer_Knob/Cessna_Citation_CJ4-Fuel_Transfer_Knob.siff?raw=true) | [docs](CJ4-Fuel_Transfer_Knob/) | <img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Cessena_Citation_CJ4/CJ4-Fuel_Transfer_Knob/03668dd5-eb53-413f-3367-b86ba4560dab/preview.png" width="100"> |
+
 
 <br>
 
