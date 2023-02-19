@@ -1,1 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>GTC 570 Bezel Overlay</type><uuid>a94b0bb5-6fd4-43ad-9547-2fef54f6cdf9</uuid><author>Simstrumentation</author><description></description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>1</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>660</prefWidth><prefHeight>1010</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>GTC 570 Bezel Overlay</type><uuid>a94b0bb5-6fd4-43ad-9547-2fef54f6cdf9</uuid><author>Simstrumentation</author><description>Garmin GTC570 Overlay Bezel
+
+Made by SIMSTRUMENTATION - http://www.simstrumentation.com
+
+- **v1.1** (Feb 18, 2023)
+    - removed specific HJet support and new HJet uses standard AAU I events
+    - added touch zones around left joystick knob for joystick directional control
+
+NOTES: 
+- Select which position the unit will occupy via user properties. Can be placed in positions 1, 2, or 3.
+- V2 of the HJet now uses standard H: events. There is no longer a need for a specific HJet user property
+- For the HJet, GTC positions are Position 2 for the left unit, Position 1 for the right unit. This is backwards
+   from what it should logically be, but this is the way the plane is coded. There's nothing we can do to change
+   that. </description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>110</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>660</prefWidth><prefHeight>1010</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

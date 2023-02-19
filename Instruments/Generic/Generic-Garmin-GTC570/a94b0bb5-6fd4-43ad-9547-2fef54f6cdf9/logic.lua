@@ -13,6 +13,10 @@ in conjunction with pop out instrument from Microsoft Flight Simulator. Right Al
 screen in MSFS to pop out the windows. 
 
 Version info:
+- **v1.1** (Feb 18, 2023)
+    - removed specific HJet support and new HJet uses standard AAU I events
+    - added touch zones around left joystick knob for joystick directional control
+     
 - **v1.0** (August 31 2022)
 
       
@@ -28,7 +32,8 @@ Sharing or re-use of any code or assets is not permitted without credit to the o
 ***************************************************************************************************************************************************************
 ]]--
 unit_pos = user_prop_add_enum("Position", "1,2,3", "1", "Choose bezel position")
-getPlaneType = user_prop_add_enum("Airframe", "HJet,Other", "Other", "Choose your plane")
+--Temporarily commented out. Left in for future plane types that don't adhere to the standard GTC configuration
+--getPlaneType = user_prop_add_enum("Airframe", "HJet,Other", "Other", "Choose your plane")
 
 local bezel_pos = 0
 --local airFrame 
@@ -44,12 +49,12 @@ end
 --  end unit position
 
 --    get airframe type
-
-if user_prop_get(getPlaneType) == "HJet" then
-    airFrame= "HJET"
-else
-    airFrame= "OTHER"
-end
+--Temporarily commented out. Left in for future plane types that don't adhere to the standard GTC configuration
+--if user_prop_get(getPlaneType) == "HJet" then
+--    airFrame= "HJET"
+--else
+    airFrame= "GENERIC"    -- temporarily left as "other" as default
+--end
 --[[
 *****************************MULTI-PLANE *****************************
 Command table mapping
@@ -72,46 +77,18 @@ Command table mapping
 11 - Small Dec
 12 - Push
 13 - Long Push
+
+* Joystick directional controls
+14 - Joystick up
+15 - Joystick down
+16 - Joystick left 
+17 - Joystick right
 ]]--
 
 --set list of commands based on airframe used
 
-if airFrame == "HJET" then
-    if bezel_pos == 1 then
-        cmd_table =  {
-            "H:AS3000_TSC_Vertical_TopKnob_Large_INC", 
-            "H:AS3000_TSC_Vertical_TopKnob_Large_DEC",
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_Push",                 --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_Push_Long",       --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_TopKnob_Small_INC",  
-            "H:AS3000_TSC_Vertical_TopKnob_Small_DEC",                                
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_MiddleKnob_Push",          --Placeholder only - does nothing in HJet  
-            "H:AS3000_TSC_Vertical_BottomKnob_Large_INC",  
-            "H:AS3000_TSC_Vertical_BottomKnob_Large_DEC",
-            "H:AS3000_TSC_Vertical_BottomKnob_Small_INC",
-            "H:AS3000_TSC_Vertical_BottomKnob_Small_DEC",
-            "H:AS3000_TSC_Vertical_BottomKnob_Push",
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_RightKnob_Push_long"    --Placeholder only - does nothing in HJet  
-        } 
-    else
-        cmd_table =  {
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_INC",                 --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_DEC",                --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_Push",                --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_Push_Long",      --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_MiddleKnob_INC",          --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_MiddleKnob_DEC",         --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_MiddleKnob_Push",        --Placeholder only - does nothing in HJet
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_RightKnob_Large_INC",  --Placeholder only - does nothing in HJet  
-            "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_RightKnob_Large_DEC",  --Placeholder only - does nothing in HJet
-            "H:gauges_ha420_sys_Checklist_scoll_down",
-            "H:gauges_ha420_sys_Checklist_scoll_up",
-            "H:gauges_ha420_sys_Checklist_enter",
-            "H:gauges_ha420_sys_Checklist_Longenter"
-        }     
-    end
-    
-elseif airFrame == "OTHER" then
+   
+if airFrame == "GENERIC" then
     -- standard AAU I event list for all other planes
     cmd_table =  {
         "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_INC", 
@@ -126,7 +103,11 @@ elseif airFrame == "OTHER" then
         "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_RightKnob_Small_INC",
         "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_RightKnob_Small_DEC",
         "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_RightKnob_Push",
-        "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_RightKnob_Push_long"
+        "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_RightKnob_Push_long",
+        "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_Up",
+        "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_Down",
+        "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_Left",
+        "H:AS3000_TSC_Vertical_" .. bezel_pos .. "_Joystick_Right"
     }    
 end
 --*************************************************************************
@@ -191,10 +172,8 @@ middle_knob_press = button_add(nil, nil, 310 , 850 , 32 , 32 , middleKnobPress, 
 function largeKnob(direction)
     if direction == 1 then
         fs2020_event(cmd_table[8])
-        print(cmd_table[8])
     elseif direction == -1 then
         fs2020_event(cmd_table[9])
-        print(cmd_table[9])
     end
     sound_play(dial_snd)
 end
@@ -205,10 +184,8 @@ img_large_knob = img_add("large_knob_cap.png" , 450 , 841 , 86 , 86)
 function smallKnobRight(direction)
     if direction == 1 then
         fs2020_event(cmd_table[10])
-        print(cmd_table[10])
     elseif direction == -1 then
         fs2020_event(cmd_table[11])
-        print(cmd_table[11])
     end
     sound_play(dial_snd)
 end
@@ -220,7 +197,6 @@ img_small_knob_right = img_add("knob.png" , 462 , 852 , 60, 60)
 function rightKnobRelease()
      if timer_running(timerLongPress) then    --short press
          fs2020_event(cmd_table[12])
-         print(cmd_table[12])
     end   
     timer_stop(timerLongPress)
     knobRelease()
@@ -229,7 +205,6 @@ end
 function rightKnobLongPress()    
     --    execute long press event once timer reaches 1000ms without having to release button
     fs2020_event(cmd_table[13])
-    print(cmd_table[13])
     timer_stop(timerLongPress)
 end
 
@@ -239,14 +214,38 @@ function rightKnobPress()
     timerLongPress = timer_start(1000, rightKnobLongPress)
 end
 right_knob_press = button_add(nil, nil, 471 , 861 , 44, 44, rightKnobPress, rightKnobRelease)
---[[
-canvas_id = canvas_add(78, 126, 496, 643, function()
-  -- Create a rectangle
-  _rect(1, 1, 496, 643)
-  _fill("black")
-end)
-txtTitle = txt_add("Error", "font:roboto_bold.ttf; size:50; color: white; halign:center;", 70, 130, 496, 643)
 
-txtBody1= txt_add("Invalid unit position number for the ".. planeTitle ..". ", "font:roboto_bold.ttf; size:26; color: white; halign:center;", 70, 200, 496, 643)
-txtBody2= txt_add("Please Select a valid position from user properties.", "font:roboto_bold.ttf; size:26; color: white; halign:center;", 70, 220, 496, 643)
-]]
+    --joystick directional controls
+    
+function joystickUpPress()
+    fs2020_event(cmd_table[14])
+    print(cmd_table[14])
+    sound_play(press_snd)
+end    
+
+function joystickDnPress()
+    fs2020_event(cmd_table[15])
+    print(cmd_table[15])
+    sound_play(press_snd)
+end    
+
+function joystickLftPress()
+    fs2020_event(cmd_table[16])
+    print(cmd_table[16])
+    sound_play(press_snd)
+end    
+
+function joystickRtPress()
+    fs2020_event(cmd_table[17])
+    print(cmd_table[17])
+    sound_play(press_snd)
+end    
+
+--joystick touch zones
+upArrow_id = button_add(nil,"arrow_up.png", 138,780, 50, 50, joystickUpPress, knobRelease)
+dnArrow_id = button_add(nil,"arrow_dn.png",136,924, 50, 50, joystickDnPress, knobRelease)
+rotate(dnArrow_id, 180)
+lftArrow_id = button_add(nil,"arrow_lft.png",68,854, 50, 50, joystickLftPress, knobRelease)
+rotate(lftArrow_id, 270)
+rtArrow_id = button_add(nil,"arrow_rt.png",204,840, 50, 50, joystickRtPress, knobRelease)
+rotate(rtArrow_id, 90)
