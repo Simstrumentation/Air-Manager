@@ -3,6 +3,9 @@
 Gamin GMC 710 autopilot module. Will work in various aircraft such at the TBM, King Air, Longitude, or SWS Daher Kodiak. Designed for the TBM 930, but most functionality will work in most MSFS aircraft. 100% compatibility  / functionality with other aircraft is not guaranteed.     
         
 ## CHANGE LOG:
+    V1.3 Released 2023-02-19
+        - Added PIT Pitch  
+        - Changed Speed Wheel to rotate the correct way with Knobster.
     V1.2 - Released 2023-01-06
         AAU I COMPATIBILITY  with TBM 930
         - Bank mode now operational

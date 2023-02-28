@@ -1,6 +1,6 @@
 --[[
 --******************************************************************************************
--- ******************************** GARMIN GMC 710 AUTOPILOT *******************************
+-- ************************* GARMIN GMC 710 AUTOPILOT ******************************
 --******************************************************************************************
 
     Made by SIMSTRUMENTATION "EXTERMINATE THE MICE FROM YOUR COCKPIT!"
@@ -10,6 +10,8 @@
    Longitude, or SWS Daher Kodiak
     
     NOTE:
+        V1.3 Released 2023-02-19
+            - Added PIT Pitch  
         V1.2 - Released 2023-01-05
             AAU I COMPATIBILITY  with TBM 930
             - Bank mode now operational
@@ -44,11 +46,11 @@ altitude_prop = user_prop_add_boolean("Use dual encoder for altitude knob", fals
 sound_prop = user_prop_add_boolean("Sound", true, "Play sounds when activating buttons and knobs")
     
 if user_prop_get(sound_prop) then
-   buttonClick = sound_add("buttonPress.wav")
-   buttonRelease = sound_add("buttonRelease.wav")
-   knobClick = sound_add("knobPress.wav")
-   knobRelease = sound_add("knobRelease.wav")
-   knobScroll = sound_add("KnobScroll.wav")
+   buttonClick = sound_add("buttonpress.wav")
+   buttonRelease = sound_add("buttonrelease.wav")
+   knobClick = sound_add("knobpress.wav")
+   knobRelease = sound_add("knobrelease.wav")
+   knobScroll = sound_add("knobscroll.wav")
    errorSound = sound_add("beepfail.wav")
 else
      buttonClick = sound_add("silence.wav")
@@ -62,11 +64,10 @@ end
 img_add("bg.png",0,0,1316,230)
 
 -- LOCAL VARS
-local scroll_vs_mode = true -- Should the scroll wheel control vertical speed (true) or should it control IAS (false)?
 local current_alt = 0
 local current_hdg = 0
-local FLCState
-local VSenabled
+local FLCState = false
+local VSState = false
 local bankState = false
 local xfrMode = 0
 
@@ -80,8 +81,19 @@ fs2020_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet",
                           end
                         )
                         
---release functions
+--Get VS State
+function vsstate_callback(state)
+    VSState = state  
+end
+fs2020_variable_subscribe("AUTOPILOT VERTICAL HOLD", "bool", vsstate_callback)
 
+--Get FLC State
+function flcstate_callback(state)
+    FLCState = state   
+end
+fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", flcstate_callback)                        
+
+--release functions
 function cbKnobRelease()
     sound_play(knobRelease)
 end
@@ -227,49 +239,25 @@ end
 
 button_add("alt.png", "alt.png", 730 , 20 , 60 , 40, click_press_callback_btn_ALT, cbButtonRelease)
 
-
---VS
+--VS Button
 function click_press_callback_btn_VS()
-    scroll_vs_mode = true
     fs2020_event("AP_PANEL_VS_HOLD")
     sound_play(buttonClick)
 end
-
 button_add("vs.png", "vs.png", 830 , 20 , 60 , 40, click_press_callback_btn_VS, cbButtonRelease)
 
---FLC
-function flc_callback(flcstate)
-	FLCState = flcstate 
-	return FLCState    
-end
-
-function vs_callback(vsenabled)
-	VSenabled = vsenabled  
-	return VSenabled    
-end
-
-fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", flc_callback)  
-
+--FLC Button
 function click_press_callback_btn_FLC()
 	if FLCState then  --check if FLC is currently on
-		scroll_vs_mode = true
 		fs2020_event("FLIGHT_LEVEL_CHANGE_OFF")    --if true, toggle off
 	else    -- if FLC currently off
-		scroll_vs_mode = false
 		AirspeedDecimal = math.floor(AirspeedIndicated)        -- read current airspeed and convert variable
 		fs2020_event("FLIGHT_LEVEL_CHANGE_ON")                --enable FLC
 		fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
 	end
 	sound_play(buttonClick)
 end
-
-function aspd_callback(asindicated)
-	AirspeedIndicated = asindicated  
-	return AirspeedIndicated    
-end
-
-button_add("flc.png", "flc.png", 1040 , 20 , 60 , 40, click_press_callback_btn_FLC, click_release_callback_btn_FLC)
-
+button_add("flc.png", "flc.png", 1040 , 20 , 60 , 40, click_press_callback_btn_FLC)
 
 --VNAV
 function click_press_callback_btn_VNV()
@@ -277,14 +265,10 @@ function click_press_callback_btn_VNV()
 	fs2020_event("H:AS1000_VNAV_TOGGLE")		-- for WT G1000 NXi VNAV
 	sound_play(buttonClick)
 end
-
 button_add("vnv.png", "vnv.png", 830 , 125 , 60 , 40, click_press_callback_btn_VNV, cbButtonRelease)
-
 
 --Spd
 function click_press_callback_btn_SPD()
-        --[[AirspeedDecimal = math.floor(AirspeedIndicated)        -- read current airspeed and convert variable
-        fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed]]--
         fs2020_event("K:AP_MANAGED_SPEED_IN_MACH_TOGGLE")
 	sound_play(buttonClick)
 end
@@ -292,7 +276,6 @@ end
 button_add("spd.png", "spd.png", 1040 , 125 , 60 , 40, click_press_callback_btn_SPD, cbButtonRelease)
 
 --ALT knob
-
 function dialSingle(direction)
 	if direction == 1 then
            fs2020_event("AP_ALT_VAR_INC")
@@ -338,29 +321,28 @@ end
 button_add(nil, nil, 742 , 122 , 40 , 30, click_press_callback_ALT, cbButtonRelease)
 
 
---VS / FLC scroll wheel
+--VS / FLC / Pitch scroll wheel
 function vs_callback(direction)
-    if direction == 1 then
-        if scroll_vs_mode then
-			fs2020_event("AP_VS_VAR_INC")
-      else
-            fs2020_event("AP_SPD_VAR_INC")
+    if direction == -1 then
+        if VSState then fs2020_event("AP_VS_VAR_DEC")
+        elseif FLCState then fs2020_event("AP_SPD_VAR_INC")
+        else fs2020_event("AP_PITCH_REF_INC_DN")
         end
     else
-        if scroll_vs_mode then
- 			fs2020_event("AP_VS_VAR_DEC")
-         else
-            fs2020_event("AP_SPD_VAR_DEC")
-         end
+        if VSState then fs2020_event("AP_VS_VAR_INC")
+        elseif FLCState then fs2020_event("AP_SPD_VAR_DEC")
+        else fs2020_event("AP_PITCH_REF_INC_UP")
+        end
     end
 end
 
-vs_scrollwheel = scrollwheel_add_ver("vs_thumb.png", 949, 37, 28, 154, 34, 34, vs_callback)
-img_add("shadow.png", 948, 37,28,162)
-
+--Check if UserProp is true to make VS ScrollWheel to a dial to use with Knobster
 if user_prop_get(knobster_prop) then
     speedDial = dial_add(nil, 949, 37, 28, 154, vs_callback)
+else
+    vs_scrollwheel = scrollwheel_add_ver("vs_thumb.png", 949, 37, 28, 154, 34, 34, vs_callback)
 end
+img_add("shadow.png", 948, 37,28,162)
 
 --CRS 2
 function dial_CRS2_turned(direction)
@@ -383,8 +365,8 @@ img_nav_active   = img_add("led.png", 355, 16, 18, 45)
 img_BC_active = img_add("led.png", 245, 127, 18, 45)
 img_FD_active = img_add("led.png", 470, 16, 18, 45)
 img_BANK_active = img_add("led.png", 470, 126, 18, 45)
-img_AP_pilot_active = img_add("ledL.png", 523, 19, 40, 38)
-img_AP_copilot_active = img_add("ledR.png", 620, 19, 40, 38)
+img_AP_pilot_active = img_add("ledl.png", 523, 19, 40, 38)
+img_AP_copilot_active = img_add("ledr.png", 620, 19, 40, 38)
 img_ap_active    = img_add("led.png", 575, 126, 18, 45)			
 img_yd_active    = img_add("led.png", 670, 126, 18, 45)
 img_alt_active   = img_add("led.png", 795, 16, 18, 45)			--
@@ -428,7 +410,6 @@ function ap_cb (hdg,  nav, apr, ap_mode, fd_mode,  yaw, ias,  vs, alt, heading, 
     visible(img_ap_active, ap_mode and power )
     visible(img_yd_active, yaw  and power)
     visible(img_ias_active, ias and power )
-    scroll_vs_mode = vs and power
     visible(img_vs_active, vs and power)
     visible(img_alt_active, alt  and power)
     visible(img_vnav_active, vnv_on  and power)
