@@ -23,30 +23,32 @@
    - Migrated AP Disconnect to move image instead of 2 images.
    - Cleaned code 
 --*********END OF INTERNAL ALPHA TESTING****************
-- **v2.0** 10-5-21 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
+- **v2.0** 10-5-2021 Rob "FlightLevelRob" Verdon and Joe "Crunchmeister" Gilker and Todd "Toddimus831" Lorey
     !!- Initial Public Release -!!
     - Variable renaming for clarity
     - Added backlight logic to account for battery, external power and bus volts status
-- **v2.1** 01-14-22 SIMSTRUMENTATION
+- **v2.1** 01-14-2022 SIMSTRUMENTATION
     - Changed background image so that AP Disc is not in background image.
     - Resource folder file capitials renamed for SI Store submittion .
     - Click and Dial sounds replaced with custom.
-- **v2.2** 01-19-22 SIMSTRUMENTATION
+- **v2.2** 01-19-2022 SIMSTRUMENTATION
     - Updated Preview Image (was old screenshots still).
-- **v2.3** 01-23-22 SIMSTRUMENTATION      
+- **v2.3** 01-23-2022 SIMSTRUMENTATION      
     - Added Acceleration to CRS1, CRS2, IAS, HDG, and ALT.
-- **v2.4** 01-26-22 SIMSTRUMENTATION   
+- **v2.4** 01-26-2022 SIMSTRUMENTATION   
     - Changed how acceleration was implemented
-- **v2.5** 12-5-22 SIMSTRUMENTATION   
+- **v2.5** 12-5-2022 SIMSTRUMENTATION   
     - Updated code to reflect AAU1 being released in 2023Q1
-            
-##Left To Do:
-    - 	N/A
+- **v2.6** 02-19-2023 SIMSTRUMENTATION   
+    - Added PIT Pitch change using VS Dial when not in VS mode      
+          
+## Left To Do:
+  - N/A
 	
-##Notes:
-    - The Alt Knob has an outer and inner dials. Outer changes 1000' increments, Inner 100' increments. 
-    - The VS Speed knob is difficult to use without a knobster. Thus there is a user prop to make the dial two buttons (Down/Up).   
-    - The CRS1 and CRS2 knobs control NAV1 and NAV2 respectively. This is different compared to the Virtural Cockpit as of v0.12.11 where either knob controls either NAV.
+## Notes:
+  - The Alt Knob has an outer and inner dials. Outer changes 1000' increments, Inner 100' increments. 
+  - The VS Speed knob is difficult to use without a knobster. Thus there is a user prop to make the dial two buttons (Down/Up).   
+  - The CRS1 and CRS2 knobs control NAV1 and NAV2 respectively. This is different compared to the Virtural Cockpit as of v0.12.11 where either knob controls either NAV.
     
 ******************************************************************************************    
 --]]
@@ -68,6 +70,7 @@ local ap_vnav_state = nil
 local orignav1_obs = nil
 local orignav2_obs = nil
 local ias_mach_state = nil
+local vs_state = nil
 
 --=======Night Lighting=============================================
 img_bg_night = img_add_fullscreen("background_night.png")
@@ -230,27 +233,41 @@ end
 button_add(nil,"AP-XFR_pressed.png", 1389,135,63,48, callback_APXFR) 
 
 -----VS Dial-------------
+    --Get VS State
+function vsstate_callback(state)
+    vs_state = state  
+end
+fs2020_variable_subscribe("AUTOPILOT VERTICAL HOLD", "bool", vsstate_callback)
+
 prop_VSDialorButtons = user_prop_add_boolean("VS Dial acts as buttons instead of dial", false, "") -- Show or hide the unit type onscreen
 if user_prop_get(prop_VSDialorButtons) then
     --VS DEC    
     function callback_VS_DEC()
-       fs2020_event("AP_VS_VAR_DEC")
+       if vs_state then fs2020_event("AP_VS_VAR_DEC")
+       else fs2020_event("AP_PITCH_REF_INC_DN")       
+       end
        sound_play(snd_dial)
     end
     button_add(nil,"VS_DEC_pressed.png", 437,42,40,68, callback_VS_DEC) 
     --VS INC    
     function callback_VS_INC()
-       fs2020_event("AP_VS_VAR_INC")
+       if vs_state then fs2020_event("AP_VS_VAR_INC")
+       else fs2020_event("AP_PITCH_REF_INC_UP")       
+       end
        sound_play(snd_dial)
     end
     button_add(nil,"VS_INC_pressed.png", 437,110,40,68, callback_VS_INC) 
 else
     function callback_VS_DIAL( direction)
-         if direction ==  -1 then
-             fs2020_event("AP_VS_VAR_DEC")
+         if direction ==  1 then
+             if vs_state then fs2020_event("AP_VS_VAR_DEC")
+             else fs2020_event("AP_PITCH_REF_INC_DN")             
+             end
              sound_play(snd_dial)
-         elseif direction == 1 then
-             fs2020_event("AP_VS_VAR_INC")
+         elseif direction == -1 then
+             if vs_state then fs2020_event("AP_VS_VAR_INC")
+             else fs2020_event("AP_PITCH_REF_INC_UP")
+             end
              sound_play(snd_dial)
          end
     end

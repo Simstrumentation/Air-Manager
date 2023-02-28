@@ -18,7 +18,9 @@
     - Changed how acceleration was implemented
 - **v2.5** 12-5-22 SIMSTRUMENTATION   
     - Updated code to reflect AAU1 being released in 2023Q1
-         	
+- **v2.6** 02-19-2023 SIMSTRUMENTATION   
+    - Added PIT Pitch change using VS Dial when not in VS mode               	
+			
 ## Left To Do:
   - N/A
 	
