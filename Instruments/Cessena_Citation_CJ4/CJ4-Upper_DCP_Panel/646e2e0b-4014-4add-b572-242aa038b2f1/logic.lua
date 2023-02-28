@@ -24,9 +24,12 @@
     - Baro knob changed from Switch to Button to allow Knobster push function.    
 - **v2.3** 10-19-2022 SIMSTRUMENTATION 
     - Added acceleration to Baro Knob. Request from sunbeam60.                
-- **v2.4** 12-06-2022 Joe "Crunchmeister" Gilker       
+- **v2.4** 12-06-2022  SIMSTRUMENTATION       
     - Updated code to reflect AAU1 being released in 2023Q1
-   
+- **v2.5** 02-27-2023  SIMSTRUMENTATION      
+    - Reversed Baro Dial,  turning to the right now increase baro.
+    - Added Baro STD push sound.
+          
 ## Left To Do:
   - N/A
 	
@@ -159,10 +162,10 @@ fs2020_variable_subscribe("L:XMLVAR_Baro1_SavedPressure","number", ss_barosaved_
 baro_angle = 0
 function callback_baro_turn( direction)
      if direction ==  -1 then 
-         fs2020_event("KOHLSMAN_INC")
+         fs2020_event("KOHLSMAN_DEC")
          baro_angle = baro_angle - 10
      elseif direction == 1 then
-         fs2020_event("KOHLSMAN_DEC")
+         fs2020_event("KOHLSMAN_INC")
          baro_angle = baro_angle + 10
      end
  sound_play(dial_snd)  
@@ -179,6 +182,7 @@ img_baro_backlight = img_add("baro_backlight.png", 115,165,120,120)
 --BARO STD PRESS
  function callback_baro_click()
      fs2020_event("BAROMETRIC")
+      sound_play(click_snd)  
 end    
 sw_baro_std = button_add(nil,nil, 140,190,70,70, callback_baro_click)
 
@@ -258,6 +262,7 @@ img_range_night = img_add("RANGE_Dial_night.png", 754,182,85,85)
 --TILT PRESS
 function callback_tilt_click()
     fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Tilt_PUSH")  
+     sound_play(click_snd)  
 end    
 button_add(nil,nil, 773,200,50,50, callback_tilt_click) 
 

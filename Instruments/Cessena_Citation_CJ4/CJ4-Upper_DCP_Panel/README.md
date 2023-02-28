@@ -21,6 +21,9 @@
     - Added acceleration to Baro Knob. Request from sunbeam60.                
 - **v2.4** 12-06-2022 Joe "Crunchmeister" Gilker       
     - Updated code to reflect AAU1 being released in 2023Q1
+- **v2.5** 02-27-2023  SIMSTRUMENTATION      
+    - Reversed Baro Dial,  turning to the right now increase baro.
+    - Added Baro STD push sound.
    
 ## Left To Do:
   - N/A
