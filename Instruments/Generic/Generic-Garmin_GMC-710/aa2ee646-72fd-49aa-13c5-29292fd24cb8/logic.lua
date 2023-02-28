@@ -12,6 +12,7 @@
     NOTE:
         V1.3 Released 2023-02-19
             - Added PIT Pitch  
+            - Changed Speed Wheel to rotate the correct way with Knobster.
         V1.2 - Released 2023-01-05
             AAU I COMPATIBILITY  with TBM 930
             - Bank mode now operational
