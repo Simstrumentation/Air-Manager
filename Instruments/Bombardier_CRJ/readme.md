@@ -27,6 +27,7 @@ The Aerosoft CRJ set of planes are payware available for purchase as a bundle he
 | PFD MFD EICAS Overlay Bezel | [v1.2 12-22-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-PFD_MFD_Overlay_Bezel/Bombardier_CRJ-PDF_MDF_Overlay_Bezel.siff?raw=true) | [docs](CRJ-PFD_MFD_Overlay_Bezel/) | <img src="CRJ-PFD_MFD_Overlay_Bezel/ac6cde1a-ce4a-45f6-a963-33a511424ecc/preview.png" width="100"> |
 | Side Panel | [v1.1 02-21-2023](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Side_Panel/Bombardier_CRJ-Side_Panel.siff?raw=true) | [docs](CRJ-Side_Panel/) | <img src="CRJ-Side_Panel/d9b2c1c9-ec3d-404f-b03b-935aa0b2630a/preview.png" width="100"> |
 | Warning Light Panel | [v1.1 03-06-2023](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Warning_Light_Panel/Bombardier_CRJ-Warning_Light_Panel.siff?raw=true) | [docs](CRJ-Warning_Light_Panel/) | <img src="CRJ-Warning_Light_Panel/7625bb23-8ed7-429f-16d6-13959b6d30e1/preview.png" width="100"> |
+| Spoiler Switches Panel | [v1.1 03-26-2023](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Bombardier_CRJ/CRJ-Spoiler_Switches_Panel/Bombardier_CRJ-Spoiler_Switches_Panel.siff?raw=true) | [docs](CRJ-Spoiler_Switches_Panel/) | <img src="CRJ-Spoiler_Switches_Panel/381e9d7f-b2b2-452c-16e0-7ebd9e4004d3/preview.png" width="100"> |
 
 
 <br>
