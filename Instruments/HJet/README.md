@@ -17,7 +17,7 @@
 
 Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
-AFCS | [04-07-2023 v1.0](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/HJet/AFCS/aa18f801-f3a1-4368-30a6-6f7b91f7af3b?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/HJet/AFCS) | <p align="center"><img src="![image](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/HJet/AFCS/aa18f801-f3a1-4368-30a6-6f7b91f7af3b/preview.png?raw=true)" width="100"> </p>
+AFCS | [04-07-2023 v1.0](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/HJet/AFCS/aa18f801-f3a1-4368-30a6-6f7b91f7af3b?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/HJet/AFCS) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/HJet/AFCS/aa18f801-f3a1-4368-30a6-6f7b91f7af3b/preview.png?raw=true" width="100"> </p>
 
 ## COMING SOON
 N/A
