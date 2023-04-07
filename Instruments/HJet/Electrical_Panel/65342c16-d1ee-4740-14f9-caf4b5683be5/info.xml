@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>HJet (MG FlightFX)</aircraft><type>Electrical Switch Panel</type><uuid>65342c16-d1ee-4740-14f9-caf4b5683be5</uuid><author>Simstrumentation</author><description>Made by SIMSTRUMENTATION
+    GitHub: https://simstrumentation.com
+
+Master electrical panel for the HJet
+
+NOTES: 
+- Designed for the HJet by Marwan Gharib. Will not work with any other aircraft.
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>102</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>626</prefWidth><prefHeight>198</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

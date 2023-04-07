@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>HJet (MG FlightFX)</aircraft><type>Fire Suppression</type><uuid>ea1be16a-2db3-4d03-3868-5df74bfb13f8</uuid><author>Simstrumentation</author><description>Made by SIMSTRUMENTATION - https://simstrumentation.com
+
+Fire suppression panel for the HJet
+    
+NOTES: 
+- Designed for the HJet by Marwan Gharib. Will not work with any other aircraft.
+
+KNOWN ISSUES:
+- Buttons are currently INOP due to being cotrolled solely by BIO vars / events. 
+  This instrument is more for looks than functionality
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>847</prefWidth><prefHeight>161</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

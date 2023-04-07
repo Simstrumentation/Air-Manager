@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>HJet (MG FlightFX)</aircraft><type>Standby Flight Instrument Bezel Overlay</type><uuid>1c96e601-c926-441f-9233-092e3959715c</uuid><author>Simstrumentation</author><description>Made by SIMSTRUMENTATION - https://simstrumentation.com
+
+EADI bezel overlay for the HJet
+
+NOTES: 
+- Designed for the HJet by Marwan Gharib. Will not work with any other aircraft.
+- Requires popout instrument from the sim for complete functionality.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>301</prefWidth><prefHeight>308</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
