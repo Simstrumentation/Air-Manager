@@ -7,7 +7,7 @@
 
 Automatic Flight Control System (autopilot) for the HJet
 
-- **v1.0** - 2023-07-07
+- **v1.0** - 2022-12-11
     - Original Release
     
 NOTES: 
@@ -313,8 +313,8 @@ function setVars(atModeVar, vnav, fms, alt, heading, vnvAct, vnvArm, elecSt)
         rotate(at_mode_ind_id, 0, "LINEAR", 0.1)
     end
     
-    if  (not vnvActive and not vnvArmed) and elecState == 1 then
-        opacity(vnv_annunciator_white_id, 0.1)
+    if  (vnvActive ~= 1 and vnvArmed ~=1) and elecState == 1 then
+        opacity(vnv_annunciator_white_id, 0.7)
     else
         opacity(vnv_annunciator_white_id, 0)
     end
@@ -353,18 +353,23 @@ fs2020_variable_subscribe("L:CSC PUSHED", "NUMBER",
 fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 			"L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)
-vnv_annunciator_yellow_id = canvas_add(493, 61, 20, 20, function()
+vnv_annunciator_gray_id = canvas_add(493, 61, 20, 20, function()
   _circle(7, 7, 7)
-  _fill("#fee960")
+  _fill("#2e2e2b")
 end)
-opacity(vnv_annunciator_yellow_id, 0)
-vnv_annunciator_green_id = canvas_add(493, 61, 20, 20, function()
-  _circle(7, 7, 7)
-  _fill("#42f563")
-end)
-opacity(vnv_annunciator_green_id, 0)
+opacity(vnv_annunciator_gray_id, 1)
 vnv_annunciator_white_id = canvas_add(493, 61, 20, 20, function()
   _circle(7, 7, 7)
   _fill("white")
 end)
-opacity(vnv_annunciator_white_id, 0)
+opacity(vnv_annunciator_white_id, 0,"LOG", 0.2)
+vnv_annunciator_yellow_id = canvas_add(493, 61, 20, 20, function()
+  _circle(7, 7, 7)
+  _fill("#fee960")
+end)
+opacity(vnv_annunciator_yellow_id, 0,"LOG", 0.2)
+vnv_annunciator_green_id = canvas_add(493, 61, 20, 20, function()
+  _circle(7, 7, 7)
+  _fill("#42f563")
+end)
+opacity(vnv_annunciator_green_id, 0,"LOG", 0.2)
