@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>HJet (MG FlightFX)</aircraft><type>Starter and Parking Brake</type><uuid>a1983c5b-9d84-4ba8-3e4f-50e5e7ea19a6</uuid><author>Simstrumentation</author><description>Made by SIMSTRUMENTATION - https://simstrumentation.com
+
+Starter and parking brake panel for the HJet
+
+NOTES: 
+- Designed for the HJet by Marwan Gharib. Will not work with any other aircraft.
+- BONUS HIDDEN FUNCTION: Pressing the button between the starters will 
+   toggle the throttles in and out of idle cutoff. DO NOT USE IN FLIGHT!!!</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>101</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1080</prefWidth><prefHeight>182</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
