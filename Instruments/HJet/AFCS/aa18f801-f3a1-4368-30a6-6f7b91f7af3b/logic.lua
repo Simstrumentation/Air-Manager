@@ -7,7 +7,11 @@
 
 Automatic Flight Control System (autopilot) for the HJet
 
-- **v1.0** - 2022-12-11
+- **v1.01** - 2023-04-09
+    - Added shadows to knobs
+    - Fixed VNAV annunciator light behavior to match virtual cockpit. 
+
+- **v1.00** - 2023-04-09
     - Original Release
     
 NOTES: 
@@ -68,9 +72,11 @@ function crs1PressAction()
     sound_play(press_snd)
     fs2020_event("H:AS3000_PFD_1_CRS_PUSH")
 end
+
 crs1_id = dial_add(nil, 30, 118, 60, 60, crs1KnobAction)
 crs1_press_id = button_add(nil, nil, 40, 128, 40,40, crs1PressAction, releaseAction)
-
+crs_shadow = img_add("knob_shadow.png", 30, 118, 75, 100)
+crs_topper = img_add("knob_topper.png", 34, 118, 56, 56)
 --    hdg
 function hdgKnobAction(direction)
     if direction == 1 then
@@ -85,6 +91,7 @@ function hdgPressAction()
     -- fs2020_event("H:AS1000_PFD_HEADING_SYNC")
     fs2020_event("HEADING_BUG_SET", currentHeading)	
 end
+hdg_shadow = img_add("knob_shadow.png", 195, 118, 75, 100)
 hdg_id = dial_add("heading_dial.png", 195, 118, 56, 56, hdgKnobAction)
 hdg_press_id = button_add(nil, nil, 202, 123, 40, 40, hdgPressAction, releaseAction)
 
@@ -111,10 +118,9 @@ function altKnobOuterAction(direction)
     sound_play(dial_snd)
 end
 alt_outer_id = dial_add(nil, 415, 118, 60, 60, altKnobOuterAction)
-
 alt_inner_id = dial_add(nil, 425, 128, 40, 40, altKnobInnerAction)
-
-
+alt_shadow = img_add("knob_shadow.png", 415, 118, 75, 100)
+alt_topper = img_add("knob_topper.png", 415, 118, 56, 56)
 --    spd
 function spdKnobAction(direction)
     if direction == 1 then
@@ -130,7 +136,8 @@ function spdPressAction()
 end
 spd_id = dial_add(nil, 642, 118, 60, 60, spdKnobAction)
 spd_press_id = button_add(nil, nil, 652, 128, 40, 40, spdPressAction, releaseAction)
-
+spd_shadow = img_add("knob_shadow.png", 644, 118, 75, 100)
+spd_topper = img_add("knob_topper.png", 644, 118, 56, 56)
 --    crs 2
 function crs2KnobAction(direction)
     if direction == 1 then
@@ -148,7 +155,8 @@ end
 crs2_id = dial_add(nil, 773, 118, 60, 60, crs2KnobAction)
 
 crs2_press_id = button_add(nil, nil, 783, 128, 40, 40, crs2PressAction, releaseAction)
-
+crs2_shadow = img_add("knob_shadow.png", 774, 118, 75, 100)
+crs2_topper = img_add("knob_topper.png", 774, 118, 56, 56)
 --THUMBWHEEL
 
 function thumbwheelAction(direction)
@@ -331,10 +339,8 @@ function setVars(atModeVar, vnav, fms, alt, heading, vnvAct, vnvArm, elecSt)
 end
 function setTest(testA, testB)
     if testA ~= 0 or testB ~= 0 then
-		visible(vnv_annunciator_green_id, true)
 		opacity(vnv_annunciator_green_id, 1)
     else
-		visible(vnv_annunciator_green_id, false)
 		opacity(vnv_annunciator_green_id, 0)
 
         setVars(atActive,vnvMode,fmsMode,altValue,currentHeading,vnvActive,vnvArmed,elecState)
