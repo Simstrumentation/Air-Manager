@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Generic</aircraft><type>Garmin G3000 / 5000  Thin belzel no buttons</type><uuid>b87687bc-5993-4d1a-13c1-5e896d002c22</uuid><author>Simstrumentation</author><description>GENERIC GARMIN G3000 / 5000 Bezel Overlay
+
+Made by SIMSTRUMENTATION - http://simstrumentation.com
+
+
+Version info:
+- **v2.0** - 2022-12-11
+
+NOTES: 
+The following options are available and can be set via user properties in the instrument once
+placed in your panel layout:
+
+- Select Pilot PFD or MFD
+- Show / hid softkeys
+- Display a raised metallic or inset Garmin logo 
+- show light glare on the screen.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>201</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1440</prefWidth><prefHeight>969</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

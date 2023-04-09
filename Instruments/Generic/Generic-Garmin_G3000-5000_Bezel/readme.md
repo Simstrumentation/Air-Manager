@@ -1,6 +1,9 @@
 G3000 / 5000  Bezel Overlay
 
 Version info:
+- **v2.01** - 2023-04-09
+    --added user property for co-pilot side PFD control
+    
 - **v2.0** - 2022-12-11
 
 NOTES: 
