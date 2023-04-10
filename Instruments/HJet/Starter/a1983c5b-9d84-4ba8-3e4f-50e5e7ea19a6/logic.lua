@@ -6,8 +6,11 @@
     GitHub: https://simstrumentation.com
 
 Starter and parking brake panel for the HJet
+- **v1.02** - 2023-04-09
+    - Added workaround for the hidden cutoff button to get around a known bug setting
+       lvars in Air Manager. 
 
-- **v1.0** - 2023-xx-xx
+- **v1.0** - 2023-04-07
     - Original Release
     
 NOTES: 
@@ -71,6 +74,8 @@ brake_lever_id = img_add("parking_brake_handle.png", 730, 10, 311, 136)
 
 function throttleAction()
     sound_play(press_snd)
+    fs2020_variable_write("L:HA420_THROTTLEPOS_L", "Number", 100)
+        fs2020_variable_write("L:HA420_THROTTLEPOS_R", "Number", 100)
     if thottleLState == 0 and thottleRState == 0 then
         fs2020_variable_write("L:HA420_THROTTLEPOS_L", "Number", 50)
         fs2020_variable_write("L:HA420_THROTTLEPOS_R", "Number", 50)

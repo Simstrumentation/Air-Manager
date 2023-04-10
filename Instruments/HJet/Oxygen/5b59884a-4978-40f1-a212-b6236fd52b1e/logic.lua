@@ -6,6 +6,8 @@
     GitHub: https://simstrumentation.com
 
 Landing gear and ELT panel for the HJet
+- **v1.01** - 2023-04-07
+    - Fixed an issue with the oxygen supply knob sometimes not working
 
 - **v1.0** - 2023-04-07
     - Original Release
@@ -112,6 +114,7 @@ mask_knob_id = img_add("knob.png", 275, 303, 90, 90)
 
 function maskKnobAction(direction)
     if direction == 1 then
+    fs2020_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 3)
         if maskControl == 0 then
             sound_play(dial_snd)
             fs2020_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 1)
@@ -132,6 +135,7 @@ end
 mask_knob_dial = dial_add(nil, 275, 303, 90, 90, maskKnobAction)
 
 function o2SupplyAction()
+    fs2020_variable_write("L:HJET_OXYSUPPLY", "NUMBER", 3)
     if o2Supply == 1 then
         fs2020_variable_write("L:HJET_OXYSUPPLY", "NUMBER", 0)
     else
