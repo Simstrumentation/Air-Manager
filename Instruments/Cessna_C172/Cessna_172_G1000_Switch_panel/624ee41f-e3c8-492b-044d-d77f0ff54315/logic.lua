@@ -9,7 +9,12 @@
     Main switch panel for the Cessna 172 G1000 Edition
     
     RELEASES: 
-        
+        V1.03 - Released 2023-04-26
+		- fixed issue with pitot switch
+         V1.02 - Released 2022-07-19
+		- adjusted spacing of toggle switches
+		- made master battery, alternator and avionics 
+		   switches wider for easier use
         V1.01 - Released 2022-07-17
 		- adjusted grapphical issues
 		- knob graphics - still inop
@@ -211,13 +216,17 @@ fs2020_variable_subscribe("GENERAL ENG FUEL PUMP SWITCH:1", "Bool", cb_pump)
 
 -- PITOT HEAT SWITCH
 function pitot_click_callback(position)
-    fs2020_event("PITOT_HEAT_TOGGLE", 1)
+    fs2020_event("PITOT_HEAT_TOGGLE")
 end
 
-pitot_switch_id = switch_add("green knob off.png", "green knob.png", 380,602,28,98, new_pitot_pos)
+pitot_switch_id = switch_add("green knob off.png", "green knob.png", 380,602,28,98, pitot_click_callback)
 
 function new_pitot_pos(pitot)
-    switch_set_position(pitot_id, pitot)
+    if pitot then
+        switch_set_position(pitot_switch_id, 0)
+    else
+        switch_set_position(pitot_switch_id, 1)
+    end
 end
 fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_pos)
 -- END PITOT HEAT SWITCH
