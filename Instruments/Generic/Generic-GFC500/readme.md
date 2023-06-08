@@ -10,6 +10,8 @@
 - Thumb wheel can be selected to work with Knobster from user property
 
 ## CHANGE LOG
+- **v1.14** - 2023-06-1
+    - VNAV for Vision Jet V2 (AAU 1 G3000) fixed
 - **v1.13** - 2022-12-31
     - Minor graphic correction
 
