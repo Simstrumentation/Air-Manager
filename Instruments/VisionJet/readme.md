@@ -17,6 +17,12 @@ With this collection of instruments, plus our new G3000, GTC 580 bezels, and GFC
 
 
 <!-- ABOUT THE PROJECT -->
+
+## Sample Layout
+
+![image](https://github.com/Simstrumentation/Air-Manager/assets/75218511/134bc26a-1ed4-4510-aed4-b96348718ca4)
+
+
 ## Working Instruments
 
 Instrument | Current Version | Documentation | Preview
