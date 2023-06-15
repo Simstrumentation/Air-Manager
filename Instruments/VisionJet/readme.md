@@ -18,11 +18,6 @@ With this collection of instruments, plus our new G3000, GTC 580 bezels, and GFC
 
 <!-- ABOUT THE PROJECT -->
 
-## Sample Layout
-
-![image](https://github.com/Simstrumentation/Air-Manager/assets/75218511/134bc26a-1ed4-4510-aed4-b96348718ca4)
-
-
 ## Working Instruments
 
 Instrument | Current Version | Documentation | Preview
@@ -45,6 +40,11 @@ Instrument | Current Version | Documentation | Preview
 G3000 / 5000 Bezel| [12-06-2022 v1.2](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-Garmin_G3000-5000_Bezel/Generic%20-%20Garmin%20G3000%20and%20G5000%20%20PFD%20MFD%20Bezel%20Overlay.siff?raw=true?raw=true)  | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/Generic-Garmin_G3000-5000_Bezel) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-Garmin_G3000-5000_Bezel/3f24eb91-44e3-4d7c-1f45-b412646a19d8/preview.png" width="100"> </p>
 GTC 580 Touch Panel Overlay| [12-11-2022 v1.0](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-Garmin-GTC580/Generic%20-%20GTC%20580%20Overlay.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/tree/main/Instruments/Generic/Generic-Garmin-GTC580) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-Garmin-GTC580/83a0152f-2101-423f-1594-3c687a00c182/preview.png" width="100"> </p>
 GFC 500 Autopilot | [06-07-2023 v1.14](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500/Generic%20-%20Garmin%20GFC%20500%20autopilot%20.siff?raw=true) | [docs](https://github.com/Simstrumentation/Air-Manager/blob/main/Instruments/Generic/Generic-GFC500) | <p align="center"><img src="https://github.com/Simstrumentation/Air-Manager/raw/main/Instruments/Generic/Generic-GFC500/c154321a-72e7-44bd-8c39-7dc86b1c66c6/preview.png" width="100"> </p>
+
+## Sample Layout
+Just an example of how you can layout your instruments. In this case, I have a pair of 22" touch monitors for my main Air Manager screens, and a smaller 15.6" monitor being used as a centre pedestal.
+
+![image](https://github.com/Simstrumentation/Air-Manager/assets/75218511/134bc26a-1ed4-4510-aed4-b96348718ca4)
 
 
 ## COMING SOON
