@@ -7,6 +7,8 @@
 Auto throttle for the Vision Jet by FlightFX
 
 Version info:
+- **v1.2** - 2023-07-31
+    - fixed FMS mode buttons and annunciators
 - **v1.11** - 2022-12-21
     - Fixed indicators not working
 - **v1.1** - 2022-12-14
@@ -104,7 +106,7 @@ at_btn = button_add(nil, "btn_pressed.png", 205, 95, 113, 90, atSelect, release)
 
 function manSelect()
     currentIAS = math.floor(ias)
-    fs2020_variable_write("L:SF50_push_at_fms_man", "Number", 1)
+    fs2020_variable_write("L:XMLVAR_SpeedIsManuallySet", "ENUM", 1)
     fs2020_event("AP_SPD_VAR_SET", currentIAS)
     sound_play(press_snd)
 end
@@ -115,7 +117,7 @@ end
 fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", setIAS )
 
 function fmsSelect()
-    fs2020_variable_write("L:SF50_push_at_fms_man", "Number", 0)
+    fs2020_variable_write("L:XMLVAR_SpeedIsManuallySet", "ENUM", 0)
     sound_play(press_snd)
 end
 
@@ -155,20 +157,23 @@ fms_annun = img_add("annunciator.png", 342, 235, 62, 26, "visible:false")
 
 --set auto throttle states and annunciators
 function setFMSAn(manFMS, atActive)
-    atArmed = atActive
-    print(atArmed)
+    if atActive== 0 then
+        atArmed = false
+    else
+        atArmed = true
+    end        
     print(manFMS)
+    
    --    set state of manual FMS mode
      if manFMS == 1 and power then
-        atManual = true        
-    else
+        atManual = true
+        atFMS = false        
+    elseif manFMS == 0 and power then
         atManual = false
-    end
-      
-    if atActive and atManual and power then
-        atFMS = false
-    elseif atActive and atManual == false and power then
         atFMS = true
+     elseif power == false then
+        atManual = false
+        atFMS = false
     end
 
 --    auto throttle annunciator
@@ -180,21 +185,21 @@ function setFMSAn(manFMS, atActive)
 
 --    fms annunciator
     if atFMS then
-    print(atFMS)
+    --print(atFMS)
         visible(fms_annun, true)
     else
         visible(fms_annun, false)
     end
 --    manual annunciator    
     if atManual then
-        print(atManual)
+       -- print(atManual)
         visible(man_annun, true)
     else
         visible(man_annun, false)
     end        
 end
-fs2020_variable_subscribe("L:SF50_push_at_fms_man", "Number",
-                                              "A:AUTOPILOT THROTTLE ARM", "Bool",
+fs2020_variable_subscribe("L:XMLVAR_SpeedIsManuallySet", "enum",
+                                              "L:SF50_Autothrottle_Status", "ENUM",
                                               setFMSAn)
 
 --THROTTLE
