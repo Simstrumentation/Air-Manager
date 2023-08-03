@@ -133,7 +133,7 @@ end)
 mouse_setting(fms_inner , "CURSOR_LEFT", "ctr_cursor_ccw.png")
 mouse_setting(fms_inner , "CURSOR_RIGHT", "ctr_cursor_cw.png")
 
-button_add(nil, nil, 767, 716, 38, 38, function()
+button_add(nil, nil, inner_pos[1], inner_pos[2], inner_pos[3], inner_pos[4], function()
     fs2020_event(unitvar .. "KnobPush")
 end)
 
