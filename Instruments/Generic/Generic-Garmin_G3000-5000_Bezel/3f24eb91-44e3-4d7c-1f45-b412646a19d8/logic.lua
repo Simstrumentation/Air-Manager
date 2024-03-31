@@ -8,11 +8,12 @@
 G3000 / 5000  Bezel Overlay
 
 Version info:
+- **v2.01** - 2024-03-31
+    - added copilot PFD button functionality.
+
 - **v2.0** - 2022-12-11
 
-
 NOTES: 
-
 The following options are available and can be set via user properties in the instrument once
 placed in your panel layout:
 
@@ -33,7 +34,7 @@ Sharing or re-use of any code or assets is not permitted without credit to the o
 
 unit_type = user_prop_add_enum("Display Unit Type","G3000, G5000","G3000","Select between G3000 and G5000")
 logo_style = user_prop_add_enum("Style of Garmin Logo","Metallic, Inset","Metallic","Select between G3000 and G5000")
-display_pos = user_prop_add_enum("Display unit function","PFD,MFD","PFD", "Select unit functional position")
+display_pos = user_prop_add_enum("Display unit function","Pilot,MFD,Copilot","Pilot", "Select unit functional position")
 screen_glare = user_prop_add_boolean("Show screen glare", true, "Show glare on the screen")
 
 
@@ -47,8 +48,10 @@ release_snd = sound_add("release.wav")
 local pos = user_prop_get(display_pos)
 
 
-if pos == "PFD" then
+if pos == "Pilot" then
     display_type = "PFD_1"
+elseif pos == "Copilot" then
+    display_type = "PFD_2"
 else
     display_type = "MFD"
 end
@@ -114,7 +117,7 @@ if user_prop_get(unit_type)  == "G3000" then
     button_add(nil,"G3000Button.png", 728,886,62,44, sc_7_click, release)
     
     function sc_8_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_8", release)
+    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_8")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 828,886,62,44, sc_8_click, release)
@@ -129,7 +132,7 @@ if user_prop_get(unit_type)  == "G3000" then
     	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_10")
         sound_play(press_snd)
     end
-    button_add(nil,"G3000Button.png", 1027,886,63,44, sc_10_click)
+    button_add(nil,"G3000Button.png", 1027,886,63,44, sc_10_click, release)
     
     function sc_11_click()
     	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_11")
