@@ -20,7 +20,7 @@
 
 img_add_fullscreen("background.png")
 
-fs2020_variable_subscribe("A:AUTOPILOT DISENGAGED", "bool",
+msfs_variable_subscribe("A:AUTOPILOT DISENGAGED", "bool",
                                               "A:RUDDER TRIM DISABLED", "bool",
                                               --"A:AILERON TRIM DISABLED", "bool",
     function (ap,rudder)      
@@ -41,23 +41,23 @@ end)
 
 --Ignition Touch Buttons
 function cb_aptrim_on()
-       fs2020_event("K:RUDDER_TRIM_DISABLED_SET",0)
-        fs2020_event("K:AILERON_TRIM_DISABLED_SET",0)
-        fs2020_event("AUTOPILOT_DISENGAGE_SET",0)        
+       msfs_event("K:RUDDER_TRIM_DISABLED_SET",0)
+        msfs_event("K:AILERON_TRIM_DISABLED_SET",0)
+        msfs_event("AUTOPILOT_DISENGAGE_SET",0)        
 end
 button_add(nil,nil, 40, 60, 200, 70, cb_aptrim_on)
 
 function cb_aptrim_apoff()
-        fs2020_event("K:RUDDER_TRIM_DISABLED_SET",0)
-        fs2020_event("K:AILERON_TRIM_DISABLED_SET",0)
-        fs2020_event("AUTOPILOT_DISENGAGE_SET",1)        
+        msfs_event("K:RUDDER_TRIM_DISABLED_SET",0)
+        msfs_event("K:AILERON_TRIM_DISABLED_SET",0)
+        msfs_event("AUTOPILOT_DISENGAGE_SET",1)        
 end
 button_add(nil,nil, 40, 130, 200, 70, cb_aptrim_apoff)
 
 function cb_aptrim_off()
-        fs2020_event("K:RUDDER_TRIM_DISABLED_SET",1)
-        fs2020_event("K:AILERON_TRIM_DISABLED_SET",1)  
-        fs2020_event("AUTOPILOT_DISENGAGE_SET",1)
+        msfs_event("K:RUDDER_TRIM_DISABLED_SET",1)
+        msfs_event("K:AILERON_TRIM_DISABLED_SET",1)  
+        msfs_event("AUTOPILOT_DISENGAGE_SET",1)
 end
 button_add(nil,nil, 40, 200, 200, 70, cb_aptrim_off)
 

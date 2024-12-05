@@ -74,7 +74,7 @@ local xfrMode = 0
 
 
 -- Initialize local variables with sim values
-fs2020_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet", 
+msfs_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet", 
                           "PLANE HEADING DEGREES MAGNETIC", "Degrees", 
                           function(ap_alt, heading)
                             current_alt = ap_alt
@@ -86,13 +86,13 @@ fs2020_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet",
 function vsstate_callback(state)
     VSState = state  
 end
-fs2020_variable_subscribe("AUTOPILOT VERTICAL HOLD", "bool", vsstate_callback)
+msfs_variable_subscribe("AUTOPILOT VERTICAL HOLD", "bool", vsstate_callback)
 
 --Get FLC State
 function flcstate_callback(state)
     FLCState = state   
 end
-fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", flcstate_callback)                        
+msfs_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", flcstate_callback)                        
 
 --release functions
 function cbKnobRelease()
@@ -107,7 +107,7 @@ end
 
 --hdg
 function click_press_callback_btn_HDG()
-	fs2020_event("AP_PANEL_HEADING_HOLD")
+	msfs_event("AP_PANEL_HEADING_HOLD")
 	sound_play(buttonClick)
 end
 
@@ -115,7 +115,7 @@ button_add("hdg.png", "hdg.png", 85 , 20 , 60 , 40, click_press_callback_btn_HDG
 
 --apr
 function click_press_callback_btn_APR()
-	fs2020_event("AP_APR_HOLD")
+	msfs_event("AP_APR_HOLD")
 	sound_play(buttonClick)
 end
 
@@ -123,7 +123,7 @@ button_add("apr.png", "apr.png", 180 , 20 , 60 , 40, click_press_callback_btn_AP
 
 --nav
 function click_press_callback_btn_NAV()
-	fs2020_event("AP_NAV1_HOLD")
+	msfs_event("AP_NAV1_HOLD")
 	sound_play(buttonClick)
 end
 
@@ -131,7 +131,7 @@ button_add("nav.png", "nav.png", 290 , 20 , 60 , 40, click_press_callback_btn_NA
 
 --bc
 function click_press_callback_btn_BC()
-	fs2020_event("AP_BC_HOLD_ON")
+	msfs_event("AP_BC_HOLD_ON")
 	sound_play(buttonClick)
 end
 
@@ -140,9 +140,9 @@ button_add("bc.png", "bc.png", 180 , 126 , 60 , 40, click_press_callback_btn_BC,
 --hdg knob
 function dial_HDG_turned(direction)
 	if direction ==  1 then
-        fs2020_event("HEADING_BUG_INC")
+        msfs_event("HEADING_BUG_INC")
     elseif direction == -1 then
-        fs2020_event("HEADING_BUG_DEC")
+        msfs_event("HEADING_BUG_DEC")
     end
     sound_play(knobScroll)
 end
@@ -151,7 +151,7 @@ dial_HDG = dial_add("knob_hdg.png" , 81 ,97 , 70 , 70 , 3, dial_HDG_turned)
 
 --hdg knob press
 function click_press_callback_HDG_PUSH()
-	fs2020_event("HEADING_BUG_SET", current_hdg)
+	msfs_event("HEADING_BUG_SET", current_hdg)
 	sound_play(knobClick)
 end
 
@@ -161,9 +161,9 @@ button_add(nil, nil, 95 , 120 , 30 , 30, click_press_callback_HDG_PUSH, cbKnobRe
 -- Crs 1 knob
 function dial_CRS1_turned(direction)
 	if direction ==  1 then
-        fs2020_event("H:AS1000_PFD_CRS_INC")
+        msfs_event("H:AS1000_PFD_CRS_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_PFD_CRS_DEC")
+        msfs_event("H:AS1000_PFD_CRS_DEC")
     end
 	sound_play(knobScroll)
 end
@@ -181,7 +181,7 @@ button_add(nil, nil, 303 , 122 , 30 , 30, click_press_callback_CRS1, cbKnobRelea
 
 --FD
 function click_press_callback_btn_FD()
-	fs2020_event("TOGGLE_FLIGHT_DIRECTOR")   
+	msfs_event("TOGGLE_FLIGHT_DIRECTOR")   
 	sound_play(buttonClick)
 end
 
@@ -191,9 +191,9 @@ button_add("fd.png", "fd.png", 405 , 20 , 60 , 40, click_press_callback_btn_FD, 
 --Bank
 function click_press_callback_btn_BANK()
     if bankState then
-        fs2020_event("K:AP_MAX_BANK_SET", 0)
+        msfs_event("K:AP_MAX_BANK_SET", 0)
     else
-        fs2020_event("K:AP_MAX_BANK_SET", 0)
+        msfs_event("K:AP_MAX_BANK_SET", 0)
     end
     sound_play(buttonClick)
 end
@@ -204,9 +204,9 @@ button_add("bank.png", "bank.png", 405 , 125 , 60 , 40, click_press_callback_btn
 --XFR
 function click_press_callback_btn_XFR()
 	if xfrMode then
-	    fs2020_variable_write("L:XMLVAR_PushXFR", "Number", 0)
+	    msfs_variable_write("L:XMLVAR_PushXFR", "Number", 0)
 	else
-	    fs2020_variable_write("L:XMLVAR_PushXFR", "Number", 1)
+	    msfs_variable_write("L:XMLVAR_PushXFR", "Number", 1)
 	end
 	sound_play(buttonClick)
 end
@@ -216,7 +216,7 @@ button_add("xfr.png", "xfr.png", 560 , 20 , 60 , 40, click_press_callback_btn_XF
 
 --AP Master
 function click_press_callback_btn_AP()
-	fs2020_event("AP_MASTER")   
+	msfs_event("AP_MASTER")   
 	sound_play(buttonClick)
 end
 
@@ -225,7 +225,7 @@ button_add("ap.png", "ap.png", 510 , 125 , 60 , 40, click_press_callback_btn_AP,
 
 --YD
 function click_press_callback_btn_YD()
-	fs2020_event("YAW_DAMPER_TOGGLE")
+	msfs_event("YAW_DAMPER_TOGGLE")
 	sound_play(buttonClick)
 end
 
@@ -234,7 +234,7 @@ button_add("yd.png", "yd.png", 605 , 125 , 60 , 40, click_press_callback_btn_YD,
 
 --Alt
 function click_press_callback_btn_ALT()
-	fs2020_event("AP_PANEL_ALTITUDE_HOLD")
+	msfs_event("AP_PANEL_ALTITUDE_HOLD")
 	sound_play(buttonClick)
 end
 
@@ -242,7 +242,7 @@ button_add("alt.png", "alt.png", 730 , 20 , 60 , 40, click_press_callback_btn_AL
 
 --VS Button
 function click_press_callback_btn_VS()
-    fs2020_event("AP_PANEL_VS_HOLD")
+    msfs_event("AP_PANEL_VS_HOLD")
     sound_play(buttonClick)
 end
 button_add("vs.png", "vs.png", 830 , 20 , 60 , 40, click_press_callback_btn_VS, cbButtonRelease)
@@ -250,11 +250,11 @@ button_add("vs.png", "vs.png", 830 , 20 , 60 , 40, click_press_callback_btn_VS, 
 --FLC Button
 function click_press_callback_btn_FLC()
 	if FLCState then  --check if FLC is currently on
-		fs2020_event("FLIGHT_LEVEL_CHANGE_OFF")    --if true, toggle off
+		msfs_event("FLIGHT_LEVEL_CHANGE_OFF")    --if true, toggle off
 	else    -- if FLC currently off
 		AirspeedDecimal = math.floor(AirspeedIndicated)        -- read current airspeed and convert variable
-		fs2020_event("FLIGHT_LEVEL_CHANGE_ON")                --enable FLC
-		fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
+		msfs_event("FLIGHT_LEVEL_CHANGE_ON")                --enable FLC
+		msfs_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
 	end
 	sound_play(buttonClick)
 end
@@ -262,15 +262,15 @@ button_add("flc.png", "flc.png", 1040 , 20 , 60 , 40, click_press_callback_btn_F
 
 --VNAV
 function click_press_callback_btn_VNV()
-	fs2020_event("GPS_VNAV_BUTTON")				-- for other GPS systems EXCEPT WT G1000 NXi
-	fs2020_event("H:AS1000_VNAV_TOGGLE")		-- for WT G1000 NXi VNAV
+	msfs_event("GPS_VNAV_BUTTON")				-- for other GPS systems EXCEPT WT G1000 NXi
+	msfs_event("H:AS1000_VNAV_TOGGLE")		-- for WT G1000 NXi VNAV
 	sound_play(buttonClick)
 end
 button_add("vnv.png", "vnv.png", 830 , 125 , 60 , 40, click_press_callback_btn_VNV, cbButtonRelease)
 
 --Spd
 function click_press_callback_btn_SPD()
-        fs2020_event("K:AP_MANAGED_SPEED_IN_MACH_TOGGLE")
+        msfs_event("K:AP_MANAGED_SPEED_IN_MACH_TOGGLE")
 	sound_play(buttonClick)
 end
 
@@ -279,26 +279,26 @@ button_add("spd.png", "spd.png", 1040 , 125 , 60 , 40, click_press_callback_btn_
 --ALT knob
 function dialSingle(direction)
 	if direction == 1 then
-           fs2020_event("AP_ALT_VAR_INC")
+           msfs_event("AP_ALT_VAR_INC")
         elseif direction == -1 then
-           fs2020_event("AP_ALT_VAR_DEC")
+           msfs_event("AP_ALT_VAR_DEC")
         end
 end
 
 function dialDualOuter( direction)
     if direction ==  1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)
     elseif direction == -1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)
     end
     sound_play(knobScroll)
 end
 
 function dialDualInner( direction)
     if direction ==  1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)
     elseif direction == -1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)
     end
     sound_play(knobScroll)
 end
@@ -315,7 +315,7 @@ end
 
 --Alt button
 function click_press_callback_ALT()
-	fs2020_event("AP_PANEL_ALTITUDE_HOLD")
+	msfs_event("AP_PANEL_ALTITUDE_HOLD")
 	sound_play(knobClick)
 end
 
@@ -325,14 +325,14 @@ button_add(nil, nil, 742 , 122 , 40 , 30, click_press_callback_ALT, cbButtonRele
 --VS / FLC / Pitch scroll wheel
 function vs_callback(direction)
     if direction == -1 then
-        if VSState then fs2020_event("AP_VS_VAR_DEC")
-        elseif FLCState then fs2020_event("AP_SPD_VAR_INC")
-        else fs2020_event("AP_PITCH_REF_INC_DN")
+        if VSState then msfs_event("AP_VS_VAR_DEC")
+        elseif FLCState then msfs_event("AP_SPD_VAR_INC")
+        else msfs_event("AP_PITCH_REF_INC_DN")
         end
     else
-        if VSState then fs2020_event("AP_VS_VAR_INC")
-        elseif FLCState then fs2020_event("AP_SPD_VAR_DEC")
-        else fs2020_event("AP_PITCH_REF_INC_UP")
+        if VSState then msfs_event("AP_VS_VAR_INC")
+        elseif FLCState then msfs_event("AP_SPD_VAR_DEC")
+        else msfs_event("AP_PITCH_REF_INC_UP")
         end
     end
 end
@@ -423,7 +423,7 @@ function ap_cb (hdg,  nav, apr, ap_mode, fd_mode,  yaw, ias,  vs, alt, heading, 
 end
 
 -- Subscriptions				
-fs2020_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
+msfs_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
 							"AUTOPILOT NAV1 LOCK", "Bool",
 							"AUTOPILOT APPROACH HOLD", "Bool",
 							"AUTOPILOT MASTER", "Bool",
@@ -448,4 +448,4 @@ fs2020_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
 function aspd_callback(asindicated)
 	AirspeedIndicated = asindicated  
 end
-fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
+msfs_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)

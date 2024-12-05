@@ -216,4 +216,4 @@ function moveNeedle(rate)
     end
 end
 
-fs2020_variable_subscribe("A:PRESSURIZATION CABIN ALTITUDE RATE", "Feet", moveNeedle)
+msfs_variable_subscribe("A:PRESSURIZATION CABIN ALTITUDE RATE", "Feet", moveNeedle)

@@ -75,73 +75,73 @@ else
 end
 if user_prop_get(unit_type)  == "G3000" then
     function sc_1_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_1")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_1")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 130,886,62,44, sc_1_click, release)
     
     function sc_2_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_2")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_2")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 230,886,62,44, sc_2_click, release)
     
     function sc_3_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_3")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_3")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 330,886,62,44, sc_3_click, release)
     
     function sc_4_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_4")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_4")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 430,886,62,44, sc_4_click, release)
     
     function sc_5_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_5")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_5")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 529,886,62,44, sc_5_click, release)
     
     function sc_6_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_6")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_6")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 629,886,62,44, sc_6_click, release)
     
     function sc_7_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_7")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_7")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 728,886,62,44, sc_7_click, release)
     
     function sc_8_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_8")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_8")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 828,886,62,44, sc_8_click, release)
     
     function sc_9_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_9")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_9")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png",927,886,62,44, sc_9_click, release)
     
     function sc_10_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_10")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_10")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 1027,886,63,44, sc_10_click, release)
     
     function sc_11_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_11")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_11")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 1125,886,63,44, sc_11_click, release)
     
     function sc_12_click()
-    	fs2020_event("H:AS3000_"..display_type.."_SOFTKEYS_12")
+    	msfs_event("H:AS3000_"..display_type.."_SOFTKEYS_12")
         sound_play(press_snd)
     end
     button_add(nil,"G3000Button.png", 1225,886,63,44, sc_12_click, release)

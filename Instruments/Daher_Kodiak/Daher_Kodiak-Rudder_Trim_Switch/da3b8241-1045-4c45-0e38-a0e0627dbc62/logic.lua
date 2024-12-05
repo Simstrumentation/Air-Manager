@@ -28,7 +28,7 @@ visible(rudder_r_id, false)                                                     
 -- left rudder adustment
 function rudder_l_cb(direction)
       visible (rudder_l_id, true)    --show pressed state on press
-      fs2020_event("RUDDER_TRIM_LEFT")  
+      msfs_event("RUDDER_TRIM_LEFT")  
 end
 
 function rudder_l_release_cb()
@@ -39,7 +39,7 @@ rudder_l_btn_id = button_add(nil, nil, 40, 66, 120, 133, rudder_l_cb, rudder_l_r
 -- right rudder adustment
 function rudder_r_cb(direction)
     visible (rudder_r_id, true)    --show pressed state on press
-      fs2020_event("RUDDER_TRIM_RIGHT")  
+      msfs_event("RUDDER_TRIM_RIGHT")  
 end
 
 function rudder_r_release_cb()

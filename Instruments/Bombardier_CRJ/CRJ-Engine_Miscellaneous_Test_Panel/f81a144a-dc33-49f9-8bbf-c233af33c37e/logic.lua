@@ -41,7 +41,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 -----------------------------------------------------------------
 
@@ -92,30 +92,30 @@ function ss_synch(state)
     rotate(img_dial_synch, -(55-(state*55)))
     rotate(img_dial_synch_night, -(55-(state*55)))    
 end
-fs2020_variable_subscribe("L:ASCRJ_ENG_SYNC", "Number", ss_synch)
+msfs_variable_subscribe("L:ASCRJ_ENG_SYNC", "Number", ss_synch)
 function cb_sw_synch(position, direction)
- fs2020_variable_write("L:ASCRJ_ENG_SYNC","number",1) 
+ msfs_variable_write("L:ASCRJ_ENG_SYNC","number",1) 
     if (position == 0 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_ENG_SYNC","number",1) 
+        msfs_variable_write("L:ASCRJ_ENG_SYNC","number",1) 
     elseif (position == 1 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_ENG_SYNC","number",2) 
+        msfs_variable_write("L:ASCRJ_ENG_SYNC","number",2) 
     elseif (position == 1 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_ENG_SYNC","number",0)         
+        msfs_variable_write("L:ASCRJ_ENG_SYNC","number",0)         
     elseif (position == 2 and direction == -1) then
-        fs2020_variable_write("L:ASCRJ_ENG_SYNC","number",1)               
+        msfs_variable_write("L:ASCRJ_ENG_SYNC","number",1)               
     end 
 end
 switch_synch= switch_add(nil,nil,nil, 63, 58,80,80, "CIRCULAIR" , cb_sw_synch)  
 
 --PWR SWITCH
-fs2020_variable_subscribe("L:ASCRJ_ENG_HPSCHED_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
+msfs_variable_subscribe("L:ASCRJ_ENG_HPSCHED_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
     function (on,pwr) if (pwr==true) then visible(img_highpwr, on ==1)else visible(img_highpwr, false)end end) 
 
 sw_hpsched = switch_add(nil, nil, 218, 75, 55, 55, 
         function (position)
               sound_play(snd_click)
-              if position == 1 then fs2020_variable_write("L:ASCRJ_ENG_HPSCHED", "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_ENG_HPSCHED","Number",0)end) 
-              else  fs2020_variable_write("L:ASCRJ_ENG_HPSCHED", "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_ENG_HPSCHED","Number",0)end) 
+              if position == 1 then msfs_variable_write("L:ASCRJ_ENG_HPSCHED", "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_ENG_HPSCHED","Number",0)end) 
+              else  msfs_variable_write("L:ASCRJ_ENG_HPSCHED", "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_ENG_HPSCHED","Number",0)end) 
               end
 end)
 visible(sw_hpsched, false)
@@ -140,7 +140,7 @@ end
 
 
 --LAMP TEST SWITCH
-fs2020_variable_subscribe("L:ASCRJ_ENG_LAMPTEST", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ENG_LAMPTEST", "Number", 
         function (state)
             switch_set_position(sw_lamp_test, state)
             visible(img_sw_lamp_test_up, state ==0)
@@ -153,19 +153,19 @@ fs2020_variable_subscribe("L:ASCRJ_ENG_LAMPTEST", "Number",
 
 function cb_sw_lamp_test(position,direction)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_ENG_LAMPTEST","Number",1) 
+        msfs_variable_write("L:ASCRJ_ENG_LAMPTEST","Number",1) 
     elseif (position == 1 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_ENG_LAMPTEST","Number",0) 
+        msfs_variable_write("L:ASCRJ_ENG_LAMPTEST","Number",0) 
     elseif (position == 1 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_ENG_LAMPTEST","Number",2)        
+        msfs_variable_write("L:ASCRJ_ENG_LAMPTEST","Number",2)        
     elseif (position == 2 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_ENG_LAMPTEST","Number",1)        
+        msfs_variable_write("L:ASCRJ_ENG_LAMPTEST","Number",1)        
     end 
 end
 sw_lamp_test= switch_add(nil,nil,nil, 362, 28, 50, 100, cb_sw_lamp_test)
 
 --IND LTS SWITCH
-fs2020_variable_subscribe("L:ASCRJ_ENG_INDLTS", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ENG_INDLTS", "Number", 
         function  (state)
             switch_set_position(sw_IndLts, state)
             visible(img_sw_indlts_up, state ==0)
@@ -176,13 +176,13 @@ end)
 
 sw_IndLts = switch_add(nil,nil, 362, 140, 50 ,110, 
         function (position)
-              if position == 1 then fs2020_variable_write("L:ASCRJ_ENG_INDLTS", "Number", 0)
-              else  fs2020_variable_write("L:ASCRJ_ENG_INDLTS", "Number", 1)
+              if position == 1 then msfs_variable_write("L:ASCRJ_ENG_INDLTS", "Number", 0)
+              else  msfs_variable_write("L:ASCRJ_ENG_INDLTS", "Number", 1)
               end
 end)
 
 --FDR EVENT BUTTON
 button_add(nil, "circle_pressed.png", 72, 172, 60 ,60, 
         function ()
-              fs2020_variable_write("L:ASCRJ_ENG_FDR_EVENT", "Number", 1)
+              msfs_variable_write("L:ASCRJ_ENG_FDR_EVENT", "Number", 1)
 end)

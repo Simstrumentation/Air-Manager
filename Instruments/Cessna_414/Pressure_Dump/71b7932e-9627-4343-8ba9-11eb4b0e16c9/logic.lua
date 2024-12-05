@@ -60,11 +60,11 @@ img_add("switch_base.png", 56.5, 350, 160, 160)
 function swtchTest()
 print("SWTCHTEST:"..doorSwitch)    
     if doorSwitch == 1 then
-        fs2020_variable_write("L:DOOR_LIGHT1", "Number", 0)            
-        fs2020_variable_write("A:LIGHT PEDESTRAL:10", "Number", 0)   -- Yeah, Pedestral, with an extra R.  That's how it's spelled in the Dev Mode.  It doesn't work if you spell it correctly         
+        msfs_variable_write("L:DOOR_LIGHT1", "Number", 0)            
+        msfs_variable_write("A:LIGHT PEDESTRAL:10", "Number", 0)   -- Yeah, Pedestral, with an extra R.  That's how it's spelled in the Dev Mode.  It doesn't work if you spell it correctly         
     else
-        fs2020_variable_write("L:DOOR_LIGHT1", "Number", 1)            
-        fs2020_variable_write("A:LIGHT PEDESTRAL:10", "Number", 1)            
+        msfs_variable_write("L:DOOR_LIGHT1", "Number", 1)            
+        msfs_variable_write("A:LIGHT PEDESTRAL:10", "Number", 1)            
     end
 end
 door_light_id = switch_add("switch_down.png", "switch_up.png", 107, 355, 60, 150, swtchTest)
@@ -80,7 +80,7 @@ function new_door_callback(val)
    --swtchTest()
 end
 
-fs2020_variable_subscribe("L:DOOR_LIGHT1", "Number", new_door_callback)            
+msfs_variable_subscribe("L:DOOR_LIGHT1", "Number", new_door_callback)            
 
 
 dump_lever_shadow_id =img_add("knob_shadow.png", 235, 25, 200, 200)
@@ -108,13 +108,13 @@ function dumpLeverCB()
         move(dump_lever_shadow_id, 255, 45, 210, 210, "LINEAR", 0.1)
         opacity(dump_lever_shadow_id, 0.3, "LINEAR", 0.1)
         dumpLeverPos = 0
-        fs2020_variable_write("L:PRESSURIZATION_DUMP_LEVER", "Number", 1)            
+        msfs_variable_write("L:PRESSURIZATION_DUMP_LEVER", "Number", 1)            
     else
         move(dump_lever_id,225, 16, 200, 200, "LINEAR", 0.1)
         move(dump_lever_shadow_id, 235, 25, 200, 200, "LINEAR", 0.1)
         opacity(dump_lever_shadow_id, 0.5, "LINEAR", 0.1)
         dumpLeverPos = 1
-        fs2020_variable_write("L:PRESSURIZATION_DUMP_LEVER", "Number", 0)            
+        msfs_variable_write("L:PRESSURIZATION_DUMP_LEVER", "Number", 0)            
     end
 end
 dump_lever_button =button_add(nil, nil, 225, 16, 200, 200, dumpLeverCB)
@@ -125,7 +125,7 @@ function new_dump_callback(val)
    dumpLeverCB()
 end
 
-fs2020_variable_subscribe("L:PRESSURIZATION_DUMP_LEVER", "Number", new_dump_callback)            
+msfs_variable_subscribe("L:PRESSURIZATION_DUMP_LEVER", "Number", new_dump_callback)            
 
     --    LH Dump
 function dumpLCB()
@@ -133,14 +133,14 @@ function dumpLCB()
         rotate(dump_l_id, -90, "LINEAR", 0.04)
         timer_start(400, function() move(dump_l_id, 1, 175, 220, 220, "LINEAR", 0.1) move(dump_l_shadow_id, 55, 180, 210, 210, "LINEAR", 0.1) opacity(dump_l_shadow_id, 0.3, "LINEAR", 0.1) end)
         dumpLPos = 0
-        fs2020_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_LEFT_Position", "Number", 100)
+        msfs_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_LEFT_Position", "Number", 100)
     else
         move(dump_l_id, 25, 150, 200, 200, "LINEAR", 0.1) 
         move(dump_l_shadow_id, 35, 160, 200, 200, "LINEAR", 0.1) 
         opacity(dump_l_shadow_id, 0.5, "LINEAR", 0.1) 
         timer_start(400, function()  rotate(dump_l_id, 0, "LINEAR", 0.1) end)
         dumpLPos = 100
-        fs2020_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_LEFT_Position", "Number", 0)
+        msfs_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_LEFT_Position", "Number", 0)
     end
 end
 dump_l_button = button_add(nil, nil, 25, 150, 200, 200, dumpLCB)
@@ -152,7 +152,7 @@ function new_dump_l_callback(val)
 end
 
  -- Subscribe to FS2020 variables on the databus
-fs2020_variable_subscribe("L:XMLVAR_PRESSURIZATION_CONTROL_LEFT_Position", "Number", new_dump_l_callback)            
+msfs_variable_subscribe("L:XMLVAR_PRESSURIZATION_CONTROL_LEFT_Position", "Number", new_dump_l_callback)            
 
     --    RH Dump
 
@@ -161,14 +161,14 @@ function dumpRCB()
         rotate(dump_r_id, -90, "LINEAR", 0.04)
         timer_start(400, function() move(dump_r_id, 400, 175, 220, 220, "LINEAR", 0.1) move(dump_r_shadow_id, 455, 180, 210, 210, "LINEAR", 0.1) opacity(dump_r_shadow_id, 0.3, "LINEAR", 0.1) end)
         dumpRPos = 0
-        fs2020_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_RIGHT_Position", "Number", 100)
+        msfs_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_RIGHT_Position", "Number", 100)
     else
         move(dump_r_id, 425, 150, 200, 200, "LINEAR", 0.1) 
         move(dump_r_shadow_id, 435, 160, 200, 200, "LINEAR", 0.1) 
         opacity(dump_r_shadow_id, 0.5, "LINEAR", 0.1) 
         timer_start(400, function()  rotate(dump_r_id, 0, "LINEAR", 0.1) end)
         dumpRPos = 100
-        fs2020_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_RIGHT_Position", "Number", 0)
+        msfs_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_RIGHT_Position", "Number", 0)
     end
 end
 dump_r_button = button_add(nil, nil, 425, 150, 200, 200, dumpRCB)
@@ -180,7 +180,7 @@ function new_dump_r_callback(val)
 end
 
  -- Subscribe to FS2020 variables on the databus
-fs2020_variable_subscribe("L:XMLVAR_PRESSURIZATION_CONTROL_RIGHT_Position", "Number", new_dump_r_callback)            
+msfs_variable_subscribe("L:XMLVAR_PRESSURIZATION_CONTROL_RIGHT_Position", "Number", new_dump_r_callback)            
 
     --    Oxygen
     --    dump ram
@@ -190,13 +190,13 @@ function OxyLeverCB()
         move(oxy_lever_shadow_id , 255, 330, 210, 210, "LINEAR", 0.1)
         opacity(oxy_lever_shadow_id , 0.3, "LINEAR", 0.1)
         oxyLeverPos = 0
-        fs2020_variable_write("L:EMER_OXYGEN_PULL", "Number", 1)
+        msfs_variable_write("L:EMER_OXYGEN_PULL", "Number", 1)
     else
         move(oxy_lever_id , 225, 300, 200, 200, "LINEAR", 0.1)
         move(oxy_lever_shadow_id , 235, 310, 200, 200, "LINEAR", 0.1)
         opacity(oxy_lever_shadow_id , 0.5, "LINEAR", 0.1)
         oxyLeverPos = 1
-        fs2020_variable_write("L:EMER_OXYGEN_PULL", "Number", 0)
+        msfs_variable_write("L:EMER_OXYGEN_PULL", "Number", 0)
     end
 end
 oxy_lever_button =button_add(nil, nil, 225, 300, 200, 200, OxyLeverCB)
@@ -209,4 +209,4 @@ function new_oxy_callback(val)
 end
 
  -- Subscribe to FS2020 variables on the databus
-fs2020_variable_subscribe("L:EMER_OXYGEN_PULL", "Number", new_oxy_callback)            
+msfs_variable_subscribe("L:EMER_OXYGEN_PULL", "Number", new_oxy_callback)            

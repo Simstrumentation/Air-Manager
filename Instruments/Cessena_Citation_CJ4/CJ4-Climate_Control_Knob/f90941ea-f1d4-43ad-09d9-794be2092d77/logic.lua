@@ -73,7 +73,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_climate_knob_indicator_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -101,23 +101,23 @@ function ss_climate_control(sw_on)
         rotate (img_climate_knob_indicator_backlight, 58, "LOG", 0.1) 
     end
 end 
-fs2020_variable_subscribe("L:WT_CJ4_CLIMATE_CONTROL", "Int", ss_climate_control)
+msfs_variable_subscribe("L:WT_CJ4_CLIMATE_CONTROL", "Int", ss_climate_control)
 
 
 function callback_climate_control(position, direction)
     if direction == 1 then           -- turned dial to the right  
         if position == 1 then    -- turn from pos 1 to pos 2		
-		fs2020_variable_write("L:WT_CJ4_CLIMATE_CONTROL", "Int",2) 
+		msfs_variable_write("L:WT_CJ4_CLIMATE_CONTROL", "Int",2) 
  
 	elseif position == 0 then    -- turn from pos 0 to pos 1
-		fs2020_variable_write("L:WT_CJ4_CLIMATE_CONTROL", "Int",1)  
+		msfs_variable_write("L:WT_CJ4_CLIMATE_CONTROL", "Int",1)  
 	end
     else    -- turned dial to the right  		   
         if position == 2 then
-		fs2020_variable_write("L:WT_CJ4_CLIMATE_CONTROL", "Int",1)
+		msfs_variable_write("L:WT_CJ4_CLIMATE_CONTROL", "Int",1)
 
         elseif position == 1 then
-		fs2020_variable_write("L:WT_CJ4_CLIMATE_CONTROL", "Int",0)
+		msfs_variable_write("L:WT_CJ4_CLIMATE_CONTROL", "Int",0)
 	end
    end
 end

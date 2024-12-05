@@ -4,10 +4,10 @@ function carb_heat_callback(position)
 
     if position == 0 then
         switch_set_position(carb_heat_id, 1)
-        fs2020_event("ANTI_ICE_TOGGLE_ENG1")
+        msfs_event("ANTI_ICE_TOGGLE_ENG1")
     elseif position == 1 then
         switch_set_position(carb_heat_id, 0)
-        fs2020_event("ANTI_ICE_TOGGLE_ENG1")
+        msfs_event("ANTI_ICE_TOGGLE_ENG1")
     end
 end
 
@@ -22,4 +22,4 @@ function new_carb_heat_pos(sw_on)
     end
 end    
 
-fs2020_variable_subscribe("GENERAL ENG ANTI ICE POSITION:1", "Bool", new_carb_heat_pos)
+msfs_variable_subscribe("GENERAL ENG ANTI ICE POSITION:1", "Bool", new_carb_heat_pos)

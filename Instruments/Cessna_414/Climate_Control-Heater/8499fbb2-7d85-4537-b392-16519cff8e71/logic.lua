@@ -153,9 +153,9 @@ defrost_id = img_add("pull.png",pullX, pullY, pullSize, pullSize)
 function toggleDefrost(dir)
 print(defrostLeverPos)
     if defrostLeverPos == 1 then
-        fs2020_variable_write("L:XMLVAR_CABIN_AIR_DEFROST_Position", "Number", 100)
+        msfs_variable_write("L:XMLVAR_CABIN_AIR_DEFROST_Position", "Number", 100)
     else
-        fs2020_variable_write("L:XMLVAR_CABIN_AIR_DEFROST_Position", "Number", 0)    
+        msfs_variable_write("L:XMLVAR_CABIN_AIR_DEFROST_Position", "Number", 0)    
     end
 end
 
@@ -175,7 +175,7 @@ function defrost_switch(pos)
     end
 end
 
-fs2020_variable_subscribe("L:XMLVAR_CABIN_AIR_DEFROST_Position", "Number", defrost_switch)
+msfs_variable_subscribe("L:XMLVAR_CABIN_AIR_DEFROST_Position", "Number", defrost_switch)
 
 --AFT PULL
 
@@ -186,9 +186,9 @@ aft_id = img_add("pull.png",pullX + (pullDeltaX * 1), pullY, pullSize, pullSize)
 function toggleAft(dir)
 print(aftLeverPos)
     if aftLeverPos == 1 then
-        fs2020_variable_write("L:XMLVAR_CABIN_AIR_AFT_Position", "Number", 100)
+        msfs_variable_write("L:XMLVAR_CABIN_AIR_AFT_Position", "Number", 100)
     else
-        fs2020_variable_write("L:XMLVAR_CABIN_AIR_AFT_Position", "Number", 0)    
+        msfs_variable_write("L:XMLVAR_CABIN_AIR_AFT_Position", "Number", 0)    
     end
 end
 
@@ -208,7 +208,7 @@ function aft_switch(pos)
     end
 end
 
-fs2020_variable_subscribe("L:XMLVAR_CABIN_AIR_AFT_Position", "Number", aft_switch)
+msfs_variable_subscribe("L:XMLVAR_CABIN_AIR_AFT_Position", "Number", aft_switch)
 
 --FWD PULL
 
@@ -219,9 +219,9 @@ fwd_id = img_add("pull.png",pullX + (pullDeltaX * 2), pullY, pullSize, pullSize)
 function toggleFwd(dir)
 print(fwdLeverPos)
     if fwdLeverPos == 1 then
-        fs2020_variable_write("L:XMLVAR_CABIN_AIR_FWD_Position", "Number", 100)
+        msfs_variable_write("L:XMLVAR_CABIN_AIR_FWD_Position", "Number", 100)
     else
-        fs2020_variable_write("L:XMLVAR_CABIN_AIR_FWD_Position", "Number", 0)    
+        msfs_variable_write("L:XMLVAR_CABIN_AIR_FWD_Position", "Number", 0)    
     end
 end
 
@@ -241,7 +241,7 @@ function fwd_switch(pos)
     end
 end
 
-fs2020_variable_subscribe("L:XMLVAR_CABIN_AIR_FWD_Position", "Number", fwd_switch)
+msfs_variable_subscribe("L:XMLVAR_CABIN_AIR_FWD_Position", "Number", fwd_switch)
 
 
 local xpos = 126
@@ -256,9 +256,9 @@ function cabinHeatTemp_cb(direction)
             cabinHeatTemp_percent = cabinHeatTemp_percent - 5
         end
     end 
-    fs2020_variable_write("L:XMLVAR_CABIN_AIR_HEAT_Position", "Number", var_round(cabinHeatTemp_percent, 1))
---    fs2020_variable_write("L:CLIMATE_HEATER_LOW_KNOB", "Number", var_round(cabinHeatTemp_percent, 1)*0.6)
---    fs2020_variable_write("L:CLIMATE_HEATER_HIGH_KNOB", "Number", var_round(cabinHeatTemp_percent, 1)*0.8)
+    msfs_variable_write("L:XMLVAR_CABIN_AIR_HEAT_Position", "Number", var_round(cabinHeatTemp_percent, 1))
+--    msfs_variable_write("L:CLIMATE_HEATER_LOW_KNOB", "Number", var_round(cabinHeatTemp_percent, 1)*0.6)
+--    msfs_variable_write("L:CLIMATE_HEATER_HIGH_KNOB", "Number", var_round(cabinHeatTemp_percent, 1)*0.8)
     request_callback(cabinHeatTemp_dial(cabinHeatTemp_percent))
 end
 cabinHeatTemp_id = dial_add(nil, xpos, second_row_y, knob_width, knob_width, cabinHeatTemp_cb)
@@ -268,7 +268,7 @@ function cabinHeatTemp_dial(cabinHeatTemp_dial)
     cabinHeatTemp_percent = cabinHeatTemp_dial
     rotate(cabinHeatTemp_image, (cabinHeatTemp_dial * rotation_scalar), "LINEAR", 0.04)
 end
-fs2020_variable_subscribe("L:XMLVAR_CABIN_AIR_HEAT_Position", "NUMBER", cabinHeatTemp_dial)
+msfs_variable_subscribe("L:XMLVAR_CABIN_AIR_HEAT_Position", "NUMBER", cabinHeatTemp_dial)
 --END CABIN HEAT
 
 --START HEAT EXCHANGER TEMP CONTROLS
@@ -284,8 +284,8 @@ function hExchTempL_cb(direction)
             hExchTempL_percent = hExchTempL_percent - 5
         end
     end 
-    fs2020_variable_write("L:XMLVAR_HEAT_EXCHANGER_HANDLE_LEFT_Position", "Number", var_round(hExchTempL_percent, 1))
---    fs2020_variable_write("L:CLIMATE_EXCHANGER_LEFT_KNOB", "Number", var_round(hExchTempL_percent, 1)*0.7)
+    msfs_variable_write("L:XMLVAR_HEAT_EXCHANGER_HANDLE_LEFT_Position", "Number", var_round(hExchTempL_percent, 1))
+--    msfs_variable_write("L:CLIMATE_EXCHANGER_LEFT_KNOB", "Number", var_round(hExchTempL_percent, 1)*0.7)
     request_callback(hExchTempL_dial(hExchTempL_percent))
 end
 hExchTempL_id = dial_add(nil, xpos + (1*knob_spacing), second_row_y, knob_width, knob_width, hExchTempL_cb)
@@ -295,7 +295,7 @@ function hExchTempL_dial(hExchTempL_dial)
     hExchTempL_percent = hExchTempL_dial
     rotate(hExchTempL_image, (hExchTempL_dial * rotation_scalar), "LINEAR", 0.04)
 end
-fs2020_variable_subscribe("L:XMLVAR_HEAT_EXCHANGER_HANDLE_LEFT_Position", "NUMBER", hExchTempL_dial)
+msfs_variable_subscribe("L:XMLVAR_HEAT_EXCHANGER_HANDLE_LEFT_Position", "NUMBER", hExchTempL_dial)
                                             
 --H.E. Right Temp control
 function hExchTempR_cb(direction)
@@ -308,8 +308,8 @@ function hExchTempR_cb(direction)
             hExchTempR_percent = hExchTempR_percent - 5
         end
     end 
-    fs2020_variable_write("L:XMLVAR_HEAT_EXCHANGER_HANDLE_RIGHT_Position", "Number", var_round(hExchTempR_percent, 1))
-    --fs2020_variable_write("L:CLIMATE_EXCHANGER_RIGHT_KNOB", "Number", var_round(hExchTempR_percent, 1)*0.7)
+    msfs_variable_write("L:XMLVAR_HEAT_EXCHANGER_HANDLE_RIGHT_Position", "Number", var_round(hExchTempR_percent, 1))
+    --msfs_variable_write("L:CLIMATE_EXCHANGER_RIGHT_KNOB", "Number", var_round(hExchTempR_percent, 1)*0.7)
     request_callback(hExchTempR_dial(hExchTempR_percent))
 end
 hExchTempR_id = dial_add(nil, xpos + (2*knob_spacing), second_row_y, knob_width, knob_width, hExchTempR_cb)
@@ -319,7 +319,7 @@ function hExchTempR_dial(hExchTempR_dial)
     hExchTempR_percent = hExchTempR_dial
     rotate(hExchTempR_image, (hExchTempR_dial * rotation_scalar), "LINEAR", 0.04)
 end
-fs2020_variable_subscribe("L:XMLVAR_HEAT_EXCHANGER_HANDLE_RIGHT_Position", "NUMBER", hExchTempR_dial)
+msfs_variable_subscribe("L:XMLVAR_HEAT_EXCHANGER_HANDLE_RIGHT_Position", "NUMBER", hExchTempR_dial)
 --END HEAT EXCHANGER TEMP CONTROLS
 
 function press_air_warm_turn(direction)
@@ -329,8 +329,8 @@ end
                         
 
 function press_air_dump_button()
-    fs2020_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_LEFT_Position", "Number", 100)
-    fs2020_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_RIGHT_Position", "Number", 100)
+    msfs_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_LEFT_Position", "Number", 100)
+    msfs_variable_write("L:XMLVAR_PRESSURIZATION_CONTROL_RIGHT_Position", "Number", 100)
 end
 
 

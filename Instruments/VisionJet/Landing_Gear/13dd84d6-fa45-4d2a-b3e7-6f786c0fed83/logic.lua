@@ -62,15 +62,15 @@ button_add( nil, "ldg_gear_display_bu.png", 71,183,61,61, revert_display)
 --baro knob dial events
 function set_baro(direction)
     if direction == 1 then
-        fs2020_event("KOHLSMAN_INC")
+        msfs_event("KOHLSMAN_INC")
     else
-        fs2020_event("KOHLSMAN_DEC")
+        msfs_event("KOHLSMAN_DEC")
     end
 end
 
 --baro knob click / release events
 function set_baro_std()
-    fs2020_event("K:BAROMETRIC_STD_PRESSURE")
+    msfs_event("K:BAROMETRIC_STD_PRESSURE")
     sound_play(press_snd)
 end
 
@@ -84,7 +84,7 @@ button_add( nil, nil, 69, 350, 60, 60, set_baro_std)
 
 --    gear handle
 function cycle_gear( state, direction)
-    fs2020_event( fif(state == 0, "GEAR_DOWN", "GEAR_UP") )
+    msfs_event( fif(state == 0, "GEAR_DOWN", "GEAR_UP") )
 end
 shadow_up = img_add( "shadow_gear_up.png", 17,493,166,541, "visible:false")
 opacity(shadow_up, 0.75)
@@ -104,7 +104,7 @@ function gear_change(position)
     end
 end
 
-fs2020_variable_subscribe("L:LANDING_GEAR_Gear", "Number", gear_change)
+msfs_variable_subscribe("L:LANDING_GEAR_Gear", "Number", gear_change)
 
 -- backlight
 function lightPot(val, panel, pot, power)
@@ -117,7 +117,7 @@ function lightPot(val, panel, pot, power)
     end
 end
 
-fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+msfs_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
                                                 "A:LIGHT PANEL:1", "Bool", 
                                                 "A:LIGHT POTENTIOMETER:3", "Percent", 
                                                 "A:ELECTRICAL MASTER BATTERY", "Bool",

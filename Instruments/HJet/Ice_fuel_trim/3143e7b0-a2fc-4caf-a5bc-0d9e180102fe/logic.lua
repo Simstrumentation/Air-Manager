@@ -73,18 +73,18 @@ img_add_fullscreen("background.png")
 
     --    ice protection
 function wingIceAction(direction)
-    fs2020_variable_write("L:WINGAI_KNOB", "ENUM", 3)  
+    msfs_variable_write("L:WINGAI_KNOB", "ENUM", 3)  
     if direction == 1 then
         if iceState == 0 then
-            fs2020_variable_write("L:WINGAI_KNOB", "ENUM", 1)     
+            msfs_variable_write("L:WINGAI_KNOB", "ENUM", 1)     
         elseif iceState == -1 then
-            fs2020_variable_write("L:WINGAI_KNOB", "ENUM", 0)
+            msfs_variable_write("L:WINGAI_KNOB", "ENUM", 0)
         end
     else
          if iceState == 1 then
-            fs2020_variable_write("L:WINGAI_KNOB", "ENUM", 0)     
+            msfs_variable_write("L:WINGAI_KNOB", "ENUM", 0)     
         elseif iceState == 0 then
-            fs2020_variable_write("L:WINGAI_KNOB", "ENUM", -1)
+            msfs_variable_write("L:WINGAI_KNOB", "ENUM", -1)
         end
     end
 end
@@ -93,18 +93,18 @@ wing_ice_id = dial_add(nil, 85, 111, 90, 90, wingIceAction)
 
         --    wing flow
 function wingFlowAction(direction)
-   fs2020_variable_write("L:WINGFLOW_KNOB", "ENUM", 3)  
+   msfs_variable_write("L:WINGFLOW_KNOB", "ENUM", 3)  
     if direction == 1 then
         if flowState == 0 then
-            fs2020_variable_write("L:WINGFLOW_KNOB", "ENUM", 1)     
+            msfs_variable_write("L:WINGFLOW_KNOB", "ENUM", 1)     
         elseif flowState == -1 then
-            fs2020_variable_write("L:WINGFLOW_KNOB", "ENUM",  0)
+            msfs_variable_write("L:WINGFLOW_KNOB", "ENUM",  0)
         end
     else
          if flowState == 1 then
-            fs2020_variable_write("L:WINGFLOW_KNOB", "ENUM", 0)     
+            msfs_variable_write("L:WINGFLOW_KNOB", "ENUM", 0)     
         elseif flowState == 0 then
-            fs2020_variable_write("L:WINGFLOW_KNOB", "ENUM", -1)
+            msfs_variable_write("L:WINGFLOW_KNOB", "ENUM", -1)
         end
         end
 end
@@ -113,22 +113,22 @@ wing_flow_id =  dial_add(nil, 101, 261, 90, 90, wingFlowAction)
 
     --    Tail de-ice
 function tailIceAction(direction)
-    fs2020_variable_write("L:TAILDEICE_KNOB", "ENUM", 3)  
+    msfs_variable_write("L:TAILDEICE_KNOB", "ENUM", 3)  
     if direction == 1 then
         if tailState == 0 then
-            fs2020_variable_write("L:TAILDEICE_KNOB", "ENUM", 1)
+            msfs_variable_write("L:TAILDEICE_KNOB", "ENUM", 1)
         elseif tailState == -1 then
-            fs2020_variable_write("L:TAILDEICE_KNOB", "ENUM", 0)
+            msfs_variable_write("L:TAILDEICE_KNOB", "ENUM", 0)
         else
-            fs2020_variable_write("L:TAILDEICE_KNOB", "ENUM", 1)
+            msfs_variable_write("L:TAILDEICE_KNOB", "ENUM", 1)
         end        
     else
         if tailState == 0 then
-            fs2020_variable_write("L:TAILDEICE_KNOB", "ENUM", -1)
+            msfs_variable_write("L:TAILDEICE_KNOB", "ENUM", -1)
         elseif tailState == 1 then
-            fs2020_variable_write("L:TAILDEICE_KNOB", "ENUM", 0)
+            msfs_variable_write("L:TAILDEICE_KNOB", "ENUM", 0)
       else
-            fs2020_variable_write("L:TAILDEICE_KNOB", "ENUM", -1)  
+            msfs_variable_write("L:TAILDEICE_KNOB", "ENUM", -1)  
         end 
     end
 end
@@ -137,22 +137,22 @@ tail_ice_id = dial_add(nil, 122, 514, 90, 90, tailIceAction)
 
     --    fuel pump L
 function fuelLeftAction(direction)
-    fs2020_variable_write("L:FUELPL_KNOB", "ENUM", 3)  
+    msfs_variable_write("L:FUELPL_KNOB", "ENUM", 3)  
     if direction == 1 then
         if fuelLState == 0 then
-            fs2020_variable_write("L:FUELPL_KNOB", "ENUM", 1)
+            msfs_variable_write("L:FUELPL_KNOB", "ENUM", 1)
         elseif fuelLState == -1 then
-            fs2020_variable_write("L:FUELPL_KNOB", "ENUM", 0)
+            msfs_variable_write("L:FUELPL_KNOB", "ENUM", 0)
         else
-            fs2020_variable_write("L:FUELPL_KNOB", "ENUM", 1)
+            msfs_variable_write("L:FUELPL_KNOB", "ENUM", 1)
         end 
     else
         if fuelLState == 0 then
-            fs2020_variable_write("L:FUELPL_KNOB", "ENUM", -1)
+            msfs_variable_write("L:FUELPL_KNOB", "ENUM", -1)
         elseif fuelLState == 1 then
-            fs2020_variable_write("L:FUELPL_KNOB", "ENUM", 0)
+            msfs_variable_write("L:FUELPL_KNOB", "ENUM", 0)
       else
-            fs2020_variable_write("L:FUELPL_KNOB", "ENUM", -1)
+            msfs_variable_write("L:FUELPL_KNOB", "ENUM", -1)
         end 
     end
 end
@@ -161,22 +161,22 @@ fuel_left_id = dial_add(nil, 269, 161, 90, 90, fuelLeftAction)
 
     --    fuel pump R
 function fuelRightAction(direction)
-    fs2020_variable_write("L:FUELPR_KNOB", "ENUM", 3)  
+    msfs_variable_write("L:FUELPR_KNOB", "ENUM", 3)  
     if direction == 1 then
         if fuelRState == 0 then
-            fs2020_variable_write("L:FUELPR_KNOB", "ENUM", 1)
+            msfs_variable_write("L:FUELPR_KNOB", "ENUM", 1)
         elseif fuelRState == -1 then
-            fs2020_variable_write("L:FUELPR_KNOB", "ENUM", 0)
+            msfs_variable_write("L:FUELPR_KNOB", "ENUM", 0)
         else
-            fs2020_variable_write("L:FUELPR_KNOB", "ENUM", 1)
+            msfs_variable_write("L:FUELPR_KNOB", "ENUM", 1)
         end 
     else
         if fuelRState == 0 then
-            fs2020_variable_write("L:FUELPR_KNOB", "ENUM", -1)
+            msfs_variable_write("L:FUELPR_KNOB", "ENUM", -1)
         elseif fuelRState == 1 then
-            fs2020_variable_write("L:FUELPR_KNOB", "ENUM", 0)
+            msfs_variable_write("L:FUELPR_KNOB", "ENUM", 0)
       else
-            fs2020_variable_write("L:FUELPR_KNOB", "ENUM", -1)
+            msfs_variable_write("L:FUELPR_KNOB", "ENUM", -1)
         end 
     end
 end
@@ -185,22 +185,22 @@ fuel_right_id = dial_add(nil, 563, 161, 90, 90, fuelRightAction)
 
     --    fuel xfeed
 function xfeedAction(direction)
-    fs2020_variable_write("L:FUELXF_KNOB", "ENUM",3)  
+    msfs_variable_write("L:FUELXF_KNOB", "ENUM",3)  
     if direction == 1 then
         if fuelXFState == 0 then
-            fs2020_variable_write("L:FUELXF_KNOB", "ENUM", 1) 
+            msfs_variable_write("L:FUELXF_KNOB", "ENUM", 1) 
         elseif fuelXFState == -1 then
-            fs2020_variable_write("L:FUELXF_KNOB", "ENUM", 0) 
+            msfs_variable_write("L:FUELXF_KNOB", "ENUM", 0) 
         else
-            fs2020_variable_write("L:FUELXF_KNOB", "ENUM", 1) 
+            msfs_variable_write("L:FUELXF_KNOB", "ENUM", 1) 
         end 
     else
         if fuelXFState == 0 then
-            fs2020_variable_write("L:FUELXF_KNOB", "ENUM", -1) 
+            msfs_variable_write("L:FUELXF_KNOB", "ENUM", -1) 
         elseif fuelXFState == 1 then
-            fs2020_variable_write("L:FUELXF_KNOB", "ENUM", 0) 
+            msfs_variable_write("L:FUELXF_KNOB", "ENUM", 0) 
       else
-            fs2020_variable_write("L:FUELXF_KNOB", "ENUM", -1) 
+            msfs_variable_write("L:FUELXF_KNOB", "ENUM", -1) 
         end 
     end   
 end
@@ -212,13 +212,13 @@ function yawReleaseAction()
     rotate(yaw_img, 0, "LINEAR", 0.1)
 end
 function yawLAction()
-    fs2020_event("K:RUDDER_TRIM_LEFT")
+    msfs_event("K:RUDDER_TRIM_LEFT")
     rotate(yaw_img, -90, "LINEAR", 0.1)
 end    
 yaw_l_id = button_add(nil, nil, 450, 450, 80, 170, yawLAction, yawReleaseAction)  
 
 function yawRAction()
-    fs2020_event("K:RUDDER_TRIM_RIGHT")
+    msfs_event("K:RUDDER_TRIM_RIGHT")
     rotate(yaw_img, 90, "LINEAR", 0.1)
 end    
 yaw_r_id = button_add(nil, nil, 590, 450, 80, 170, yawRAction, yawReleaseAction)     
@@ -234,17 +234,17 @@ end
 pitch_trim_img = img_add("trim.png", 278, 484, 138, 94)
 
 function pitchRelease()
-    --fs2020_variable_write("L:TRIM_THUMB", "ENUM", 0)
+    --msfs_variable_write("L:TRIM_THUMB", "ENUM", 0)
 end
 
 function pitchDownAction()
-    fs2020_variable_write("L:TRIM_THUMB", "ENUM", 3)
-    fs2020_variable_write("L:TRIM_THUMB", "ENUM", -1)
+    msfs_variable_write("L:TRIM_THUMB", "ENUM", 3)
+    msfs_variable_write("L:TRIM_THUMB", "ENUM", -1)
 end
 
 function pitchUpAction()
-    fs2020_variable_write("L:TRIM_THUMB", "ENUM", 3)
-    fs2020_variable_write("L:TRIM_THUMB", "ENUM", 1)
+    msfs_variable_write("L:TRIM_THUMB", "ENUM", 3)
+    msfs_variable_write("L:TRIM_THUMB", "ENUM", 1)
 end
 pitch_dn_id = button_add(nil, nil, 300, 450, 100, 54, pitchDownAction, pitchRelease)
 pitch_up_id = button_add(nil, nil, 300, 560, 100, 54, pitchUpAction)
@@ -253,22 +253,22 @@ pitch_up_id = button_add(nil, nil, 300, 560, 100, 54, pitchUpAction)
 -- eng anti ice
 function iceLeftAction ()
     sound_play(press_snd)
-    fs2020_variable_write("L:HJET_ENGINEAI_L", "NUMBER", 3)
+    msfs_variable_write("L:HJET_ENGINEAI_L", "NUMBER", 3)
     if engIceLState == 1 then
-        fs2020_variable_write("L:HJET_ENGINEAI_L", "NUMBER", 0)
+        msfs_variable_write("L:HJET_ENGINEAI_L", "NUMBER", 0)
     else
-        fs2020_variable_write("L:HJET_ENGINEAI_L", "NUMBER", 1)
+        msfs_variable_write("L:HJET_ENGINEAI_L", "NUMBER", 1)
     end
 end
 ice_left_id = button_add(nil, "pressed.png", 72, 410, 60, 60, iceLeftAction, releaseAction)   
 
  function iceRightAction ()
     sound_play(press_snd)
-    fs2020_variable_write("L:HJET_ENGINEAI_R", "NUMBER", 3)
+    msfs_variable_write("L:HJET_ENGINEAI_R", "NUMBER", 3)
     if engIceRState == 1 then
-        fs2020_variable_write("L:HJET_ENGINEAI_R", "NUMBER", 0)
+        msfs_variable_write("L:HJET_ENGINEAI_R", "NUMBER", 0)
     else
-        fs2020_variable_write("L:HJET_ENGINEAI_R", "NUMBER", 1)
+        msfs_variable_write("L:HJET_ENGINEAI_R", "NUMBER", 1)
     end
 end
 ice_right_id = button_add(nil, "pressed.png", 164, 410, 60, 60, iceRightAction, releaseAction)     
@@ -276,12 +276,12 @@ ice_right_id = button_add(nil, "pressed.png", 164, 410, 60, 60, iceRightAction, 
 --    pitch mode
 function pitchAction()
     sound_play(press_snd)
-    --fs2020_variable_write("L:PITCHTRIM PUSHED", "NUMBER", 3)
-    fs2020_event("K:ELEVATOR_TRIM_DISABLED_TOGGLE")
+    --msfs_variable_write("L:PITCHTRIM PUSHED", "NUMBER", 3)
+    msfs_event("K:ELEVATOR_TRIM_DISABLED_TOGGLE")
     if pitchState == 1 then
-        --fs2020_variable_write("L:PITCHTRIM PUSHED", "NUMBER", 0)
+        --msfs_variable_write("L:PITCHTRIM PUSHED", "NUMBER", 0)
     else
-        --fs2020_variable_write("L:PITCHTRIM PUSHED", "NUMBER", 1)
+        --msfs_variable_write("L:PITCHTRIM PUSHED", "NUMBER", 1)
     end 
 end
 pitch_id = button_add(nil, "pressed.png", 332, 358, 64, 64, pitchAction, releaseAction)    
@@ -289,12 +289,12 @@ pitch_id = button_add(nil, "pressed.png", 332, 358, 64, 64, pitchAction, release
 --    roll power
 function powerRollAction()
     sound_play(press_snd)
-    --fs2020_variable_write("L:ROLLTRIM PUSHED", "NUMBER", 3)
-    fs2020_event("K:AILERON_TRIM_DISABLED_TOGGLE")
+    --msfs_variable_write("L:ROLLTRIM PUSHED", "NUMBER", 3)
+    msfs_event("K:AILERON_TRIM_DISABLED_TOGGLE")
     if rollState == 1 then
-    --    fs2020_variable_write("L:ROLLTRIM PUSHED", "NUMBER", 0)
+    --    msfs_variable_write("L:ROLLTRIM PUSHED", "NUMBER", 0)
     else
-    --    fs2020_variable_write("L:ROLLTRIM PUSHED", "NUMBER", 1)
+    --    msfs_variable_write("L:ROLLTRIM PUSHED", "NUMBER", 1)
     end
 end
 power_roll_id = button_add(nil, "pressed.png", 488, 358, 64, 64, powerRollAction, releaseAction)     
@@ -302,12 +302,12 @@ power_roll_id = button_add(nil, "pressed.png", 488, 358, 64, 64, powerRollAction
 --    yaw power
 function powerYawAction()
     sound_play(press_snd)
-    fs2020_event("K:RUDDER_TRIM_DISABLED_TOGGLE")
-    --fs2020_variable_write("L:YAWTRIM PUSHED", "NUMBER", 3)
+    msfs_event("K:RUDDER_TRIM_DISABLED_TOGGLE")
+    --msfs_variable_write("L:YAWTRIM PUSHED", "NUMBER", 3)
     if yawState == 1 then
-    --    fs2020_variable_write("L:YAWTRIM PUSHED", "NUMBER", 0)
+    --    msfs_variable_write("L:YAWTRIM PUSHED", "NUMBER", 0)
     else
-    --    fs2020_variable_write("L:YAWTRIM PUSHED", "NUMBER", 1)
+    --    msfs_variable_write("L:YAWTRIM PUSHED", "NUMBER", 1)
     end 
 end
  power_yaw_id = button_add(nil, "pressed.png", 588, 358, 64, 64, powerYawAction, releaseAction)   
@@ -315,11 +315,11 @@ end
  --    windshield heat L
  function windLAction()
      sound_play(press_snd)
-     fs2020_variable_write("L:HJET_WINDSHEILDHEAT_L", "NUMBER", 3)
+     msfs_variable_write("L:HJET_WINDSHEILDHEAT_L", "NUMBER", 3)
      if windLState == 1 then
-         fs2020_variable_write("L:HJET_WINDSHEILDHEAT_L", "NUMBER", 0)
+         msfs_variable_write("L:HJET_WINDSHEILDHEAT_L", "NUMBER", 0)
      else
-         fs2020_variable_write("L:HJET_WINDSHEILDHEAT_L", "NUMBER", 1)
+         msfs_variable_write("L:HJET_WINDSHEILDHEAT_L", "NUMBER", 1)
      end
  end
  wnd_l_id = button_add(nil, "pressed.png", 702, 128, 64, 64, windLAction, releaseAction)
@@ -327,11 +327,11 @@ end
  --    windshield heat R
   function windRAction()
      sound_play(press_snd)
-     fs2020_variable_write("L:HJET_WINDSHEILDHEAT_R", "NUMBER", 3)
+     msfs_variable_write("L:HJET_WINDSHEILDHEAT_R", "NUMBER", 3)
      if windRState == 1 then
-         fs2020_variable_write("L:HJET_WINDSHEILDHEAT_R", "NUMBER", 0)
+         msfs_variable_write("L:HJET_WINDSHEILDHEAT_R", "NUMBER", 0)
      else
-         fs2020_variable_write("L:HJET_WINDSHEILDHEAT_R", "NUMBER", 1)
+         msfs_variable_write("L:HJET_WINDSHEILDHEAT_R", "NUMBER", 1)
      end  
  end
  wnd_r_id = button_add(nil, "pressed.png", 794, 128, 64, 64, windRAction, releaseAction)
@@ -339,11 +339,11 @@ end
  --    inflow L
   function inflowLAction()
      sound_play(press_snd)
-     fs2020_variable_write("L:HJET_CFLOWL", "NUMBER", 3)
+     msfs_variable_write("L:HJET_CFLOWL", "NUMBER", 3)
      if flowLState == 0 then
-         fs2020_variable_write("L:HJET_CFLOWL", "NUMBER", 1)
+         msfs_variable_write("L:HJET_CFLOWL", "NUMBER", 1)
      else
-         fs2020_variable_write("L:HJET_CFLOWL", "NUMBER", 0)
+         msfs_variable_write("L:HJET_CFLOWL", "NUMBER", 0)
      end
  end
 inflow_l_id = button_add(nil, "pressed.png", 702, 296, 64, 64, inflowLAction, releaseAction)
@@ -351,11 +351,11 @@ inflow_l_id = button_add(nil, "pressed.png", 702, 296, 64, 64, inflowLAction, re
  --    inflow R
   function inflowRAction()
      sound_play(press_snd)
-     fs2020_variable_write("L:HJET_CFLOWR", "NUMBER", 3)
+     msfs_variable_write("L:HJET_CFLOWR", "NUMBER", 3)
      if flowRState == 0 then
-         fs2020_variable_write("L:HJET_CFLOWR", "NUMBER", 1)
+         msfs_variable_write("L:HJET_CFLOWR", "NUMBER", 1)
      else
-         fs2020_variable_write("L:HJET_CFLOWR", "NUMBER", 0)
+         msfs_variable_write("L:HJET_CFLOWR", "NUMBER", 0)
      end
  end
 inflow_r_id = button_add(nil, "pressed.png", 794, 296, 64, 64, inflowRAction, releaseAction)
@@ -363,14 +363,14 @@ inflow_r_id = button_add(nil, "pressed.png", 794, 296, 64, 64, inflowRAction, re
 --    bleed L
   function bleedLAction()
     sound_play(press_snd)
-    fs2020_event("K:ENGINE_BLEED_AIR_SOURCE_TOGGLE", 1) 
+    msfs_event("K:ENGINE_BLEED_AIR_SOURCE_TOGGLE", 1) 
  end
 bleed_l_id = button_add(nil, "pressed.png", 685, 460, 64, 64, bleedLAction, releaseAction)
 
 --    bleed R
   function bleedRAction()
      sound_play(press_snd)
-     fs2020_event("K:ENGINE_BLEED_AIR_SOURCE_TOGGLE", 2)
+     msfs_event("K:ENGINE_BLEED_AIR_SOURCE_TOGGLE", 2)
  end
 bleed_R_id = button_add(nil, "pressed.png", 776, 460, 64, 64, bleedRAction, releaseAction)
 
@@ -831,7 +831,7 @@ opacity(annun_bleed_r_norm, 1.0, "LOG", rate)
 opacity(annun_bleed_r_off, 1.0, "LOG", rate)
 ---------------------
 
-fs2020_variable_subscribe("L:WINGAI_KNOB", "ENUM", 
+msfs_variable_subscribe("L:WINGAI_KNOB", "ENUM", 
                                               "L:WINGFLOW_KNOB", "ENUM", 
                                               "L:TAILDEICE_KNOB", "ENUM",
                                               "L:FUELPL_KNOB", "ENUM", 
@@ -857,6 +857,6 @@ fs2020_variable_subscribe("L:WINGAI_KNOB", "ENUM",
                                               "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",                                   
                                               setValues)
 
-fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 							"L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)

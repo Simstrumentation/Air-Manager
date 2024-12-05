@@ -62,15 +62,15 @@ end
 --    crs 1
 function crs1KnobAction(direction)
     if direction == 1 then
-        fs2020_event("H:AS3000_PFD_1_CRS_INC")
+        msfs_event("H:AS3000_PFD_1_CRS_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS3000_PFD_1_CRS_DEC")
+        msfs_event("H:AS3000_PFD_1_CRS_DEC")
     end
     sound_play(dial_snd)
 end
 function crs1PressAction()
     sound_play(press_snd)
-    fs2020_event("H:AS3000_PFD_1_CRS_PUSH")
+    msfs_event("H:AS3000_PFD_1_CRS_PUSH")
 end
 
 crs1_id = dial_add(nil, 30, 118, 60, 60, crs1KnobAction)
@@ -80,16 +80,16 @@ crs_topper = img_add("knob_topper.png", 34, 118, 56, 56)
 --    hdg
 function hdgKnobAction(direction)
     if direction == 1 then
-        fs2020_event("HEADING_BUG_INC")
+        msfs_event("HEADING_BUG_INC")
     elseif direction == -1 then
-        fs2020_event("HEADING_BUG_DEC")
+        msfs_event("HEADING_BUG_DEC")
     end
     sound_play(dial_snd)
 end
 function hdgPressAction()
     sound_play(press_snd)
-    -- fs2020_event("H:AS1000_PFD_HEADING_SYNC")
-    fs2020_event("HEADING_BUG_SET", currentHeading)	
+    -- msfs_event("H:AS1000_PFD_HEADING_SYNC")
+    msfs_event("HEADING_BUG_SET", currentHeading)	
 end
 hdg_shadow = img_add("knob_shadow.png", 195, 118, 75, 100)
 hdg_id = dial_add("heading_dial.png", 195, 118, 56, 56, hdgKnobAction)
@@ -103,7 +103,7 @@ function altKnobInnerAction(direction)
     elseif direction == -1 then
         newAlt = altValue - 100
     end
-    fs2020_variable_write("L:HJET_AP_ALT_VAR", "NUMBER",  newAlt)
+    msfs_variable_write("L:HJET_AP_ALT_VAR", "NUMBER",  newAlt)
     sound_play(dial_snd)
 end
 
@@ -114,7 +114,7 @@ function altKnobOuterAction(direction)
     elseif direction == -1 then
         newAlt = altValue - 1000
     end
-    fs2020_variable_write("L:HJET_AP_ALT_VAR", "NUMBER",  newAlt)
+    msfs_variable_write("L:HJET_AP_ALT_VAR", "NUMBER",  newAlt)
     sound_play(dial_snd)
 end
 alt_outer_id = dial_add(nil, 415, 118, 60, 60, altKnobOuterAction)
@@ -124,15 +124,15 @@ alt_topper = img_add("knob_topper.png", 415, 118, 56, 56)
 --    spd
 function spdKnobAction(direction)
     if direction == 1 then
-        fs2020_event("AP_SPD_VAR_INC")
+        msfs_event("AP_SPD_VAR_INC")
     elseif direction == -1 then
-        fs2020_event("AP_SPD_VAR_DEC")
+        msfs_event("AP_SPD_VAR_DEC")
     end
     sound_play(dial_snd)
 end
 function spdPressAction()
     sound_play(press_snd)
-     fs2020_event("AP_MANAGED_SPEED_IN_MACH_TOGGLE")
+     msfs_event("AP_MANAGED_SPEED_IN_MACH_TOGGLE")
 end
 spd_id = dial_add(nil, 642, 118, 60, 60, spdKnobAction)
 spd_press_id = button_add(nil, nil, 652, 128, 40, 40, spdPressAction, releaseAction)
@@ -141,16 +141,16 @@ spd_topper = img_add("knob_topper.png", 644, 118, 56, 56)
 --    crs 2
 function crs2KnobAction(direction)
     if direction == 1 then
-        fs2020_event("H:AS3000_PFD_2_CRS_INC")
+        msfs_event("H:AS3000_PFD_2_CRS_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS3000_PFD_2_CRS_DEC")
+        msfs_event("H:AS3000_PFD_2_CRS_DEC")
     end
     sound_play(dial_snd)
 end
 
 function crs2PressAction()
     sound_play(press_snd)
-    fs2020_event("H:AS3000_PFD_2_CRS_PUSH")
+    msfs_event("H:AS3000_PFD_2_CRS_PUSH")
 end
 crs2_id = dial_add(nil, 773, 118, 60, 60, crs2KnobAction)
 
@@ -161,9 +161,9 @@ crs2_topper = img_add("knob_topper.png", 774, 118, 56, 56)
 
 function thumbwheelAction(direction)
     if direction == 1 then
-        fs2020_event("AP_VS_VAR_INC")
+        msfs_event("AP_VS_VAR_INC")
     else
-        fs2020_event("AP_VS_VAR_DEC")
+        msfs_event("AP_VS_VAR_DEC")
     end 
 end
 
@@ -179,21 +179,21 @@ tw_shadow_id = img_add("thumbwheel_shadow.png", 557, 72, 25, 120)
 --    fd
 function fdAction()
     sound_play(press_snd)
-    fs2020_event("TOGGLE_FLIGHT_DIRECTOR")   
+    msfs_event("TOGGLE_FLIGHT_DIRECTOR")   
 end
 fd1_id = button_add(nil, "pressed.png", 41, 23, 44, 28, fdAction, releaseAction)
 
 --    nav
 function navAction()
     sound_play(press_snd)
-    fs2020_event("AP_NAV1_HOLD")
+    msfs_event("AP_NAV1_HOLD")
 end
 nav_id = button_add(nil, "pressed.png", 125, 23, 44, 28, navAction, releaseAction)
 
 --    apr
 function aprAction()
     sound_play(press_snd)
-    fs2020_event("K:AP_APR_HOLD")
+    msfs_event("K:AP_APR_HOLD")
 end
 
 apr_id = button_add(nil, "pressed.png", 125, 87, 44, 28, aprAction, releaseAction)
@@ -201,7 +201,7 @@ apr_id = button_add(nil, "pressed.png", 125, 87, 44, 28, aprAction, releaseActio
 --    bank
 function bankAction()
     sound_play(press_snd)
-    fs2020_event("AP_MAX_BANK_INC")
+    msfs_event("AP_MAX_BANK_INC")
 end
 
 bank_id = button_add(nil, "pressed.png", 125, 159, 44, 28, bankAction, releaseAction)
@@ -209,21 +209,21 @@ bank_id = button_add(nil, "pressed.png", 125, 159, 44, 28, bankAction, releaseAc
 --    hdg
 function hdgAction()
     sound_play(press_snd)
-    fs2020_event("AP_PANEL_HEADING_HOLD")
+    msfs_event("AP_PANEL_HEADING_HOLD")
 end
 hdg_id = button_add(nil, "pressed.png", 202, 23, 44, 28, hdgAction, releaseAction)
 
 --    ap
 function apAction()
     sound_play(press_snd)
-    fs2020_event("AP_MASTER")  
+    msfs_event("AP_MASTER")  
 end
 ap_id = button_add(nil, "pressed.png", 278, 23, 44, 28, apAction, releaseAction)
 
 --    yd
 function ydAction()
     sound_play(press_snd)
-    fs2020_event("YAW_DAMPER_TOGGLE")
+    msfs_event("YAW_DAMPER_TOGGLE")
 end
 yd_id = button_add(nil, "pressed.png", 340, 23, 44, 28, ydAction, releaseAction)
 
@@ -231,11 +231,11 @@ yd_id = button_add(nil, "pressed.png", 340, 23, 44, 28, ydAction, releaseAction)
 function atAction()
     sound_play(press_snd)
     if atActive == 1 then
-        fs2020_variable_write("L:CSC PUSHED", "NUMBER", 3)
-        fs2020_variable_write("L:CSC PUSHED", "NUMBER", 0)
+        msfs_variable_write("L:CSC PUSHED", "NUMBER", 3)
+        msfs_variable_write("L:CSC PUSHED", "NUMBER", 0)
     else
-        fs2020_variable_write("L:CSC PUSHED", "NUMBER", 3)
-        fs2020_variable_write("L:CSC PUSHED", "NUMBER", 1)
+        msfs_variable_write("L:CSC PUSHED", "NUMBER", 3)
+        msfs_variable_write("L:CSC PUSHED", "NUMBER", 1)
     end
     
 end
@@ -251,7 +251,7 @@ cpl_id = button_add(nil, "pressed.png", 307, 159, 44, 28, cplAction, releaseActi
 --    alt
 function altAction()
     sound_play(press_snd)
-    fs2020_event("AP_PANEL_ALTITUDE_HOLD")
+    msfs_event("AP_PANEL_ALTITUDE_HOLD")
 end
 alt_id = button_add(nil, "pressed.png", 414, 23, 44, 28, altAction, releaseAction)
 
@@ -259,11 +259,11 @@ alt_id = button_add(nil, "pressed.png", 414, 23, 44, 28, altAction, releaseActio
 function vnvAction()
     sound_play(press_snd)
     if vnvMode == 1 then
-        fs2020_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 3)
-        fs2020_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 0)
+        msfs_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 3)
+        msfs_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 0)
     else
-        fs2020_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 3)
-        fs2020_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 1)
+        msfs_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 3)
+        msfs_variable_write("L:XMLVAR_VNAVButtonValue", "Number", 1)
     end
 end
 vnv_id = button_add(nil, "pressed.png", 480, 23, 44, 28, vnvAction, releaseAction)
@@ -271,14 +271,14 @@ vnv_id = button_add(nil, "pressed.png", 480, 23, 44, 28, vnvAction, releaseActio
 --    vs
 function vsAction()
     sound_play(press_snd)
-    fs2020_event("AP_PANEL_VS_HOLD")
+    msfs_event("AP_PANEL_VS_HOLD")
 end
 vs_id = button_add(nil, "pressed.png", 554, 23, 44, 28, vsAction, releaseAction)
 
 --    flc
 function flcAction()
     sound_play(press_snd)
-    fs2020_event("K:FLIGHT_LEVEL_CHANGE")
+    msfs_event("K:FLIGHT_LEVEL_CHANGE")
     
 end
 flc_id = button_add(nil, "pressed.png", 650, 23, 44, 28, flcAction, releaseAction)
@@ -289,8 +289,8 @@ fd2_id = button_add(nil, "pressed.png", 782, 23, 44, 28, fdAction, releaseAction
 --    fms
 function fmsAction()
     sound_play(press_snd)
-    fs2020_variable_write("L:HJET_THROTTLE_MAN", "NUMBER", 3)  
-    fs2020_variable_write("L:HJET_THROTTLE_MAN", "NUMBER", 0)  
+    msfs_variable_write("L:HJET_THROTTLE_MAN", "NUMBER", 3)  
+    msfs_variable_write("L:HJET_THROTTLE_MAN", "NUMBER", 0)  
 end
 
 fms_id = button_add(nil, nil, 600, 100, 40, 22, fmsAction, releaseAction)
@@ -298,8 +298,8 @@ fms_id = button_add(nil, nil, 600, 100, 40, 22, fmsAction, releaseAction)
 --    man
 function manAction()
     sound_play(press_snd)
-    fs2020_variable_write("L:HJET_THROTTLE_MAN", "NUMBER", 3)  
-    fs2020_variable_write("L:HJET_THROTTLE_MAN", "NUMBER", 1)  
+    msfs_variable_write("L:HJET_THROTTLE_MAN", "NUMBER", 3)  
+    msfs_variable_write("L:HJET_THROTTLE_MAN", "NUMBER", 1)  
 end
 spd_id = button_add(nil, nil, 702, 100, 40, 22, manAction, releaseAction)
 
@@ -346,7 +346,7 @@ function setTest(testA, testB)
         setVars(atActive,vnvMode,fmsMode,altValue,currentHeading,vnvActive,vnvArmed,elecState)
     end
 end
-fs2020_variable_subscribe("L:CSC PUSHED", "NUMBER", 
+msfs_variable_subscribe("L:CSC PUSHED", "NUMBER", 
                                                "L:XMLVAR_VNAVButtonValue", "NUMBER",
                                                "L:HJET_THROTTLE_MAN", "NUMBER", 
                                                "L:HJET_AP_ALT_VAR", "NUMBER", 
@@ -356,7 +356,7 @@ fs2020_variable_subscribe("L:CSC PUSHED", "NUMBER",
                                                "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",
                                                setVars)
 -- #fee960
-fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 			"L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)
 vnv_annunciator_gray_id = canvas_add(493, 61, 20, 20, function()

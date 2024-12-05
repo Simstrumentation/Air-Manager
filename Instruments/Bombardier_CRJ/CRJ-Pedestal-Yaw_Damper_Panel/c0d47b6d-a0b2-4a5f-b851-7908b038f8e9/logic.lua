@@ -33,7 +33,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 -- Ambient Light Control
@@ -44,21 +44,21 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
 -- YDDisc
 function ydDisc()
-    fs2020_variable_write("L:ASCRJ_YD_DISC",  "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_YD_DISC", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_YD_DISC",  "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_YD_DISC", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_ydDisc = button_add(nil,"circle_button_pressed.png", 49, 22, 80, 80, ydDisc) 
 
 -- YD1
 function yd1()
-    fs2020_variable_write("L:ASCRJ_YD1",  "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_YD1", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_YD1",  "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_YD1", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_yd1 = button_add(nil,"btn_push.png", 215, 38, 45, 45, yd1) 
     
 -- YD2
 function yd2()
-    fs2020_variable_write("L:ASCRJ_YD2",  "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_YD2", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_YD2",  "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_YD2", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_yd2 = button_add(nil,"btn_push.png", 280, 38, 45, 45, yd2) 

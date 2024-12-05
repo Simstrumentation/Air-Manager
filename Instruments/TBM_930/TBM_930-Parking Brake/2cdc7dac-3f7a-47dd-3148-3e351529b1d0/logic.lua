@@ -9,7 +9,7 @@ brake_knob  = img_add("knob.png",0,104,382, 382)
 
 --callback function
 function brake_button_cb()
-    fs2020_event("PARKING_BRAKES")
+    msfs_event("PARKING_BRAKES")
     fsx_event("PARKING_BRAKES")
 end
 
@@ -26,4 +26,4 @@ function new_switch_pos(sw_on)
 end
 
 -- variable subscribe
-fs2020_variable_subscribe("BRAKE PARKING INDICATOR", "Bool", new_switch_pos)
+msfs_variable_subscribe("BRAKE PARKING INDICATOR", "Bool", new_switch_pos)

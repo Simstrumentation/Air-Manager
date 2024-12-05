@@ -157,7 +157,7 @@ end
 ---------------------------------------------
 -- Bus subscribe --
 ---------------------------------------------
-fs2020_variable_subscribe("L:C310_Fuel_Flow_Left", "Pounds per hour",
+msfs_variable_subscribe("L:C310_Fuel_Flow_Left", "Pounds per hour",
                           "L:C310_Fuel_Flow_Right", "Pounds per hour", set_flow)
 
 set_flow(0,0)

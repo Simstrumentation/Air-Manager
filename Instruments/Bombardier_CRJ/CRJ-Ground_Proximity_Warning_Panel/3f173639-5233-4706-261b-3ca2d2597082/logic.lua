@@ -42,7 +42,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)  
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 -----------------------------------------------------------------
 
@@ -81,17 +81,17 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 -----------------------------------------------------------------
 
 --TERRAIN SWITCH
-fs2020_variable_subscribe("L:ASCRJ_GPWS_TERR_OFF", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
+msfs_variable_subscribe("L:ASCRJ_GPWS_TERR_OFF", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
     function (on,pwr) if (pwr==true) then visible(img_terrain, on ==1)else visible(img_terrain, false)end end) 
 
-fs2020_variable_subscribe("L:ASCRJ_GPWS_TERR", "Number",
+msfs_variable_subscribe("L:ASCRJ_GPWS_TERR", "Number",
     function (state)  switch_set_position(sw_terrain, state) end) 
 
 sw_terrain = switch_add(nil, nil, 75, 75, 55, 55, 
         function (position)
               sound_play(snd_click)
-              if position == 0 then fs2020_variable_write("L:ASCRJ_GPWS_TERR", "Number", 1)
-              else  fs2020_variable_write("L:ASCRJ_GPWS_TERR", "Number", 0) 
+              if position == 0 then msfs_variable_write("L:ASCRJ_GPWS_TERR", "Number", 1)
+              else  msfs_variable_write("L:ASCRJ_GPWS_TERR", "Number", 0) 
               end
 end)
 visible(sw_terrain, false)
@@ -116,17 +116,17 @@ end
 
 
 --FLAP SWITCH
-fs2020_variable_subscribe("L:ASCRJ_GPWS_FLAP_OVRD", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
+msfs_variable_subscribe("L:ASCRJ_GPWS_FLAP_OVRD", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
     function (on,pwr) if (pwr==true) then visible(img_flap, on ==1)else visible(img_flap, false)end end) 
 
-fs2020_variable_subscribe("L:ASCRJ_GPWS_FLAP", "Number",
+msfs_variable_subscribe("L:ASCRJ_GPWS_FLAP", "Number",
     function (state)  switch_set_position(sw_flap, state) end) 
 
 sw_flap = switch_add(nil, nil, 188, 75, 55, 55, 
         function (position)
               sound_play(snd_click)
-              if position == 0 then fs2020_variable_write("L:ASCRJ_GPWS_FLAP", "Number", 1) 
-              else  fs2020_variable_write("L:ASCRJ_GPWS_FLAP", "Number", 0)
+              if position == 0 then msfs_variable_write("L:ASCRJ_GPWS_FLAP", "Number", 1) 
+              else  msfs_variable_write("L:ASCRJ_GPWS_FLAP", "Number", 0)
               end
         end)
 visible(sw_flap, false)
@@ -154,7 +154,7 @@ end
 
 
 --MECH CALL SWITCH
-fs2020_variable_subscribe("L:ASCRJ_GPWS_MECH_CALL", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
+msfs_variable_subscribe("L:ASCRJ_GPWS_MECH_CALL", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
     function (on,pwr)
             switch_set_position(sw_Mech_Call, on)
             if (pwr==true) then visible(img_call, on ==1)else visible(img_call, false)end
@@ -162,7 +162,7 @@ end)
 
 sw_Mech_Call = switch_add(nil,nil, 378, 74, 49, 50, 
         function (position)
-              if position == 1 then fs2020_variable_write("L:ASCRJ_GPWS_MECH", "Number", 1)  timer_start(100, function() fs2020_variable_write("L:ASCRJ_GPWS_MECH","Number",0)end) 
-              else  fs2020_variable_write("L:ASCRJ_GPWS_MECH", "Number", 1)   timer_start(100, function() fs2020_variable_write("L:ASCRJ_GPWS_MECH","Number",0)end) 
+              if position == 1 then msfs_variable_write("L:ASCRJ_GPWS_MECH", "Number", 1)  timer_start(100, function() msfs_variable_write("L:ASCRJ_GPWS_MECH","Number",0)end) 
+              else  msfs_variable_write("L:ASCRJ_GPWS_MECH", "Number", 1)   timer_start(100, function() msfs_variable_write("L:ASCRJ_GPWS_MECH","Number",0)end) 
               end
         end)

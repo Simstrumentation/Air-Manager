@@ -52,9 +52,9 @@ lever_r_id = img_add("lever.png", 476, 175, 250, 74)
 --LEFT COWL EVENT
 function toggle_cowl_l()
    if cowl_l_val ==  0 then
-        fs2020_variable_write("RECIP ENG COWL FLAP POSITION:1", "Percent", 100)
+        msfs_variable_write("RECIP ENG COWL FLAP POSITION:1", "Percent", 100)
     elseif cowl_l_val == 100 then
-        fs2020_variable_write("RECIP ENG COWL FLAP POSITION:1", "Percent", 0)
+        msfs_variable_write("RECIP ENG COWL FLAP POSITION:1", "Percent", 0)
    end
 end
 lever_btn = button_add(nil, nil, 76, 120, 250, 250, toggle_cowl_l)
@@ -74,14 +74,14 @@ function getLCowl(pos)
     end
 end
 
-fs2020_variable_subscribe("A:RECIP ENG COWL FLAP POSITION:1", "Percent", getLCowl)
+msfs_variable_subscribe("A:RECIP ENG COWL FLAP POSITION:1", "Percent", getLCowl)
 
 --RIGHT COWL EVENT
 function toggle_cowl_r()
    if cowl_r_val ==  0 then
-        fs2020_variable_write("RECIP ENG COWL FLAP POSITION:2", "Percent", 100)
+        msfs_variable_write("RECIP ENG COWL FLAP POSITION:2", "Percent", 100)
     elseif cowl_r_val == 100 then
-        fs2020_variable_write("RECIP ENG COWL FLAP POSITION:2", "Percent", 0)
+        msfs_variable_write("RECIP ENG COWL FLAP POSITION:2", "Percent", 0)
    end
 end
 lever_btn = button_add(nil, nil, 476, 120, 250, 250, toggle_cowl_r)
@@ -100,4 +100,4 @@ function getRCowl(pos)
         timer_start(400, function()rotate(lever_r_id, 0, "LINEAR", 0.04) rotate(shadow_r_id, 0, "LINEAR", 0.04) end)
     end
 end
-fs2020_variable_subscribe("A:RECIP ENG COWL FLAP POSITION:2", "Percent", getRCowl)
+msfs_variable_subscribe("A:RECIP ENG COWL FLAP POSITION:2", "Percent", getRCowl)

@@ -80,13 +80,13 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 btn_rollsel = button_add(nil, "button_pressed.png", 27, 87, 54, 54, 
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GSC_ROLL_SPLR","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_GSC_ROLL_SPLR","number",0) end) 
+            msfs_variable_write("L:ASCRJ_GSC_ROLL_SPLR","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_GSC_ROLL_SPLR","number",0) end) 
     end)
-fs2020_variable_subscribe("L:ASCRJ_GSC_ROLL_SPLR_ROLLSEL", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSC_ROLL_SPLR_ROLLSEL", "Number", 
         function  (state)
             visible(img_rollsel, state)
 end)   
-fs2020_variable_subscribe("L:ASCRJ_GSC_ROLL_SPLR_PLTROLL", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSC_ROLL_SPLR_PLTROLL", "Number", 
         function  (state)
             visible(img_pltroll, state)
 end)
@@ -94,9 +94,9 @@ end)
 btn_warning = button_add(nil,"button_pressed.png", 106, 73, 69, 67, 
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_MASTER_WARN","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_MASTER_WARN","number",0) end) 
+            msfs_variable_write("L:ASCRJ_MASTER_WARN","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_MASTER_WARN","number",0) end) 
      end)            
-fs2020_variable_subscribe("L:ASCRJ_GSC_MASTER_WARN_ON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSC_MASTER_WARN_ON", "Number", 
         function  (state)
             visible(img_master_warning, state)
 end)
@@ -104,9 +104,9 @@ end)
 btn_caution = button_add(nil, "button_pressed.png", 199, 73, 69, 67, 
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_MASTER_CAUT","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_MASTER_CAUT","number",0) end) 
+            msfs_variable_write("L:ASCRJ_MASTER_CAUT","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_MASTER_CAUT","number",0) end) 
     end)
-fs2020_variable_subscribe("L:ASCRJ_GSC_MASTER_CAUT_ON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSC_MASTER_CAUT_ON", "Number", 
         function  (state)
             visible(img_master_caution, state)
 end)    
@@ -115,10 +115,10 @@ end)
 btn_stall = button_add(nil,"button_pressed.png", 291, 73, 69, 67, 
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_STALL","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_STALL","number",0) end) 
+            msfs_variable_write("L:ASCRJ_STALL","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_STALL","number",0) end) 
      end)
 visible(btn_stall, false)            
-fs2020_variable_subscribe("L:ASCRJ_GSC_STALL_BTN_STATE", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSC_STALL_BTN_STATE", "Number", 
         function  (state)
             visible(img_stall, state)
 end)
@@ -146,14 +146,14 @@ end
 btn_pullup = button_add(nil, "button_pressed.png", 386, 72, 66, 66, 
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GPWS","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_GPWS","number",0) end) 
+            msfs_variable_write("L:ASCRJ_GPWS","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_GPWS","number",0) end) 
      end)            
      
-fs2020_variable_subscribe("L:ASCRJ_GSF_GPWS_PULLUP", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSF_GPWS_PULLUP", "Number", 
         function  (state)
             visible(img_pullup, state)
 end)
-fs2020_variable_subscribe("L:ASCRJ_GSF_GPWS_GNDPROX", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSF_GPWS_GNDPROX", "Number", 
         function  (state)
             visible(img_gndprox, state)
 end)
@@ -161,10 +161,10 @@ end)
 btn_apu_fire = button_add(nil,"button_pressed.png", 617, 50, 40, 39, 
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GSF_APU_FIRE","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_GSF_APU_FIRE","number",0) end) 
+            msfs_variable_write("L:ASCRJ_GSF_APU_FIRE","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_GSF_APU_FIRE","number",0) end) 
      end)  
 visible(btn_apu_fire, false)                    
-fs2020_variable_subscribe("L:ASCRJ_GSF_APU_FIRE_ON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSF_APU_FIRE_ON", "Number", 
         function  (state)
             visible(img_apu_fire, state)
 end)
@@ -192,9 +192,9 @@ end
 btn_apubottle = button_add(nil, "button_pressed.png", 612, 126, 49, 48,
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GSF_APU_BOTTLE","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_GSF_APU_BOTTLE","number",0) end) 
+            msfs_variable_write("L:ASCRJ_GSF_APU_BOTTLE","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_GSF_APU_BOTTLE","number",0) end) 
      end)            
-fs2020_variable_subscribe("L:ASCRJ_GSF_APU_BOTTLE_ON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSF_APU_BOTTLE_ON", "Number", 
         function  (state)
             visible(img_apu_bottle, state)
 end)
@@ -203,10 +203,10 @@ end)
 btn_lh_fire = button_add(nil,"button_pressed.png", 500, 37, 68, 67,
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GSC_ENG_FIRE","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_GSC_ENG_FIRE","number",0) end) 
+            msfs_variable_write("L:ASCRJ_GSC_ENG_FIRE","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_GSC_ENG_FIRE","number",0) end) 
      end)      
 visible(btn_lh_fire, false)           
-fs2020_variable_subscribe("L:ASCRJ_GSC_ENG_FIRE_ON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSC_ENG_FIRE_ON", "Number", 
         function  (state)
             visible(img_lh_fire, state)
 end)
@@ -234,9 +234,9 @@ end
 btn_lhbottle = button_add(nil,"button_pressed.png",  509, 124, 52, 52,
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GSC_ENG_BOTTLE","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_GSC_ENG_BOTTLE","number",0) end)  
+            msfs_variable_write("L:ASCRJ_GSC_ENG_BOTTLE","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_GSC_ENG_BOTTLE","number",0) end)  
      end)            
-fs2020_variable_subscribe("L:ASCRJ_GSC_ENG_BOTTLE_ON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSC_ENG_BOTTLE_ON", "Number", 
         function  (state)
             visible(img_lh_bottle, state)
 end)
@@ -245,10 +245,10 @@ end)
 btn_rh_fire = button_add(nil,"button_pressed.png", 705, 37, 68, 67,
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GSF_ENG_FIRE","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_GSF_ENG_FIRE","number",0) end)  
+            msfs_variable_write("L:ASCRJ_GSF_ENG_FIRE","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_GSF_ENG_FIRE","number",0) end)  
      end)  
 visible(btn_rh_fire, false)                  
-fs2020_variable_subscribe("L:ASCRJ_GSF_ENG_FIRE_ON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSF_ENG_FIRE_ON", "Number", 
         function  (state)
             visible(img_rh_fire, state)
 end)
@@ -275,9 +275,9 @@ end
 btn_rhbottle = button_add(nil,"button_pressed.png",  713, 124, 52, 52,
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GSF_ENG_BOTTLE","number",1) timer_start(50, function () fs2020_variable_write("L:ASCRJ_GSF_ENG_BOTTLE","number",0) end) 
+            msfs_variable_write("L:ASCRJ_GSF_ENG_BOTTLE","number",1) timer_start(50, function () msfs_variable_write("L:ASCRJ_GSF_ENG_BOTTLE","number",0) end) 
      end)            
-fs2020_variable_subscribe("L:ASCRJ_GSF_ENG_BOTTLE_ON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GSF_ENG_BOTTLE_ON", "Number", 
         function  (state)
             visible(img_rh_bottle, state)
 end)

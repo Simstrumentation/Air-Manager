@@ -31,11 +31,11 @@ visible(wndsh2, false)
 function af_click_callback(position)
     if position == 0 then
         switch_set_position(af_deice_switch_id, 1)
-        fs2020_event("TOGGLE_STRUCTURAL_DEICE")
+        msfs_event("TOGGLE_STRUCTURAL_DEICE")
         visible(af, true)
     elseif position == 1 then
         switch_set_position(af_deice_switch_id, 0)
-        fs2020_event("TOGGLE_STRUCTURAL_DEICE")
+        msfs_event("TOGGLE_STRUCTURAL_DEICE")
         visible(af, false)
     end
 end
@@ -51,7 +51,7 @@ function new_structure_pos(structure)
         visible(af, false)
     end
 end    
-fs2020_variable_subscribe("STRUCTURAL DEICE SWITCH", "Bool", new_structure_pos)
+msfs_variable_subscribe("STRUCTURAL DEICE SWITCH", "Bool", new_structure_pos)
 
 function new_af_switch_pos(sw_on)
     if sw_on == 0 then
@@ -60,17 +60,17 @@ function new_af_switch_pos(sw_on)
         switch_set_position(af_deice_switch_id, 0)
     end
 end    
-fs2020_variable_subscribe("STRUCTURAL DEICE SWITCH", "Bool", new_af_switch_pos)
+msfs_variable_subscribe("STRUCTURAL DEICE SWITCH", "Bool", new_af_switch_pos)
 -- END STRUCTURAL DEICE SWITCH
 
 -- ICE LIGHT SWITCH
 function ice_light_click_callback(position)
     if position == 0 then
         switch_set_position(ice_light_id, 1)
-        fs2020_event("TOGGLE_WING_LIGHTS")
+        msfs_event("TOGGLE_WING_LIGHTS")
     elseif position == 1 then
         switch_set_position(ice_light_id, 0)
-        fs2020_event("TOGGLE_WING_LIGHTS")
+        msfs_event("TOGGLE_WING_LIGHTS")
     end
 end
 
@@ -84,18 +84,18 @@ function new_ice_light_switch_pos(ice_light)
     end
 end    
 
-fs2020_variable_subscribe("LIGHT WING", "Bool", new_ice_light_switch_pos)
+msfs_variable_subscribe("LIGHT WING", "Bool", new_ice_light_switch_pos)
 -- END ICE LIGHT SWITCH
 
 -- PROP DE-ICE SWITCH
 function prop_deice_click_callback(position)
     if position == 0 then
         switch_set_position(prop_deice_id, 1)
-        fs2020_event("TOGGLE_PROPELLER_DEICE")
+        msfs_event("TOGGLE_PROPELLER_DEICE")
          visible(propdeice, true)
     elseif position == 1 then
         switch_set_position(prop_deice_id, 0)
-        fs2020_event("TOGGLE_PROPELLER_DEICE")
+        msfs_event("TOGGLE_PROPELLER_DEICE")
          visible(propdeice, false)
     end
 end
@@ -112,20 +112,20 @@ function new_prop_deice_switch_pos(prop_on)
     end
 end    
 
-fs2020_variable_subscribe("PROP DEICE SWITCH:1", "Bool", new_prop_deice_switch_pos)
+msfs_variable_subscribe("PROP DEICE SWITCH:1", "Bool", new_prop_deice_switch_pos)
 -- END PROP DE-ICE SWITCH
 
 -- WINDSHIELD DE-ICE SWITCH
 function ws_deice_click_callback(position)
     if position == 0 then
         switch_set_position(ws_deice_id, 1)
-        --fs2020_event("ANTI_ICE_ON")
-        fs2020_event("WINDSHIELD_DEICE_TOGGLE")
+        --msfs_event("ANTI_ICE_ON")
+        msfs_event("WINDSHIELD_DEICE_TOGGLE")
         visible(wndsh1, true)
         visible(wndsh2, true)
     elseif position == 1 then
         switch_set_position(ws_deice_id, 0)
-        fs2020_event("WINDSHIELD_DEICE_TOGGLE")
+        msfs_event("WINDSHIELD_DEICE_TOGGLE")
         visible(wndsh1, false)
         visible(wndsh2, false)
     end
@@ -140,7 +140,7 @@ function new_ws_deice_switch_pos(wsd_on)
     end
 end    
 
-fs2020_variable_subscribe("WINDSHIELD DEICE SWITCH", "Bool", new_ws_deice_switch_pos)
+msfs_variable_subscribe("WINDSHIELD DEICE SWITCH", "Bool", new_ws_deice_switch_pos)
 -- END WINDSHIELD DE-ICE SWITCH
 
 --PITOT HEAT SWITCH
@@ -148,7 +148,7 @@ function pitot_click_callback(position)
     new_position= math.abs(position-1)
     switch_set_position(pitot_l_id,new_position)
      switch_set_position(pitot_r_id,new_position)
-    fs2020_event("PITOT_HEAT_SET", new_position)
+    msfs_event("PITOT_HEAT_SET", new_position)
 end
 
 
@@ -159,7 +159,7 @@ function new_pitot_switch_pos(sw_on)
     switch_set_position(pitot_l_id,sw_on)
     switch_set_position(pitot_r_id,sw_on)
 end    
-fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_switch_pos)
+msfs_variable_subscribe("PITOT HEAT", "Bool", new_pitot_switch_pos)
 
 --END PITOT HEAT SWITCH
 
@@ -168,10 +168,10 @@ function insep_click_callback(position)
 
     if position == 0 then
         switch_set_position(in_sep_id, 1)
-        fs2020_event("ANTI_ICE_TOGGLE_ENG1")
+        msfs_event("ANTI_ICE_TOGGLE_ENG1")
     elseif position == 1 then
         switch_set_position(in_sep_id, 0)
-        fs2020_event("ANTI_ICE_TOGGLE_ENG1")
+        msfs_event("ANTI_ICE_TOGGLE_ENG1")
     end
 end
 
@@ -186,7 +186,7 @@ function new_ws_insep_switch_pos(sw_on)
     end
 end    
 
-fs2020_variable_subscribe("GENERAL ENG ANTI ICE POSITION:1", "Bool", new_ws_insep_switch_pos)
+msfs_variable_subscribe("GENERAL ENG ANTI ICE POSITION:1", "Bool", new_ws_insep_switch_pos)
 -- END INERTIAL SEPARATOR SWITCH
 
 

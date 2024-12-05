@@ -63,11 +63,11 @@ end
     --    mask audio button
 function maskAction()
     sound_play(press_snd)
-    fs2020_variable_write("L:HJET_OXYMASKAUDIO", "NUMBER", 3)
+    msfs_variable_write("L:HJET_OXYMASKAUDIO", "NUMBER", 3)
     if maskAudio == 0 then
-        fs2020_variable_write("L:HJET_OXYMASKAUDIO", "NUMBER", 1)
+        msfs_variable_write("L:HJET_OXYMASKAUDIO", "NUMBER", 1)
     else
-        fs2020_variable_write("L:HJET_OXYMASKAUDIO", "NUMBER", 0)
+        msfs_variable_write("L:HJET_OXYMASKAUDIO", "NUMBER", 0)
     end
 end
 mask_id = button_add(nil, "pressed.png", 109, 91, 74, 74, maskAction, releaseAction)
@@ -75,11 +75,11 @@ mask_id = button_add(nil, "pressed.png", 109, 91, 74, 74, maskAction, releaseAct
     --    control mode button
 function controlModeAction()
     sound_play(press_snd)
-     fs2020_variable_write("L:HJET_PRESSURISAITON_HOLD_ACTIVE", "NUMBER", 3)
+     msfs_variable_write("L:HJET_PRESSURISAITON_HOLD_ACTIVE", "NUMBER", 3)
     if pressHold == 1 then
-        fs2020_variable_write("L:HJET_PRESSURISAITON_HOLD_ACTIVE", "NUMBER", 0)
+        msfs_variable_write("L:HJET_PRESSURISAITON_HOLD_ACTIVE", "NUMBER", 0)
     else
-        fs2020_variable_write("L:HJET_PRESSURISAITON_HOLD_ACTIVE", "NUMBER", 1)
+        msfs_variable_write("L:HJET_PRESSURISAITON_HOLD_ACTIVE", "NUMBER", 1)
     end
 end 
 
@@ -89,12 +89,12 @@ control_mode_id = button_add(nil, "pressed.png", 44, 302, 74, 74, controlModeAct
 function cabinDumbAction()
     if trapCover then
         sound_play(press_snd)
-       fs2020_variable_write("L:PRESSURE_DUMP_PUSHED", "NUMBER", 3)
+       msfs_variable_write("L:PRESSURE_DUMP_PUSHED", "NUMBER", 3)
         
         if pressDump == 1 then
-            fs2020_variable_write("L:PRESSURE_DUMP_PUSHED", "NUMBER", 0)
+            msfs_variable_write("L:PRESSURE_DUMP_PUSHED", "NUMBER", 0)
         else
-            fs2020_variable_write("L:PRESSURE_DUMP_PUSHED", "NUMBER", 1)
+            msfs_variable_write("L:PRESSURE_DUMP_PUSHED", "NUMBER", 1)
         end
     else
         sound_play(fail_snd)
@@ -114,32 +114,32 @@ mask_knob_id = img_add("knob.png", 275, 303, 90, 90)
 
 function maskKnobAction(direction)
     if direction == 1 then
-    fs2020_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 3)
+    msfs_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 3)
         if maskControl == 0 then
             sound_play(dial_snd)
-            fs2020_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 1)
+            msfs_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 1)
         elseif maskControl == -1 then
             sound_play(dial_snd)
-            fs2020_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 0)
+            msfs_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 0)
         end
     elseif direction == -1 then
         if maskControl == 1 then
             sound_play(dial_snd)
-            fs2020_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 0)
+            msfs_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", 0)
         elseif maskControl == 0 then
             sound_play(dial_snd)
-            fs2020_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", -1)
+            msfs_variable_write("L:HJET_PRESSURIZATION_CABIN_OXYMASK", "ENUM", -1)
         end
     end
 end
 mask_knob_dial = dial_add(nil, 275, 303, 90, 90, maskKnobAction)
 
 function o2SupplyAction()
-    fs2020_variable_write("L:HJET_OXYSUPPLY", "NUMBER", 3)
+    msfs_variable_write("L:HJET_OXYSUPPLY", "NUMBER", 3)
     if o2Supply == 1 then
-        fs2020_variable_write("L:HJET_OXYSUPPLY", "NUMBER", 0)
+        msfs_variable_write("L:HJET_OXYSUPPLY", "NUMBER", 0)
     else
-        fs2020_variable_write("L:HJET_OXYSUPPLY", "NUMBER", 1)
+        msfs_variable_write("L:HJET_OXYSUPPLY", "NUMBER", 1)
     end 
 
 end
@@ -289,7 +289,7 @@ function setTest(testA, testB)
 
 end
 
-fs2020_variable_subscribe("L:HJET_OXYMASKAUDIO", "NUMBER",
+msfs_variable_subscribe("L:HJET_OXYMASKAUDIO", "NUMBER",
                                               "L:HJET_OXYSUPPLY", "NUMBER", 
                                               "L:HJET_PRESSURISAITON_HOLD_ACTIVE", "NUMBER",
                                               "L:PRESSURE_DUMP_PUSHED", "NUMBER",
@@ -297,6 +297,6 @@ fs2020_variable_subscribe("L:HJET_OXYMASKAUDIO", "NUMBER",
                                               "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",
                                                setVals)
                                                
-fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 			"L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)                                               

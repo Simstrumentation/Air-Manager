@@ -265,9 +265,9 @@ end
 ---------------------------------------------
 function setBaro(direction)  
     if direction == 1 then
-        fs2020_event("KOHLSMAN_INC")
+        msfs_event("KOHLSMAN_INC")
     elseif direction == -1 then
-        fs2020_event("KOHLSMAN_DEC")
+        msfs_event("KOHLSMAN_DEC")
     end
 end
 knob_shadow_id = img_add("knob_shadow.png", 22, 494,118, 100)
@@ -277,7 +277,7 @@ img_add("baro_knob.png", 16,476,100, 100)
 baro_dial = dial_add("knob_mark.png", 4, 468, 114, 114, setBaro)
 dial_click_rotate(baro_dial, 5)
                                                                                            
-fs2020_variable_subscribe("INDICATED ALTITUDE", "Feet",
+msfs_variable_subscribe("INDICATED ALTITUDE", "Feet",
                           "KOHLSMAN SETTING HG", "inHg", 
                           "ELECTRICAL MASTER BATTERY", "BOOLEAN",
                           "ELECTRICAL MAIN BUS VOLTAGE", "VOLTS", 

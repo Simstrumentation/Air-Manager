@@ -33,26 +33,26 @@ local tank = 0
 function move_selector(position, direction)
 	if tank== 0 then 
 		if direction == 1 then
-		    fs2020_variable_write("L:SF50_FUEL_SELECTOR_AUTO", "Int",1)
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_LEFT", "Int",0)
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_RIGHT", "Int",0)
+		    msfs_variable_write("L:SF50_FUEL_SELECTOR_AUTO", "Int",1)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_LEFT", "Int",0)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_RIGHT", "Int",0)
 		end
 		
 	elseif tank == 1 then
 		if direction == 1 then
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_AUTO", "Int",0)
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_LEFT", "Int",0)
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_RIGHT", "Int",1)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_AUTO", "Int",0)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_LEFT", "Int",0)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_RIGHT", "Int",1)
 		else
-		    fs2020_variable_write("L:SF50_FUEL_SELECTOR_AUTO", "Int",0)
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_LEFT", "Int",1)
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_RIGHT", "Int",0)
+		    msfs_variable_write("L:SF50_FUEL_SELECTOR_AUTO", "Int",0)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_LEFT", "Int",1)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_RIGHT", "Int",0)
 		end
 	else
 		if direction == -1 then
-		    fs2020_variable_write("L:SF50_FUEL_SELECTOR_AUTO", "Int",1)
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_LEFT", "Int",0)
-                    fs2020_variable_write("L:SF50_FUEL_SELECTOR_RIGHT", "Int",0)
+		    msfs_variable_write("L:SF50_FUEL_SELECTOR_AUTO", "Int",1)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_LEFT", "Int",0)
+                    msfs_variable_write("L:SF50_FUEL_SELECTOR_RIGHT", "Int",0)
 		end
 	end
 
@@ -81,7 +81,7 @@ function setFuelPosition(left, right, auto)
 	end
 	switch_set_position( fuel_sel_sw, tank)
 end
-fs2020_variable_subscribe("L:SF50_fuel_selector_left", "Number",
+msfs_variable_subscribe("L:SF50_fuel_selector_left", "Number",
                                               "L:SF50_fuel_selector_right", "Number",
                                               "L:SF50_fuel_selector_auto", "Number", 
                                               setFuelPosition)
@@ -95,7 +95,7 @@ function lightPot(val, panel, pot, power)
     end
 end
 
-fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+msfs_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
                                                 "A:LIGHT PANEL:1", "Bool", 
                                                 "A:LIGHT POTENTIOMETER:3", "Percent", 
                                                 "A:ELECTRICAL MASTER BATTERY", "Bool",

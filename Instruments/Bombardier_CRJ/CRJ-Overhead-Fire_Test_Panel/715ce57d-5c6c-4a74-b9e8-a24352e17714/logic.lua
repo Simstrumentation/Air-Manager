@@ -35,7 +35,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 -- Ambient Light Control
@@ -49,6 +49,6 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 sw_wshld_test= button_add(nil,"button_pressed.png", 239,79,158,115,
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_FIRE_TEST","Number",1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_FIRE_TEST","Number",0)end) 
+            msfs_variable_write("L:ASCRJ_FIRE_TEST","Number",1) timer_start(100, function() msfs_variable_write("L:ASCRJ_FIRE_TEST","Number",0)end) 
     end)
    

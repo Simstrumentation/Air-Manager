@@ -55,14 +55,14 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
 --Warning Select    
 function callback_Warning()
-   fs2020_event("K:MASTER_WARNING_ACKNOWLEDGE")
+   msfs_event("K:MASTER_WARNING_ACKNOWLEDGE")
    sound_play(click_snd)
 end
 button_add(nil,"warning.png", 15,15,188,160, callback_Warning)
 
 --Caution Select    
 function callback_Caution()
-    fs2020_event("K:MASTER_CAUTION_ACKNOWLEDGE")
+    msfs_event("K:MASTER_CAUTION_ACKNOWLEDGE")
     sound_play(click_snd)
 end
 button_add(nil,"caution.png", 248,15,188,160, callback_Caution)
@@ -75,7 +75,7 @@ function ss_warningtrue(warningactive,Battery_Status,ExtPower_Status, busvolts)
         visible(img_Warning_On, false)
   end
 end
-fs2020_variable_subscribe("Master Warning Active","Bool",
+msfs_variable_subscribe("Master Warning Active","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_warningtrue)
@@ -87,7 +87,7 @@ function ss_cautiontrue(cautionactive,Battery_Status,ExtPower_Status, busvolts)
         visible(img_Caution_On, false)
     end
 end       
-fs2020_variable_subscribe("Master Caution Active","Bool",
+msfs_variable_subscribe("Master Caution Active","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_cautiontrue)

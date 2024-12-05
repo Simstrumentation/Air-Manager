@@ -55,7 +55,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_labels_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                            "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -70,14 +70,14 @@ local pitot2_state = nil
 --  WING/ENG ANTI-ICE 
 
 function callback_l_wing(pos)
-    fs2020_variable_write("L:DEICE_Airframe_1","Int", fif(deice_airframe_1, 0, 1))
-    fs2020_event("TOGGLE_STRUCTURAL_DEICE")
+    msfs_variable_write("L:DEICE_Airframe_1","Int", fif(deice_airframe_1, 0, 1))
+    msfs_event("TOGGLE_STRUCTURAL_DEICE")
     sound_play(click_snd)
 end
 
 function callback_r_wing(pos)
-    fs2020_variable_write("L:DEICE_Airframe_2","Int", fif(deice_airframe_2, 0, 1))
-    fs2020_event("TOGGLE_STRUCTURAL_DEICE")
+    msfs_variable_write("L:DEICE_Airframe_2","Int", fif(deice_airframe_2, 0, 1))
+    msfs_event("TOGGLE_STRUCTURAL_DEICE")
     sound_play(click_snd)
 end
 
@@ -86,12 +86,12 @@ function ss_update_airframe_deice_callback(af1, af2, switch)
 	deice_airframe_2 = fif(af2==1, true, false)
 	struct_deice_switch = switch
   	if (deice_airframe_1 or deice_airframe_2) ~= struct_deice_switch then
-  	    fs2020_event("TOGGLE_STRUCTURAL_DEICE")
+  	    msfs_event("TOGGLE_STRUCTURAL_DEICE")
 	end
 	switch_set_position(sw_l_wing, fif(af1==1, 1, 0))
         switch_set_position(sw_r_wing, fif(af2==1, 1, 0))
 end
-fs2020_variable_subscribe("L:DEICE_Airframe_1", "Int", 
+msfs_variable_subscribe("L:DEICE_Airframe_1", "Int", 
 			  "L:DEICE_Airframe_2", "Int", 
 			  "STRUCTURAL DEICE SWITCH", "BOOL", ss_update_airframe_deice_callback)
 			  
@@ -104,10 +104,10 @@ sw_r_wing = switch_add(nil, "button_on.png", 207, 57, 74, 58, callback_r_wing)
 function callback_l_engine(position)
     if position == 0 then
         switch_set_position(sw_l_eng, 1)
-        fs2020_event("ANTI_ICE_TOGGLE_ENG1")
+        msfs_event("ANTI_ICE_TOGGLE_ENG1")
     elseif position == 1 then
         switch_set_position(sw_l_eng, 0)
-        fs2020_event("ANTI_ICE_TOGGLE_ENG1")
+        msfs_event("ANTI_ICE_TOGGLE_ENG1")
     end
     sound_play(click_snd)
 end
@@ -120,17 +120,17 @@ function ss_l_eng(l_eng_on)
         switch_set_position(sw_l_eng, 0)
     end
 end    
-fs2020_variable_subscribe("GENERAL ENG ANTI ICE POSITION:1", "Bool", ss_l_eng)
+msfs_variable_subscribe("GENERAL ENG ANTI ICE POSITION:1", "Bool", ss_l_eng)
 -- END L ENGINE DEICE
 
 --  R ENGINE DEICE
 function callback_r_engine(position)
     if position == 0 then
         switch_set_position(sw_r_eng, 1)
-        fs2020_event("ANTI_ICE_TOGGLE_ENG2")
+        msfs_event("ANTI_ICE_TOGGLE_ENG2")
     elseif position == 1 then
         switch_set_position(sw_r_eng, 0)
-        fs2020_event("ANTI_ICE_TOGGLE_ENG2")
+        msfs_event("ANTI_ICE_TOGGLE_ENG2")
     end
     sound_play(click_snd)
 end
@@ -143,18 +143,18 @@ function ss_r_eng(r_eng_on)
         switch_set_position(sw_r_eng, 0)
     end
 end    
-fs2020_variable_subscribe("GENERAL ENG ANTI ICE POSITION:2", "Bool", ss_r_eng)
+msfs_variable_subscribe("GENERAL ENG ANTI ICE POSITION:2", "Bool", ss_r_eng)
 -- END  R ENGINE DEICE
 
 --  PITOT
 function callback_pitot1(position)
-    fs2020_event("PITOT_HEAT_TOGGLE", 1)
+    msfs_event("PITOT_HEAT_TOGGLE", 1)
     sound_play(click_snd)
 end
 sw_l_pitot = switch_add(nil, "button_on.png", 320, 162, 74, 58, callback_pitot1)
 
 function callback_pitot2(position)
-    fs2020_event("PITOT_HEAT_TOGGLE", 2)
+    msfs_event("PITOT_HEAT_TOGGLE", 2)
     sound_play(click_snd)
 end
 sw_r_pitot = switch_add(nil, "button_on.png", 432, 162, 74, 58, callback_pitot2)
@@ -173,13 +173,13 @@ function ss_pitotpos(pitot1_st, pitot2_st)
         switch_set_position(sw_r_pitot, 0)
     end
 end    
-fs2020_variable_subscribe("L:DEICE_Pitot_1", "Int",
+msfs_variable_subscribe("L:DEICE_Pitot_1", "Int",
                           "L:DEICE_Pitot_2", "Int", ss_pitotpos)
 -- END PITOT
 
 --  WING LIGHT
 function callback_wing_light(position)
-    fs2020_event("TOGGLE_WING_LIGHTS")
+    msfs_event("TOGGLE_WING_LIGHTS")
     sound_play(click_snd)
 end
 sw_wing_light = switch_add(nil, "button_on.png", 547, 58, 74, 58, callback_wing_light)
@@ -191,5 +191,5 @@ function ss_wing_light(light_on)
         switch_set_position(sw_wing_light , 0)
     end
 end    
-fs2020_variable_subscribe("LIGHT WING", "Bool", ss_wing_light)
+msfs_variable_subscribe("LIGHT WING", "Bool", ss_wing_light)
 -- END WING LIGHT

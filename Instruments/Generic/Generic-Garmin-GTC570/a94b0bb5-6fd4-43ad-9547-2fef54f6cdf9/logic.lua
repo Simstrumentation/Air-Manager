@@ -131,9 +131,9 @@ end
 --    left knob
 function leftKnob (direction)    
     if direction == 1 then
-        fs2020_event(cmd_table[1])
+        msfs_event(cmd_table[1])
     elseif direction == -1 then
-        fs2020_event(cmd_table[2])
+        msfs_event(cmd_table[2])
     end
     sound_play(dial_snd)
   end
@@ -143,7 +143,7 @@ img_left_knob = img_add("knob.png" , 131 , 846 , 60 , 60 )
 
 function leftKnobPress()
     -- not 100% sure if this function exists. Adding for now as a test
-    fs2020_event(cmd_table[3])
+    msfs_event(cmd_table[3])
     sound_play(press_snd)
 end
 left_knob_press = button_add(nil, nil, 141 , 856 , 40 , 40 , leftKnobPress, knobRelease)
@@ -152,9 +152,9 @@ left_knob_press = button_add(nil, nil, 141 , 856 , 40 , 40 , leftKnobPress, knob
 --middle knob
 function middleKnob(direction)
     if direction == 1 then
-        fs2020_event(cmd_table[5])
+        msfs_event(cmd_table[5])
     elseif direction == -1 then
-        fs2020_event(cmd_table[6])
+        msfs_event(cmd_table[6])
     end
     sound_play(dial_snd)
 end
@@ -162,7 +162,7 @@ middle_knob = dial_add("knob.png" , 302 , 842 , 47 , 47 , middleKnob, knobReleas
 img_middle_knob = img_add("knob.png" , 302 , 842 , 47 , 47)
 
 function middleKnobPress()
-    fs2020_event(cmd_table[7])
+    msfs_event(cmd_table[7])
     sound_play(press_snd)
 end
 middle_knob_press = button_add(nil, nil, 310 , 850 , 32 , 32 , middleKnobPress, knobRelease)
@@ -171,9 +171,9 @@ middle_knob_press = button_add(nil, nil, 310 , 850 , 32 , 32 , middleKnobPress, 
     --large knob turn
 function largeKnob(direction)
     if direction == 1 then
-        fs2020_event(cmd_table[8])
+        msfs_event(cmd_table[8])
     elseif direction == -1 then
-        fs2020_event(cmd_table[9])
+        msfs_event(cmd_table[9])
     end
     sound_play(dial_snd)
 end
@@ -183,9 +183,9 @@ img_large_knob = img_add("large_knob_cap.png" , 450 , 841 , 86 , 86)
     --small knob turn
 function smallKnobRight(direction)
     if direction == 1 then
-        fs2020_event(cmd_table[10])
+        msfs_event(cmd_table[10])
     elseif direction == -1 then
-        fs2020_event(cmd_table[11])
+        msfs_event(cmd_table[11])
     end
     sound_play(dial_snd)
 end
@@ -196,7 +196,7 @@ img_small_knob_right = img_add("knob.png" , 462 , 852 , 60, 60)
     --small knob press
 function rightKnobRelease()
      if timer_running(timerLongPress) then    --short press
-         fs2020_event(cmd_table[12])
+         msfs_event(cmd_table[12])
     end   
     timer_stop(timerLongPress)
     knobRelease()
@@ -204,7 +204,7 @@ end
 
 function rightKnobLongPress()    
     --    execute long press event once timer reaches 1000ms without having to release button
-    fs2020_event(cmd_table[13])
+    msfs_event(cmd_table[13])
     timer_stop(timerLongPress)
 end
 
@@ -218,25 +218,25 @@ right_knob_press = button_add(nil, nil, 471 , 861 , 44, 44, rightKnobPress, righ
     --joystick directional controls
     
 function joystickUpPress()
-    fs2020_event(cmd_table[14])
+    msfs_event(cmd_table[14])
     print(cmd_table[14])
     sound_play(press_snd)
 end    
 
 function joystickDnPress()
-    fs2020_event(cmd_table[15])
+    msfs_event(cmd_table[15])
     print(cmd_table[15])
     sound_play(press_snd)
 end    
 
 function joystickLftPress()
-    fs2020_event(cmd_table[16])
+    msfs_event(cmd_table[16])
     print(cmd_table[16])
     sound_play(press_snd)
 end    
 
 function joystickRtPress()
-    fs2020_event(cmd_table[17])
+    msfs_event(cmd_table[17])
     print(cmd_table[17])
     sound_play(press_snd)
 end    

@@ -14,4 +14,4 @@ function callback_flap(pos)
 end
 
 
-fs2020_variable_subscribe("TRAILING EDGE FLAPS LEFT PERCENT", "Percent over 100", callback_flap)
+msfs_variable_subscribe("TRAILING EDGE FLAPS LEFT PERCENT", "Percent over 100", callback_flap)

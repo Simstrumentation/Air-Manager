@@ -133,7 +133,7 @@ function new_ball_callback(pos,turn,suction, yd)
       
 end
 
-fs2020_variable_subscribe("TURN COORDINATOR BALL", "Position", -- -127 to +127
+msfs_variable_subscribe("TURN COORDINATOR BALL", "Position", -- -127 to +127
                           "TURN INDICATOR RATE", "Radians", -- radians per second
                           "SUCTION PRESSURE", "inhg", -- flag goes off at less than 2.3
                           "AUTOPILOT YAW DAMPER", "Number", new_ball_callback)

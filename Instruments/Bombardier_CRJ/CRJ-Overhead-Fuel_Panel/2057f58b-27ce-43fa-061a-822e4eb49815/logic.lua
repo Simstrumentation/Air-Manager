@@ -32,7 +32,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 -- Ambient Light Control
@@ -85,42 +85,42 @@ imgRXF_FAIL = img_add("light_fail.png", 464, 245, 100, 45)
 
 function Pump_LBP()
     tgl_LBP = (tgl_LBP +1) % 2
-    fs2020_variable_write(btnFuelP_L, "Number",tgl_LBP)
+    msfs_variable_write(btnFuelP_L, "Number",tgl_LBP)
     sound_play(click_snd)
 end
     btnPump_LB = button_add(nil,"btn_push.png", 85,70,85,85, Pump_LBP) 
     
 function Grav_xflo()
     grav_xflo = (grav_xflo +1) % 2
-    fs2020_variable_write(btnGrav_Xflo, "Number", grav_xflo)          
+    msfs_variable_write(btnGrav_Xflo, "Number", grav_xflo)          
     sound_play(click_snd)
 end
     btnXflo = button_add(nil, "btn_push.png", 275, 70, 85, 85, Grav_xflo)
     
 function Pump_RBP()
     rbp_Toggle = (rbp_Toggle +1) % 2
-    fs2020_variable_write(btnFuelP_R, "Number",rbp_Toggle)
+    msfs_variable_write(btnFuelP_R, "Number",rbp_Toggle)
     sound_play(click_snd)
 end
     btnPump_RB = button_add(nil,"btn_push.png", 468,70,85,85, Pump_RBP)
     
 function XFL_L()
     xflo_left = (xflo_left +1) % 2
-    fs2020_variable_write(btnXflo_L, "Number",xflo_left)
+    msfs_variable_write(btnXflo_L, "Number",xflo_left)
     sound_play(click_snd)
 end
     btnXFL_L = button_add(nil,"btn_push.png", 85,210,85,85, XFL_L)
     
 function XFL_AO()
     tglXFL_AO = (tglXFL_AO +1) % 2
-    fs2020_variable_write(btnXflo_AO, "Number",tglXFL_AO)
+    msfs_variable_write(btnXflo_AO, "Number",tglXFL_AO)
     sound_play(click_snd)
 end
     btnXFL_L = button_add(nil,"btn_push.png", 275,210,83,83, XFL_AO)
 
 function XFL_R()
     xflo_right = (xflo_right +1) % 2
-    fs2020_variable_write(btnXflo_R, "Number",xflo_right)
+    msfs_variable_write(btnXflo_R, "Number",xflo_right)
     sound_play(click_snd)
 end
     btnXFL_R = button_add(nil,"btn_push.png", 468,210,83,83, XFL_R) 
@@ -133,57 +133,57 @@ end
 function LB_INOP_msg(inop,pwr)
 	visible(imgLBP_INOP, (inop ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe(msgLBP_INOP, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  LB_INOP_msg)
+msfs_variable_subscribe(msgLBP_INOP, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  LB_INOP_msg)
     
 function LB_ON_msg(on,pwr)
         visible(imgLBP_ON, (on ==1 and pwr ==true))
 end
-fs2020_variable_subscribe(msgLBP_ON, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  LB_ON_msg)
+msfs_variable_subscribe(msgLBP_ON, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  LB_ON_msg)
 -----------------------------------------
 
 function GF_OPEN_msg(open,pwr)
 	visible(imgGF_OPEN, (open ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe(msgGF_O, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  GF_OPEN_msg)
+msfs_variable_subscribe(msgGF_O, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  GF_OPEN_msg)
     
 function GF_FAIL_msg(fail,pwr)
         visible(imgGF_FAIL, (fail ==1 and pwr ==true))
 end
-fs2020_variable_subscribe(msgGF_F, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  GF_FAIL_msg)
+msfs_variable_subscribe(msgGF_F, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  GF_FAIL_msg)
 ----------------------------------------------
 function RB_INOP_msg(inop,pwr)
 	visible(imgRBP_INOP, (inop ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe(msgRBP_INOP, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  RB_INOP_msg)
+msfs_variable_subscribe(msgRBP_INOP, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  RB_INOP_msg)
     
 function RB_ON_msg(on,pwr)
         visible(imgRBP_ON, (on ==1 and pwr ==true))
 end
-fs2020_variable_subscribe(msgRBP_ON, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  RB_ON_msg)
+msfs_variable_subscribe(msgRBP_ON, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  RB_ON_msg)
 --------------------------------------------------
 
 function LXF_FAIL_msg(fail,pwr)
 	visible(imgLXF_FAIL, (fail ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe(msgLXF_FAIL, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  LXF_FAIL_msg)
+msfs_variable_subscribe(msgLXF_FAIL, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  LXF_FAIL_msg)
     
 function LXF_ON_msg(on,pwr)
         visible(imgLXF_ON, (on ==1 and pwr ==true))
 end
-fs2020_variable_subscribe(msgLXF_ON, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  LXF_ON_msg)
+msfs_variable_subscribe(msgLXF_ON, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  LXF_ON_msg)
 --------------------------------------------------
 function XAO_MAN_msg(man,pwr)
 	visible(imgXAO_MAN, (man ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe(msgXAO_MAN, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  XAO_MAN_msg)
+msfs_variable_subscribe(msgXAO_MAN, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  XAO_MAN_msg)
 -----------------------------------------------------    
     
 function RXF_FAIL_msg(fail,pwr)
 	visible(imgRXF_FAIL, (fail ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe(msgRXF_FAIL, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  RXF_FAIL_msg)
+msfs_variable_subscribe(msgRXF_FAIL, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  RXF_FAIL_msg)
     
 function RXF_ON_msg(on,pwr)
         visible(imgRXF_ON, (on ==1 and pwr ==true))
 end
-fs2020_variable_subscribe(msgRXF_ON, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  RXF_ON_msg)     
+msfs_variable_subscribe(msgRXF_ON, "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  RXF_ON_msg)     

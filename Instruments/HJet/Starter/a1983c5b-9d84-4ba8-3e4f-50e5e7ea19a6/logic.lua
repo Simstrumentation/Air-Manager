@@ -54,18 +54,18 @@ end
 
 function startLAction()
     sound_play(press_snd)
-    fs2020_event("TOGGLE_STARTER1")
+    msfs_event("TOGGLE_STARTER1")
 end
 start_l_id = button_add(nil, "start_press.png", 368, 46, 88, 88, startLAction, releaseAction)
 
 function startRAction()
     sound_play(press_snd)
-    fs2020_event("TOGGLE_STARTER2")
+    msfs_event("TOGGLE_STARTER2")
 end
 start_R_id = button_add(nil, "start_press.png", 600, 46, 88, 88, startRAction, releaseAction)
 
 function brakeAction()
-    fs2020_event("PARKING_BRAKES")
+    msfs_event("PARKING_BRAKES")
 end
 
 brake_id = button_add(nil, nil, 730, 10, 311, 136, brakeAction)
@@ -74,14 +74,14 @@ brake_lever_id = img_add("parking_brake_handle.png", 730, 10, 311, 136)
 
 function throttleAction()
     sound_play(press_snd)
-    fs2020_variable_write("L:HA420_THROTTLEPOS_L", "Number", 100)
-        fs2020_variable_write("L:HA420_THROTTLEPOS_R", "Number", 100)
+    msfs_variable_write("L:HA420_THROTTLEPOS_L", "Number", 100)
+        msfs_variable_write("L:HA420_THROTTLEPOS_R", "Number", 100)
     if thottleLState == 0 and thottleRState == 0 then
-        fs2020_variable_write("L:HA420_THROTTLEPOS_L", "Number", 50)
-        fs2020_variable_write("L:HA420_THROTTLEPOS_R", "Number", 50)
+        msfs_variable_write("L:HA420_THROTTLEPOS_L", "Number", 50)
+        msfs_variable_write("L:HA420_THROTTLEPOS_R", "Number", 50)
     elseif thottleLState == 50 and thottleRState == 50 then
-        fs2020_variable_write("L:HA420_THROTTLEPOS_L", "Number", 0)
-        fs2020_variable_write("L:HA420_THROTTLEPOS_R", "Number", 0)
+        msfs_variable_write("L:HA420_THROTTLEPOS_L", "Number", 0)
+        msfs_variable_write("L:HA420_THROTTLEPOS_R", "Number", 0)
     end
 end
 
@@ -149,7 +149,7 @@ function setTest(testA, testB)
    end
 end
 
-fs2020_variable_subscribe("A:GENERAL ENG STARTER:1", "NUMBER", 
+msfs_variable_subscribe("A:GENERAL ENG STARTER:1", "NUMBER", 
                                               "A:GENERAL ENG STARTER:2", "NUMBER", 
                                               "A:BRAKE PARKING INDICATOR", "BOOL",
                                               "L:HA420_THROTTLEPOS_L", "ENUM", 
@@ -157,6 +157,6 @@ fs2020_variable_subscribe("A:GENERAL ENG STARTER:1", "NUMBER",
                                               "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",
                                               setVars)
                                               
-fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 			"L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)

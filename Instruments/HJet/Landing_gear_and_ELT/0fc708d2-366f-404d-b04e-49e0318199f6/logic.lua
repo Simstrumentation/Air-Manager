@@ -70,20 +70,20 @@ function eltAction(direction)
     sound_play(dial_snd)
     if direction == 1 then
         if eltState ==1 then
-          fs2020_event("K:ELT_ON")
-          fs2020_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 2)
+          msfs_event("K:ELT_ON")
+          msfs_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 2)
         elseif eltState ==3 then
-            fs2020_event("K:ELT_OFF")
-            fs2020_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 1)        
+            msfs_event("K:ELT_OFF")
+            msfs_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 1)        
         end
     elseif direction == -1 then
         if eltState ==2 then
-            fs2020_event("K:ELT_OFF")
-          fs2020_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 1)
+            msfs_event("K:ELT_OFF")
+          msfs_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 1)
         elseif eltState ==1 then
-            fs2020_event("K:ELT_OFF")
-          fs2020_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 3) 
-          fs2020_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 3) 
+            msfs_event("K:ELT_OFF")
+          msfs_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 3) 
+          msfs_variable_write("L:XMLVAR_ELT_STATE", "ENUM", 3) 
             
         end
     end
@@ -100,17 +100,17 @@ end
 
 function noseWheelAction()
     sound_play(press_snd)
-    fs2020_variable_write("L:NWS PUSHED", "NUMBER", 3)    -- added to get around an Air Manager bug
+    msfs_variable_write("L:NWS PUSHED", "NUMBER", 3)    -- added to get around an Air Manager bug
     if noseWheelState == 1 then
-        fs2020_variable_write("L:NWS PUSHED", "NUMBER", 0)
+        msfs_variable_write("L:NWS PUSHED", "NUMBER", 0)
     else
-        fs2020_variable_write("L:NWS PUSHED", "NUMBER", 1)
+        msfs_variable_write("L:NWS PUSHED", "NUMBER", 1)
     end
 end
 nsw_id = button_add(nil, "pressed.png", 288, 84, 62, 56, noseWheelAction, releaseAction)
 
 function gearAction()
-    fs2020_event("TOGGLE LANDING GEAR")
+    msfs_event("TOGGLE LANDING GEAR")
 end
 gear_switch_id = switch_add(nil, nil, 460, 30, 60, 140, gearAction )
 gear_id = img_add("gear.png", 448, 60, 87, 161 )
@@ -197,12 +197,12 @@ function setTest(testA, testB)
 
 end
 
-fs2020_variable_subscribe("A:GEAR HANDLE POSITION", "BOOL",
+msfs_variable_subscribe("A:GEAR HANDLE POSITION", "BOOL",
                                               "L:XMLVAR_ELT_STATE", "ENUM",
                                               "L:NWS PUSHED", "NUMBER",
                                               "A:ELT ACTIVATED", "NUMBER",
                                               "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",                                           
                                               setValues)
-fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 							"L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)

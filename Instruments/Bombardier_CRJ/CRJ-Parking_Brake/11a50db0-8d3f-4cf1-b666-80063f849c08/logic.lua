@@ -43,7 +43,7 @@ local button_delay = 50
 img_pbrake = img_add("park_brake_off.png", 67,75,226,89)
 img_pbrake_night = img_add("park_brake_off_night.png", 67,75,226,89)
 
-fs2020_variable_subscribe("L:ASCRJ_PARK_BRAKE", "Number", 
+msfs_variable_subscribe("L:ASCRJ_PARK_BRAKE", "Number", 
         function (state)
             switch_set_position(sw_pb, state)
             if state == 0 then
@@ -61,9 +61,9 @@ fs2020_variable_subscribe("L:ASCRJ_PARK_BRAKE", "Number",
         
 function cb_sw_pb(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_PARK_BRAKE","Number",1) 
+        msfs_variable_write("L:ASCRJ_PARK_BRAKE","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_PARK_BRAKE","Number",0)
+        msfs_variable_write("L:ASCRJ_PARK_BRAKE","Number",0)
     end 
 end
 

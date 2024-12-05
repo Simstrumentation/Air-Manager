@@ -121,6 +121,6 @@ function new_suction_FS2020(suction, rpm1, rpm2)
 end
 
 
-fs2020_variable_subscribe("SUCTION PRESSURE", "inHg",
+msfs_variable_subscribe("SUCTION PRESSURE", "inHg",
                           "GENERAL ENG RPM:1", "RPM", 
                           "GENERAL ENG RPM:2", "RPM", new_suction_FS2020)                       

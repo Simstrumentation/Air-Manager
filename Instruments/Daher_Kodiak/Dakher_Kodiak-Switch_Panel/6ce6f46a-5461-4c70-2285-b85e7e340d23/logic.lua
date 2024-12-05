@@ -34,10 +34,10 @@ local current_pos_starter
 function master_click_callback(position)
     if position == 0 then
         switch_set_position(master_switch_id, 1)
-        fs2020_event("TOGGLE_MASTER_BATTERY")
+        msfs_event("TOGGLE_MASTER_BATTERY")
     else
         switch_set_position(master_switch_id, 0)
-        fs2020_event("TOGGLE_MASTER_BATTERY")
+        msfs_event("TOGGLE_MASTER_BATTERY")
     end
 end
 
@@ -50,17 +50,17 @@ function new_master_pos(master)
         switch_set_position(master_switch_id, 0)
     end
 end    
-fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY", "Bool", new_master_pos)
+msfs_variable_subscribe("ELECTRICAL MASTER BATTERY", "Bool", new_master_pos)
 
 --AVIONICS SWITCH
 
 function avionics_click_callback(position)
     if position == 0 then
         switch_set_position(avionics_switch_id, 1)
-        fs2020_event("TOGGLE_AVIONICS_MASTER")
+        msfs_event("TOGGLE_AVIONICS_MASTER")
     else
         switch_set_position(avionics_switch_id, 0)
-        fs2020_event("TOGGLE_AVIONICS_MASTER")
+        msfs_event("TOGGLE_AVIONICS_MASTER")
     end
 end
 
@@ -73,17 +73,17 @@ function new_avionics_pos(avionics)
         switch_set_position(avionics_switch_id, 0)
     end
 end    
-fs2020_variable_subscribe("AVIONICS MASTER SWITCH", "Bool", new_avionics_pos)
+msfs_variable_subscribe("AVIONICS MASTER SWITCH", "Bool", new_avionics_pos)
 
 --AUX SWITCH
 
 function avionics_click_callback(position)
     if position == 0 then
         switch_set_position(aux_switch_id, 1)
-        fs2020_variable_write("L:XMLVAR_AUX_Bus_ON", "number", 1)
+        msfs_variable_write("L:XMLVAR_AUX_Bus_ON", "number", 1)
     else
         switch_set_position(aux_switch_id, 0)
-        fs2020_variable_write("L:XMLVAR_AUX_Bus_ON", "number", 0)
+        msfs_variable_write("L:XMLVAR_AUX_Bus_ON", "number", 0)
     end
 end
 
@@ -96,7 +96,7 @@ function new_aux_pos(aux)
         switch_set_position(aux_switch_id, 0)
     end
 end    
-fs2020_variable_subscribe("L:XMLVAR_AUX_Bus_ON", "Number", new_aux_pos)
+msfs_variable_subscribe("L:XMLVAR_AUX_Bus_ON", "Number", new_aux_pos)
 
 --FUEL PUMP SWITCH
 
@@ -115,19 +115,19 @@ visible(pump_on_id, false)
 
 function cb_pump_pos_inc()
     if current_pos_pump == 0  then
-        fs2020_variable_write("L:SWS_FUEL_Switch_Pump_1", "Enum", 1)
+        msfs_variable_write("L:SWS_FUEL_Switch_Pump_1", "Enum", 1)
     end
     if current_pos_pump == 1  then
-        fs2020_variable_write("L:SWS_FUEL_Switch_Pump_1", "Enum", 2)
+        msfs_variable_write("L:SWS_FUEL_Switch_Pump_1", "Enum", 2)
     end   
 end
 
 function cb_pump_pos_dec()
         if current_pos_pump == 2  then
-        fs2020_variable_write("L:SWS_FUEL_Switch_Pump_1", "Enum", 1)
+        msfs_variable_write("L:SWS_FUEL_Switch_Pump_1", "Enum", 1)
     end
     if current_pos_pump == 1  then
-        fs2020_variable_write("L:SWS_FUEL_Switch_Pump_1", "Enum",0)
+        msfs_variable_write("L:SWS_FUEL_Switch_Pump_1", "Enum",0)
     end   
 end
 btn_pump_up = button_add(nil, nil, 688, 50, 100, 100, cb_pump_pos_inc)
@@ -150,17 +150,17 @@ function new_pump_pos(pos)
 current_pos_pump = pos
 end
 
-fs2020_variable_subscribe("L:SWS_FUEL_Switch_Pump_1", "Enum", new_pump_pos)
+msfs_variable_subscribe("L:SWS_FUEL_Switch_Pump_1", "Enum", new_pump_pos)
 
 --IGNITION SWITCH
 
 function ignition_click_callback(position)
     if position == 0 then
         switch_set_position(ignition_switch_id, 1)
-        fs2020_variable_write("L:XMLVAR_Ignition", "Number", 1)
+        msfs_variable_write("L:XMLVAR_Ignition", "Number", 1)
     else
         switch_set_position(ignition_switch_id, 0)
-        fs2020_variable_write("L:XMLVAR_Ignition", "Number", 0)
+        msfs_variable_write("L:XMLVAR_Ignition", "Number", 0)
     end
 end
 
@@ -174,7 +174,7 @@ function new_ignition_pos(ignition)
     end
     print(ignition)
 end    
-fs2020_variable_subscribe("L:XMLVAR_Ignition", "Number", new_ignition_pos)
+msfs_variable_subscribe("L:XMLVAR_Ignition", "Number", new_ignition_pos)
 
 --STARTER SWITCH
 
@@ -193,19 +193,19 @@ visible(starter_hi_id, false)
 
 function cb_starter_pos_inc()
     if current_pos_starter == 0  then
-        fs2020_variable_write("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum", 1)
+        msfs_variable_write("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum", 1)
     end
     if current_pos_starter == 1  then
-        fs2020_variable_write("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum", 2)
+        msfs_variable_write("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum", 2)
     end
 end
 
 function cb_starter_pos_dec()
      if current_pos_starter == 2  then
-        fs2020_variable_write("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum", 1)
+        msfs_variable_write("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum", 1)
     end
     if current_pos_starter == 1  then
-        fs2020_variable_write("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum",0)
+        msfs_variable_write("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum",0)
     end
 end
 
@@ -230,17 +230,17 @@ function new_start_pos(pos)
     current_pos_starter = pos
 end
 
-fs2020_variable_subscribe("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum", new_start_pos)
+msfs_variable_subscribe("L:SWS_ENGINE_Switch_Starter_ThreeState_1", "Enum", new_start_pos)
 
 --GENERATOR SWITCH
 
 function gen_click_callback(position)
     if position == 0 then
         switch_set_position(gen_switch_id, 1)
-        fs2020_event("TOGGLE_ALTERNATOR1")
+        msfs_event("TOGGLE_ALTERNATOR1")
     else
         switch_set_position(gen_switch_id, 0)
-       fs2020_event("TOGGLE_ALTERNATOR1")
+       msfs_event("TOGGLE_ALTERNATOR1")
     end
 end
 
@@ -253,17 +253,17 @@ function new_gen_pos(gen)
         switch_set_position(gen_switch_id, 0)
     end
 end    
-fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1", "Number", new_gen_pos)
+msfs_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1", "Number", new_gen_pos)
 
 --ALTERNATOR SWITCH
 
 function gen_click_callback(position)
     if position == 0 then
         switch_set_position(alt_switch_id, 1)
-        fs2020_event("TOGGLE_ALTERNATOR2")
+        msfs_event("TOGGLE_ALTERNATOR2")
     else
         switch_set_position(alt_switch_id, 0)
-       fs2020_event("TOGGLE_ALTERNATOR2")
+       msfs_event("TOGGLE_ALTERNATOR2")
     end
 end
 
@@ -276,4 +276,4 @@ function new_alt_pos(alt)
         switch_set_position(alt_switch_id, 0)
     end
 end    
-fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:2", "Number", new_alt_pos)
+msfs_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:2", "Number", new_alt_pos)

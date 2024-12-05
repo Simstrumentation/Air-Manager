@@ -158,7 +158,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_dimmer_indicator, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -167,11 +167,11 @@ fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
 
 function callback_backlighting(position, direction)
     if (var_cap((var_round((position + direction), 0) * 10),0,110)) <= 100 then
-        fs2020_event("PANEL_LIGHTS_SET", 1,1)
-          fs2020_variable_write("L:LIGHTING_PANEL_1", "Number",var_cap((var_round((position + direction), 0) * 10),5,110))
-          fs2020_event("LIGHT_POTENTIOMETER_SET", 3, var_cap((var_round((position + direction), 0) * 10),5,110))
+        msfs_event("PANEL_LIGHTS_SET", 1,1)
+          msfs_variable_write("L:LIGHTING_PANEL_1", "Number",var_cap((var_round((position + direction), 0) * 10),5,110))
+          msfs_event("LIGHT_POTENTIOMETER_SET", 3, var_cap((var_round((position + direction), 0) * 10),5,110))
     else 
-         fs2020_event("PANEL_LIGHTS_SET", 0,1)
+         msfs_event("PANEL_LIGHTS_SET", 0,1)
      end
 
         
@@ -189,14 +189,14 @@ function ss_pfd1_dimming(value)
      value_pfd1_position = (value * 10)
      write_to_overlay_pfd1(0.5-(value / 2))
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:15", "Number", ss_pfd1_dimming)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:15", "Number", ss_pfd1_dimming)
 
 function callback_pdf1_dimming(position, direction)
      sound_play(snd_dial)
     if direction == 1 then
-        fs2020_event("LIGHT_POTENTIOMETER_15_SET", var_cap((var_round(value_pfd1_position,1) * 10)+5,0,100))
+        msfs_event("LIGHT_POTENTIOMETER_15_SET", var_cap((var_round(value_pfd1_position,1) * 10)+5,0,100))
     else
-        fs2020_event("LIGHT_POTENTIOMETER_15_SET", var_cap((var_round(value_pfd1_position,1)* 10)-5,0,100))
+        msfs_event("LIGHT_POTENTIOMETER_15_SET", var_cap((var_round(value_pfd1_position,1)* 10)-5,0,100))
     end
 end        
 sw_pfd1_dimming = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 130, 40, 120, 120, callback_pdf1_dimming)
@@ -211,14 +211,14 @@ function ss_pfd2_dimming(value)
      value_pfd2_position = (value * 10)
      write_to_overlay_pfd2(0.5-(value / 2))     
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:16", "Number", ss_pfd2_dimming)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:16", "Number", ss_pfd2_dimming)
 
 function callback_pdf2_dimming(position, direction)
     sound_play(snd_dial)
     if direction == 1 then
-        fs2020_event("LIGHT_POTENTIOMETER_16_SET", var_cap((var_round(value_pfd2_position,1) * 10)+5,0,100))
+        msfs_event("LIGHT_POTENTIOMETER_16_SET", var_cap((var_round(value_pfd2_position,1) * 10)+5,0,100))
     else
-        fs2020_event("LIGHT_POTENTIOMETER_16_SET", var_cap((var_round(value_pfd2_position,1)* 10)-5,0,100))
+        msfs_event("LIGHT_POTENTIOMETER_16_SET", var_cap((var_round(value_pfd2_position,1)* 10)-5,0,100))
     end
 end        
 sw_pfd2_dimming = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 465, 40, 120, 120, callback_pdf2_dimming)
@@ -233,14 +233,14 @@ function ss_mfd1_dimming(value)
      value_mfd1_position = (value * 10)
      write_to_overlay_mfd1(0.5-(value / 2))
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:17", "Number", ss_mfd1_dimming)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:17", "Number", ss_mfd1_dimming)
 
 function callback_mdf1_dimming(position, direction)
     sound_play(snd_dial)
     if direction == 1 then
-        fs2020_event("LIGHT_POTENTIOMETER_17_SET", var_cap((var_round(value_mfd1_position,1) * 10)+5,0,100))
+        msfs_event("LIGHT_POTENTIOMETER_17_SET", var_cap((var_round(value_mfd1_position,1) * 10)+5,0,100))
     else
-        fs2020_event("LIGHT_POTENTIOMETER_17_SET", var_cap((var_round(value_mfd1_position,1)* 10)-5,0,100))
+        msfs_event("LIGHT_POTENTIOMETER_17_SET", var_cap((var_round(value_mfd1_position,1)* 10)-5,0,100))
     end
 end        
 sw_mfd1_dimming = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 165, 75, 50, 50, callback_mdf1_dimming)
@@ -255,14 +255,14 @@ function ss_mfd2_dimming(value)
      value_mfd2_position = (value * 10)
      write_to_overlay_mfd2(0.5-(value / 2))     
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:18", "Number", ss_mfd2_dimming)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:18", "Number", ss_mfd2_dimming)
 
 function callback_mdf2_dimming(position, direction)
     sound_play(snd_dial)
     if direction == 1 then
-        fs2020_event("LIGHT_POTENTIOMETER_18_SET", var_cap((var_round(value_mfd2_position,1) * 10)+5,0,100))
+        msfs_event("LIGHT_POTENTIOMETER_18_SET", var_cap((var_round(value_mfd2_position,1) * 10)+5,0,100))
     else
-        fs2020_event("LIGHT_POTENTIOMETER_18_SET", var_cap((var_round(value_mfd2_position,1)* 10)-5,0,100))
+        msfs_event("LIGHT_POTENTIOMETER_18_SET", var_cap((var_round(value_mfd2_position,1)* 10)-5,0,100))
     end
 end        
 sw_mfd2_dimming = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 495, 75, 50, 50, callback_mdf2_dimming)
@@ -274,9 +274,9 @@ sw_mfd2_dimming = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 495, 7
 img_beacon_indicator = img_add("button_on.png", 118, 232, 47, 15)
 function callback_beacon(position)
     if position == 0 then
-        fs2020_event("TOGGLE_BEACON_LIGHTS")
+        msfs_event("TOGGLE_BEACON_LIGHTS")
     elseif position == 1 then 
-        fs2020_event("TOGGLE_BEACON_LIGHTS")
+        msfs_event("TOGGLE_BEACON_LIGHTS")
     end   
     sound_play(snd_click)
 end
@@ -291,16 +291,16 @@ function ss_beacon(sw_on)
         visible(img_beacon_indicator, false)
     end
 end     
-fs2020_variable_subscribe("LIGHT BEACON ON", "Bool", ss_beacon)
+msfs_variable_subscribe("LIGHT BEACON ON", "Bool", ss_beacon)
 -- END BEACON LIGHT
 
 -- NAV LIGHT
 img_nav_indicator = img_add("button_on.png", 215, 232, 47, 15)
 function callback_nav(position)
     if position == 0 then
-        fs2020_event("TOGGLE_NAV_LIGHTS")
+        msfs_event("TOGGLE_NAV_LIGHTS")
     elseif position == 1 then
-        fs2020_event("TOGGLE_NAV_LIGHTS")
+        msfs_event("TOGGLE_NAV_LIGHTS")
     end
     sound_play(snd_click)
 end
@@ -315,16 +315,16 @@ function ss_nav(sw_on)
         visible(img_nav_indicator, false)
     end
 end    
-fs2020_variable_subscribe("LIGHT NAV ON", "Bool", ss_nav)
+msfs_variable_subscribe("LIGHT NAV ON", "Bool", ss_nav)
 -- END NAV LIGHT
 
 -- STROBE LIGHT
 img_strobe_indicator = img_add("button_on.png", 315, 232, 47, 15)
 function callback_strobe(position)
     if position == 0 then
-        fs2020_event("STROBES_TOGGLE")
+        msfs_event("STROBES_TOGGLE")
     elseif position == 1 then
-        fs2020_event("STROBES_TOGGLE")
+        msfs_event("STROBES_TOGGLE")
     end
     sound_play(snd_click)
 end
@@ -339,20 +339,20 @@ function ss_strobe(sw_on)
         visible(img_strobe_indicator, false)        
     end
 end    
-fs2020_variable_subscribe("LIGHT STROBE ON", "Bool", ss_strobe)
+msfs_variable_subscribe("LIGHT STROBE ON", "Bool", ss_strobe)
 -- END STROBE LIGHT
 
 -- TAXI LIGHT
 img_taxi_indicator = img_add("button_on.png", 118, 310, 47, 15)
 function callback_taxi(position)
     if position == 0 then
-        fs2020_event("TOGGLE_TAXI_LIGHTS")
-        fs2020_event("LANDING_LIGHTS_OFF")
+        msfs_event("TOGGLE_TAXI_LIGHTS")
+        msfs_event("LANDING_LIGHTS_OFF")
         if value_recon_position == 1 then
-            fs2020_event("TOGGLE_RECOGNITION_LIGHTS")
+            msfs_event("TOGGLE_RECOGNITION_LIGHTS")
         end          
     elseif position == 1 then
-        fs2020_event("TOGGLE_TAXI_LIGHTS")
+        msfs_event("TOGGLE_TAXI_LIGHTS")
       
     end
     sound_play(snd_click)
@@ -370,21 +370,21 @@ function ss_taxi(sw_on)
         value_taxi_position = 0
     end
 end     
-fs2020_variable_subscribe("LIGHT TAXI ON", "Bool", ss_taxi)
+msfs_variable_subscribe("LIGHT TAXI ON", "Bool", ss_taxi)
 -- END TAXI LIGHT
 
 -- LANDING LIGHT
 img_landing_indicator = img_add("button_on.png", 215, 310, 47, 15)
 function callback_landing(position)
     if position == 0 then
-        fs2020_event("LANDING_LIGHTS_TOGGLE")
+        msfs_event("LANDING_LIGHTS_TOGGLE")
         if value_taxi_position == 1 then 
-            fs2020_event("TOGGLE_TAXI_LIGHTS")                         
+            msfs_event("TOGGLE_TAXI_LIGHTS")                         
         elseif value_recon_position == 1 then 
-            fs2020_event("TOGGLE_RECOGNITION_LIGHTS")   
+            msfs_event("TOGGLE_RECOGNITION_LIGHTS")   
         end
     elseif position == 1 then
-        fs2020_event("LANDING_LIGHTS_TOGGLE")
+        msfs_event("LANDING_LIGHTS_TOGGLE")
     end
     sound_play(snd_click)
 end
@@ -399,16 +399,16 @@ function ss_landing(sw_on)
         visible(img_landing_indicator, false)        
     end
 end    
-fs2020_variable_subscribe("LIGHT LANDING ON", "Bool", ss_landing)
+msfs_variable_subscribe("LIGHT LANDING ON", "Bool", ss_landing)
 -- END LANDING LIGHT
 
 -- LOGO LIGHT
 img_logo_indicator = img_add("button_on.png", 315, 310, 47, 15)
 function callback_logo(position)
     if position == 0 then
-        fs2020_event("TOGGLE_LOGO_LIGHTS")
+        msfs_event("TOGGLE_LOGO_LIGHTS")
     elseif position == 1 then
-        fs2020_event("TOGGLE_LOGO_LIGHTS")
+        msfs_event("TOGGLE_LOGO_LIGHTS")
     end
     sound_play(snd_click)
 end
@@ -423,16 +423,16 @@ function ss_logo(sw_on)
         visible(img_logo_indicator, false)           
     end
 end     
-fs2020_variable_subscribe("LIGHT LOGO ON", "Bool", ss_logo)
+msfs_variable_subscribe("LIGHT LOGO ON", "Bool", ss_logo)
 -- END LOGO LIGHT
 
 -- BELT LIGHT
 img_belt_indicator = img_add("button_on.png", 445, 232, 47, 15)
 function callback_belt(position)
     if position == 0 then
-        fs2020_event("CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE",0)
+        msfs_event("CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE",0)
     elseif position == 1 then
-        fs2020_event("CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE",1)
+        msfs_event("CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE",1)
      end
     sound_play(snd_click)
 end
@@ -447,16 +447,16 @@ function ss_belt(sw_on)
         visible(img_belt_indicator, false) 
     end
 end 
-fs2020_variable_subscribe("A:CABIN SEATBELTS ALERT SWITCH", "Number", ss_belt)
+msfs_variable_subscribe("A:CABIN SEATBELTS ALERT SWITCH", "Number", ss_belt)
 -- END BELT LIGHT
 
 -- SAFETY LIGHT
 img_safety_indicator = img_add("button_on.png", 542, 232, 47, 15)
 function callback_safety(position)
     if position == 0 then
-	fs2020_event("CABIN_NO_SMOKING_ALERT_SWITCH_TOGGLE",0)
+	msfs_event("CABIN_NO_SMOKING_ALERT_SWITCH_TOGGLE",0)
     elseif position == 1 then
-        fs2020_event("CABIN_NO_SMOKING_ALERT_SWITCH_TOGGLE",1)
+        msfs_event("CABIN_NO_SMOKING_ALERT_SWITCH_TOGGLE",1)
     end
     sound_play(snd_click)
 end
@@ -471,7 +471,7 @@ function ss_safety(sw_on)
         visible(img_safety_indicator, false)         
     end
 end    
-fs2020_variable_subscribe("A:CABIN NO SMOKING ALERT SWITCH", "Number", ss_safety)
+msfs_variable_subscribe("A:CABIN NO SMOKING ALERT SWITCH", "Number", ss_safety)
 -- END SAFETY LIGHT
 
 -- TCAS 
@@ -496,7 +496,7 @@ function ss_tcas(sw_on)
         visible(img_tcas_indicator, false)        
     end
 end    
---fs2020_variable_subscribe("CABIN SEATBELTS ALERT SWITCH", "Bool", ss_tcas)
+--msfs_variable_subscribe("CABIN SEATBELTS ALERT SWITCH", "Bool", ss_tcas)
 -- END TCAS
 
 -- PULSE RECON SWITCH
@@ -504,14 +504,14 @@ img_recon_indicator = img_add("button_on.png", 541, 310, 47, 15)
 function callback_recon(position)
     if position == 0 then
        -- switch_set_position(on_id, 1)
-        fs2020_event("TOGGLE_RECOGNITION_LIGHTS")
+        msfs_event("TOGGLE_RECOGNITION_LIGHTS")
                 
     elseif position == 1 then
         --switch_set_position(on_id, 0)
-        fs2020_event("TOGGLE_RECOGNITION_LIGHTS")
-        fs2020_event("LANDING_LIGHTS_OFF")
+        msfs_event("TOGGLE_RECOGNITION_LIGHTS")
+        msfs_event("LANDING_LIGHTS_OFF")
         if value_taxi_position == 1 then 
-            fs2020_event("TOGGLE_TAXI_LIGHTS")       
+            msfs_event("TOGGLE_TAXI_LIGHTS")       
         end
     end
     sound_play(snd_click)
@@ -529,7 +529,7 @@ function ss_recon(sw_on)
         value_recon_position = 0
     end
 end    
-fs2020_variable_subscribe("LIGHT RECOGNITION ON", "Bool", ss_recon)
+msfs_variable_subscribe("LIGHT RECOGNITION ON", "Bool", ss_recon)
 -- END Pulse SWITCH
 
 ss_ambient_darkness(0)

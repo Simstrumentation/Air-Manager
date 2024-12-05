@@ -41,7 +41,7 @@ function ss_backlighting(value, pwr)
         opacity(img_backlight_knob_MAN_RATE, (value), "LOG", 0.04)   
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 
@@ -89,7 +89,7 @@ img_backlight_knob_MAN_RATE= img_add("backlight_round_knob.png", 447,215,130,130
 --Emer Depress
 function cb_EMER_DEPRESS()
         tgl_EMER_DEPRESS = (tgl_EMER_DEPRESS + 1) % 2
-        fs2020_variable_write("L:ASCRJ_PRESS_EMER_DEPRESS","Number",tgl_EMER_DEPRESS)
+        msfs_variable_write("L:ASCRJ_PRESS_EMER_DEPRESS","Number",tgl_EMER_DEPRESS)
         sound_play(snd_click)
 end
 btn_EMER_DEPRESS = button_add(nil,"btn_push.png", 105,240,69,68, cb_EMER_DEPRESS) visible(btn_EMER_DEPRESS, true)
@@ -114,7 +114,7 @@ function timer_EMER_DEPRESS_Cover()
 end
 
 
-fs2020_variable_subscribe("L:ASCRJ_PRESS_EMER_DEPRESS", "Number",
+msfs_variable_subscribe("L:ASCRJ_PRESS_EMER_DEPRESS", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", 
 function (on,pwr)
         visible(img_EMER_DEPRESS_ON, (on ==1 and pwr ==true))
@@ -123,19 +123,19 @@ end)
 --Cont Button
 function cb_CONT_MAN()
     tgl_CONT_MAN = (tgl_CONT_MAN +1) % 2  --- Toggles between 1 and zero for START and STOP -------    
-    fs2020_variable_write("L:ASCRJ_PRESS_PRESS_CONT","Number", tgl_CONT_MAN)
+    msfs_variable_write("L:ASCRJ_PRESS_PRESS_CONT","Number", tgl_CONT_MAN)
     sound_play(snd_click )
 end
 btn_CONT_MAN = button_add(nil,"btn_push.png", 278,245,69,68, cb_CONT_MAN)     
-fs2020_variable_subscribe("L:ASCRJ_PRESS_PRESS_CONT_MAN", "Number", "A:CIRCUIT GENERAL PANEL ON","Bool", 
+msfs_variable_subscribe("L:ASCRJ_PRESS_PRESS_CONT_MAN", "Number", "A:CIRCUIT GENERAL PANEL ON","Bool", 
         function (on,pwr) visible(img_CONT_MAN_ON,(on ==1 and pwr ==true)) end) 
-fs2020_variable_subscribe("L:ASCRJ_PRESS_PRESS_CONT_FAULT", "Number", "A:CIRCUIT GENERAL PANEL ON","Bool", 
+msfs_variable_subscribe("L:ASCRJ_PRESS_PRESS_CONT_FAULT", "Number", "A:CIRCUIT GENERAL PANEL ON","Bool", 
         function (on,pwr) visible(img_CONT_FAULT_ON,(on ==1 and pwr ==true)) end)     
 
 --LDG Elev   
 local ldgelev_angle = 0
 function cb_LDG_ELEV(direction)
-    fs2020_variable_write("L:ASCRJ_PRESS_LDG_ELEV_CHANGE","Number", direction) timer_start(100, function() fs2020_variable_write("L:ASCRJ_PRESS_LDG_ELEV_CHANGE","Number",0)end)   
+    msfs_variable_write("L:ASCRJ_PRESS_LDG_ELEV_CHANGE","Number", direction) timer_start(100, function() msfs_variable_write("L:ASCRJ_PRESS_LDG_ELEV_CHANGE","Number",0)end)   
     ldgelev_angle = ldgelev_angle + (direction*10)
     rotate(img_LDG_ELEV_night, ldgelev_angle)
 end
@@ -145,12 +145,12 @@ img_LDG_ELEV_night = img_add("delta_knob_night.png", 220,45,100,100)
 
 --Man Alt
 function cb_MAN_ALT_dec()
-    if current_pos_MAN_ALT == 1  then fs2020_variable_write("L:ASCRJ_PRESS_MAN_ALT", "Number", 2) timer_start(50, function() fs2020_variable_write("L:ASCRJ_PRESS_MAN_ALT","Number",1)end) end  
+    if current_pos_MAN_ALT == 1  then msfs_variable_write("L:ASCRJ_PRESS_MAN_ALT", "Number", 2) timer_start(50, function() msfs_variable_write("L:ASCRJ_PRESS_MAN_ALT","Number",1)end) end  
 end
 btn_MAN_ALT_dn = button_add(nil, nil, 485, 120, 50, 50, cb_MAN_ALT_dec)
 
 function cb_MAN_ALT_inc()
-    if current_pos_MAN_ALT == 1  then fs2020_variable_write("L:ASCRJ_PRESS_MAN_ALT", "Number", 0)  timer_start(50, function() fs2020_variable_write("L:ASCRJ_PRESS_MAN_ALT","Number",1)end) end
+    if current_pos_MAN_ALT == 1  then msfs_variable_write("L:ASCRJ_PRESS_MAN_ALT", "Number", 0)  timer_start(50, function() msfs_variable_write("L:ASCRJ_PRESS_MAN_ALT","Number",1)end) end
 end
 btn_MAN_ALT_up = button_add(nil, nil, 485, 30, 50, 50, cb_MAN_ALT_inc)
 
@@ -169,14 +169,14 @@ function ss_man_alt(pos)
         end
     current_pos_MAN_ALT = pos
 end
-fs2020_variable_subscribe("L:ASCRJ_PRESS_MAN_ALT", "Number", ss_man_alt)    
+msfs_variable_subscribe("L:ASCRJ_PRESS_MAN_ALT", "Number", ss_man_alt)    
     
     
 --Man Rate Knob 0-26   "L:ASCRJ_PRESS_MAN_VS_RATE"
 sw_MAN_RATE = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,  447,215,130,130, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_PRESS_MAN_VS_RATE","Number", pos+dir) end)
+        function (pos,dir) msfs_variable_write("L:ASCRJ_PRESS_MAN_VS_RATE","Number", pos+dir) end)
 
-fs2020_variable_subscribe("L:ASCRJ_PRESS_MAN_VS_RATE", "Number",
+msfs_variable_subscribe("L:ASCRJ_PRESS_MAN_VS_RATE", "Number",
         function (position)
                 switch_set_position(sw_MAN_RATE, (var_round(position,0)))             
                 rotate(img_knob_MAN_RATE, (position*8.4)-110,"LOG", 0.1)       --110 is the starting offset (reverse degrees) and *8.4 is the multiplyer 

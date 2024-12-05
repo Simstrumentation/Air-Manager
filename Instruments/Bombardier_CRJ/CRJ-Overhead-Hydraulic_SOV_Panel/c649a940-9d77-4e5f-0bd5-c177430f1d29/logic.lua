@@ -38,7 +38,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 ---------------------------------------------
 --Day graphics
@@ -78,7 +78,7 @@ local tgl_HYDR_SOV2 = 0
 
 function cb_HYDR_SOV1()
         tgl_HYDR_SOV1 = (tgl_HYDR_SOV1 + 1) % 2
-        fs2020_variable_write("L:ASCRJ_HYDR_SOV1","Number",tgl_HYDR_SOV1)
+        msfs_variable_write("L:ASCRJ_HYDR_SOV1","Number",tgl_HYDR_SOV1)
         sound_play(snd_click)
 end
 btn_HYDR_SOV1 = button_add(nil,"btn_push.png", 86,134,95,95, cb_HYDR_SOV1) visible(btn_HYDR_SOV1, false)
@@ -106,7 +106,7 @@ end
 --SOV2 BUTTON 
 function cb_HYDR_SOV2()
     tgl_HYDR_SOV2 = (tgl_HYDR_SOV2 + 1) % 2
-    fs2020_variable_write("L:ASCRJ_HYDR_SOV2","Number",tgl_HYDR_SOV2)
+    msfs_variable_write("L:ASCRJ_HYDR_SOV2","Number",tgl_HYDR_SOV2)
     sound_play(snd_click)
 end
 btn_HYDR_SOV2 = button_add(nil,"btn_push.png", 446,134,95,95, cb_HYDR_SOV2) visible(btn_HYDR_SOV2, false)
@@ -132,13 +132,13 @@ end
 
 
 --Subscribes   
-fs2020_variable_subscribe("L:ASCRJ_HYDR_SOV1_CLOSED", "Number",
+msfs_variable_subscribe("L:ASCRJ_HYDR_SOV1_CLOSED", "Number",
                                             "A:CIRCUIT GENERAL PANEL ON","Bool",
     function (on,pwr)
         visible(img_HYD_SOV1_ON, (on ==1 and pwr ==true))
     end)      
 
-fs2020_variable_subscribe("L:ASCRJ_HYDR_SOV2_CLOSED", "Number", 
+msfs_variable_subscribe("L:ASCRJ_HYDR_SOV2_CLOSED", "Number", 
                                                 "A:CIRCUIT GENERAL PANEL ON","Bool",
     function (on,pwr)
         visible(img_HYD_SOV2_ON, (on ==1 and pwr ==true))

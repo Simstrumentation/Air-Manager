@@ -136,7 +136,7 @@ function aircon_cb(direction)
             aircon_percent = aircon_percent - 5
         end
     end 
-    fs2020_variable_write("L:XMLVAR_AIRCON_COOLER_KNOB_Position", "Number", var_round(aircon_percent, 1))
+    msfs_variable_write("L:XMLVAR_AIRCON_COOLER_KNOB_Position", "Number", var_round(aircon_percent, 1))
     request_callback(aircon_dial(aircon_percent))
 end
 aircon_id = dial_add(nil, xpos, second_row_y, knob_width * 0.7, knob_width * 0.7, aircon_cb)
@@ -146,7 +146,7 @@ function aircon_dial(aircon_dial)
     aircon_percent = aircon_dial
     rotate(aircon_image, (aircon_dial * rotation_scalar) - 10, "LINEAR", 0.04)
 end
-fs2020_variable_subscribe("L:XMLVAR_AIRCON_COOLER_KNOB_Position", "NUMBER",aircon_dial)
+msfs_variable_subscribe("L:XMLVAR_AIRCON_COOLER_KNOB_Position", "NUMBER",aircon_dial)
 --END AC KNOB
 
 xpos = 200
@@ -154,7 +154,7 @@ xpos = 200
 function aircon_fan_cb(position, direction)
 print(position)
     new_pos = (position + direction)
-    fs2020_variable_write("L:AIRCON_HI_LOW_SWITCH", "Enum", new_pos)
+    msfs_variable_write("L:AIRCON_HI_LOW_SWITCH", "Enum", new_pos)
 end
 aircon_fan_id = switch_add ( "white_down.png", "white_up.png", xpos, second_row_y -10, switch_width, switch_height, "VERTICAL", aircon_fan_cb)
 
@@ -167,14 +167,14 @@ function aircon_fan_pos(pos)
     end
 end
 
-fs2020_variable_subscribe("L:AIRCON_HI_LOW_SWITCH", "Enum", aircon_fan_pos)
+msfs_variable_subscribe("L:AIRCON_HI_LOW_SWITCH", "Enum", aircon_fan_pos)
 --END AC FAN SWITCH
 
 --START AC COMPRESSOR SWITCH
 function aircon_switch_cb(position, direction)
     print(position)
     new_pos = (position + direction)
-    fs2020_variable_write("L:GENERIC_Momentary_AIRCON_COOL_SWITCH_1", "Enum", new_pos)
+    msfs_variable_write("L:GENERIC_Momentary_AIRCON_COOL_SWITCH_1", "Enum", new_pos)
 end
 aircon_sw_id = switch_add ( "white_down.png", "white_mid.png", "white_up.png", xpos + switch_spacing, second_row_y -10, switch_width, switch_height, "VERTICAL", aircon_switch_cb)
 
@@ -186,7 +186,7 @@ function aircon_pos(pos)
         hw_led_set(aircon_hw_LED, 0)
     end
 end
-fs2020_variable_subscribe("L:GENERIC_Momentary_AIRCON_COOL_SWITCH_1", "Enum", aircon_pos)
+msfs_variable_subscribe("L:GENERIC_Momentary_AIRCON_COOL_SWITCH_1", "Enum", aircon_pos)
 --END AC COMPRESSOR SWITCH
 
 ----
@@ -196,16 +196,16 @@ end
 
 function aircon_switch_callback(position)
     if position == 1 then
-        fs2020_variable_write("L:GENERIC_Momentary_AIRCON_COOL_SWITCH_1", "Enum", 2)
+        msfs_variable_write("L:GENERIC_Momentary_AIRCON_COOL_SWITCH_1", "Enum", 2)
     else
-        fs2020_variable_write("L:GENERIC_Momentary_AIRCON_COOL_SWITCH_1", "Enum", 1)
+        msfs_variable_write("L:GENERIC_Momentary_AIRCON_COOL_SWITCH_1", "Enum", 1)
     end
 end
 function aircon_fan_switch_callback(position)
     if position == 1 then
-        fs2020_variable_write("L:AIRCON_HI_LOW_SWITCH", "Enum", 1)
+        msfs_variable_write("L:AIRCON_HI_LOW_SWITCH", "Enum", 1)
     else
-        fs2020_variable_write("L:AIRCON_HI_LOW_SWITCH", "Enum", 0)
+        msfs_variable_write("L:AIRCON_HI_LOW_SWITCH", "Enum", 0)
     end
 end
 

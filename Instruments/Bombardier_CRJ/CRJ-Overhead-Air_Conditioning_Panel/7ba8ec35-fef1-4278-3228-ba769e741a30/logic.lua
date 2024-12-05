@@ -48,7 +48,7 @@ function ss_backlighting(value, power, extpower, busvolts)
         opacity(img_backlight_knob_CABIN, (value), "LOG", 0.04)        
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                           "ELECTRICAL MASTER BATTERY","Bool", ss_backlighting)
 
 ---------------------------------------------
@@ -122,7 +122,7 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 --RAM_AIR
 function cb_RAM_AIR()
         tgl_RAM_AIR = (tgl_RAM_AIR + 1) % 2
-        fs2020_variable_write("L:ASCRJ_AIRC_RAM_AIR","Number",tgl_RAM_AIR)
+        msfs_variable_write("L:ASCRJ_AIRC_RAM_AIR","Number",tgl_RAM_AIR)
         sound_play(snd_click)
 end
 btn_RAM_AIR = button_add(nil,"btn_push.png", 475,105,86,85, cb_RAM_AIR) visible(btn_RAM_AIR, false)
@@ -152,42 +152,42 @@ function ss_RAM_AIR_ON(on,pwr)
 	    else visible(img_RAM_AIR_ON, false)
 	    end                
 end
-fs2020_variable_subscribe("L:ASCRJ_AIRC_RAM_AIR_OPEN", "Number", 
+msfs_variable_subscribe("L:ASCRJ_AIRC_RAM_AIR_OPEN", "Number", 
 				            "A:CIRCUIT GENERAL PANEL ON","Bool", ss_RAM_AIR_ON)    
 ----------------------------------------------
 
 --Pack_L
 function cb_Pack_L()
     tgl_Pack_L = (tgl_Pack_L +1) % 2  --- Toggles between 1 and zero for START and STOP -------    
-    fs2020_variable_write("L:ASCRJ_AIRC_PACK_L","Number", tgl_Pack_L) 
+    msfs_variable_write("L:ASCRJ_AIRC_PACK_L","Number", tgl_Pack_L) 
     sound_play(snd_click )
 end
 btn_Pack_L = button_add(nil,"btn_push.png", 85,100,82,82, cb_Pack_L)     
-fs2020_variable_subscribe("L:ASCRJ_AIRC_PACK_L_OFF", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_Pack_L_OFF, on ==1)else visible(img_Pack_L_OFF, false)end end) 
-fs2020_variable_subscribe("L:ASCRJ_AIRC_PACK_L_FAULT", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_Pack_L_FAULT, on ==1)else visible(img_Pack_L_FAULT, false)end end) 
+msfs_variable_subscribe("L:ASCRJ_AIRC_PACK_L_OFF", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_Pack_L_OFF, on ==1)else visible(img_Pack_L_OFF, false)end end) 
+msfs_variable_subscribe("L:ASCRJ_AIRC_PACK_L_FAULT", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_Pack_L_FAULT, on ==1)else visible(img_Pack_L_FAULT, false)end end) 
 
 --Pack_R
 function cb_Pack_R()
     tgl_Pack_R = (tgl_Pack_R +1) % 2  --- Toggles between 1 and zero for START and STOP -------    
-    fs2020_variable_write("L:ASCRJ_AIRC_PACK_R","Number", tgl_Pack_R)
+    msfs_variable_write("L:ASCRJ_AIRC_PACK_R","Number", tgl_Pack_R)
     sound_play(snd_click )
 end
 btn_Pack_R = button_add(nil,"btn_push.png", 195,100,82,82, cb_Pack_R)     
-fs2020_variable_subscribe("L:ASCRJ_AIRC_PACK_R_OFF", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_Pack_R_OFF, on ==1)else visible(img_Pack_R_OFF, false)end end) 
-fs2020_variable_subscribe("L:ASCRJ_AIRC_PACK_R_FAULT", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_Pack_R_FAULT, on ==1)else visible(img_Pack_R_FAULT, false)end end) 
+msfs_variable_subscribe("L:ASCRJ_AIRC_PACK_R_OFF", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_Pack_R_OFF, on ==1)else visible(img_Pack_R_OFF, false)end end) 
+msfs_variable_subscribe("L:ASCRJ_AIRC_PACK_R_FAULT", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_Pack_R_FAULT, on ==1)else visible(img_Pack_R_FAULT, false)end end) 
 ----------------------------------------------
 
 --RECIRC_FAN Switch
 function cb_RECIRC_FAN(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_AIRC_RECIRC_FAN","Number",1) 
+        msfs_variable_write("L:ASCRJ_AIRC_RECIRC_FAN","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIRC_RECIRC_FAN","Number",0) 
+        msfs_variable_write("L:ASCRJ_AIRC_RECIRC_FAN","Number",0) 
     end 
 end
 sw_RECIRC_FAN= switch_add(nil,nil, 350,50,100,150, cb_RECIRC_FAN)
 
-fs2020_variable_subscribe("L:ASCRJ_AIRC_RECIRC_FAN", "Number", 
+msfs_variable_subscribe("L:ASCRJ_AIRC_RECIRC_FAN", "Number", 
         function (state)
             switch_set_position(sw_RECIRC_FAN, state)
             visible(img_RECIRC_FAN_up, state ==0)
@@ -199,16 +199,16 @@ fs2020_variable_subscribe("L:ASCRJ_AIRC_RECIRC_FAN", "Number",
 
 --CKPT_SW Switch
 function cb_CKPT_SW_dec()
-    if current_pos_CKPT_SW == 1  then fs2020_variable_write("L:ASCRJ_AIRC_HOTCOLD_CKPT", "Number", 2) timer_start(100, function() fs2020_variable_write("L:ASCRJ_AIRC_HOTCOLD_CKPT","Number",1)end) end      
+    if current_pos_CKPT_SW == 1  then msfs_variable_write("L:ASCRJ_AIRC_HOTCOLD_CKPT", "Number", 2) timer_start(100, function() msfs_variable_write("L:ASCRJ_AIRC_HOTCOLD_CKPT","Number",1)end) end      
 end
 btn_CKPT_SW_dn = button_add(nil, nil, 70, 315, 50, 50, cb_CKPT_SW_dec)
 
 function cb_CKPT_SW_inc()
-    if current_pos_CKPT_SW == 1  then fs2020_variable_write("L:ASCRJ_AIRC_HOTCOLD_CKPT", "Number", 0)  timer_start(100, function() fs2020_variable_write("L:ASCRJ_AIRC_HOTCOLD_CKPT","Number",1)end) end   
+    if current_pos_CKPT_SW == 1  then msfs_variable_write("L:ASCRJ_AIRC_HOTCOLD_CKPT", "Number", 0)  timer_start(100, function() msfs_variable_write("L:ASCRJ_AIRC_HOTCOLD_CKPT","Number",1)end) end   
 end
 btn_CKPT_SW_up = button_add(nil, nil, 70, 215, 50, 50, cb_CKPT_SW_inc)
 
-fs2020_variable_subscribe("L:ASCRJ_AIRC_HOTCOLD_CKPT", "Number", 
+msfs_variable_subscribe("L:ASCRJ_AIRC_HOTCOLD_CKPT", "Number", 
     function (pos)
         if pos == 0 then
             visible(img_CKPT_SW_dn , false) visible(img_CKPT_SW_mid , false) visible(img_CKPT_SW_up , true)
@@ -225,16 +225,16 @@ end)
     
 --CABIN_SW Switch
 function cb_CABIN_SW_dec()
-    if current_pos_CABIN_SW == 1  then fs2020_variable_write("L:ASCRJ_AIRC_HOTCOLD_CABIN", "Number", 2) timer_start(100, function() fs2020_variable_write("L:ASCRJ_AIRC_HOTCOLD_CABIN","Number",1)end) end   
+    if current_pos_CABIN_SW == 1  then msfs_variable_write("L:ASCRJ_AIRC_HOTCOLD_CABIN", "Number", 2) timer_start(100, function() msfs_variable_write("L:ASCRJ_AIRC_HOTCOLD_CABIN","Number",1)end) end   
 end
 btn_CABIN_SW_dn = button_add(nil, nil, 525, 315, 50, 50, cb_CABIN_SW_dec)
 
 function cb_CABIN_SW_inc()
-    if current_pos_CABIN_SW == 1  then fs2020_variable_write("L:ASCRJ_AIRC_HOTCOLD_CABIN", "Number", 0) timer_start(100, function() fs2020_variable_write("L:ASCRJ_AIRC_HOTCOLD_CABIN","Number",1)end)end
+    if current_pos_CABIN_SW == 1  then msfs_variable_write("L:ASCRJ_AIRC_HOTCOLD_CABIN", "Number", 0) timer_start(100, function() msfs_variable_write("L:ASCRJ_AIRC_HOTCOLD_CABIN","Number",1)end)end
 end
 btn_CABIN_SW_up = button_add(nil, nil, 525, 215, 50, 50, cb_CABIN_SW_inc)
 
-fs2020_variable_subscribe("L:ASCRJ_AIRC_HOTCOLD_CABIN", "Number", 
+msfs_variable_subscribe("L:ASCRJ_AIRC_HOTCOLD_CABIN", "Number", 
     function (pos)
         if pos == 0 then
             visible(img_CABIN_SW_dn , false) visible(img_CABIN_SW_mid , false) visible(img_CABIN_SW_up , true)
@@ -252,32 +252,32 @@ end)
 --MANCTRL_CKPT
 function cb_MANCTRL_CKPT()
     tgl_MANCTRL_CKPT = (tgl_MANCTRL_CKPT +1) % 2  --- Toggles between 1 and zero for START and STOP -------    
-    fs2020_variable_write("L:ASCRJ_AIRC_MANCTRL_CKPT","Number", tgl_MANCTRL_CKPT)
+    msfs_variable_write("L:ASCRJ_AIRC_MANCTRL_CKPT","Number", tgl_MANCTRL_CKPT)
     sound_play(snd_click )
 end
 btn_MANCTRL_CKPT = button_add(nil, "btn_push.png", 190,235,82,82, cb_MANCTRL_CKPT)     
-fs2020_variable_subscribe("L:ASCRJ_AIRC_MANCTRL_CKPT_MAN", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_MANCTRL_CKPT, on ==1)else visible(img_MANCTRL_CKPT, false)end end) 
+msfs_variable_subscribe("L:ASCRJ_AIRC_MANCTRL_CKPT_MAN", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_MANCTRL_CKPT, on ==1)else visible(img_MANCTRL_CKPT, false)end end) 
 --MANCTRL_CABIN
 function cb_MANCTRL_CABIN()
     tgl_MANCTRL_CABIN = (tgl_MANCTRL_CABIN +1) % 2  --- Toggles between 1 and zero for START and STOP -------    
-    fs2020_variable_write("L:ASCRJ_AIRC_MANCTRL_CABIN","Number", tgl_MANCTRL_CABIN)
+    msfs_variable_write("L:ASCRJ_AIRC_MANCTRL_CABIN","Number", tgl_MANCTRL_CABIN)
     sound_play(snd_click )
 end
 btn_MANCTRL_CABIN = button_add(nil, "btn_push.png", 370,235,82,82, cb_MANCTRL_CABIN)     
-fs2020_variable_subscribe("L:ASCRJ_AIRC_MANCTRL_CABIN_MAN", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_MANCTRL_CABIN, on ==1)else visible(img_MANCTRL_CABIN, false)end end) 
+msfs_variable_subscribe("L:ASCRJ_AIRC_MANCTRL_CABIN_MAN", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", function (on,pwr) if (pwr==true) then visible(img_MANCTRL_CABIN, on ==1)else visible(img_MANCTRL_CABIN, false)end end) 
 ----------------------------------------------
 
 --AFT_CARGO Switch
 function cb_AFT_CARGO(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_AIRC_AFT_CARGO","Number",1) 
+        msfs_variable_write("L:ASCRJ_AIRC_AFT_CARGO","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIRC_AFT_CARGO","Number",0) 
+        msfs_variable_write("L:ASCRJ_AIRC_AFT_CARGO","Number",0) 
     end 
 end
 sw_AFT_CARGO= switch_add(nil,nil, 270,360,104,150, cb_AFT_CARGO)
 
-fs2020_variable_subscribe("L:ASCRJ_AIRC_AFT_CARGO", "Number", 
+msfs_variable_subscribe("L:ASCRJ_AIRC_AFT_CARGO", "Number", 
         function (state)
             switch_set_position(sw_AFT_CARGO, state)
             visible(img_AFT_CARGO_up, state ==0)
@@ -289,9 +289,9 @@ fs2020_variable_subscribe("L:ASCRJ_AIRC_AFT_CARGO", "Number",
                 
 --Temperature Control Knobs CKPT
 sw_TEMPCTRL_CKPT = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,  150,395,90,90, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_AIRC_TEMPCTRL_CKPT","Number", pos+dir) end)
+        function (pos,dir) msfs_variable_write("L:ASCRJ_AIRC_TEMPCTRL_CKPT","Number", pos+dir) end)
 
-fs2020_variable_subscribe("L:ASCRJ_AIRC_TEMPCTRL_CKPT", "Number",
+msfs_variable_subscribe("L:ASCRJ_AIRC_TEMPCTRL_CKPT", "Number",
         function (position)
                 switch_set_position(sw_TEMPCTRL_CKPT, (var_round(position,0)))             
                 rotate(img_knob_TEMPCTRL_CKPT, (position*8.4)-110,"LOG", 0.1)       --110 is the starting offset (reverse degrees) and *8.4 is the multiplyer              
@@ -300,9 +300,9 @@ fs2020_variable_subscribe("L:ASCRJ_AIRC_TEMPCTRL_CKPT", "Number",
         end)           
 --Temperature Control Knobs Cabin
 sw_TEMPCTRL_CABIN = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,  410,395,90,90, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_AIRC_TEMPCTRL_CABIN","Number", pos+dir) end)
+        function (pos,dir) msfs_variable_write("L:ASCRJ_AIRC_TEMPCTRL_CABIN","Number", pos+dir) end)
 
-fs2020_variable_subscribe("L:ASCRJ_AIRC_TEMPCTRL_CABIN", "Number",
+msfs_variable_subscribe("L:ASCRJ_AIRC_TEMPCTRL_CABIN", "Number",
         function (position)
                 switch_set_position(sw_TEMPCTRL_CABIN, (var_round(position,0)))             
                 rotate(img_knob_TEMPCTRL_CABIN, (position*8.4)-110,"LOG", 0.1)       --110 is the starting offset (reverse degrees) and *8.4 is the multiplyer              

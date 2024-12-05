@@ -40,7 +40,7 @@ function ss_backlighting(value, pwr)
         opacity(img_backlight_knob_DSPL, (value), "LOG", 0.04)                   
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
                                               
 --Day Graphics   
@@ -72,7 +72,7 @@ end
 si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
 --------------------------------------------------------------------------------------------
-fs2020_variable_subscribe("L:ASCRJ_ATTD_HDG", "Number",
+msfs_variable_subscribe("L:ASCRJ_ATTD_HDG", "Number",
         function (position)
                 switch_set_position(sw_ATTD, (var_round(position,0)))             
                 rotate(img_knob_ATTD, (position*52)-52,"LOG", 0.1)
@@ -81,9 +81,9 @@ fs2020_variable_subscribe("L:ASCRJ_ATTD_HDG", "Number",
         end)           
 
 sw_ATTD = switch_add(nil,nil,nil, 42,28,65,65, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_ATTD_HDG","Number", pos+dir) end) 
+        function (pos,dir) msfs_variable_write("L:ASCRJ_ATTD_HDG","Number", pos+dir) end) 
         
-fs2020_variable_subscribe("L:ASCRJ_EICAS", "Number",
+msfs_variable_subscribe("L:ASCRJ_EICAS", "Number",
         function (position)
                 switch_set_position(sw_EICAS, (var_round(position,0)))             
                 rotate(img_knob_EICAS, (position*52)-52,"LOG", 0.1)
@@ -92,9 +92,9 @@ fs2020_variable_subscribe("L:ASCRJ_EICAS", "Number",
         end)           
 
 sw_EICAS = switch_add(nil,nil,nil, 182,28,65,65, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_EICAS","Number", pos+dir) end)         
+        function (pos,dir) msfs_variable_write("L:ASCRJ_EICAS","Number", pos+dir) end)         
         
-fs2020_variable_subscribe("L:ASCRJ_AIR_DATA", "Number",
+msfs_variable_subscribe("L:ASCRJ_AIR_DATA", "Number",
         function (position)
                 switch_set_position(sw_DATA, (var_round(position,0)))             
                 rotate(img_knob_DATA, (position*52)-52,"LOG", 0.1)
@@ -103,9 +103,9 @@ fs2020_variable_subscribe("L:ASCRJ_AIR_DATA", "Number",
         end)           
 
 sw_DATA = switch_add(nil,nil,nil, 114,126,65,65, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_AIR_DATA","Number", pos+dir) end)          
+        function (pos,dir) msfs_variable_write("L:ASCRJ_AIR_DATA","Number", pos+dir) end)          
         
-fs2020_variable_subscribe("L:ASCRJ_DSPL_CONT", "Number",
+msfs_variable_subscribe("L:ASCRJ_DSPL_CONT", "Number",
         function (position)
                 switch_set_position(sw_DSPL, (var_round(position,0)))             
                 rotate(img_knob_DSPL, (position*52)-52,"LOG", 0.1)
@@ -114,4 +114,4 @@ fs2020_variable_subscribe("L:ASCRJ_DSPL_CONT", "Number",
         end)           
 
 sw_DSPL = switch_add(nil,nil,nil, 256,126,65,65, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_DSPL_CONT","Number", pos+dir) end)                
+        function (pos,dir) msfs_variable_write("L:ASCRJ_DSPL_CONT","Number", pos+dir) end)                

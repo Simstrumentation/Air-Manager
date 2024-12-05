@@ -54,7 +54,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                            "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -110,14 +110,14 @@ function  ss_landing_gear(center, left, right, handle, bus_volts)
     end
     new_gear_deploy({left, center, right}, handle, {bus_volts})
 end
-fs2020_variable_subscribe("GEAR CENTER POSITION", "Percent", 
+msfs_variable_subscribe("GEAR CENTER POSITION", "Percent", 
                           "GEAR LEFT POSITION", "Percent", 
                           "GEAR RIGHT POSITION", "Percent", 
                           "GEAR HANDLE POSITION", "Bool", 
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", ss_landing_gear)
 
 function callback_gear_switch(state, direction)
-      fs2020_event( fif(state == 0, "GEAR_DOWN", "GEAR_UP") )
+      msfs_event( fif(state == 0, "GEAR_DOWN", "GEAR_UP") )
 end
 sw_gear_handle = switch_add(nil, nil, 122, 288, 123, 421, callback_gear_switch)
 sw_gear_handle_night = switch_add(nil, nil, 122, 288, 123, 421, callback_gear_switch)                          

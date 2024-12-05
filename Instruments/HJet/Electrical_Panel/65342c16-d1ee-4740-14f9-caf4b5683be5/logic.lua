@@ -67,18 +67,18 @@ end
         --    battery
 function batteryAction()
     sound_play(press_snd)
-    fs2020_event("TOGGLE_MASTER_BATTERY")
+    msfs_event("TOGGLE_MASTER_BATTERY")
 end    
 battery_id = button_add(nil, "pressed.png", 50, 84, 60, 60, batteryAction, releaseAction)    
     --    gen L
 function genLAction()
     sound_play(press_snd)
     if genLState == 1 then
-        fs2020_variable_write("L:GENL Pushed", "Number", 3)
-        fs2020_variable_write("L:GENL Pushed", "Number", 0)
+        msfs_variable_write("L:GENL Pushed", "Number", 3)
+        msfs_variable_write("L:GENL Pushed", "Number", 0)
     else
-        fs2020_variable_write("L:GENL Pushed", "Number", 3)
-        fs2020_variable_write("L:GENL Pushed", "Number", 1)
+        msfs_variable_write("L:GENL Pushed", "Number", 3)
+        msfs_variable_write("L:GENL Pushed", "Number", 1)
     end
 end    
 gen_l_id = button_add(nil, "pressed.png", 130, 84, 60, 60, genLAction, releaseAction)        
@@ -87,11 +87,11 @@ gen_l_id = button_add(nil, "pressed.png", 130, 84, 60, 60, genLAction, releaseAc
 function genRAction()
     sound_play(press_snd)
     if genRState == 1 then
-        fs2020_variable_write("L:GENR Pushed", "Number", 3)
-        fs2020_variable_write("L:GENR Pushed", "Number", 0)
+        msfs_variable_write("L:GENR Pushed", "Number", 3)
+        msfs_variable_write("L:GENR Pushed", "Number", 0)
     else
-        fs2020_variable_write("L:GENR Pushed", "Number", 3)
-        fs2020_variable_write("L:GENR Pushed", "Number", 1)
+        msfs_variable_write("L:GENR Pushed", "Number", 3)
+        msfs_variable_write("L:GENR Pushed", "Number", 1)
     end
 end    
 gen_r_id = button_add(nil, "pressed.png", 208, 84, 60, 60, genRAction, releaseAction)      
@@ -102,11 +102,11 @@ gen_r_id = button_add(nil, "pressed.png", 208, 84, 60, 60, genRAction, releaseAc
 function gndPowerAction()
     sound_play(press_snd)
     if gPowerPush == 1 then
-        fs2020_variable_write("L:GPOW PUSHED", "Number", 3)
-        fs2020_variable_write("L:GPOW PUSHED", "Number", 0)
+        msfs_variable_write("L:GPOW PUSHED", "Number", 3)
+        msfs_variable_write("L:GPOW PUSHED", "Number", 0)
     else
-        fs2020_variable_write("L:GPOW PUSHED", "Number", 3)
-        fs2020_variable_write("L:GPOW PUSHED", "Number", 1)
+        msfs_variable_write("L:GPOW PUSHED", "Number", 3)
+        msfs_variable_write("L:GPOW PUSHED", "Number", 1)
     end
 end    
 gpower_id = button_add(nil, "pressed.png", 316, 84, 60, 60, gndPowerAction, releaseAction)        
@@ -128,11 +128,11 @@ function busAction()
     if busTieCover == 1 then
         sound_play(press_snd)
         if busState == 1 then
-            fs2020_variable_write("L:HJET_BUSTIE", "Number", 3)
-            fs2020_variable_write("L:HJET_BUSTIE", "Number", 0)
+            msfs_variable_write("L:HJET_BUSTIE", "Number", 3)
+            msfs_variable_write("L:HJET_BUSTIE", "Number", 0)
         else
-            fs2020_variable_write("L:HJET_BUSTIE", "Number", 3)
-            fs2020_variable_write("L:HJET_BUSTIE", "Number", 1)
+            msfs_variable_write("L:HJET_BUSTIE", "Number", 3)
+            msfs_variable_write("L:HJET_BUSTIE", "Number", 1)
         end 
     else
         sound_play(fail_snd)
@@ -146,11 +146,11 @@ function cabinAction()
     if cPowerCover == 1 then
         sound_play(press_snd)
         if cabinPush == 0 then
-            fs2020_variable_write("L:CPOW PUSHED", "Number", 3)
-            fs2020_variable_write("L:CPOW PUSHED", "Number", 1)
+            msfs_variable_write("L:CPOW PUSHED", "Number", 3)
+            msfs_variable_write("L:CPOW PUSHED", "Number", 1)
         else
-            fs2020_variable_write("L:CPOW PUSHED", "Number", 3)
-            fs2020_variable_write("L:CPOW PUSHED", "Number", 0)
+            msfs_variable_write("L:CPOW PUSHED", "Number", 3)
+            msfs_variable_write("L:CPOW PUSHED", "Number", 0)
         end 
     else
         sound_play(fail_snd)
@@ -368,11 +368,11 @@ opacity(gpower_avail_id, 1.0, "LOG", rate)
 opacity(bus_open_id, 1.0, "LOG", rate)
 opacity(cpower_off_id, 1.0, "LOG", rate)
 
-fs2020_variable_subscribe("L:lightTestInProgress_6","NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6","NUMBER",
                                               "L:lightTestInProgress_0","NUMBER",
                                               setTest)
 
-fs2020_variable_subscribe("A:ELECTRICAL MASTER BATTERY", "BOOL",
+msfs_variable_subscribe("A:ELECTRICAL MASTER BATTERY", "BOOL",
                                               "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",
                                               "L:GroundPowerAvailable", "NUMBER",
                                               "L:GPOW PUSHED", "NUMBER",

@@ -41,10 +41,10 @@ function setTrim(direction)
     if direction == 1 and ailTrim <1 then
         knobPos = knobPos + 5
         
-        fs2020_variable_write("A:AILERON TRIM PCT", "NUMBER", ailTrim + .02 )
+        msfs_variable_write("A:AILERON TRIM PCT", "NUMBER", ailTrim + .02 )
     elseif direction == -1 and  ailTrim >-1 then
         knobPos = knobPos - 5
-        fs2020_variable_write("A:AILERON TRIM PCT", "NUMBER", ailTrim - .02 )
+        msfs_variable_write("A:AILERON TRIM PCT", "NUMBER", ailTrim - .02 )
     end
     rotate(img_knob_id,knobPos, "LINEAR", 0.05)
     rotate(img_knob_shadow_id,knobPos, "LINEAR", 0.05)
@@ -63,4 +63,4 @@ function setIndicator(trim)
       move(indicator_id, newIndicatorPos, 42, nil, nil)   
 end
 
-fs2020_variable_subscribe("AILERON TRIM PCT", "Number", setIndicator)
+msfs_variable_subscribe("AILERON TRIM PCT", "Number", setIndicator)

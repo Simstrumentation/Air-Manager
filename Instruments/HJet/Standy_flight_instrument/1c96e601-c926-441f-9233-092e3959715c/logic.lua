@@ -48,16 +48,16 @@ end
 function setBaro(direction)
     sound_play(dial_snd)
     if direction == 1 then
-        fs2020_event("K:KOHLSMAN_INC", 2)
+        msfs_event("K:KOHLSMAN_INC", 2)
     else
-        fs2020_event("K:KOHLSMAN_DEC", 2)
+        msfs_event("K:KOHLSMAN_DEC", 2)
     end
 end
 
 baro_dial_id = dial_add("knob.png", 207, 280, 25, 18, setBaro)
 function setBaroStd()
     sound_play(press_snd)
-    fs2020_event("K:BAROMETRIC_STD_PRESSURE", 2)
+    msfs_event("K:BAROMETRIC_STD_PRESSURE", 2)
 end
 baro_std_id = button_add(nil, nil, 209, 282, 20, 15, setBaroStd, releaseAction)
 
@@ -65,11 +65,11 @@ baro_std_id = button_add(nil, nil, 209, 282, 20, 15, setBaroStd, releaseAction)
 function inHgAction()
     sound_play(press_snd)
     if baroMode == 0 then
-        fs2020_variable_write("L:HPIN Pushed", "ENUM", 1)
-        fs2020_variable_write("L:useHpaUnits", "ENUM", 1)
+        msfs_variable_write("L:HPIN Pushed", "ENUM", 1)
+        msfs_variable_write("L:useHpaUnits", "ENUM", 1)
     else
-        fs2020_variable_write("L:HPIN Pushed", "ENUM", 0)
-        fs2020_variable_write("L:useHpaUnits", "ENUM", 0)
+        msfs_variable_write("L:HPIN Pushed", "ENUM", 0)
+        msfs_variable_write("L:useHpaUnits", "ENUM", 0)
     end
 end
 inHg_id = button_add(nil, nil, 90, 280, 30, 16, inHgAction, releaseAction)
@@ -77,9 +77,9 @@ inHg_id = button_add(nil, nil, 90, 280, 30, 16, inHgAction, releaseAction)
 function navAction()
     sound_play(press_snd)
     if eadMode == 1 then
-        fs2020_variable_write("L:EADINAV Pushed", "ENUM", 0)
+        msfs_variable_write("L:EADINAV Pushed", "ENUM", 0)
     else
-        fs2020_variable_write("L:EADINAV Pushed", "ENUM", 1)
+        msfs_variable_write("L:EADINAV Pushed", "ENUM", 1)
     end
 end
 nav_id = button_add(nil, nil, 54, 280, 30, 16, navAction, releaseAction)
@@ -88,7 +88,7 @@ function setVars(baro, ead,units)
     baroMode = baro
     eadMode = ead
 end
-fs2020_variable_subscribe("L:HPIN Pushed", "ENUM", 
+msfs_variable_subscribe("L:HPIN Pushed", "ENUM", 
                                               "L:EADINAV Pushed", "ENUM",
                                               "L:useHpaUnits", "ENUM",
                                               setVars)

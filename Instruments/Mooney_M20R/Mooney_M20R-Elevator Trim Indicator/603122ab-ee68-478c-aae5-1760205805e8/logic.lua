@@ -20,4 +20,4 @@ function new_trim_fs2020(trim)
     
 end
 
-fs2020_variable_subscribe("ELEVATOR TRIM INDICATOR", "Position", new_trim_fs2020)
+msfs_variable_subscribe("ELEVATOR TRIM INDICATOR", "Position", new_trim_fs2020)

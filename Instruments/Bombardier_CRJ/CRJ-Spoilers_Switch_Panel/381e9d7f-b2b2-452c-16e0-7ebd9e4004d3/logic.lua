@@ -35,7 +35,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 -----------------------------------------------------------------
 
@@ -78,7 +78,7 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 -----------------------------------------------------------------
 
 --GND LIFT DUMPING
-fs2020_variable_subscribe("L:ASCRJ_TQ_SPLR_MODE", "Number", 
+msfs_variable_subscribe("L:ASCRJ_TQ_SPLR_MODE", "Number", 
         function (state)
            switch_set_position(sw_gnd_lft, state)
             visible(img_sw_SPLR_MODE_up, state ==2)
@@ -90,15 +90,15 @@ fs2020_variable_subscribe("L:ASCRJ_TQ_SPLR_MODE", "Number",
         end)            
 
 function cb_gnd_lft(position,direction)
-  fs2020_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",5)  --this is used to trick AM into getting position.
+  msfs_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",5)  --this is used to trick AM into getting position.
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",1) 
+        msfs_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",1) 
     elseif (position == 1 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",0) 
+        msfs_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",0) 
     elseif (position == 1 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",2)        
+        msfs_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",2)        
     elseif (position == 2 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",1)        
+        msfs_variable_write("L:ASCRJ_TQ_SPLR_MODE","Number",1)        
     end 
 end
 sw_gnd_lft = switch_add(nil,nil,nil, 115,55,80,180, 'VERTICAL',  cb_gnd_lft)   
@@ -106,15 +106,15 @@ sw_gnd_lft = switch_add(nil,nil,nil, 115,55,80,180, 'VERTICAL',  cb_gnd_lft)
 --Thrust Reverser Left Hand img_sw_LHArmed_up
 function cb_tr_lh(position)
    if position == 1 then
-        fs2020_variable_write("L:ASCRJ_TQ_REV1_MODE","number",1) 
+        msfs_variable_write("L:ASCRJ_TQ_REV1_MODE","number",1) 
     else
-        fs2020_variable_write("L:ASCRJ_TQ_REV1_MODE","number",0) 
+        msfs_variable_write("L:ASCRJ_TQ_REV1_MODE","number",0) 
     end
 end
 sw_tr_lh = switch_add(nil,nil, 35, 250, 80, 180, cb_tr_lh)   
 
 
-fs2020_variable_subscribe("L:ASCRJ_TQ_REV1_MODE","Number",  
+msfs_variable_subscribe("L:ASCRJ_TQ_REV1_MODE","Number",  
          function (state)
             visible(img_sw_LHArmed_up, state ==1)
             visible(img_sw_LHArmed_up_night, state ==1)
@@ -128,15 +128,15 @@ fs2020_variable_subscribe("L:ASCRJ_TQ_REV1_MODE","Number",
 --Thrust Reverser Right Hand
 function cb_tr_rh(position)
    if position == 1 then
-        fs2020_variable_write("L:ASCRJ_TQ_REV2_MODE","number",1) 
+        msfs_variable_write("L:ASCRJ_TQ_REV2_MODE","number",1) 
     else
-        fs2020_variable_write("L:ASCRJ_TQ_REV2_MODE","number",0) 
+        msfs_variable_write("L:ASCRJ_TQ_REV2_MODE","number",0) 
     end
 end
 sw_tr_rh = switch_add(nil,nil, 325, 250, 80, 180, cb_tr_rh)   
 
 
-fs2020_variable_subscribe("L:ASCRJ_TQ_REV2_MODE","Number",  
+msfs_variable_subscribe("L:ASCRJ_TQ_REV2_MODE","Number",  
          function (state)
             visible(img_sw_RHArmed_up, state ==1)
             visible(img_sw_RHArmed_up_night, state ==1)

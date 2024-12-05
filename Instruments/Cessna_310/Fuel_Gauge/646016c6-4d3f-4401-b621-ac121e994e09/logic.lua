@@ -51,7 +51,7 @@ txt_add("FUEL QTY", "font:MS33558.ttf; size:22; color: white; halign:center;",21
     -- reset timer and return switch to mid position
 function clr_ind()
     timer_stop(timer_id1)
-    fs2020_variable_write( "L:C310_SW_FUEL_IND", "ENUM", 1)
+    msfs_variable_write( "L:C310_SW_FUEL_IND", "ENUM", 1)
     visible(sw_up, false)
 end
 
@@ -59,15 +59,15 @@ end
 -- does not animate switch in virtual cockpit, but indicators work
 function switch_activate()
     if aux_l == 1 and aux_r == 1 then
-        fs2020_variable_write( "L:C310_SW_FUEL_IND", "ENUM", 0)
+        msfs_variable_write( "L:C310_SW_FUEL_IND", "ENUM", 0)
         visible(sw_up, true)
         timer_id1 = timer_start(2000, clr_ind)
     else
         if switchposition == 1 then
-            fs2020_variable_write( "L:C310_SW_FUEL_IND", "ENUM", 2)
+            msfs_variable_write( "L:C310_SW_FUEL_IND", "ENUM", 2)
             timer_id1 = timer_start(2000, clr_ind)
         elseif switchposition == 2 then
-            fs2020_variable_write( "L:C310_SW_FUEL_IND", "ENUM", 1)
+            msfs_variable_write( "L:C310_SW_FUEL_IND", "ENUM", 1)
         end
 
     end
@@ -79,8 +79,8 @@ sw_up = img_add("sm_sw_up.png", 260, 600, 100, 100, "visible:false")
 --[[
 -- placeholder for future functionality
 function test_l()
-    fs2020_variable_write( "L:C310_Fuel_Aux_L_Test", "Number", 1)
-    fs2020_variable_write( "L:C310_Fuel_Aux_L_Test", "Number", 0)
+    msfs_variable_write( "L:C310_Fuel_Aux_L_Test", "Number", 1)
+    msfs_variable_write( "L:C310_Fuel_Aux_L_Test", "Number", 0)
 end
 ]]--
 
@@ -105,7 +105,7 @@ function set_indicators(left, right)
         print(aux_l)
 end
 
-fs2020_variable_subscribe("L:C310_WL_FUEL_AUX_LEFT", "Number",
+msfs_variable_subscribe("L:C310_WL_FUEL_AUX_LEFT", "Number",
                                               "L:C310_WL_FUEL_AUX_RIGHT", "Number", 
                                                set_indicators)
 -- Functions --
@@ -134,7 +134,7 @@ end
 
 --variable subscribe
 
-fs2020_variable_subscribe("ELECTRICAL MAIN BUS VOLTAGE", "Volts", 
+msfs_variable_subscribe("ELECTRICAL MAIN BUS VOLTAGE", "Volts", 
                           "L:C310_FUEL_DISP_L", "Gallons",
                           "L:C310_FUEL_DISP_R", "Gallons",
                           "L:C310_SW_FUEL_IND", "ENUM",

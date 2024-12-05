@@ -36,7 +36,7 @@ function ss_backlighting(value, pwr)
         opacity(img_backlight_knob_ovhd, (value), "LOG", 0.04)        
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 ---------------------------------------------
 --Day Graphics
@@ -75,7 +75,7 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 -------------------------------------------------------------
 --Dome Light
 
-fs2020_variable_subscribe("L:ASCRJ_INTL_DOME", "Number", 
+msfs_variable_subscribe("L:ASCRJ_INTL_DOME", "Number", 
         function (state)
             switch_set_position(sw_dome, state)
             visible(img_sw_dome_mid, state ==0)
@@ -86,9 +86,9 @@ fs2020_variable_subscribe("L:ASCRJ_INTL_DOME", "Number",
 
 function cb_sw_dome(position)
     if (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_INTL_DOME","Number",0) 
+        msfs_variable_write("L:ASCRJ_INTL_DOME","Number",0) 
     elseif (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_INTL_DOME","Number",1) 
+        msfs_variable_write("L:ASCRJ_INTL_DOME","Number",1) 
     end 
 end
 
@@ -104,19 +104,19 @@ SWITCH POSITIONS:
 
 function cb_complt_pos_dec()
     if current_pos_complt == 0  then
-        fs2020_variable_write("L:ASCRJ_INTL_COMP", "Number", 1)
+        msfs_variable_write("L:ASCRJ_INTL_COMP", "Number", 1)
 end
     if current_pos_complt == 1  then
-        fs2020_variable_write("L:ASCRJ_INTL_COMP", "Number", 2)
+        msfs_variable_write("L:ASCRJ_INTL_COMP", "Number", 2)
    end   
 end
 
 function cb_complt_pos_inc()
         if current_pos_complt == 2  then
-        fs2020_variable_write("L:ASCRJ_INTL_COMP", "Number", 1)
+        msfs_variable_write("L:ASCRJ_INTL_COMP", "Number", 1)
 end
     if current_pos_complt == 1  then
-        fs2020_variable_write("L:ASCRJ_INTL_COMP", "Number",0)
+        msfs_variable_write("L:ASCRJ_INTL_COMP", "Number",0)
    end
     
 end
@@ -144,7 +144,7 @@ function new_complt_pos(pos)
 current_pos_complt = pos
 end
 
-fs2020_variable_subscribe("L:ASCRJ_INTL_COMP", "Number", new_complt_pos)
+msfs_variable_subscribe("L:ASCRJ_INTL_COMP", "Number", new_complt_pos)
 
 
 --- Overhead Panel Light
@@ -152,7 +152,7 @@ fs2020_variable_subscribe("L:ASCRJ_INTL_COMP", "Number", new_complt_pos)
 local local_light_dspl = 0
 
 
-fs2020_variable_subscribe("L:ASCRJ_INTL_OVHD", "Number",     
+msfs_variable_subscribe("L:ASCRJ_INTL_OVHD", "Number",     
         function (state)
             local_light_dspl = state
              rotate(img_knob_dspl, ((local_light_dspl*10)-120))
@@ -161,8 +161,8 @@ fs2020_variable_subscribe("L:ASCRJ_INTL_OVHD", "Number",
         end) 
 
 function cb_light_dspl(direction) 
-    if direction == 1 then fs2020_variable_write("L:ASCRJ_INTL_OVHD", "Number", var_cap(local_light_dspl+1,0,26) ) 
-    else fs2020_variable_write("L:ASCRJ_INTL_OVHD", "Number", var_cap(local_light_dspl-1,0,26) )
+    if direction == 1 then msfs_variable_write("L:ASCRJ_INTL_OVHD", "Number", var_cap(local_light_dspl+1,0,26) ) 
+    else msfs_variable_write("L:ASCRJ_INTL_OVHD", "Number", var_cap(local_light_dspl-1,0,26) )
     end 
 end
 dial_light_dspl = dial_add(nil, 420,85,112,112, cb_light_dspl)

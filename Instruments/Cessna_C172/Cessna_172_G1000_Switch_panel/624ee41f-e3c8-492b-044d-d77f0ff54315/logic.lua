@@ -54,9 +54,9 @@ visible(sw_up_id, false)
 
     --hold test position down
 function cb_test_hold()
-    fs2020_variable_write("L:XMLVAR_STBYBattery_Test", "Enum", 1)
-    fs2020_variable_write("L:XMLVAR_STBYBattery_IsHeld", "Number", 1)
-    fs2020_event("BATTERY2_SET", 0)
+    msfs_variable_write("L:XMLVAR_STBYBattery_Test", "Enum", 1)
+    msfs_variable_write("L:XMLVAR_STBYBattery_IsHeld", "Number", 1)
+    msfs_event("BATTERY2_SET", 0)
 end
 
 function testbatt(test)
@@ -70,7 +70,7 @@ visible(sw_mid_id, true)
    --     visible(sw_up_id, false)
     end
 end
-fs2020_variable_subscribe("L:XMLVAR_STBYBattery_IsHeld", "Enum", testbatt)
+msfs_variable_subscribe("L:XMLVAR_STBYBattery_IsHeld", "Enum", testbatt)
 
     -- indicator light state
 function cb_test_state(state)
@@ -81,10 +81,10 @@ function cb_test_state(state)
     end
 end
 
-fs2020_variable_subscribe("L:XMLVAR_BatterySTBY_SwitchState", "Enum", cb_test_state)
+msfs_variable_subscribe("L:XMLVAR_BatterySTBY_SwitchState", "Enum", cb_test_state)
 function cb_test_release()
-    fs2020_variable_write("L:XMLVAR_STBYBattery_Test", "Enum", 0)
-    fs2020_variable_write("L:XMLVAR_STBYBattery_IsHeld", "Number", 0)
+    msfs_variable_write("L:XMLVAR_STBYBattery_Test", "Enum", 0)
+    msfs_variable_write("L:XMLVAR_STBYBattery_IsHeld", "Number", 0)
     visible(sw_mid_id, true)
 end
 
@@ -93,7 +93,7 @@ btn_test = button_add(nil, nil, 129, 160,  60, 60, cb_test_hold, cb_test_release
     --standby battery
 
 function stdb_bat_click_callback(position)
-        fs2020_event("BATTERY2_SET", 1)
+        msfs_event("BATTERY2_SET", 1)
 end
 btn_stdb_bat = button_add(nil, nil, 129, 75,  60, 60, stdb_bat_click_callback)
 
@@ -106,9 +106,9 @@ function cb_stdb_battery(pos)
         visible(sw_mid_id, true)
     end
 end
-fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY:2", "Bool", cb_stdb_battery)            
+msfs_variable_subscribe("ELECTRICAL MASTER BATTERY:2", "Bool", cb_stdb_battery)            
 function cb_off()
-    fs2020_event("BATTERY2_SET", 0)
+    msfs_event("BATTERY2_SET", 0)
     visible(sw_up_id, false)
     visible(sw_mid_id, true)
 end
@@ -122,7 +122,7 @@ function cb_callsign(callsign)
 	txt_set(txt_callsign,  callsign)
 end
 
-fs2020_variable_subscribe("ATC ID", "STRING", cb_callsign)
+msfs_variable_subscribe("ATC ID", "STRING", cb_callsign)
 
 -- END CALLSIGN
 
@@ -130,22 +130,22 @@ fs2020_variable_subscribe("ATC ID", "STRING", cb_callsign)
 
 -- BEACON SWITCH
 function beacon_click_callback(position)
-    fs2020_event("TOGGLE_BEACON_LIGHTS")
+    msfs_event("TOGGLE_BEACON_LIGHTS")
 end
 beacon_switch_id = switch_add("white knob off.png", "white knob.png", 308,460,28,98, beacon_click_callback)
 
 function cb_beacon_switch(sw_pos) 
     switch_set_position(beacon_switch_id, sw_pos)
 end	
-fs2020_variable_subscribe("LIGHT BEACON", "Bool", cb_beacon_switch)
+msfs_variable_subscribe("LIGHT BEACON", "Bool", cb_beacon_switch)
 -- END BEACON SWITCH
 
 -- LANDING LIGHT SWITCH
 function landing_click_callback(position)
     if position == 0 then
-        fs2020_event("LANDING_LIGHTS_ON")
+        msfs_event("LANDING_LIGHTS_ON")
     elseif position == 1 then
-        fs2020_event("LANDING_LIGHTS_OFF")
+        msfs_event("LANDING_LIGHTS_OFF")
     end
 end
 landing_switch_id = switch_add("white knob off.png", "white knob.png", 379,460,28,98, landing_click_callback)
@@ -153,39 +153,39 @@ landing_switch_id = switch_add("white knob off.png", "white knob.png", 379,460,2
 function cb_landing_switch(sw_pos)
     switch_set_position(landing_switch_id, sw_pos)
 end
-fs2020_variable_subscribe("LIGHT LANDING", "Bool", cb_landing_switch)
+msfs_variable_subscribe("LIGHT LANDING", "Bool", cb_landing_switch)
 -- END LANDING LIGHT SWITCH
 
 -- TAXI LIGHT SWITCH
 function taxi_click_callback(position)
-    fs2020_event("TOGGLE_TAXI_LIGHTS")
+    msfs_event("TOGGLE_TAXI_LIGHTS")
 end
 taxi_switch_id = switch_add("white knob off.png", "white knob.png", 449,460,28,98,  taxi_click_callback)
 
 function cb_taxi(sw_pos)
     switch_set_position(taxi_switch_id, sw_pos)
 end	
-fs2020_variable_subscribe("LIGHT TAXI", "Bool", cb_taxi)
+msfs_variable_subscribe("LIGHT TAXI", "Bool", cb_taxi)
 -- END TAXI LIGHT SWITCH
 
 -- NAV LIGHTS SWITCH
 function nav_click_callback(position)
-    fs2020_event("TOGGLE_NAV_LIGHTS")
+    msfs_event("TOGGLE_NAV_LIGHTS")
 end
 nav_switch_id = switch_add("white knob off.png", "white knob.png", 518,460,28,98, nav_click_callback)
 
 function cb_nav(sw_pos)
     switch_set_position(nav_switch_id,sw_pos)
 end	
-fs2020_variable_subscribe("LIGHT NAV", "Bool", cb_nav)
+msfs_variable_subscribe("LIGHT NAV", "Bool", cb_nav)
 -- END NAV LIGHTS SWITCH
 
 -- STROBE SWITCH
 function strobe_click_callback(position)
     if position == 0 then
-        fs2020_event("STROBES_ON")
+        msfs_event("STROBES_ON")
     elseif position == 1 then
-        fs2020_event("STROBES_OFF")
+        msfs_event("STROBES_OFF")
     end
 end
 
@@ -196,12 +196,12 @@ function cb_strobe(sw_pos)
 end	
 
 
-fs2020_variable_subscribe("LIGHT STROBE", "Bool", cb_strobe)
+msfs_variable_subscribe("LIGHT STROBE", "Bool", cb_strobe)
 -- END STROBE SWITCH
 
 -- FUEL PUMP SWITCH
 function pump_click_callback(position)
-    fs2020_event("TOGGLE_ELECT_FUEL_PUMP")
+    msfs_event("TOGGLE_ELECT_FUEL_PUMP")
 end
 
 pump_switch_id = switch_add("white knob off.png", "white knob.png", 308,602,28,98, pump_click_callback)
@@ -210,13 +210,13 @@ function cb_pump(sw_pos)
     switch_set_position(pump_switch_id, sw_pos) 
 end
 
-fs2020_variable_subscribe("GENERAL ENG FUEL PUMP SWITCH:1", "Bool", cb_pump)
+msfs_variable_subscribe("GENERAL ENG FUEL PUMP SWITCH:1", "Bool", cb_pump)
 -- END FUEL PUMP SWITCH
 
 
 -- PITOT HEAT SWITCH
 function pitot_click_callback(position)
-    fs2020_event("PITOT_HEAT_TOGGLE")
+    msfs_event("PITOT_HEAT_TOGGLE")
 end
 
 pitot_switch_id = switch_add("green knob off.png", "green knob.png", 380,602,28,98, pitot_click_callback)
@@ -228,7 +228,7 @@ function new_pitot_pos(pitot)
         switch_set_position(pitot_switch_id, 1)
     end
 end
-fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_pos)
+msfs_variable_subscribe("PITOT HEAT", "Bool", new_pitot_pos)
 -- END PITOT HEAT SWITCH
 
 -- CABIN POWER SWITCH
@@ -256,7 +256,7 @@ function new_pitot_switch_pos_fsx(sw_on)
 
 end
 
-fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_switch_pos_fsx)
+msfs_variable_subscribe("PITOT HEAT", "Bool", new_pitot_switch_pos_fsx)
 -- END CABIN POWER SWITCH
 
 
@@ -264,9 +264,9 @@ fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_switch_pos_fsx)
 function alt_click_callback(position)
 
     if position == 0 then
-        fs2020_event("TOGGLE_MASTER_ALTERNATOR")
+        msfs_event("TOGGLE_MASTER_ALTERNATOR")
     elseif position == 1 then
-        fs2020_event("TOGGLE_MASTER_ALTERNATOR")
+        msfs_event("TOGGLE_MASTER_ALTERNATOR")
     end
 
 end
@@ -279,16 +279,16 @@ function cb_alternator(sw_pos)
 
 end
 
-fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR", "Bool", cb_alternator)
+msfs_variable_subscribe("GENERAL ENG MASTER ALTERNATOR", "Bool", cb_alternator)
 -- END ALTERNATOR SWITCH
 
 
 -- BATTERY SWITCH
 function bat_click_callback(position)
      if batt1_pos == true then
-        fs2020_event("BATTERY1_SET", 0)
+        msfs_event("BATTERY1_SET", 0)
     else
-        fs2020_event("BATTERY1_SET", 1)
+        msfs_event("BATTERY1_SET", 1)
     end
 end
 
@@ -298,24 +298,24 @@ function cb_battery(sw_pos)
     switch_set_position(bat_switch_id, sw_pos)
     batt1_pos = sw_pos
 end	
-fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY:1", "Bool", cb_battery)
+msfs_variable_subscribe("ELECTRICAL MASTER BATTERY:1", "Bool", cb_battery)
 -- END BATTERY SWITCH
 
 -- AVIONICS 
 function avionics1_click(position)
     if sw1_pos then
-        fs2020_variable_write("A:CIRCUIT SWITCH ON:24", "Enum", 0)
+        msfs_variable_write("A:CIRCUIT SWITCH ON:24", "Enum", 0)
     else
-        fs2020_variable_write("A:CIRCUIT SWITCH ON:24", "Enum", 1)
+        msfs_variable_write("A:CIRCUIT SWITCH ON:24", "Enum", 1)
     end
 end
 avion_1_switch_id = switch_add("white_rock_off.png", "white_rock_on.png",227,275, 37,121, avionics1_click)
 
 function avionics2_click(position)
     if sw2_pos then
-        fs2020_variable_write("A:CIRCUIT SWITCH ON:25", "Enum", 0)
+        msfs_variable_write("A:CIRCUIT SWITCH ON:25", "Enum", 0)
     else
-        fs2020_variable_write("A:CIRCUIT SWITCH ON:25", "Enum", 1)
+        msfs_variable_write("A:CIRCUIT SWITCH ON:25", "Enum", 1)
     end
 end
 avion_2_switch_id = switch_add("white_rock_off.png", "white_rock_on.png",268,275, 37,121, avionics2_click)
@@ -326,7 +326,7 @@ function cb_avionics(sw_1, sw_2)
     switch_set_position(avion_1_switch_id, sw1_pos)
     switch_set_position(avion_2_switch_id, sw2_pos)
 end
-fs2020_variable_subscribe("AVIONICS MASTER SWITCH:1", "Bool",
+msfs_variable_subscribe("AVIONICS MASTER SWITCH:1", "Bool",
                                                 "AVIONICS MASTER SWITCH:2", "Bool", 
                                                cb_avionics)
 -- END AVIONICS 

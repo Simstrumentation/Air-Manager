@@ -32,7 +32,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)                  
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
                                               
 --Day Graphics  
@@ -52,15 +52,15 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 function ss_calls_pa(state,pwr)
 	visible(img_calls_pa, (state ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_CALLS_PA_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_calls_pa)
+msfs_variable_subscribe("L:ASCRJ_CALLS_PA_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_calls_pa)
 function calls_pa()
-    fs2020_variable_write("L:ASCRJ_CALLS_PA",  "Number", 1)  timer_start(100, function() fs2020_variable_write("L:ASCRJ_CALLS_PA", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_CALLS_PA",  "Number", 1)  timer_start(100, function() msfs_variable_write("L:ASCRJ_CALLS_PA", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_calls_pa = button_add(nil,"btn_push.png", 58, 38, 25, 48, calls_pa) 
 --CHIME
 function calls_chime()
-    fs2020_variable_write("L:ASCRJ_CALLS_CHIME",  "Number", 1)  timer_start(100, function() fs2020_variable_write("L:ASCRJ_CALLS_CHIME", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_CALLS_CHIME",  "Number", 1)  timer_start(100, function() msfs_variable_write("L:ASCRJ_CALLS_CHIME", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_calls_pa = button_add(nil,"btn_push.png", 130, 38, 25, 48, calls_chime) 
@@ -70,9 +70,9 @@ end
 function ss_calls_call(state,pwr)
 	visible(img_calls_call, (state ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_CALLS_CALL_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_calls_call)
+msfs_variable_subscribe("L:ASCRJ_CALLS_CALL_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_calls_call)
 function calls_call()
-    fs2020_variable_write("L:ASCRJ_CALLS_CALL",  "Number", 1)  timer_start(100, function() fs2020_variable_write("L:ASCRJ_CALLS_CALL", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_CALLS_CALL",  "Number", 1)  timer_start(100, function() msfs_variable_write("L:ASCRJ_CALLS_CALL", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_calls_call = button_add(nil,"btn_push.png", 199, 38, 25, 48, calls_call)     
@@ -80,9 +80,9 @@ end
 function ss_calls_emer(state,pwr)
 	visible(img_calls_emer, (state ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_CALLS_EMER_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_calls_emer)
+msfs_variable_subscribe("L:ASCRJ_CALLS_EMER_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_calls_emer)
 function calls_emer()
-    fs2020_variable_write("L:ASCRJ_CALLS_EMER",  "Number", 1)  timer_start(100, function() fs2020_variable_write("L:ASCRJ_CALLS_EMER", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_CALLS_EMER",  "Number", 1)  timer_start(100, function() msfs_variable_write("L:ASCRJ_CALLS_EMER", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_calls_emer = button_add(nil,"btn_push.png", 272, 38, 25, 48, calls_emer)      

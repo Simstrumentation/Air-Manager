@@ -39,33 +39,33 @@ end
 --SWITCHES
 --Master 
 function master_cb()
-    fs2020_event("TOGGLE_MASTER_BATTERY")
+    msfs_event("TOGGLE_MASTER_BATTERY")
 end
 master_id = switch_add("master_off.png", "master_on.png", 0, 40, 160, 262, master_cb)
 
 function new_master_pos(master)
     switch_set_position(master_id, master)      
 end
-fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY", "Bool", new_master_pos)
+msfs_variable_subscribe("ELECTRICAL MASTER BATTERY", "Bool", new_master_pos)
 
 --Alternator 
 function alt_cb()
-    fs2020_event("TOGGLE_MASTER_ALTERNATOR")
+    msfs_event("TOGGLE_MASTER_ALTERNATOR")
 end
 alt_id = switch_add("alt_off.png", "alt_on.png", 160, 40, 160, 262, alt_cb)
 
 function new_alt_pos(alt)
     switch_set_position(alt_id, alt)      
 end
-fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1", "Bool", new_alt_pos)
+msfs_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1", "Bool", new_alt_pos)
 
 --Radio Master
 function radio_cb()
-    fs2020_event("TOGGLE_AVIONICS_MASTER")
+    msfs_event("TOGGLE_AVIONICS_MASTER")
 end
 radio_id = switch_add("radio_off.png", "radio_on.png", 320, 40, 160, 262, radio_cb)
 
 function new_radio_pos(radio)
     switch_set_position(radio_id, radio)      
 end
-fs2020_variable_subscribe("AVIONICS MASTER SWITCH", "Bool", new_radio_pos)
+msfs_variable_subscribe("AVIONICS MASTER SWITCH", "Bool", new_radio_pos)

@@ -68,7 +68,7 @@ local comMode = 1
 power_state = 0
 
 function sc_1_click()
-    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_1")
+    msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_1")
     sound_play(press_snd)
 end
 function sc_release()
@@ -78,14 +78,14 @@ end
 button_add("softkey.png","softkey_pressed.png", 1060,273,112,77, sc_1_click, sc_release)
 
 function sc_2_click()
-    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_2")
+    msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_2")
     sound_play(press_snd)
 end
 
 button_add("softkey.png","softkey_pressed.png", 1060,358,112,77, sc_2_click, sc_release)
 
 function sc_3_click()
-    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_3")
+    msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_SoftKey_3")
     sound_play(press_snd)
 end
 
@@ -96,9 +96,9 @@ button_add("softkey.png","softkey_pressed.png", 1060,441,112,77, sc_3_click, sc_
 
 function big_dial_top_callback(direction)
     if direction ==  1 then
-        fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Large_INC")
+        msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Large_INC")
     elseif direction == -1 then
-	fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Large_DEC")
+	msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Large_DEC")
     end
     sound_play(dial_snd)
 end
@@ -107,9 +107,9 @@ img_add("dialbig_cap.png", 1065,115,100,100)
 
 function small_dial_top_callback(direction)
     if direction ==  1 then
-        fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Small_INC")
+        msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Small_INC")
     elseif direction == -1 then
-	fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Small_DEC")
+	msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Small_DEC")
     end
     sound_play(dial_snd)
 end
@@ -118,18 +118,18 @@ img_add("dialsmall_cap.png", 1080,127,72,72)
 
 function timer_top_cb()
     --if the com timer has not been cancelled, trigger the long push event
-    --fs2020_event("AS3000_TSC_Horizontal_TopKnob_Push_Long")
+    --msfs_event("AS3000_TSC_Horizontal_TopKnob_Push_Long")
 	if comMode==1 then
-		fs2020_event("COM_STBY_RADIO_SWAP")
+		msfs_event("COM_STBY_RADIO_SWAP")
 	else	
-		fs2020_event("COM2_RADIO_SWAP")
+		msfs_event("COM2_RADIO_SWAP")
 	end
 end
 
 function dial_top_release()
 	if  timer_running (timer_top) then  -- if the timer is still running, then it is a short push
         timer_stop(timer_top)
-	    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Push")
+	    msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_TopKnob_Push")
 		if comMode==1 then
 			comMode = 2
 		else	
@@ -149,9 +149,9 @@ button_add(nil, nil,  1090,138,50,50,dial_top_click, dial_top_release)
 
 function small_dial_bottom_callback(direction)
     if direction ==  1 then
-        fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Small_INC")
+        msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Small_INC")
     elseif direction == -1 then
-	fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Small_DEC")
+	msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Small_DEC")
     end
     sound_play(dial_snd)
 end
@@ -159,7 +159,7 @@ dial_small_bottom = dial_add("dialsmall.png",1079,562,76,76, small_dial_bottom_c
 img_add("dialsmall_cap.png",1081,564,72,72)
 
 function dial_bottom_click()
-    fs2020_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Push")
+    msfs_event("H:AS3000_TSC_Horizontal_" .. bezel_pos .. "_BottomKnob_Push")
     sound_play(press_snd)
 end
 button_add(nil,nil,  1092,575,50,50,dial_bottom_click, sc_release)
@@ -182,7 +182,7 @@ function power_on(avionics, mainbus, generator)
     end
 end
 
-fs2020_variable_subscribe("CIRCUIT AVIONICS ON", "BOOL",
+msfs_variable_subscribe("CIRCUIT AVIONICS ON", "BOOL",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts",
                           "GENERAL ENG GENERATOR SWITCH:1", "BOOL",
                           power_on)

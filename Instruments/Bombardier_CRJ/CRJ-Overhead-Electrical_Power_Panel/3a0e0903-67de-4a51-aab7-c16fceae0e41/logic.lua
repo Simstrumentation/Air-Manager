@@ -36,7 +36,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
                                               
 --Lights
@@ -121,7 +121,7 @@ local tgl_autoxfer2 = 0
 
 -----------------------------------------------
 --DC Service SWITCH
-fs2020_variable_subscribe("L:ASCRJ_ELEC_DCSERVICE", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_DCSERVICE", "Number", 
         function (state)
             if state == 1.0 then state = 1 end
             if state == 0.0 then state = 0 end
@@ -134,9 +134,9 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_DCSERVICE", "Number",
 
 function cb_sw_dc(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_ELEC_DCSERVICE","Number",1) 
+        msfs_variable_write("L:ASCRJ_ELEC_DCSERVICE","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_ELEC_DCSERVICE","Number",0) 
+        msfs_variable_write("L:ASCRJ_ELEC_DCSERVICE","Number",0) 
     end 
 end
 sw_dc= switch_add(nil,nil, 13,63,181,179, cb_sw_dc)
@@ -144,14 +144,14 @@ sw_dc= switch_add(nil,nil, 13,63,181,179, cb_sw_dc)
 --BATTERY SWITCH
 function cb_sw_battmaster(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_ELEC_BATTMASTER","Number",1) 
+        msfs_variable_write("L:ASCRJ_ELEC_BATTMASTER","Number",1) 
     elseif (position == 1 ) then
 
-        fs2020_variable_write("L:ASCRJ_ELEC_BATTMASTER","Number",0) 
+        msfs_variable_write("L:ASCRJ_ELEC_BATTMASTER","Number",0) 
     end 
 end
 sw_battmaster= switch_add(nil,nil, 188,37,108,216, cb_sw_battmaster)
-fs2020_variable_subscribe("L:ASCRJ_ELEC_BATTMASTER", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_BATTMASTER", "Number", 
         function (state)
             switch_set_position(sw_battmaster, state)
             visible(img_sw_batt_mid, state ==0)
@@ -163,12 +163,12 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_BATTMASTER", "Number",
 --AC BUTTON
 function cb_gpu()
         tgl_gpu = (tgl_gpu + 1) % 2
-        fs2020_variable_write("L:ASCRJ_ELEC_GPU","Number",tgl_gpu)
+        msfs_variable_write("L:ASCRJ_ELEC_GPU","Number",tgl_gpu)
         sound_play(snd_click)
 end
 btn_gpu = button_add(nil,"btn_push.png", 495, 89,68,68, cb_gpu)
 
-fs2020_variable_subscribe("A:CIRCUIT GENERAL PANEL ON","Bool",
+msfs_variable_subscribe("A:CIRCUIT GENERAL PANEL ON","Bool",
                                              "L:ASCRJ_ELEC_GPU_AVAIL","Number",
                                              "L:ASCRJ_ELEC_GPU_INUSE","Number",
         function (pwr,GPU_Avail,GPU_Inuse)
@@ -189,7 +189,7 @@ fs2020_variable_subscribe("A:CIRCUIT GENERAL PANEL ON","Bool",
 --IDG1 BUTTON
 function cb_idg1_disc()
         tgl_idg1 = (tgl_idg1 + 1) % 2
-        fs2020_variable_write("L:ASCRJ_ELEC_IDG1","Number",tgl_idg1)
+        msfs_variable_write("L:ASCRJ_ELEC_IDG1","Number",tgl_idg1)
         sound_play(snd_click)
 end
 btn_idg1_disc = button_add(nil,"btn_push.png", 77,355,69,68, cb_idg1_disc)
@@ -212,7 +212,7 @@ function timer_idg1_Cover()
     visible(sw_idg1_Cover, true)                 --enable cover switch
 end
 --IDG1 DISC
-fs2020_variable_subscribe("L:ASCRJ_ELEC_IDG1_DISC", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_IDG1_DISC", "Number", 
                                               "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (disc,pwr)
             if (pwr==true and disc==0 ) then visible(img_idg1_disc,false)    
@@ -221,7 +221,7 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_IDG1_DISC", "Number",
             end
         end)
 --IDG1 Fault
-fs2020_variable_subscribe("L:ASCRJ_ELEC_IDG1_FAULT", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_IDG1_FAULT", "Number", 
                                               "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (fault,pwr)
             if (pwr==true and fault==1 ) then  visible(img_idg1_fault, true)    
@@ -232,7 +232,7 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_IDG1_FAULT", "Number",
 --IDG2 BUTTON
 function cb_idg2_disc()
         tgl_idg2 = (tgl_idg2 + 1) % 2
-        fs2020_variable_write("L:ASCRJ_ELEC_IDG2","Number",tgl_idg2)
+        msfs_variable_write("L:ASCRJ_ELEC_IDG2","Number",tgl_idg2)
         sound_play(snd_click)
 end
 btn_idg2_disc = button_add(nil,"btn_push.png", 501, 355, 68, 68, cb_idg2_disc)
@@ -256,7 +256,7 @@ function timer_idg2_Cover()
     visible(sw_idg2_Cover, true)                 --enable cover switch
 end
 --IDG2 DISC
-fs2020_variable_subscribe("L:ASCRJ_ELEC_IDG2_DISC", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_IDG2_DISC", "Number", 
                                               "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (disc,pwr)
             if (pwr==true and disc==0 ) then visible(img_idg2_disc,false)    
@@ -265,7 +265,7 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_IDG2_DISC", "Number",
             end
         end)
 --IDG2 Fault
-fs2020_variable_subscribe("L:ASCRJ_ELEC_IDG2_FAULT", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_IDG2_FAULT", "Number", 
                                               "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (fault,pwr)
             if (pwr ==true and fault==1 ) then  visible(img_idg2_fault, true)    
@@ -277,13 +277,13 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_IDG2_FAULT", "Number",
 --ESSXFER BUTTON
 function cb_essxfer()
         tgl_essxfer = (tgl_essxfer + 1) % 2
-        fs2020_variable_write("L:ASCRJ_ELEC_ACESSXFER","Number",tgl_essxfer)
+        msfs_variable_write("L:ASCRJ_ELEC_ACESSXFER","Number",tgl_essxfer)
         sound_play(snd_click)
 end
 btn_essxfer = button_add(nil,"btn_push.png", 284, 355, 68, 68, cb_essxfer)
 
 
-fs2020_variable_subscribe("L:ASCRJ_ELEC_ACESSXFER_ALTN", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_ACESSXFER_ALTN", "Number", 
 					     "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (essxfer,pwr)
             if  (pwr==true and essxfer==0)  then visible(img_essxfer,false)    
@@ -293,7 +293,7 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_ACESSXFER_ALTN", "Number",
         end)
         
 --Gen1 BUTTON
-fs2020_variable_subscribe("L:ASCRJ_ELEC_GEN1", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_GEN1", "Number", 
         function (state)      
             switch_set_position(sw_gen1, state)
             visible(img_sw_gen1_mid, state ==0)
@@ -303,14 +303,14 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_GEN1", "Number",
         end)
 
 function cb_sw_gen1(position)
-    if (position == 0 ) then fs2020_variable_write("L:ASCRJ_ELEC_GEN1","Number",1) 
-    elseif (position == 1 ) then fs2020_variable_write("L:ASCRJ_ELEC_GEN1","Number",0) 
+    if (position == 0 ) then msfs_variable_write("L:ASCRJ_ELEC_GEN1","Number",1) 
+    elseif (position == 1 ) then msfs_variable_write("L:ASCRJ_ELEC_GEN1","Number",0) 
     end 
 end
 sw_gen1= switch_add(nil,nil, 26, 508, 108,216, cb_sw_gen1)    
 
 --APU BUTTON
-fs2020_variable_subscribe("L:ASCRJ_ELEC_APUGEN", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_APUGEN", "Number", 
         function (state)      
             switch_set_position(sw_apugen, state)
             visible(img_sw_apugen_mid, state ==0)
@@ -321,14 +321,14 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_APUGEN", "Number",
 
 function cb_sw_apugen(position)
 print(position)
-    if (position == 0 ) then fs2020_variable_write("L:ASCRJ_ELEC_APUGEN","Number",1) 
-    elseif (position == 1 ) then print("here") fs2020_variable_write("L:ASCRJ_ELEC_APUGEN","Number",0.0) 
+    if (position == 0 ) then msfs_variable_write("L:ASCRJ_ELEC_APUGEN","Number",1) 
+    elseif (position == 1 ) then print("here") msfs_variable_write("L:ASCRJ_ELEC_APUGEN","Number",0.0) 
     end 
 end
 sw_apugen = switch_add(nil,nil, 262,508,108,216, cb_sw_apugen) 
                     
 --Gen2 BUTTON
-fs2020_variable_subscribe("L:ASCRJ_ELEC_GEN2", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_GEN2", "Number", 
         function (state)      
             switch_set_position(sw_gen2, state)
             visible(img_sw_gen2_mid, state ==0)
@@ -338,15 +338,15 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_GEN2", "Number",
         end)
 
 function cb_sw_gen2(position)
-    if (position == 0 ) then fs2020_variable_write("L:ASCRJ_ELEC_GEN2","Number",1) 
-    elseif (position == 1 ) then fs2020_variable_write("L:ASCRJ_ELEC_GEN2","Number",0) 
+    if (position == 0 ) then msfs_variable_write("L:ASCRJ_ELEC_GEN2","Number",1) 
+    elseif (position == 1 ) then msfs_variable_write("L:ASCRJ_ELEC_GEN2","Number",0) 
     end 
 end
 sw_gen2 = switch_add(nil,nil, 492, 508, 108,216, cb_sw_gen2)                            
 
                                                                 
 --AUTOXFER1 BUTTON
-fs2020_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER1_OFF", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER1_OFF", "Number", 
                                               "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (state,pwr)
             if (pwr==true and state==0 ) then visible(img_autoxfer1_off ,false)    
@@ -356,13 +356,13 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER1_OFF", "Number",
         end)
 function cb_AUTOXFER1()
         tgl_autoxfer1 = (tgl_autoxfer1 + 1) % 2
-        fs2020_variable_write("L:ASCRJ_ELEC_AUTOXFER1","Number",tgl_autoxfer1)
+        msfs_variable_write("L:ASCRJ_ELEC_AUTOXFER1","Number",tgl_autoxfer1)
         sound_play(snd_click)
 end
 btn_AUTOXFER1 = button_add(nil,"btn_push.png", 169, 665, 68, 68, cb_AUTOXFER1)
 
 --AUTOXFER1 Fail
-fs2020_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER1_FAIL", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER1_FAIL", "Number", 
                                               "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (fault,pwr)
             if (pwr==true and fault==1 ) then  visible(img_autoxfer1_fail, true)    
@@ -371,7 +371,7 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER1_FAIL", "Number",
         end)   
         
 --AUTOXFER2 BUTTON
-fs2020_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER2_OFF", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER2_OFF", "Number", 
                                               "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (state,pwr)
             if (pwr==true and state==0 ) then visible(img_autoxfer2_off ,false)    
@@ -382,13 +382,13 @@ fs2020_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER2_OFF", "Number",
 
 function cb_AUTOXFER2()
         tgl_autoxfer2 = (tgl_autoxfer2 + 1) % 2
-        fs2020_variable_write("L:ASCRJ_ELEC_AUTOXFER2","Number",tgl_autoxfer2)
+        msfs_variable_write("L:ASCRJ_ELEC_AUTOXFER2","Number",tgl_autoxfer2)
         sound_play(snd_click)
 end
 btn_AUTOXFER2 = button_add(nil,"btn_push.png", 411, 666, 68, 68, cb_AUTOXFER2)  
 
 --AUTOXFER2 Fail
-fs2020_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER2_FAIL", "Number", 
+msfs_variable_subscribe("L:ASCRJ_ELEC_AUTOXFER2_FAIL", "Number", 
                                               "A:CIRCUIT GENERAL PANEL ON","Bool",
         function (fault,pwr)
             if (pwr==true and fault==1 ) then  visible(img_autoxfer2_fail, true)    

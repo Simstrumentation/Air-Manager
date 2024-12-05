@@ -33,7 +33,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)          
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 -- Ambient Light Control
@@ -50,49 +50,49 @@ local button_delay = 15
 
 --First Row
 button_add(nil,"button_pressed.png", 22,20,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_PRI","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_PRI","Number",0) end)end)
+    function () msfs_variable_write("L:ASCRJ_ECAM_PRI","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_PRI","Number",0) end)end)
 
 button_add(nil,"button_pressed.png", 76,20,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_STAT","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_STAT","Number",0) end)end)
+    function () msfs_variable_write("L:ASCRJ_ECAM_STAT","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_STAT","Number",0) end)end)
 
 button_add(nil,"button_pressed.png", 130,20,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_ECS","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_ECS","Number",0) end)end)
+    function () msfs_variable_write("L:ASCRJ_ECAM_ECS","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_ECS","Number",0) end)end)
 
 button_add(nil,"button_pressed.png", 187,20,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_HYD","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_HYD","Number",0) end)end)
+    function () msfs_variable_write("L:ASCRJ_ECAM_HYD","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_HYD","Number",0) end)end)
 
 button_add(nil,"button_pressed.png", 241,20,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_ELEC","Number",1) sound_play(snd_click) timer_start(50, function()  fs2020_variable_write("L:ASCRJ_ECAM_ELEC","Number",0) end)end)   
+    function () msfs_variable_write("L:ASCRJ_ECAM_ELEC","Number",1) sound_play(snd_click) timer_start(50, function()  msfs_variable_write("L:ASCRJ_ECAM_ELEC","Number",0) end)end)   
 
 button_add(nil,"button_pressed.png", 295,20,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_FUEL","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_FUEL","Number",0) end)end)      
+    function () msfs_variable_write("L:ASCRJ_ECAM_FUEL","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_FUEL","Number",0) end)end)      
 --Second Row
 button_add(nil,"button_pressed.png", 22,68,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_FCTL","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_FCTL","Number",0) end)end)           
+    function () msfs_variable_write("L:ASCRJ_ECAM_FCTL","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_FCTL","Number",0) end)end)           
     
 button_add(nil,"button_pressed.png", 78,68,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_AICE","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_AICE","Number",0) end)end)      
+    function () msfs_variable_write("L:ASCRJ_ECAM_AICE","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_AICE","Number",0) end)end)      
 
 button_add(nil,"button_pressed.png", 132,68,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_DOORS","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_DOORS","Number",0) end)end)      
+    function () msfs_variable_write("L:ASCRJ_ECAM_DOORS","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_DOORS","Number",0) end)end)      
 
 button_add(nil,"circle_button_pressed.png", 216,64,28,28, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_SEL","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_SEL","Number",0) end)end)      
+    function () msfs_variable_write("L:ASCRJ_ECAM_SEL","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_SEL","Number",0) end)end)      
 --Third Row
 button_add(nil,"button_pressed.png", 22,119,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_CAS","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_CAS","Number",0) end)end)      
+    function () msfs_variable_write("L:ASCRJ_ECAM_CAS","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_CAS","Number",0) end)end)      
 
 button_add(nil,"button_pressed.png", 77,119,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_BLANK","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_BLANK","Number",0) end)end)      
+    function () msfs_variable_write("L:ASCRJ_ECAM_BLANK","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_BLANK","Number",0) end)end)      
 
 button_add(nil,"button_pressed.png", 132,119,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_MENU","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_MENU","Number",0) end)end)      
+    function () msfs_variable_write("L:ASCRJ_ECAM_MENU","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_MENU","Number",0) end)end)      
 
 button_add(nil,"button_pressed.png", 186,119,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_UP","Number",1)  sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_UP","Number",0) end)end)      
+    function () msfs_variable_write("L:ASCRJ_ECAM_UP","Number",1)  sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_UP","Number",0) end)end)      
 
 button_add(nil,"button_pressed.png", 240,119,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_DOWN","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_DOWN","Number",0) end)end)          
+    function () msfs_variable_write("L:ASCRJ_ECAM_DOWN","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_DOWN","Number",0) end)end)          
 
 button_add(nil,"button_pressed.png", 295,119,ButtonWidth,ButtonHeight, 
-    function () fs2020_variable_write("L:ASCRJ_ECAM_STEP","Number",1) sound_play(snd_click) timer_start(50, function() fs2020_variable_write("L:ASCRJ_ECAM_STEP","Number",0) end)end)             
+    function () msfs_variable_write("L:ASCRJ_ECAM_STEP","Number",1) sound_play(snd_click) timer_start(50, function() msfs_variable_write("L:ASCRJ_ECAM_STEP","Number",0) end)end)             

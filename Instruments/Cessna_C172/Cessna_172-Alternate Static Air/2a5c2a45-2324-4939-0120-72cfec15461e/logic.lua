@@ -18,10 +18,10 @@ end
 function toggle_switch_callback(position)
     if position == 0 then
         switch_set_position(btn_id, 1)
-        fs2020_event("TOGGLE_ALTERNATE_STATIC")
+        msfs_event("TOGGLE_ALTERNATE_STATIC")
     elseif position == 1 then
         switch_set_position(btn_id, 0)
-        fs2020_event("TOGGLE_ALTERNATE_STATIC")
+        msfs_event("TOGGLE_ALTERNATE_STATIC")
     end
 end
 
@@ -35,4 +35,4 @@ function new_alt_air_pos(alt_on)
         switch_set_position(btn_id, 0)
     end
 end    
-fs2020_variable_subscribe("ALTERNATE STATIC SOURCE OPEN", "Bool", new_alt_air_pos)
+msfs_variable_subscribe("ALTERNATE STATIC SOURCE OPEN", "Bool", new_alt_air_pos)

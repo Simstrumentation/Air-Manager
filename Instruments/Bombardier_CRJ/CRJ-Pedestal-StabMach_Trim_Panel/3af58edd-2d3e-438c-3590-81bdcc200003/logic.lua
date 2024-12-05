@@ -33,7 +33,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 --Day Graphics
@@ -52,10 +52,10 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 function ss_mach_inop(inop,pwr)
 	visible(img_btn_mach_inop, (inop ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_MACH_TRIM_INOP", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_mach_inop)
+msfs_variable_subscribe("L:ASCRJ_MACH_TRIM_INOP", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_mach_inop)
 
 function mach_inop()
-    fs2020_variable_write("L:ASCRJ_MACH_TRIM",  "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_MACH_TRIM", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_MACH_TRIM",  "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_MACH_TRIM", "Number", 0) end)
     sound_play(snd_click)
 end
 btn_mach_inop = button_add(nil,"btn_push.png", 237,49,50,50, mach_inop) 
@@ -64,10 +64,10 @@ btn_mach_inop = button_add(nil,"btn_push.png", 237,49,50,50, mach_inop)
 function ss_stab1(state,pwr)
 	visible(img_btn_stab1, (state ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_STAB_TRIM_CH1", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_stab1)
+msfs_variable_subscribe("L:ASCRJ_STAB_TRIM_CH1", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_stab1)
 
 function stab1()
-    fs2020_variable_write("L:ASCRJ_STAB_TRIM_CH1_TRIGGER",  "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_STAB_TRIM_CH1_TRIGGER", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_STAB_TRIM_CH1_TRIGGER",  "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_STAB_TRIM_CH1_TRIGGER", "Number", 0) end)
     sound_play(snd_click)
 end
 btn_stab1 = button_add(nil,"btn_push.png", 56,52,42,41, stab1) 
@@ -75,10 +75,10 @@ btn_stab1 = button_add(nil,"btn_push.png", 56,52,42,41, stab1)
 function ss_stab2(state,pwr)
 	visible(img_btn_stab2, (state ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_STAB_TRIM_CH2", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_stab2)
+msfs_variable_subscribe("L:ASCRJ_STAB_TRIM_CH2", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_stab2)
 
 function stab2()
-    fs2020_variable_write("L:ASCRJ_STAB_TRIM_CH2_TRIGGER",  "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_STAB_TRIM_CH2_TRIGGER", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_STAB_TRIM_CH2_TRIGGER",  "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_STAB_TRIM_CH2_TRIGGER", "Number", 0) end)
     sound_play(snd_click)
 end
 btn_stab2 = button_add(nil,"btn_push.png", 112,52,42,41, stab2) 

@@ -46,34 +46,34 @@ opacity(txt_select, 0)
 --FUNCTIONS
 function knobTurnOuter(dir)
     if (dir) == 1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)     --for WTT verison
-        fs2020_event("AP_ALT_VAR_INC")                                                   --for non-WTT version
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)     --for WTT verison
+        msfs_event("AP_ALT_VAR_INC")                                                   --for non-WTT version
     elseif(dir) == -1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)     --for WTT verison
-        fs2020_event("AP_ALT_VAR_DEC")                                                  --for non-WTT version
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)     --for WTT verison
+        msfs_event("AP_ALT_VAR_DEC")                                                  --for non-WTT version
     end
     dial_click_rotate(knob_outer, 5)
 end
 
 function knobTurnInner(dir)
     if (dir) == 1 then
-       fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)    --for WTT verison
-       fs2020_event("AP_ALT_VAR_INC")                                                 --for non-WTT version
+       msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)    --for WTT verison
+       msfs_event("AP_ALT_VAR_INC")                                                 --for non-WTT version
     elseif(dir) == -1 then
-       fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)        --for WTT verison
-       fs2020_event("AP_ALT_VAR_DEC")                                                    --for non-WTT version
+       msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)        --for WTT verison
+       msfs_event("AP_ALT_VAR_DEC")                                                    --for non-WTT version
     end
     dial_click_rotate(knob_inner, 5)
 end
 
 function btn_hdg()
-    fs2020_event("HEADING_BUG_SET", current_hdg)
+    msfs_event("HEADING_BUG_SET", current_hdg)
 end
 
 --[[
 -- FSW removed the ARM button from the alerter. Leaving this here in case it's brought back.
 function arm_pressed()
-    fs2020_event("H:APGA_ARM")
+    msfs_event("H:APGA_ARM")
 end
 
 button_id = switch_add("arm_btn.png", "arm_btn_pressed.png", 96,142,86,48, arm_pressed)
@@ -102,13 +102,13 @@ function setvalues(armed, altSelected)
 end
 
 -- Variable Subscription
-fs2020_variable_subscribe("L:Garmin_Alerter_Code", "Number",
+msfs_variable_subscribe("L:Garmin_Alerter_Code", "Number",
                                               "AUTOPILOT ALTITUDE LOCK VAR", "Feet",  
                                               setvalues)
 
                
                             -- simvar subscriptions for ALT and HDG
-fs2020_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet", 
+msfs_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet", 
                           "PLANE HEADING DEGREES MAGNETIC", "Degrees", 
                           function(ap_alt, heading)
                               current_alt = ap_alt
@@ -125,7 +125,7 @@ function setpowerstate(bus_volts, avionics_on)
 end
 
 --VARIABLE SUBCRIPTIONS
-fs2020_variable_subscribe("ELECTRICAL MAIN BUS VOLTAGE", "Volts", 
+msfs_variable_subscribe("ELECTRICAL MAIN BUS VOLTAGE", "Volts", 
                           "AVIONICS MASTER SWITCH", "Bool", 
                            setpowerstate)           
                             

@@ -6,7 +6,7 @@
 --******************************************************************************************
 
 function gear_switch(state, direction)  
-    fs2020_event( fif(state == 0, "GEAR_DOWN", "GEAR_UP") )
+    msfs_event( fif(state == 0, "GEAR_DOWN", "GEAR_UP") )
 end
 
 -- Add images
@@ -63,7 +63,7 @@ switch_handle = switch_add("handle_up.png", "handle_dn.png", 480, 0, 287, 998, g
 
 -- Bus subscription --
 
-fs2020_variable_subscribe("GEAR CENTER POSITION", "Percent", 
+msfs_variable_subscribe("GEAR CENTER POSITION", "Percent", 
                           "GEAR LEFT POSITION", "Percent", 
                           "GEAR RIGHT POSITION", "Percent", 
                           "GEAR HANDLE POSITION", "Bool", 

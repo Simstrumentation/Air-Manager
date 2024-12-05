@@ -88,5 +88,5 @@ end
 -- Bus subscribe --
 -------------------
 
-fs2020_variable_subscribe("ENG MANIFOLD PRESSURE:1", "inHG",
+msfs_variable_subscribe("ENG MANIFOLD PRESSURE:1", "inHG",
                           "ENG MANIFOLD PRESSURE:2", "inHG", new_ManifoldPx_FS2020)                       

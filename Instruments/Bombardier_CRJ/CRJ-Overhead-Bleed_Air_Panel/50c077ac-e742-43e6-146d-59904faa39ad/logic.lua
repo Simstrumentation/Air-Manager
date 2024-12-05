@@ -39,7 +39,7 @@ function ss_backlighting(value, pwr)
         opacity(img_backlight_bleedsource_knob, (value), "LOG", 0.04)   
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 --Day Graphics
 img_sw_isol_up= img_add("toggle_up.png", 230,255,185,182)
@@ -78,17 +78,17 @@ function ss_crossbleed(state)
     rotate(img_dial_crossbleed_night, -(40-(state*40)))    
     rotate(img_backlight_crossbleed_knob, -(40-(state*40)))        
 end
-fs2020_variable_subscribe("L:ASCRJ_AIR_CROSS_BLEED", "Number", ss_crossbleed)
+msfs_variable_subscribe("L:ASCRJ_AIR_CROSS_BLEED", "Number", ss_crossbleed)
 function cb_sw_crossbleed(position, direction)
- fs2020_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",1) 
+ msfs_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",1) 
     if (position == 0 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",1) 
+        msfs_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",1) 
     elseif (position == 1 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",2) 
+        msfs_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",2) 
     elseif (position == 1 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",0)         
+        msfs_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",0)         
     elseif (position == 2 and direction == -1) then
-        fs2020_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",1)               
+        msfs_variable_write("L:ASCRJ_AIR_CROSS_BLEED","number",1)               
     end 
 end
 switch_crossbleed= switch_add(nil,nil,nil, 267,130,100,100, "CIRCULAIR" , cb_sw_crossbleed)  
@@ -101,23 +101,23 @@ function ss_bleedvalves(state)
     rotate(img_dial_bleedvalves_night, -(40-(state*40)))  
     rotate(img_backlight_bleedvalves_knob, -(40-(state*40)))     
 end
-fs2020_variable_subscribe("L:ASCRJ_AIR_BLEED_VALVES", "Number", ss_bleedvalves)
+msfs_variable_subscribe("L:ASCRJ_AIR_BLEED_VALVES", "Number", ss_bleedvalves)
 function cb_sw_bleedvalves(position, direction)
     if (position == 0 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_VALVES","number",1) 
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_VALVES","number",1) 
     elseif (position == 1 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_VALVES","number",2) 
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_VALVES","number",2) 
     elseif (position == 1 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_VALVES","number",0)         
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_VALVES","number",0)         
     elseif (position == 2 and direction == -1) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_VALVES","number",1)               
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_VALVES","number",1)               
     end 
 end
 switch_bleedvalves= switch_add(nil,nil,nil, 90,295,100,100, "CIRCULAIR" , cb_sw_bleedvalves) 
 
 
 --ISOL SWITCH
-fs2020_variable_subscribe("L:ASCRJ_AIR_BLEED_SOURCE_ISOL", "Number", 
+msfs_variable_subscribe("L:ASCRJ_AIR_BLEED_SOURCE_ISOL", "Number", 
         function (state)
             switch_set_position(sw_isol, state)
             visible(img_sw_isol_up, state ==0)
@@ -128,9 +128,9 @@ fs2020_variable_subscribe("L:ASCRJ_AIR_BLEED_SOURCE_ISOL", "Number",
 
 function cb_sw_isol(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE_ISOL","Number",1) 
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE_ISOL","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE_ISOL","Number",0) 
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE_ISOL","Number",0) 
     end 
 end
 sw_isol= switch_add(nil,nil, 230,255,185,182, cb_sw_isol)
@@ -145,24 +145,24 @@ function ss_bleedsource(state)
     rotate(img_dial_bleedsource_night, -(90-(state*90)))    
     rotate(img_backlight_bleedsource_knob, -(90-(state*90)))      
 end
-fs2020_variable_subscribe("L:ASCRJ_AIR_BLEED_SOURCE", "Number", ss_bleedsource)
+msfs_variable_subscribe("L:ASCRJ_AIR_BLEED_SOURCE", "Number", ss_bleedsource)
 function cb_sw_bleedsource(position, direction)
     if (position == 0 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",1)
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",1)
    elseif (position == 0 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",3)         
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",3)         
     elseif (position == 1 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",2) 
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",2) 
     elseif (position == 1 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",0)         
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",0)         
     elseif (position == 2 and direction == 1) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",3)               
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",3)               
     elseif (position == 2 and direction == -1) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",1)   
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",1)   
     elseif (position == 3 and direction == 1) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",0)               
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",0)               
     elseif (position == 3 and direction == -1) then
-        fs2020_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",2)                        
+        msfs_variable_write("L:ASCRJ_AIR_BLEED_SOURCE","number",2)                        
     end 
 end
 switch_bleedsource= switch_add(nil,nil,nil,nil, 440,290,100,100, "CIRCULAIR" , cb_sw_bleedsource) 

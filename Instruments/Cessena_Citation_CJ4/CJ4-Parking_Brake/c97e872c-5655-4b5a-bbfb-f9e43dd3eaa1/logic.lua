@@ -51,7 +51,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(labels_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                            "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -59,7 +59,7 @@ fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
 						  
 
 function new_park_brake(position)
-    fs2020_event("PARKING_BRAKES")
+    msfs_event("PARKING_BRAKES")
 end
 
 park_brake_sw = switch_add("off.png", "on.png" , 0, 0, 200, 350, new_park_brake)
@@ -71,6 +71,6 @@ function park_brake_switch(position)
      switch_set_position(park_brake_sw_night, position)
 end    
 
-fs2020_variable_subscribe("BRAKE PARKING POSITION", "Position", park_brake_switch )
+msfs_variable_subscribe("BRAKE PARKING POSITION", "Position", park_brake_switch )
 
 --end PARKING BRAKE

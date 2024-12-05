@@ -149,11 +149,11 @@ function setAirspeed(as)
     end
 end
 
-fs2020_variable_subscribe("AIRSPEED INDICATED", "Knots", setAirspeed)
+msfs_variable_subscribe("AIRSPEED INDICATED", "Knots", setAirspeed)
 
 function setTAScard(tas)
     val = interpolate_linear(ias_settings, var_cap(airspeed, 0, 260)) - interpolate_linear(tas_settings, var_cap(tas, 0, 350))
     rotate(tas_ticks_id, val, 300, 300, nil, "LOG", 0.005, "DIRECT")
 end
 
-fs2020_variable_subscribe("AIRSPEED TRUE", "Knots", setTAScard)
+msfs_variable_subscribe("AIRSPEED TRUE", "Knots", setTAScard)

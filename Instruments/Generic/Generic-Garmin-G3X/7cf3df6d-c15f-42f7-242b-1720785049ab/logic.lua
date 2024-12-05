@@ -56,19 +56,19 @@ end
 --*********************************************END USER PROPERTY CONFIG***********************************************
 
 function callback_NRST()
-    fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_NRST_PUSH")
+    msfs_event("H:AS3X_Touch_" .. unit_mode .. "_NRST_PUSH")
     sound_play(press_snd)
 end
 button_add(nil,nil, 241,840,91,58, callback_NRST)
 
 function callback_back()
-    fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Back_Push")
+    msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Back_Push")
     sound_play(press_snd)
 end
 button_add(nil,nil, 372,840,91,58, callback_back)
 
 function callback_direct()
-    fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_DIRECTTO_Push")
+    msfs_event("H:AS3X_Touch_" .. unit_mode .. "_DIRECTTO_Push")
     sound_play(press_snd)
 end
 button_add(nil,nil, 932,840,91,58, callback_direct)
@@ -76,7 +76,7 @@ button_add(nil,nil, 932,840,91,58, callback_direct)
 
 
 function callback_menu()
-    fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_MENU_PUSH")
+    msfs_event("H:AS3X_Touch_" .. unit_mode .. "_MENU_PUSH")
     sound_play(press_snd)
 end
 button_add(nil,nil, 1058,840,91,58, callback_menu)
@@ -85,9 +85,9 @@ button_add(nil,nil, 1058,840,91,58, callback_menu)
 -- LEFT knob
 function knob_alt_outer( direction)
     if direction ==  1 then
-        fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Outer_L_INC")
+        msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Outer_L_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Outer_L_DEC")
+        msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Outer_L_DEC")
     end
     sound_play(dial_snd)
 end
@@ -98,9 +98,9 @@ dial_click_rotate( knob_alt_outer_id, 6)
 
 function knob_alt_inner( direction)
     if direction ==  1 then
-        fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Inner_L_INC")
+        msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Inner_L_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Inner_L_DEC")
+        msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Inner_L_DEC")
     end
     sound_play(dial_snd)
 end
@@ -113,9 +113,9 @@ dial_click_rotate( knob_alt_inner_id, 6)
 -- RIGHT knob
 function knob_alt_outer( direction)
     if direction ==  1 then
-        fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Outer_R_INC")
+        msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Outer_R_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Outer_R_DEC")
+        msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Outer_R_DEC")
     end
     sound_play(dial_snd)
 end
@@ -126,9 +126,9 @@ dial_click_rotate( knob_alt_outer_id, 6)
 
 function knob_alt_inner( direction)
     if direction ==  1 then
-        fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Inner_R_INC")
+        msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Inner_R_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Inner_R_DEC")
+        msfs_event("H:AS3X_Touch_" .. unit_mode .. "_Knob_Inner_R_DEC")
     end
     sound_play(dial_snd)
 end

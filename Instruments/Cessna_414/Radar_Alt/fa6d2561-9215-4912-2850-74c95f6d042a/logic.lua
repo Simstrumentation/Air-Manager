@@ -131,9 +131,9 @@ end
     -- Set decision altitude with knob
 function setDecisionAlt(direction)
     if direction == 1 then
-        fs2020_event("INCREASE_DECISION_HEIGHT")
+        msfs_event("INCREASE_DECISION_HEIGHT")
     elseif direction == -1 then
-        fs2020_event("DECREASE_DECISION_HEIGHT")
+        msfs_event("DECREASE_DECISION_HEIGHT")
     end 
     sound_play(dial_snd)
 end
@@ -164,7 +164,7 @@ end
 function testSwitchPress()
     if bus_volts > 3 then
         test_active = true
-        fs2020_variable_write("L:GROUND_RADAR_TEST_SWITCH", "ENUM", 1)
+        msfs_variable_write("L:GROUND_RADAR_TEST_SWITCH", "ENUM", 1)
         opacity(dh_ind_light_id, 0.8)
         sound_play(press_snd)
         visible(test_shadow_id, false)
@@ -182,7 +182,7 @@ function testSwitchPress()
 end
 
 function testSwitchRelease()
-    fs2020_variable_write("L:GROUND_RADAR_TEST_SWITCH", "ENUM" , 0)
+    msfs_variable_write("L:GROUND_RADAR_TEST_SWITCH", "ENUM" , 0)
     opacity(dh_ind_light_id, 0.05)
     visible(test_shadow_id, true)
     sound_play(release_snd)
@@ -222,6 +222,6 @@ end
 
 --END FUNCTIONS
 --VARIABLE SUBSCRIPTIONS
-fs2020_variable_subscribe("A:DECISION HEIGHT", "FEET", setBug)
-fs2020_variable_subscribe("A:RADIO HEIGHT", "FEET", setAltitude)
-fs2020_variable_subscribe("A:ELECTRICAL MAIN BUS VOLTAGE", "VOLTS", new_busvolts)
+msfs_variable_subscribe("A:DECISION HEIGHT", "FEET", setBug)
+msfs_variable_subscribe("A:RADIO HEIGHT", "FEET", setAltitude)
+msfs_variable_subscribe("A:ELECTRICAL MAIN BUS VOLTAGE", "VOLTS", new_busvolts)

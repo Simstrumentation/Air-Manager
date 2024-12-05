@@ -151,14 +151,14 @@ function phase_cb(switch, switch_pos)
         visible(light_on_id, false)    
     end
 end  
-fs2020_variable_subscribe("L:PHASE_SWITCH", "Number", 
+msfs_variable_subscribe("L:PHASE_SWITCH", "Number", 
                                             "L:PHASE_SWITCH_ON", "Number", phase_cb)
 -- phase switch
 function switch_cb()
     if switch_position == 1 then
-        fs2020_variable_write("L:PHASE_SWITCH", "ENUM", 0)         
+        msfs_variable_write("L:PHASE_SWITCH", "ENUM", 0)         
     else
-        fs2020_variable_write("L:PHASE_SWITCH", "ENUM", 1)    
+        msfs_variable_write("L:PHASE_SWITCH", "ENUM", 1)    
     end        
 end    
 phase_switch_id = switch_add("white_down.png", "white_up.png", 548, 500, 50, 92, switch_cb)  
@@ -166,7 +166,7 @@ phase_switch_id = switch_add("white_down.png", "white_up.png", 548, 500, 50, 92,
 function switch_pos(pos)
     switch_set_position(phase_switch_id, pos) 
 end
-fs2020_variable_subscribe("L:PHASE_SWITCH_ON", "Number", switch_pos) 
+msfs_variable_subscribe("L:PHASE_SWITCH_ON", "Number", switch_pos) 
 
 
 -- phase knob positon follows lvar to match cockpit setting
@@ -182,11 +182,11 @@ end
 -- phase knob adjustment
 function phase_adjust(direction)
       if direction == 1 and phase_knob_position < 200 then
-                fs2020_variable_write("L:XMLVAR_PHASE_KNOB_Position", "Number", phase_knob_position + 10)
-                fs2020_variable_write("L:PHASE_KNOB_CONVERT", "Number", phase_knob_convert + 0.2) 
+                msfs_variable_write("L:XMLVAR_PHASE_KNOB_Position", "Number", phase_knob_position + 10)
+                msfs_variable_write("L:PHASE_KNOB_CONVERT", "Number", phase_knob_convert + 0.2) 
       elseif  direction == -1 and phase_knob_position > 0  then
-                fs2020_variable_write("L:XMLVAR_PHASE_KNOB_Position", "Number", phase_knob_position - 10)
-                fs2020_variable_write("L:PHASE_KNOB_CONVERT", "Number",  phase_knob_convert - 0.2) 
+                msfs_variable_write("L:XMLVAR_PHASE_KNOB_Position", "Number", phase_knob_position - 10)
+                msfs_variable_write("L:PHASE_KNOB_CONVERT", "Number",  phase_knob_convert - 0.2) 
     end
 end
 phase_dial = dial_add(nil, 10, 500, 86, 86, phase_adjust)
@@ -205,13 +205,13 @@ end
 
 
 --***********************************************VARIABLE SUBSCRIPTIONS***********************************************
-fs2020_variable_subscribe("PROP RPM:1", "RPM",
+msfs_variable_subscribe("PROP RPM:1", "RPM",
                                           "PROP RPM:2", "RPM", 
                                           set_RPM)      
-fs2020_variable_subscribe("L:ANUNNCIATOR_TEST_SWITCH", "Number", 
+msfs_variable_subscribe("L:ANUNNCIATOR_TEST_SWITCH", "Number", 
                                            testmode)   
    
-fs2020_variable_subscribe("L:PHASE_KNOB_CONVERT", "Number", 
+msfs_variable_subscribe("L:PHASE_KNOB_CONVERT", "Number", 
                                             "L:XMLVAR_PHASE_KNOB_Position","Number", 
                                             phase_knob)
                                                                                                                 

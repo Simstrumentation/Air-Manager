@@ -81,23 +81,23 @@ function release()
     sound_play(release_snd)
 end
 function callback_hdg()
-   fs2020_event("AP_PANEL_HEADING_HOLD")
+   msfs_event("AP_PANEL_HEADING_HOLD")
    sound_play(press_snd)
 end
 
 function callback_nav()
-    fs2020_event("AP_NAV1_HOLD")
+    msfs_event("AP_NAV1_HOLD")
     sound_play(press_snd)
 end
 
 
 function callback_ap()
-     fs2020_event("AP_MASTER")   
+     msfs_event("AP_MASTER")   
      sound_play(press_snd)
  end
 
 function callback_lvl()
-    fs2020_event("AP_WING_LEVELER_ON")
+    msfs_event("AP_WING_LEVELER_ON")
     sound_play(press_snd)
 end
 
@@ -111,15 +111,15 @@ function vs_callback(vsenabled)
     VSenabled = vsenabled  
 end
 -- flc current state variable
-fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", callback_flc)  
+msfs_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", callback_flc)  
 
 function callback_flc()
        if FLCState then  --check if FLC is currently on
-            fs2020_event("FLIGHT_LEVEL_CHANGE_OFF")    --if true, toggle off
+            msfs_event("FLIGHT_LEVEL_CHANGE_OFF")    --if true, toggle off
         else    -- if FLC currently off
             AirspeedDecimal = math.floor(AirspeedIndicated)        -- read current airspeed and convert variable
-            fs2020_event("FLIGHT_LEVEL_CHANGE_ON")                --enable FLC
-            fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
+            msfs_event("FLIGHT_LEVEL_CHANGE_ON")                --enable FLC
+            msfs_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
         end
         sound_play(press_snd)
 end
@@ -129,26 +129,26 @@ function aspd_callback(asindicated)
     return AirspeedIndicated    
 end
 
-fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
+msfs_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
 -- End required code for proper FLC speed capture and set
 
 function callback_alt()
-    fs2020_event("AP_PANEL_ALTITUDE_HOLD")
+    msfs_event("AP_PANEL_ALTITUDE_HOLD")
     sound_play(press_snd)
 end
 
 function callback_apr()
-   fs2020_event("AP_APR_HOLD")
+   msfs_event("AP_APR_HOLD")
    sound_play(press_snd)
 end
 
 function callback_fd()
-    fs2020_event("TOGGLE_FLIGHT_DIRECTOR")   
+    msfs_event("TOGGLE_FLIGHT_DIRECTOR")   
     sound_play(press_snd)
 end
 
 function callback_vs()
-      fs2020_event("AP_PANEL_VS_HOLD")
+      msfs_event("AP_PANEL_VS_HOLD")
       sound_play(press_snd)
  end
 
@@ -156,37 +156,37 @@ function callback_vnv()
 --[[
     if isVisionJet then
         if vnav_enable == 1 then
-            fs2020_variable_write("L:SF50_vnav_enable", "Int", 0)
+            msfs_variable_write("L:SF50_vnav_enable", "Int", 0)
         else
-            fs2020_variable_write("L:SF50_vnav_enable", "Int", 1)
+            msfs_variable_write("L:SF50_vnav_enable", "Int", 1)
         end
     else
-        fs2020_event("H:AS1000_VNAV_TOGGLE")
+        msfs_event("H:AS1000_VNAV_TOGGLE")
     end   
 ]]--    
-    fs2020_event("H:AS1000_VNAV_TOGGLE")
+    msfs_event("H:AS1000_VNAV_TOGGLE")
     sound_play(press_snd)
 end
 
 function callback_yd()
-    fs2020_event("YAW_DAMPER_TOGGLE")
+    msfs_event("YAW_DAMPER_TOGGLE")
     sound_play(press_snd)
 end
 
 function altitude_input(direction)
     if direction == 1 then
-		fs2020_event("AP_ALT_VAR_INC")
+		msfs_event("AP_ALT_VAR_INC")
 	else
- 		fs2020_event("AP_ALT_VAR_DEC")
+ 		msfs_event("AP_ALT_VAR_DEC")
 	end
 	sound_play(dial_snd)
 end
 
 function heading_input(direction)
     if direction == 1 then
-		fs2020_event("HEADING_BUG_INC")
+		msfs_event("HEADING_BUG_INC")
     else
- 		fs2020_event("HEADING_BUG_DEC")
+ 		msfs_event("HEADING_BUG_DEC")
     end
     sound_play(dial_snd)
 end
@@ -194,15 +194,15 @@ end
 function vs_callback(direction)
     if direction == 1 then
         if scroll_vs_mode then
-	    fs2020_event("AP_VS_VAR_INC")
+	    msfs_event("AP_VS_VAR_INC")
         else
-            fs2020_event("AP_SPD_VAR_INC")
+            msfs_event("AP_SPD_VAR_INC")
         end
     else
         if scroll_vs_mode then
- 	    fs2020_event("AP_VS_VAR_DEC")
+ 	    msfs_event("AP_VS_VAR_DEC")
          else
-            fs2020_event("AP_SPD_VAR_DEC")
+            msfs_event("AP_SPD_VAR_DEC")
          end
     end
     sound_play(dial_snd)
@@ -229,12 +229,12 @@ if user_prop_get(up_yd_shown) then
 end 
 
 function sync_heading_pressed()
-	fs2020_event("HEADING_BUG_SET", currentHeading)	
+	msfs_event("HEADING_BUG_SET", currentHeading)	
 	sound_play(press_snd)
 end
 
 function sync_altitude_pressed()
- 	fs2020_event("AP_ALT_VAR_SET_ENGLISH", currentAltitude)
+ 	msfs_event("AP_ALT_VAR_SET_ENGLISH", currentAltitude)
  	sound_play(press_snd)	
 end
 
@@ -302,7 +302,7 @@ end
 
 -- Bus subscribe
 						
-fs2020_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
+msfs_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
 						    "AUTOPILOT NAV1 LOCK", "Bool",
 						    "AUTOPILOT APPROACH HOLD", "Bool",
 						    "AUTOPILOT MASTER", "Bool",
@@ -325,7 +325,7 @@ fs2020_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
 function aspd_callback(asindicated)
 	AirspeedIndicated = asindicated  
 end
-fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
+msfs_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
 
 --backlight labels and knobs added at the end to maintain z-order
 backlit_labels = img_add_fullscreen("backlight_labels.png")
@@ -345,15 +345,15 @@ vs_scrollwheel = scrollwheel_add_ver("vs_thumb.png", 423, 61, 34, 124, 30, 30, v
 function setSpeedKnobster(direction)
     if direction == 1 then
         if scroll_vs_mode then
-			fs2020_event("AP_VS_VAR_INC")
+			msfs_event("AP_VS_VAR_INC")
       else
-            fs2020_event("AP_SPD_VAR_INC")
+            msfs_event("AP_SPD_VAR_INC")
         end
     else
         if scroll_vs_mode then
- 			fs2020_event("AP_VS_VAR_DEC")
+ 			msfs_event("AP_VS_VAR_DEC")
          else
-            fs2020_event("AP_SPD_VAR_DEC")
+            msfs_event("AP_SPD_VAR_DEC")
          end
     end
     sound_play(dial_snd)

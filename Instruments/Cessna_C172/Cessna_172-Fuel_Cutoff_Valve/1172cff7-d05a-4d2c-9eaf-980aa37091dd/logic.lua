@@ -31,9 +31,9 @@ end
 
 function toggle_switch_callback(position)
     if position == 0 and fuel_cutoff_state == 0 then
-        fs2020_event("TOGGLE_FUEL_VALVE_ENG1")
+        msfs_event("TOGGLE_FUEL_VALVE_ENG1")
     elseif position == 1 and fuel_cutoff_state == 1 then
-        fs2020_event("TOGGLE_FUEL_VALVE_ENG1")
+        msfs_event("TOGGLE_FUEL_VALVE_ENG1")
         end
 end
 
@@ -48,4 +48,4 @@ function new_fuel_pos(fuel_on)
         switch_set_position(btn_id, 0)
     end
 end 
-fs2020_variable_subscribe("GENERAL ENG FUEL VALVE:1", "Number", new_fuel_pos)
+msfs_variable_subscribe("GENERAL ENG FUEL VALVE:1", "Number", new_fuel_pos)

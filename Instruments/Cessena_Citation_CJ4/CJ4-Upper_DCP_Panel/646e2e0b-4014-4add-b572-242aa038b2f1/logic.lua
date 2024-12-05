@@ -82,7 +82,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_baro_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                            "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -90,65 +90,65 @@ fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
 						  
 --NAV Select    
 function callback_nav()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_NAV")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_NAV")
    sound_play(click_snd)
 end
 button_add(nil,"nav_pressed.png", 82,30,91,70, callback_nav)
 --PFD Select    
 function callback_pfd()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_PFD_MENU")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_PFD_MENU")
    sound_play(click_snd)
 end
 button_add(nil,"pfd_pressed.png", 203,30,91,70, callback_pfd)
 --ESC Select    
 function callback_esc()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_ESC")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_ESC")
    sound_play(click_snd)
 end
 button_add(nil,"ESC_pressed.png", 326,30,91,70, callback_esc)
 --ET Select    
 function callback_et()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_ET")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_ET")
    sound_play(click_snd)
 end
 button_add(nil,"ET_pressed.png", 446,30,91,70, callback_et)
 --FRMT Select    
 function callback_frmt()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_FRMT")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_FRMT")
    sound_play(click_snd)
 end
 button_add(nil,"frmt_pressed.png", 567,30,91,70, callback_frmt)
 --TERR Select    
 function callback_terr()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_TERR_WX")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_TERR_WX")
    sound_play(click_snd)
 end
 button_add(nil,"terr_pressed.png", 687,30,91,70, callback_terr)
 --TFC Select    
 function callback_tfc()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_TFC")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_TFC")
    sound_play(click_snd)
 end
 button_add(nil,"TFC_pressed.png", 807,30,91,70, callback_tfc)
 --CCP Select    
 function callback_ccp()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_CCP")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_CCP")
 end
 button_add(nil,"CCP_pressed.png", 273,125,91,70, callback_ccp)
 --REFS Select    
 function callback_refs()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_REFS_MENU")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_REFS_MENU")
    sound_play(click_snd)
 end
 button_add(nil,"REFS_pressed.png", 273,227,91,70, callback_refs)
 --RADAR Select    
 function callback_radar()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_RADAR_MENU")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_RADAR_MENU")
 end
 button_add(nil,"RADAR_pressed.png", 606,125,91,70, callback_radar)
 --TAWS Select    
 function callback_taws()
-   fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Push_TAWS_MENU")
+   msfs_event("H:Generic_Upr_" .. instr_pos .. "_Push_TAWS_MENU")
 end
 button_add(nil,"TAWS_pressed.png", 606,228,91,70, callback_taws)
 --------------------------------------------------
@@ -157,15 +157,15 @@ button_add(nil,"TAWS_pressed.png", 606,228,91,70, callback_taws)
 function ss_barosaved_value(value)
     barosaved = value
 end
-fs2020_variable_subscribe("L:XMLVAR_Baro1_SavedPressure","number", ss_barosaved_value)
+msfs_variable_subscribe("L:XMLVAR_Baro1_SavedPressure","number", ss_barosaved_value)
 
 baro_angle = 0
 function callback_baro_turn( direction)
      if direction ==  -1 then 
-         fs2020_event("KOHLSMAN_DEC")
+         msfs_event("KOHLSMAN_DEC")
          baro_angle = baro_angle - 10
      elseif direction == 1 then
-         fs2020_event("KOHLSMAN_INC")
+         msfs_event("KOHLSMAN_INC")
          baro_angle = baro_angle + 10
      end
  sound_play(dial_snd)  
@@ -181,7 +181,7 @@ img_baro_backlight = img_add("baro_backlight.png", 115,165,120,120)
 
 --BARO STD PRESS
  function callback_baro_click()
-     fs2020_event("BAROMETRIC")
+     msfs_event("BAROMETRIC")
       sound_play(click_snd)  
 end    
 sw_baro_std = button_add(nil,nil, 140,190,70,70, callback_baro_click)
@@ -189,17 +189,17 @@ sw_baro_std = button_add(nil,nil, 140,190,70,70, callback_baro_click)
 function ss_baro_std(value)
     barostate = value     --set value to global local
 end
-fs2020_variable_subscribe("L:XMLVAR_Baro1_ForcedToSTD","number", ss_baro_std)
+msfs_variable_subscribe("L:XMLVAR_Baro1_ForcedToSTD","number", ss_baro_std)
 
  --------------------------------------------------
 
 --MENU DIAL (OUTER)
 function callback_menu_turn( direction)
      if direction ==  -1 then
-         fs2020_event("H:Generic_Upr_" .. instr_pos .. "_MENU_ADV_DEC")
+         msfs_event("H:Generic_Upr_" .. instr_pos .. "_MENU_ADV_DEC")
          sound_play(dial_snd)
      elseif direction == 1 then
-         fs2020_event("H:Generic_Upr_" .. instr_pos .. "_MENU_ADV_INC")
+         msfs_event("H:Generic_Upr_" .. instr_pos .. "_MENU_ADV_INC")
          sound_play(dial_snd)
      end
 end
@@ -210,11 +210,11 @@ data_angle = 0
 function callback_data_turn( direction)
      if direction ==  -1 then
          data_angle =data_angle - 10
-         fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Data_DEC")
+         msfs_event("H:Generic_Upr_" .. instr_pos .. "_Data_DEC")
          sound_play(dial_snd)
      elseif direction == 1 then
          data_angle =data_angle + 10     
-         fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Data_INC")
+         msfs_event("H:Generic_Upr_" .. instr_pos .. "_Data_INC")
          sound_play(dial_snd)
      end
      rotate (img_data_night, data_angle)
@@ -224,7 +224,7 @@ dial_data = dial_add("DATA_Dial.png", 437,182,85,85, callback_data_turn)
 img_data_night = img_add("DATA_Dial_night.png", 437,182,85,85) 
 --DATA PRESS
 function data_click()
-    fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Data_PUSH")  
+    msfs_event("H:Generic_Upr_" .. instr_pos .. "_Data_PUSH")  
     sound_play(click_snd)
 end    
 button_add(nil,nil, 450,200,50,50, data_click) 
@@ -233,9 +233,9 @@ button_add(nil,nil, 450,200,50,50, data_click)
  --TILT DIAL (OUTER)
 function callback_tilt_turn( direction)
      if direction ==  -1 then
-         fs2020_event("H:Generic_Upr_" .. instr_pos .. "_TILT_DEC")
+         msfs_event("H:Generic_Upr_" .. instr_pos .. "_TILT_DEC")
      elseif direction == 1 then
-          fs2020_event("H:Generic_Upr_" .. instr_pos .. "_TILT_INC")
+          msfs_event("H:Generic_Upr_" .. instr_pos .. "_TILT_INC")
      end
 end
 dial_tilt = dial_add("TILT_Dial.png", 735,165,120,120, callback_tilt_turn)
@@ -246,11 +246,11 @@ range_angle = 0
 function callback_range_turn( direction)
      if direction ==  -1 then
          range_angle = range_angle - 10     
-         fs2020_event("H:Generic_Upr_" .. instr_pos .. "_RANGE_DEC")
+         msfs_event("H:Generic_Upr_" .. instr_pos .. "_RANGE_DEC")
          sound_play(dial_snd)
      elseif direction == 1 then
          range_angle = range_angle + 10     
-         fs2020_event("H:Generic_Upr_" .. instr_pos .. "_RANGE_INC")
+         msfs_event("H:Generic_Upr_" .. instr_pos .. "_RANGE_INC")
          sound_play(dial_snd)
      end
      rotate (img_range_night, range_angle)
@@ -261,7 +261,7 @@ img_range_night = img_add("RANGE_Dial_night.png", 754,182,85,85)
 
 --TILT PRESS
 function callback_tilt_click()
-    fs2020_event("H:Generic_Upr_" .. instr_pos .. "_Tilt_PUSH")  
+    msfs_event("H:Generic_Upr_" .. instr_pos .. "_Tilt_PUSH")  
      sound_play(click_snd)  
 end    
 button_add(nil,nil, 773,200,50,50, callback_tilt_click) 

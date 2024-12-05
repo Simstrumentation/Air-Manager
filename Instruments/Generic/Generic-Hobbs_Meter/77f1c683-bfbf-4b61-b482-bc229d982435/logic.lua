@@ -97,4 +97,4 @@ end
 -- reset to display all zeros by default
 showTime(0)
 
-fs2020_variable_subscribe("GENERAL ENG ELAPSED TIME:1", "Seconds", showTime)
+msfs_variable_subscribe("GENERAL ENG ELAPSED TIME:1", "Seconds", showTime)

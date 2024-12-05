@@ -25,19 +25,19 @@ img_panel_dimmer = img_add("panel_knob.png", 100, 150, 110, 110)
 sw_panel_dimmer = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,  95,145,120,120, "CIRCULAIR",
         function (pos,dir)
             if (pos == 0 and dir == 1)  then  --At OFF going to ON
-                fs2020_event("K:PANEL_LIGHTS_SET", 1)
-                fs2020_event("K:PEDESTRAL_LIGHTS_SET", 1)               
+                msfs_event("K:PANEL_LIGHTS_SET", 1)
+                msfs_event("K:PEDESTRAL_LIGHTS_SET", 1)               
             elseif (pos == 1 and dir == -1)  then  --At ON going to OFF
-                fs2020_event("K:PANEL_LIGHTS_SET", 0)
-                fs2020_event("K:PEDESTRAL_LIGHTS_SET", 0)
+                msfs_event("K:PANEL_LIGHTS_SET", 0)
+                msfs_event("K:PEDESTRAL_LIGHTS_SET", 0)
             elseif (pos >= 1 and pos <= 24 and dir == 1)  then      --Decrease Pot
-                fs2020_event("LIGHT_POTENTIOMETER_DEC", 4)                                        
+                msfs_event("LIGHT_POTENTIOMETER_DEC", 4)                                        
             elseif (pos >= 1 and  dir == -1)  then      --Increase Pot
-                fs2020_event("LIGHT_POTENTIOMETER_INC", 4)  
+                msfs_event("LIGHT_POTENTIOMETER_INC", 4)  
            end
     end)
                             
-fs2020_variable_subscribe("A:LIGHT PANEL", "BOOL",
+msfs_variable_subscribe("A:LIGHT PANEL", "BOOL",
                                               "A:LIGHT POTENTIOMETER:4", "PERCENT",
         function (lights_on,lights_pot)
             if (lights_on == false and lights_pot ==100) then       --if off              
@@ -55,12 +55,12 @@ fs2020_variable_subscribe("A:LIGHT PANEL", "BOOL",
 --Dimmer Switch                                                                                  
 sw_dimmer_lights = switch_add("tbm_flip_switch_off.png", "tbm_flip_switch_on.png", 310, 128, 80, 145,
                             function (pos)
-                         --       if pos == 0 then fs2020_variable_write("O:LIGHTING_Dimmer_Light_Position","number",1)
-                        --        elseif pos == 1 then fs2020_variable_write("O:LIGHTING_Dimmer_Light_Position","number",0)
+                         --       if pos == 0 then msfs_variable_write("O:LIGHTING_Dimmer_Light_Position","number",1)
+                        --        elseif pos == 1 then msfs_variable_write("O:LIGHTING_Dimmer_Light_Position","number",0)
                          --       end
                             end)
                             
-fs2020_variable_subscribe("O:LIGHTING_Dimmer_Light_Position", "number",
+msfs_variable_subscribe("O:LIGHTING_Dimmer_Light_Position", "number",
                             function (pos)
                                  switch_set_position(sw_dimmer_lights, pos)
                             end)
@@ -68,12 +68,12 @@ fs2020_variable_subscribe("O:LIGHTING_Dimmer_Light_Position", "number",
 --Cabin Switch                           
 sw_cabin_lights = switch_add("tbm_flip_switch_off.png", "tbm_flip_switch_on.png", 410, 128, 80, 145,
                             function (pos)
-                            --    if pos == 0 then fs2020_variable_write("O:LIGHTING_Cabin_Light_Position","number",1)
-                             --   elseif pos == 1 then fs2020_variable_write(":LIGHTING_Cabin_Light_Position","number",0)
+                            --    if pos == 0 then msfs_variable_write("O:LIGHTING_Cabin_Light_Position","number",1)
+                             --   elseif pos == 1 then msfs_variable_write(":LIGHTING_Cabin_Light_Position","number",0)
                             --    end
                             end)
                             
-fs2020_variable_subscribe("A:LIGHT CABIN ON", "Bool",
+msfs_variable_subscribe("A:LIGHT CABIN ON", "Bool",
                             function (pos)
                                  switch_set_position(sw_cabin_lights, pos)
                             end)
@@ -82,12 +82,12 @@ fs2020_variable_subscribe("A:LIGHT CABIN ON", "Bool",
 sw_access_lights = switch_add("tbm_flip_switch_off.png", "tbm_flip_switch_on.png", 510, 128, 80, 145,
                             function (pos)
                             print(pos)
-                            --    if pos == 0 then fs2020_event("PEDESTRAL_LIGHTS_SET",1)
-                          --      elseif pos == 1 then fs2020_event("PEDESTRAL_LIGHTS_SET",0)
+                            --    if pos == 0 then msfs_event("PEDESTRAL_LIGHTS_SET",1)
+                          --      elseif pos == 1 then msfs_event("PEDESTRAL_LIGHTS_SET",0)
                           --      end
                             end)
                             
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:8", "number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:8", "number",
                             function (pos)
                                  switch_set_position(sw_access_lights, pos)
                             end)

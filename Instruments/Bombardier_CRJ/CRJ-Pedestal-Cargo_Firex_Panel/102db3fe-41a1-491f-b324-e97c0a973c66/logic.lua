@@ -35,7 +35,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)          
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 img_fwd = img_add("smokepush.png", 57, 70, 62, 54) visible(img_fwd, false)
@@ -70,10 +70,10 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 function ss_fwd(state,pwr)
 	visible(img_fwd, (state ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_CARGO_FWD_ARMED", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_fwd)
+msfs_variable_subscribe("L:ASCRJ_CARGO_FWD_ARMED", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_fwd)
 
 function cb_fwd()
-    fs2020_variable_write("L:ASCRJ_CARGO_FWD",  "Number", 1) --timer_start(100, function() fs2020_variable_write("L:ASCRJ_STAB_TRIM_CH1_TRIGGER", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_CARGO_FWD",  "Number", 1) --timer_start(100, function() msfs_variable_write("L:ASCRJ_STAB_TRIM_CH1_TRIGGER", "Number", 0) end)
     sound_play(snd_click)
 end
 btn_fwd = button_add(nil,"btn_push.png", 65, 78, 48, 45, cb_fwd)     visible(btn_fwd, false)  
@@ -102,10 +102,10 @@ end
 function ss_aft(state,pwr)
 	visible(img_aft, (state ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_CARGO_AFT_ARMED", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_aft)
+msfs_variable_subscribe("L:ASCRJ_CARGO_AFT_ARMED", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_aft)
 
 function cb_aft()
-    fs2020_variable_write("L:ASCRJ_CARGO_AFT",  "Number", 1)fs2020_variable_write("L:ASCRJ_CARGO_AFT",  "Number", 1) timer_start(500, function() fs2020_variable_write("L:ASCRJ_CARGO_AFT_ANIM", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_CARGO_AFT",  "Number", 1)msfs_variable_write("L:ASCRJ_CARGO_AFT",  "Number", 1) timer_start(500, function() msfs_variable_write("L:ASCRJ_CARGO_AFT_ANIM", "Number", 0) end)
     sound_play(snd_click)
 end
 btn_aft = button_add(nil,"btn_push.png", 65, 188, 48, 45, cb_aft)
@@ -132,10 +132,10 @@ end
 function ss_arm_light(state,pwr)
 	visible(img_arm_light, (state ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_CARGO_ARM_LIGHT", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_arm_light)
+msfs_variable_subscribe("L:ASCRJ_CARGO_ARM_LIGHT", "Number", "A:CIRCUIT GENERAL PANEL ON", "Bool",  ss_arm_light)
 
 function cb_arm_light()
-    fs2020_variable_write("L:ASCRJ_CARGO_ARM",  "Number", 1) --timer_start(100, function() fs2020_variable_write("L:ASCRJ_STAB_TRIM_CH1_TRIGGER", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_CARGO_ARM",  "Number", 1) --timer_start(100, function() msfs_variable_write("L:ASCRJ_STAB_TRIM_CH1_TRIGGER", "Number", 0) end)
     sound_play(snd_click)
 end
 btn_arm_light = button_add(nil,"btn_push.png", 247, 132, 48, 51, cb_arm_light) 

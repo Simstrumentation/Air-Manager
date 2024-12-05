@@ -91,33 +91,33 @@ function release()
     sound_play(release_snd)
 end
 function toggleToga()
-    fs2020_event("K:AUTO_THROTTLE_TO_GA")
+    msfs_event("K:AUTO_THROTTLE_TO_GA")
     sound_play(press_snd)
 end
 
 toga_btn = button_add(nil, nil, 140, 56, 50, 50, toggleToga, release)
 
 function atSelect()
-     fs2020_event("K:AP_PANEL_SPEED_SET")
-     fs2020_event("K:AUTO_THROTTLE_ARM")
+     msfs_event("K:AP_PANEL_SPEED_SET")
+     msfs_event("K:AUTO_THROTTLE_ARM")
     sound_play(press_snd)
 end
 at_btn = button_add(nil, "btn_pressed.png", 205, 95, 113, 90, atSelect, release)
 
 function manSelect()
     currentIAS = math.floor(ias)
-    fs2020_variable_write("L:XMLVAR_SpeedIsManuallySet", "ENUM", 1)
-    fs2020_event("AP_SPD_VAR_SET", currentIAS)
+    msfs_variable_write("L:XMLVAR_SpeedIsManuallySet", "ENUM", 1)
+    msfs_event("AP_SPD_VAR_SET", currentIAS)
     sound_play(press_snd)
 end
 man_btn = button_add(nil, "btn_pressed.png", 100, 265, 113, 90, manSelect, release)
 function setIAS(val)
     ias = val
 end
-fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", setIAS )
+msfs_variable_subscribe("AIRSPEED INDICATED", "knots", setIAS )
 
 function fmsSelect()
-    fs2020_variable_write("L:XMLVAR_SpeedIsManuallySet", "ENUM", 0)
+    msfs_variable_write("L:XMLVAR_SpeedIsManuallySet", "ENUM", 0)
     sound_play(press_snd)
 end
 
@@ -128,9 +128,9 @@ fms_btn = button_add(nil, "btn_pressed.png", 320, 265, 113, 90, fmsSelect, relea
 
 function setSpeed(direction)
     if direction == 1 then
-        fs2020_event("AP_SPD_VAR_DEC")            
+        msfs_event("AP_SPD_VAR_DEC")            
     else
-        fs2020_event("AP_SPD_VAR_INC")
+        msfs_event("AP_SPD_VAR_INC")
     end
 end
 
@@ -138,9 +138,9 @@ vs_scrollwheel = scrollwheel_add_ver("vs_thumb.png", 153, 442, 23, 208, 23, 30, 
     
 function setSpeedKnobster(direction)
     if direction == 1 then
-        fs2020_event("AP_SPD_VAR_INC")            
+        msfs_event("AP_SPD_VAR_INC")            
     else
-        fs2020_event("AP_SPD_VAR_DEC")
+        msfs_event("AP_SPD_VAR_DEC")
     end
 end
 
@@ -198,7 +198,7 @@ function setFMSAn(manFMS, atActive)
         visible(man_annun, false)
     end        
 end
-fs2020_variable_subscribe("L:XMLVAR_SpeedIsManuallySet", "enum",
+msfs_variable_subscribe("L:XMLVAR_SpeedIsManuallySet", "enum",
                                               "L:SF50_Autothrottle_Status", "ENUM",
                                               setFMSAn)
 
@@ -210,13 +210,13 @@ function throttle_position(pos)
     else
         sliderVal = 100 -(pos * 100)
     end  
-    fs2020_variable_write("GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", sliderVal)
+    msfs_variable_write("GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", sliderVal)
 end
 
 function moveThrottle(pos)
         slider_set_position(throttle_id, 1-(pos/100))    
 end
-fs2020_variable_subscribe("GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", moveThrottle)
+msfs_variable_subscribe("GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", moveThrottle)
 
 -- backlight
 backlight_labels = img_add_fullscreen("backlight_labels.png")
@@ -249,7 +249,7 @@ function lightPot(val, panel, pot, masterBattery)
     end
 end
 
-fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+msfs_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
                                                 "A:LIGHT PANEL:1", "Bool", 
                                                 "A:LIGHT POTENTIOMETER:3", "Percent", 
                                                 "A:ELECTRICAL MASTER BATTERY", "Bool",

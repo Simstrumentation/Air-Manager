@@ -44,9 +44,9 @@ txt_cabin = txt_add("CABIN", "font:MS33558.ttf; size:20; color: ".. text_color..
 --SWITCH CONTROL
 function pressure_switch()
     if switch_position == 0 then
-        fs2020_variable_write("L:CABIN_PRESSURIZATION_SWITCH", "ENUM", 1)
+        msfs_variable_write("L:CABIN_PRESSURIZATION_SWITCH", "ENUM", 1)
     else
-        fs2020_variable_write("L:CABIN_PRESSURIZATION_SWITCH", "ENUM", 0)
+        msfs_variable_write("L:CABIN_PRESSURIZATION_SWITCH", "ENUM", 0)
     end
 end
 
@@ -57,5 +57,5 @@ function switch_pos(pos)
    switch_set_position(pressure_switch_id, pos)
    switch_position = pos
 end
-fs2020_variable_subscribe("L:CABIN_PRESSURIZATION_SWITCH", "ENUM", switch_pos)
+msfs_variable_subscribe("L:CABIN_PRESSURIZATION_SWITCH", "ENUM", switch_pos)
 

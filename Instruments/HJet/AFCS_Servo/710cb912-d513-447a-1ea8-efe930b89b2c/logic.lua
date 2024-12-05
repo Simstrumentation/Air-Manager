@@ -54,11 +54,11 @@ end
 
 function pitchAction()
     sound_play(press_snd)
-    fs2020_variable_write("L:AFCPITCH PUSHED", "NUMBER", 3)
+    msfs_variable_write("L:AFCPITCH PUSHED", "NUMBER", 3)
     if pitchState == 1 then
-        fs2020_variable_write("L:AFCPITCH PUSHED", "NUMBER", 0)
+        msfs_variable_write("L:AFCPITCH PUSHED", "NUMBER", 0)
     else
-        fs2020_variable_write("L:AFCPITCH PUSHED", "NUMBER", 1)
+        msfs_variable_write("L:AFCPITCH PUSHED", "NUMBER", 1)
     end 
     
 end
@@ -66,22 +66,22 @@ pitch_id = button_add(nil, "pressed.png", 31, 78, 91, 91, pitchAction, releaseAc
 
 function rollAction()
     sound_play(press_snd)
-    fs2020_variable_write("L:AFCROLL PUSHED", "NUMBER", 3)
+    msfs_variable_write("L:AFCROLL PUSHED", "NUMBER", 3)
      if rollState == 1 then
-        fs2020_variable_write("L:AFCROLL PUSHED", "NUMBER", 0)
+        msfs_variable_write("L:AFCROLL PUSHED", "NUMBER", 0)
     else
-        fs2020_variable_write("L:AFCROLL PUSHED", "NUMBER", 1)
+        msfs_variable_write("L:AFCROLL PUSHED", "NUMBER", 1)
     end 
 end
 roll_id = button_add(nil, "pressed.png", 136, 78, 91, 91, rollAction, releaseAction)
 
 function yawAction()
     sound_play(press_snd)
-    fs2020_variable_write("L:AFCYAW PUSHED", "NUMBER", 3)
+    msfs_variable_write("L:AFCYAW PUSHED", "NUMBER", 3)
      if yawState == 1 then
-        fs2020_variable_write("L:AFCYAW PUSHED", "NUMBER", 0)
+        msfs_variable_write("L:AFCYAW PUSHED", "NUMBER", 0)
     else
-        fs2020_variable_write("L:AFCYAW PUSHED", "NUMBER", 1)
+        msfs_variable_write("L:AFCYAW PUSHED", "NUMBER", 1)
     end 
 end
 yaw_id = button_add(nil, "pressed.png", 241, 78, 91, 91, yawAction, releaseAction)
@@ -158,12 +158,12 @@ function setStates(pitch, roll, yaw,elecSt)
 
 end
 
-fs2020_variable_subscribe("L:AFCPITCH PUSHED", "NUMBER", 
+msfs_variable_subscribe("L:AFCPITCH PUSHED", "NUMBER", 
                           "L:AFCROLL PUSHED", "NUMBER", 
                           "L:AFCYAW PUSHED", "NUMBER", 
 			  "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",
                                               setStates)
 
-fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 			  "L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)

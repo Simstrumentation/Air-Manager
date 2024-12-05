@@ -38,9 +38,9 @@ end
 
 function lock_cb()
     if harness_pos == 1 then
-        fs2020_variable_write("L:Lever_Harness_" .. user_pos, "Number", 0)
+        msfs_variable_write("L:Lever_Harness_" .. user_pos, "Number", 0)
     else
-        fs2020_variable_write("L:Lever_Harness_" .. user_pos, "Number", 1)
+        msfs_variable_write("L:Lever_Harness_" .. user_pos, "Number", 1)
     end
 end
 harness_id = switch_add("unlock.png", "lock.png", 0,0, 308, 420, lock_cb)
@@ -56,9 +56,9 @@ function new_harness_pos(harness)
 end
 
 if user_prop_get(harness_position) == "Pilot" then
-    fs2020_variable_subscribe("L:Lever_Harness_1", "Number", new_harness_pos)
+    msfs_variable_subscribe("L:Lever_Harness_1", "Number", new_harness_pos)
 else
-    fs2020_variable_subscribe("L:Lever_Harness_2", "Number", new_harness_pos)
+    msfs_variable_subscribe("L:Lever_Harness_2", "Number", new_harness_pos)
 end
 
 

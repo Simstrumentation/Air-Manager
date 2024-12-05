@@ -31,9 +31,9 @@ local right_pos
 --LEFT TANK TOGGLE
 function left_tank_toggle()
      if left_pos == 0 then
-        fs2020_variable_write("L:SWS_Kodiak_TankSelector_1", "Number", 1)
+        msfs_variable_write("L:SWS_Kodiak_TankSelector_1", "Number", 1)
     else
-        fs2020_variable_write("L:SWS_Kodiak_TankSelector_1", "Number", 0)
+        msfs_variable_write("L:SWS_Kodiak_TankSelector_1", "Number", 0)
     end
 end
 
@@ -43,9 +43,9 @@ btn_left_off_id = button_add(nil, nil, 270, 90, 80, 80, left_tank_toggle)
 --RIGHT TANK TOGGLE
 function right_tank_toggle()
      if right_pos == 0 then
-        fs2020_variable_write("L:SWS_Kodiak_TankSelector_2", "Number", 1)
+        msfs_variable_write("L:SWS_Kodiak_TankSelector_2", "Number", 1)
     else
-        fs2020_variable_write("L:SWS_Kodiak_TankSelector_2", "Number", 0)
+        msfs_variable_write("L:SWS_Kodiak_TankSelector_2", "Number", 0)
     end
 end
 btn_right_on_id = button_add(nil, nil, 580, 240, 80, 80, right_tank_toggle)
@@ -61,7 +61,7 @@ function new_left_pos(new_left_pos)
     end
 end
 
-fs2020_variable_subscribe("L:SWS_Kodiak_TankSelector_1", "Number", new_left_pos)
+msfs_variable_subscribe("L:SWS_Kodiak_TankSelector_1", "Number", new_left_pos)
 
 function new_right_pos(new_right_pos)
     right_pos = new_right_pos
@@ -72,4 +72,4 @@ function new_right_pos(new_right_pos)
     end
 end
 
-fs2020_variable_subscribe("L:SWS_Kodiak_TankSelector_2", "Number", new_right_pos)
+msfs_variable_subscribe("L:SWS_Kodiak_TankSelector_2", "Number", new_right_pos)

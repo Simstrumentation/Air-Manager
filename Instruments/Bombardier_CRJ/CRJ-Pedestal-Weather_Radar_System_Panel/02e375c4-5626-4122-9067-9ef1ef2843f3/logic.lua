@@ -33,7 +33,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)          
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
                                               
 --Day Graphics   
@@ -72,7 +72,7 @@ end
 
 -------------------------------------------------------------------
 --GAIN KNOB
-fs2020_variable_subscribe(controlside.."GAIN", "Number",
+msfs_variable_subscribe(controlside.."GAIN", "Number",
         function (position)
                 switch_set_position(sw_GAIN, (var_round(position,0)))             
                 rotate(img_knob_GAIN, (position*30)-90,"LOG", 0.1)
@@ -80,36 +80,36 @@ fs2020_variable_subscribe(controlside.."GAIN", "Number",
         end)           
 
 sw_GAIN = switch_add(nil,nil,nil,nil,nil,nil,nil, 24,37,76,76, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write(controlside.."GAIN","Number", pos+dir) end) 
+        function (pos,dir) msfs_variable_write(controlside.."GAIN","Number", pos+dir) end) 
         
 --GCS BUTTON    
 btn_gain_gcs = button_add(nil, "btn_round_push.png", 42,56,40,40,
-    function() fs2020_variable_write(controlside.."GCS","number",1) 
+    function() msfs_variable_write(controlside.."GCS","number",1) 
     sound_play(snd_click) 
-    timer_start(50, function() fs2020_variable_write(controlside.."GCS","number",0)end)
+    timer_start(50, function() msfs_variable_write(controlside.."GCS","number",0)end)
     end )        
 -------------------------------------------------------------------
 --SEC BUTTON    
 btn_wxr_sec = button_add(nil, "btn_push.png", 126, 18, 25, 24, 
-    function() fs2020_variable_write(controlside.."SEC","number",1) 
+    function() msfs_variable_write(controlside.."SEC","number",1) 
     sound_play(snd_click) 
-    timer_start(50, function() fs2020_variable_write(controlside.."SEC","number",0)end)
+    timer_start(50, function() msfs_variable_write(controlside.."SEC","number",0)end)
     end )
 --XFR BUTTON    
 btn_wxr_xfr = button_add(nil, "btn_push.png", 168, 18, 25, 24, 
-    function() fs2020_variable_write(controlside.."XFR","number",1) 
+    function() msfs_variable_write(controlside.."XFR","number",1) 
     sound_play(snd_click) 
-    timer_start(50, function() fs2020_variable_write(controlside.."XFR","number",0)end)
+    timer_start(50, function() msfs_variable_write(controlside.."XFR","number",0)end)
     end )
 --STAB BUTTON    
 btn_wxr_stab = button_add(nil, "btn_push.png", 208, 18, 25, 24, 
-    function() fs2020_variable_write(controlside.."STAB","number",1) 
+    function() msfs_variable_write(controlside.."STAB","number",1) 
     sound_play(snd_click) 
-    timer_start(50, function() fs2020_variable_write(controlside.."STAB","number",0)end)
+    timer_start(50, function() msfs_variable_write(controlside.."STAB","number",0)end)
     end )
 
 --MODE KNOB
-fs2020_variable_subscribe(controlside.."MODE", "Number",
+msfs_variable_subscribe(controlside.."MODE", "Number",
         function (position)
                 switch_set_position(sw_MODE, (var_round(position,0)))             
                 rotate(img_knob_MODE, (position*40)-60,"LOG", 0.1)
@@ -117,10 +117,10 @@ fs2020_variable_subscribe(controlside.."MODE", "Number",
         end)           
 
 sw_MODE = switch_add(nil,nil,nil,nil, 150,56,60,60, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write(controlside.."MODE","Number", pos+dir) end) 
+        function (pos,dir) msfs_variable_write(controlside.."MODE","Number", pos+dir) end) 
         
 --TILT KNOB
-fs2020_variable_subscribe(controlside.."TILT", "Number",
+msfs_variable_subscribe(controlside.."TILT", "Number",
         function (position)
                 switch_set_position(sw_TILT, (var_round(position,0)))             
                 rotate(img_knob_TILT, (position*40)-60,"LOG", 0.1)
@@ -128,11 +128,11 @@ fs2020_variable_subscribe(controlside.."TILT", "Number",
         end)           
 
 sw_TILT = switch_add(nil,nil,nil,nil,nil,nil,nil, 284,58,45,45, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write(controlside.."TILT","Number", pos+dir) end)
+        function (pos,dir) msfs_variable_write(controlside.."TILT","Number", pos+dir) end)
             
 --AUTO BUTTON    
 btn_tilt_auto = button_add(nil, "btn_round_push.png", 290,63,34,34,
-    function() fs2020_variable_write(controlside.."TILT_AUTO","number",1) 
+    function() msfs_variable_write(controlside.."TILT_AUTO","number",1) 
     sound_play(snd_click) 
-    timer_start(50, function() fs2020_variable_write(controlside.."TILT_AUTO","number",0)end)
+    timer_start(50, function() msfs_variable_write(controlside.."TILT_AUTO","number",0)end)
     end )     

@@ -34,7 +34,7 @@ if user_prop_get(blackout_prop) then
             opacity(img_black_screen, 1, "LOG", 0.03)
         end
     end
-    fs2020_variable_subscribe("CIRCUIT AVIONICS ON", "BOOL", power_on)
+    msfs_variable_subscribe("CIRCUIT AVIONICS ON", "BOOL", power_on)
 end
 
 
@@ -53,20 +53,20 @@ visible(img_sd_white, user_prop_get(sd_prop) == "White")
 dial_add(nil, 0, 5, 80, 80, function(direction)
     if direction == 1 then
         if unitPos == 0 then
-            fs2020_event("K:GPS_BUTTON2", 2)
-            timer_start(15, function()fs2020_event("K:GPS_BUTTON2", 4) end)
+            msfs_event("K:GPS_BUTTON2", 2)
+            timer_start(15, function()msfs_event("K:GPS_BUTTON2", 4) end)
          else
-             fs2020_variable_write("L:TDSGTNXI750U2_LKnobInc", "Number", 1)
-             timer_start(15, function()fs2020_variable_write("L:TDSGTNXI750U2_LKnobInc", "Number", 0) end)
+             msfs_variable_write("L:TDSGTNXI750U2_LKnobInc", "Number", 1)
+             timer_start(15, function()msfs_variable_write("L:TDSGTNXI750U2_LKnobInc", "Number", 0) end)
          end
     elseif direction == -1 then
         if unitPos == 0 then
-            fs2020_event("K:GPS_BUTTON3", 2)
-            timer_start(15, function()fs2020_event("K:GPS_BUTTON3", 4) end)
+            msfs_event("K:GPS_BUTTON3", 2)
+            timer_start(15, function()msfs_event("K:GPS_BUTTON3", 4) end)
             sound_play(dial_snd)
         else
-            fs2020_variable_write("L:TDSGTNXI750U2_LKnobDec", "Number", 1)
-            timer_start(15, function() fs2020_variable_write("L:TDSGTNXI750U2_LKnobDec", "Number", 0) end)
+            msfs_variable_write("L:TDSGTNXI750U2_LKnobDec", "Number", 1)
+            timer_start(15, function() msfs_variable_write("L:TDSGTNXI750U2_LKnobDec", "Number", 0) end)
         end
      end
     
@@ -75,19 +75,19 @@ end)
 -- volume button
 function vol_press()
     if unitPos == 0 then
-        fs2020_event("K:GPS_BUTTON1", 2)
+        msfs_event("K:GPS_BUTTON1", 2)
         sound_play(press_snd)
     else
-        fs2020_variable_write("L:TDSGTNXI750U2_LKnobCRSR", "Number", 1)
+        msfs_variable_write("L:TDSGTNXI750U2_LKnobCRSR", "Number", 1)
         sound_play(release_snd)
     end
 end
 
 function vol_release()
     if unitPos == 0 then
-        fs2020_event("K:GPS_BUTTON1", 4)
+        msfs_event("K:GPS_BUTTON1", 4)
     else
-        fs2020_variable_write("L:TDSGTNXI750U2_LKnobCRSR", "Number", 0)
+        msfs_variable_write("L:TDSGTNXI750U2_LKnobCRSR", "Number", 0)
     end
     sound_play(release_snd)
 end
@@ -96,18 +96,18 @@ vol_button = button_add(nil, nil, 21, 26, 38, 38, vol_press, vol_release)
 
 function home_press()
     if unitPos == 0 then
-        fs2020_event("K:GPS_MENU_BUTTON", 2)
+        msfs_event("K:GPS_MENU_BUTTON", 2)
     else
-        fs2020_variable_write("L:TDSGTNXI750U2_HomeKEY", "Number", 1)
+        msfs_variable_write("L:TDSGTNXI750U2_HomeKEY", "Number", 1)
     end
     sound_play(press_snd)
  end
 
 function home_release()
     if unitPos == 0 then
-        fs2020_event("K:GPS_MENU_BUTTON", 4)
+        msfs_event("K:GPS_MENU_BUTTON", 4)
     else
-        fs2020_variable_write("L:TDSGTNXI750U2_HomeKEY", "Number", 0)
+        msfs_variable_write("L:TDSGTNXI750U2_HomeKEY", "Number", 0)
     end
     sound_play(release_snd)
 end
@@ -117,18 +117,18 @@ button_add(nil, nil, 883, 639, 52, 38, home_press,  home_release)
 
 function dtc_press()
     if unitPos == 0 then
-        fs2020_event("K:GPS_DIRECTTO_BUTTON", 2)
+        msfs_event("K:GPS_DIRECTTO_BUTTON", 2)
     else
-        fs2020_variable_write("L:TDSGTNXI750U2_DTOKEY", "Number", 1)
+        msfs_variable_write("L:TDSGTNXI750U2_DTOKEY", "Number", 1)
     end
     sound_play(press_snd)
 end
 
 function dtc_release()
     if unitPos == 0 then
-        fs2020_event("K:GPS_DIRECTTO_BUTTON", 4)
+        msfs_event("K:GPS_DIRECTTO_BUTTON", 4)
     else
-        fs2020_variable_write("L:TDSGTNXI750U2_DTOKEY", "Number", 0)
+        msfs_variable_write("L:TDSGTNXI750U2_DTOKEY", "Number", 0)
     end
     sound_play(release_snd)
 end
@@ -146,17 +146,17 @@ inner_pos = fif(user_prop_get(input_prop) == "Mouse / touch", {886, 830, 70, 70}
 fms_outer = dial_add(nil, outer_pos[1], outer_pos[2], outer_pos[3], outer_pos[4], function(direction)
     if direction == 1 then
         if unitPos == 0 then
-            fs2020_event("K:GPS_GROUP_KNOB_INC", 0)
+            msfs_event("K:GPS_GROUP_KNOB_INC", 0)
         else
-            fs2020_variable_write("L:TDSGTNXI750U2_RKnobOuterInc", "Number", 1)
-            timer_start(15, function()fs2020_variable_write("L:TDSGTNXI750U2_RKnobOuterInc", "Number", 0) end)
+            msfs_variable_write("L:TDSGTNXI750U2_RKnobOuterInc", "Number", 1)
+            timer_start(15, function()msfs_variable_write("L:TDSGTNXI750U2_RKnobOuterInc", "Number", 0) end)
         end
     elseif direction == -1 then
         if unitPos == 0 then
-            fs2020_event("K:GPS_GROUP_KNOB_DEC", 0)
+            msfs_event("K:GPS_GROUP_KNOB_DEC", 0)
         else
-            fs2020_variable_write("L:TDSGTNXI750U2_RKnobOuterDec", "Number", 1)
-            timer_start(15, function()fs2020_variable_write("L:TDSGTNXI750U2_RKnobOuterDec", "Number", 0) end)
+            msfs_variable_write("L:TDSGTNXI750U2_RKnobOuterDec", "Number", 1)
+            timer_start(15, function()msfs_variable_write("L:TDSGTNXI750U2_RKnobOuterDec", "Number", 0) end)
             
         end
     end
@@ -166,18 +166,18 @@ end)
 fms_inner = dial_add(nil, inner_pos[1], inner_pos[2], inner_pos[3], inner_pos[4], function(direction)
     if direction == 1 then
         if unitPos == 0 then
-            fs2020_event("K:GPS_PAGE_KNOB_INC", 0)
+            msfs_event("K:GPS_PAGE_KNOB_INC", 0)
         else
-            fs2020_variable_write("L:TDSGTNXI750U2_RKnobInnerInc", "Number", 1)
-            timer_start(20, function()fs2020_variable_write("L:TDSGTNXI750U2_RKnobInnerInc", "Number", 0)end)
+            msfs_variable_write("L:TDSGTNXI750U2_RKnobInnerInc", "Number", 1)
+            timer_start(20, function()msfs_variable_write("L:TDSGTNXI750U2_RKnobInnerInc", "Number", 0)end)
             
         end
     elseif direction == -1 then
         if unitPos == 0 then
-            fs2020_event("K:GPS_PAGE_KNOB_DEC", 0)
+            msfs_event("K:GPS_PAGE_KNOB_DEC", 0)
         else
-            fs2020_variable_write("L:TDSGTNXI750U2_RKnobInnerDec", "Number", 1)
-           timer_start(20, function() fs2020_variable_write("L:TDSGTNXI750U2_RKnobInnerDec", "Number", 0)end)
+            msfs_variable_write("L:TDSGTNXI750U2_RKnobInnerDec", "Number", 1)
+           timer_start(20, function() msfs_variable_write("L:TDSGTNXI750U2_RKnobInnerDec", "Number", 0)end)
         end
     end
     sound_play(dial_snd)
@@ -189,9 +189,9 @@ mouse_setting(fms_inner , "CURSOR_RIGHT", "ctr_cursor_cw.png")
 
 function fms_knob_press()
     if unitPos == 0 then
-        fs2020_event("K:GPS_CURSOR_BUTTON", 2)
+        msfs_event("K:GPS_CURSOR_BUTTON", 2)
     else
-        fs2020_variable_write("L:TDSGTNXI750U2_RKnobCRSR", "Number", 1)
+        msfs_variable_write("L:TDSGTNXI750U2_RKnobCRSR", "Number", 1)
     end
     
    sound_play(press_snd)
@@ -199,9 +199,9 @@ end
 
 function fms_knob_release()
     if unitPos == 0 then
-        fs2020_event("K:GPS_CURSOR_BUTTON", 4)
+        msfs_event("K:GPS_CURSOR_BUTTON", 4)
     else
-        fs2020_variable_write("L:TDSGTNXI750U2_RKnobCRSR", "Number", 0)
+        msfs_variable_write("L:TDSGTNXI750U2_RKnobCRSR", "Number", 0)
     end
     
    sound_play(release_snd)

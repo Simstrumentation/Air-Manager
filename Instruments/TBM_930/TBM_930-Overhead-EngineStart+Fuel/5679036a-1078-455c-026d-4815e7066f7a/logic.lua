@@ -25,7 +25,7 @@ snd_click = sound_add("click.wav")
 img_add_fullscreen("background.png")
 
 -----STARTER-----
-fs2020_variable_subscribe("A:GENERAL ENG STARTER:1", "BOOL",
+msfs_variable_subscribe("A:GENERAL ENG STARTER:1", "BOOL",
     function (pos)
             if pos == true  then                                 
                 visible(img_starter_on, true)
@@ -40,13 +40,13 @@ end)
 
 --Starter Touch Buttons
 function cb_starter_on()
-        fs2020_variable_write("A:GENERAL ENG STARTER:1","bool", true)           
-        fs2020_event("K:SET_STARTER1_HELD",1)       
+        msfs_variable_write("A:GENERAL ENG STARTER:1","bool", true)           
+        msfs_event("K:SET_STARTER1_HELD",1)       
 end
 button_add(nil,nil, 100, 80, 130, 90, cb_starter_on)
 
 function cb_starter_off()
-        fs2020_variable_write("A:GENERAL ENG STARTER:1","bool", false)      
+        msfs_variable_write("A:GENERAL ENG STARTER:1","bool", false)      
 end
 button_add(nil,nil, 100, 160, 130, 90, cb_starter_off)
 
@@ -64,7 +64,7 @@ visible(img_starter_abort, false)
 
 -------------------------------------------------------------------------------------
 -----IGNITION-----
-fs2020_variable_subscribe("A:TURB ENG IGNITION SWITCH EX1:1", "ENUM",
+msfs_variable_subscribe("A:TURB ENG IGNITION SWITCH EX1:1", "ENUM",
     function (pos)      
              if pos == 0 then   
                 visible(img_ignition_auto, false)
@@ -83,17 +83,17 @@ end)
 
 --Ignition Touch Buttons
 function cb_ignition_auto()
-       fs2020_event("K:TURBINE_IGNITION_SWITCH_SET1", 1)      
+       msfs_event("K:TURBINE_IGNITION_SWITCH_SET1", 1)      
 end
 button_add(nil,nil, 320, 80, 130, 90, cb_ignition_auto)
 
 function cb_ignition_on()
-       fs2020_event("K:TURBINE_IGNITION_SWITCH_SET1", 2)    
+       msfs_event("K:TURBINE_IGNITION_SWITCH_SET1", 2)    
 end
 button_add(nil,nil, 320, 160, 130, 90, cb_ignition_on)
 
 function cb_ignition_off()
-       fs2020_event("K:TURBINE_IGNITION_SWITCH_SET1", 0)     
+       msfs_event("K:TURBINE_IGNITION_SWITCH_SET1", 0)     
 end
 button_add(nil,nil, 320, 260, 130, 90, cb_ignition_off)
 
@@ -107,7 +107,7 @@ visible(img_ignition_on, false)
 
 -------------------------------------------------------------------------------------
 -----AUX BP-----
-fs2020_variable_subscribe("A:GENERAL ENG FUEL PUMP SWITCH EX1:1", "ENUM",
+msfs_variable_subscribe("A:GENERAL ENG FUEL PUMP SWITCH EX1:1", "ENUM",
     function (pos)
          if pos == 2  then  
             visible(img_auxbp_auto, true)
@@ -127,17 +127,17 @@ end)
 
 --AUX BP Touch Buttons
 function cb_auxbp_auto()
-        fs2020_event("K:ELECT_FUEL_PUMP1_SET", 2)       
+        msfs_event("K:ELECT_FUEL_PUMP1_SET", 2)       
 end
 button_add(nil,nil, 560, 10, 130, 70, cb_auxbp_auto)
 
 function cb_auxbp_on()
-        fs2020_event("K:ELECT_FUEL_PUMP1_SET", 1)  
+        msfs_event("K:ELECT_FUEL_PUMP1_SET", 1)  
 end
 button_add(nil,nil, 560, 80, 130, 70, cb_auxbp_on)
 
 function cb_auxbp_off()
-        fs2020_event("K:ELECT_FUEL_PUMP1_SET", 0)  
+        msfs_event("K:ELECT_FUEL_PUMP1_SET", 0)  
 end
 button_add(nil,nil, 560, 150, 130, 70, cb_auxbp_off)
 
@@ -152,19 +152,19 @@ visible(img_auxbp_on, false)
 -------------------------------------------------------------------------------------
 -----FUEL SHIFT PUSH-----
 function cb_fuelshift(pos,dir)
-     if pos == 2 then fs2020_event("K:FUEL_SELECTOR_RIGHT")   
-     elseif pos == 3 then fs2020_event("K:FUEL_SELECTOR_LEFT")
+     if pos == 2 then msfs_event("K:FUEL_SELECTOR_RIGHT")   
+     elseif pos == 3 then msfs_event("K:FUEL_SELECTOR_LEFT")
      end 
 end
 sw_fuelshift = switch_add(nil,nil,nil,nil, 590, 290, 60, 60, "PRESS", cb_fuelshift)
 
-fs2020_variable_subscribe("A:FUEL TANK SELECTOR:1", "ENUM",
+msfs_variable_subscribe("A:FUEL TANK SELECTOR:1", "ENUM",
     function (pos)          
              switch_set_position(sw_fuelshift, pos)   
 end)
 
 -----FUEL SELECTOR-----
-fs2020_variable_subscribe("FUEL CROSS FEED", "enum",
+msfs_variable_subscribe("FUEL CROSS FEED", "enum",
     function (pos)
            --Disabled until variables are writable.
           --   switch_set_position(sw_fuelshift, pos)   

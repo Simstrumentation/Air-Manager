@@ -34,7 +34,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 
@@ -54,14 +54,14 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 tglAPU = 0
 
 function APU_PWR()
-    fs2020_variable_write("L:ASCRJ_APU_PWRFUEL","Number",1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_APU_PWRFUEL","Number",0)end)
+    msfs_variable_write("L:ASCRJ_APU_PWRFUEL","Number",1) timer_start(100, function() msfs_variable_write("L:ASCRJ_APU_PWRFUEL","Number",0)end)
     sound_play(click_snd)
 end
 APU_PWR = button_add(nil,"btn_push.png", 291,64,82,82, APU_PWR)
     
 function APU_start()
     tglAPU = (tglAPU +1) % 2  --- Toggles between 1 and zero for START and STOP -------    
-    fs2020_variable_write("L:ASCRJ_APU_STARTSTOP","Number",tglAPU)
+    msfs_variable_write("L:ASCRJ_APU_STARTSTOP","Number",tglAPU)
     sound_play(click_snd)
 end
 APU_START = button_add(nil,"btn_push.png", 401,64,82,82, APU_start)
@@ -75,7 +75,7 @@ function APU_pump_msg(avail,pwr)
 	    else visible(img_APU_pump, false)
 	    end
 end        
-fs2020_variable_subscribe("L:ASCRJ_APU_PWRFUEL_PUMP", "Number", 
+msfs_variable_subscribe("L:ASCRJ_APU_PWRFUEL_PUMP", "Number", 
 				              "A:CIRCUIT GENERAL PANEL ON","Bool", APU_pump_msg)
 
 function APU_sov_msg(avail,pwr)
@@ -84,7 +84,7 @@ function APU_sov_msg(avail,pwr)
 	    else visible(img_APU_sov, false)
 	    end
 end        
-fs2020_variable_subscribe("L:ASCRJ_APU_PWRFUEL_SOV", "Number", 
+msfs_variable_subscribe("L:ASCRJ_APU_PWRFUEL_SOV", "Number", 
 				              "A:CIRCUIT GENERAL PANEL ON","Bool", APU_sov_msg)
 
 function APU_start_msg(start,pwr)
@@ -93,7 +93,7 @@ function APU_start_msg(start,pwr)
 	    else visible(img_APU_start, false)
 	    end	        
 end        
-fs2020_variable_subscribe("L:ASCRJ_APU_STARTSTOP_START", "Number", 
+msfs_variable_subscribe("L:ASCRJ_APU_STARTSTOP_START", "Number", 
 				              "A:CIRCUIT GENERAL PANEL ON","Bool", APU_start_msg)
       
 function APU_avail_msg(avail,pwr)
@@ -102,6 +102,6 @@ function APU_avail_msg(avail,pwr)
 	    else visible(img_APU_avail, false)
 	    end		        
 end        
-fs2020_variable_subscribe("L:ASCRJ_APU_STARTSTOP_AVAIL", "Number", 
+msfs_variable_subscribe("L:ASCRJ_APU_STARTSTOP_AVAIL", "Number", 
 				              "A:CIRCUIT GENERAL PANEL ON","Bool", APU_avail_msg)
     

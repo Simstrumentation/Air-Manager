@@ -3,9 +3,9 @@ click_snd = sound_add("knobclick.wav")
 
   function turn_baroknob_cb (knobdirection)
     if knobdirection > 0 then
-      fs2020_event("KOHLSMAN_INC")
+      msfs_event("KOHLSMAN_INC")
     else
-      fs2020_event("KOHLSMAN_DEC")
+      msfs_event("KOHLSMAN_DEC")
     end
   end
   
@@ -13,7 +13,7 @@ click_snd = sound_add("knobclick.wav")
   dial_click_rotate(dial_baro, 6)
   
  function baro_click()
-   fs2020_event("BAROMETRIC")
+   msfs_event("BAROMETRIC")
    sound_play(click_snd)
 end
 button_add(nil,nil, 42 , 42 , 70 , 70, baro_click)

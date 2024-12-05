@@ -134,11 +134,11 @@ function masterRelease()
 end
 --    defog
 function defogToggle()
-    fs2020_variable_write("L:SF50_defog", "Int", 4)    --added to get around Air Manager lvar write bug
+    msfs_variable_write("L:SF50_defog", "Int", 4)    --added to get around Air Manager lvar write bug
     if defog_state then
-        fs2020_variable_write("L:SF50_defog", "Int", 0)
+        msfs_variable_write("L:SF50_defog", "Int", 0)
     else
-        fs2020_variable_write("L:SF50_defog", "Int", 1)
+        msfs_variable_write("L:SF50_defog", "Int", 1)
     end
      sound_play(press_snd)
 end
@@ -147,11 +147,11 @@ btn_defog = button_add(nil, "btn_pressed.png", 55, 152, 132, 93, defogToggle, ma
 
 --    aft ctrl
 function aftToggle()
-    fs2020_variable_write("L:SF50_aft", "Int", 4)    --added to get around Air Manager lvar write bug
+    msfs_variable_write("L:SF50_aft", "Int", 4)    --added to get around Air Manager lvar write bug
     if aft_state then
-        fs2020_variable_write("L:SF50_aft", "Int", 0)
+        msfs_variable_write("L:SF50_aft", "Int", 0)
     else
-        fs2020_variable_write("L:SF50_aft", "Int", 1)
+        msfs_variable_write("L:SF50_aft", "Int", 1)
     end
     sound_play(press_snd)
 end
@@ -160,11 +160,11 @@ btn_aft = button_add(nil, "btn_pressed.png", 55, 273, 132, 93, aftToggle, master
 
 --    temp backup
 function tempToggle()
-    fs2020_variable_write("L:SF50_TempBKP", "Int", 4)    --added to get around Air Manager lvar write bug
+    msfs_variable_write("L:SF50_TempBKP", "Int", 4)    --added to get around Air Manager lvar write bug
      if temp_state then
-        fs2020_variable_write("L:SF50_TempBKP", "Int", 0)
+        msfs_variable_write("L:SF50_TempBKP", "Int", 0)
     else
-        fs2020_variable_write("L:SF50_TempBKP", "Int", 1)
+        msfs_variable_write("L:SF50_TempBKP", "Int", 1)
     end   
     sound_play(press_snd)
 end
@@ -173,11 +173,11 @@ btn_temp = button_add(nil, "btn_pressed.png", 55,470, 132, 93, tempToggle, maste
 
 --    ecs disable
 function ecsToggle()
-    fs2020_variable_write("L:SF50_ecs", "Int", 4)    --added to get around Air Manager lvar write bug
+    msfs_variable_write("L:SF50_ecs", "Int", 4)    --added to get around Air Manager lvar write bug
     if ecs_state then
-        fs2020_variable_write("L:SF50_ecs", "Int", 0)
+        msfs_variable_write("L:SF50_ecs", "Int", 0)
     else
-         fs2020_variable_write("L:SF50_ecs", "Int", 1)
+         msfs_variable_write("L:SF50_ecs", "Int", 1)
     end
     sound_play(press_snd)
 end
@@ -191,12 +191,12 @@ function tempControl(direction)
     if direction == 1 then
         if cabinTemp < 1.0 then
             newTemp = cabinTemp + 0.05
-            fs2020_variable_write("L:SF50_TempControl", "Number", newTemp)   
+            msfs_variable_write("L:SF50_TempControl", "Number", newTemp)   
          end
     elseif direction == -1 then
         if cabinTemp > 0 then
             newTemp = cabinTemp - 0.05
-            fs2020_variable_write("L:SF50_TempControl", "Number", newTemp)
+            msfs_variable_write("L:SF50_TempControl", "Number", newTemp)
          end
     end
 end
@@ -207,12 +207,12 @@ function fanControl(direction)
     if direction == 1 then
         if tempFan < 1.0 then
             newFan = tempFan + 0.05
-            fs2020_variable_write("L:SF50_TempFan", "Number", newFan)   
+            msfs_variable_write("L:SF50_TempFan", "Number", newFan)   
          end
     elseif direction == -1 then
         if tempFan > 0 then
             newFan = tempFan - 0.05
-            fs2020_variable_write("L:SF50_TempFan", "Number", newFan)
+            msfs_variable_write("L:SF50_TempFan", "Number", newFan)
          end
     end
 end
@@ -226,13 +226,13 @@ function setKnobs(temperature, fan)
 
 end
 
-fs2020_variable_subscribe("L:SF50_TempControl", "Number",
+msfs_variable_subscribe("L:SF50_TempControl", "Number",
                                                 "L:SF50_TempFan", "Number", 
                                                 setKnobs)
 
 
  --defog, aft, temp, ecs, power
-fs2020_variable_subscribe("L:SF50_defog", "Int", 
+msfs_variable_subscribe("L:SF50_defog", "Int", 
                                               "L:SF50_aft", "Int",
                                               "L:SF50_TempBKP", "Int",
                                               "L:SF50_ecs", "Int", 
@@ -270,7 +270,7 @@ function lightPot(val, panel, pot, power)
     end
 end
 
-fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+msfs_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
                                                 "A:LIGHT PANEL:1", "Bool", 
                                                 "A:LIGHT POTENTIOMETER:3", "Percent", 
                                                 "A:ELECTRICAL MASTER BATTERY", "Bool",

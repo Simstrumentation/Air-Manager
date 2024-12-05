@@ -34,9 +34,9 @@ img_add_fullscreen("bg.png")
     -- day / night switch
 function switchToggle(pos)
     if switchVal == 1 then
-        fs2020_variable_write("A:BUS CONNECTION ON:5", "Number", 0)
+        msfs_variable_write("A:BUS CONNECTION ON:5", "Number", 0)
     else
-        fs2020_variable_write("A:BUS CONNECTION ON:5", "Number", 1)
+        msfs_variable_write("A:BUS CONNECTION ON:5", "Number", 1)
     end
 end
         
@@ -51,7 +51,7 @@ function toggleSwitch(val)
     end
 end
 
-fs2020_variable_subscribe("A:BUS CONNECTION ON:5", "Number", toggleSwitch)
+msfs_variable_subscribe("A:BUS CONNECTION ON:5", "Number", toggleSwitch)
 
     --side console
 function console(pos)
@@ -61,8 +61,8 @@ function console(pos)
     else
         sliderVal = 100 -(pos * 100)
     end
-   fs2020_variable_write("L:XMLVAR_LIGHTSWITCH_SIDE_CONSOLE_1_Position", "Number", sliderVal)
-   fs2020_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 6, sliderVal)
+   msfs_variable_write("L:XMLVAR_LIGHTSWITCH_SIDE_CONSOLE_1_Position", "Number", sliderVal)
+   msfs_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 6, sliderVal)
 end
 
 slider_sideConsole=slider_add_ver(nil, 124, 30, 30, 370, "slider.png", 70, 73, console)
@@ -70,7 +70,7 @@ slider_sideConsole=slider_add_ver(nil, 124, 30, 30, 370, "slider.png", 70, 73, c
 function moveConsoleSlider(pos)
    slider_set_position(slider_sideConsole, 1-(pos/100))
 end
-fs2020_variable_subscribe("L:XMLVAR_LIGHTSWITCH_SIDE_CONSOLE_1_Position", "Number", moveConsoleSlider)
+msfs_variable_subscribe("L:XMLVAR_LIGHTSWITCH_SIDE_CONSOLE_1_Position", "Number", moveConsoleSlider)
 
     --lower panel
 function lowerPanel(pos)
@@ -80,8 +80,8 @@ function lowerPanel(pos)
     else
         sliderVal = 100 -(pos * 100)
     end
-   fs2020_variable_write("L:XMLVAR_LIGHTSWITCH_LOWER_INST_1_Position", "Number", sliderVal)
-   fs2020_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 3, sliderVal)
+   msfs_variable_write("L:XMLVAR_LIGHTSWITCH_LOWER_INST_1_Position", "Number", sliderVal)
+   msfs_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 3, sliderVal)
 end
 
 slider_lowerPanel=slider_add_ver(nil, 224, 30, 30, 370, "slider.png", 70, 73, lowerPanel)
@@ -89,7 +89,7 @@ slider_lowerPanel=slider_add_ver(nil, 224, 30, 30, 370, "slider.png", 70, 73, lo
 function moveLowerPanelSlider(pos)
    slider_set_position(slider_lowerPanel, 1-(pos/100))
 end
-fs2020_variable_subscribe("L:XMLVAR_LIGHTSWITCH_LOWER_INST_1_Position", "Number", moveLowerPanelSlider)
+msfs_variable_subscribe("L:XMLVAR_LIGHTSWITCH_LOWER_INST_1_Position", "Number", moveLowerPanelSlider)
 
     --left instruments
 function leftInst(pos)
@@ -99,8 +99,8 @@ function leftInst(pos)
     else
         sliderVal = 100 -(pos * 100)
     end
-   fs2020_variable_write("L:XMLVAR_LIGHTSWITCH_LEFT_INST_1_Position", "Number", sliderVal)
-   fs2020_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 5, sliderVal)
+   msfs_variable_write("L:XMLVAR_LIGHTSWITCH_LEFT_INST_1_Position", "Number", sliderVal)
+   msfs_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 5, sliderVal)
 end
 
 slider_leftInst=slider_add_ver(nil, 324, 30, 30, 370, "slider.png", 70, 73, leftInst)
@@ -108,7 +108,7 @@ slider_leftInst=slider_add_ver(nil, 324, 30, 30, 370, "slider.png", 70, 73, left
 function moveLeftInst(pos)
    slider_set_position(slider_leftInst, 1-(pos/100))
 end
-fs2020_variable_subscribe("L:XMLVAR_LIGHTSWITCH_LEFT_INST_1_Position", "Number", moveLeftInst)
+msfs_variable_subscribe("L:XMLVAR_LIGHTSWITCH_LEFT_INST_1_Position", "Number", moveLeftInst)
 
     --engine instruments
 function engInst(pos)
@@ -118,8 +118,8 @@ function engInst(pos)
     else
         sliderVal = 100 -(pos * 100)
     end
-   fs2020_variable_write("L:XMLVAR_LIGHTSWITCH_ENGINE_INST_1_Position", "Number", sliderVal)
-   fs2020_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 2, sliderVal)
+   msfs_variable_write("L:XMLVAR_LIGHTSWITCH_ENGINE_INST_1_Position", "Number", sliderVal)
+   msfs_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 2, sliderVal)
 end
 
 slider_engInst=slider_add_ver(nil, 424, 30, 30, 370, "slider.png", 70, 73, engInst)
@@ -127,7 +127,7 @@ slider_engInst=slider_add_ver(nil, 424, 30, 30, 370, "slider.png", 70, 73, engIn
 function moveEngInst(pos)
    slider_set_position(slider_engInst, 1-(pos/100))
 end
-fs2020_variable_subscribe("L:XMLVAR_LIGHTSWITCH_ENGINE_INST_1_Position", "Number", moveEngInst)
+msfs_variable_subscribe("L:XMLVAR_LIGHTSWITCH_ENGINE_INST_1_Position", "Number", moveEngInst)
 
     --radio
 function radio(pos)
@@ -137,8 +137,8 @@ function radio(pos)
     else
         sliderVal = 100 -(pos * 100)
     end
-   fs2020_variable_write("L:XMLVAR_LIGHTSWITCH_RADIO_1_Position", "Number", sliderVal)
-   fs2020_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 1, sliderVal)
+   msfs_variable_write("L:XMLVAR_LIGHTSWITCH_RADIO_1_Position", "Number", sliderVal)
+   msfs_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 1, sliderVal)
 end
 
 slider_radio=slider_add_ver(nil, 524, 30, 30, 370, "slider.png", 70, 73, radio)
@@ -146,7 +146,7 @@ slider_radio=slider_add_ver(nil, 524, 30, 30, 370, "slider.png", 70, 73, radio)
 function moveradio(pos)
    slider_set_position(slider_radio, 1-(pos/100))
 end
-fs2020_variable_subscribe("L:XMLVAR_LIGHTSWITCH_RADIO_1_Position", "Number", moveradio)
+msfs_variable_subscribe("L:XMLVAR_LIGHTSWITCH_RADIO_1_Position", "Number", moveradio)
 
     --compass
 function compass(pos)
@@ -156,8 +156,8 @@ function compass(pos)
     else
         sliderVal = 100 -(pos * 100)
     end
-   fs2020_variable_write("L:XMLVAR_LIGHTSWITCH_COMPASS_1_Position", "Number", sliderVal)
-   fs2020_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 7, sliderVal)
+   msfs_variable_write("L:XMLVAR_LIGHTSWITCH_COMPASS_1_Position", "Number", sliderVal)
+   msfs_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 7, sliderVal)
 end
 
 slider_compass=slider_add_ver(nil, 624, 30, 30, 370, "slider.png", 70, 73, compass)
@@ -165,7 +165,7 @@ slider_compass=slider_add_ver(nil, 624, 30, 30, 370, "slider.png", 70, 73, compa
 function moveCompass(pos)
    slider_set_position(slider_compass, 1-(pos/100))
 end
-fs2020_variable_subscribe("L:XMLVAR_LIGHTSWITCH_COMPASS_1_Position", "Number", moveCompass)
+msfs_variable_subscribe("L:XMLVAR_LIGHTSWITCH_COMPASS_1_Position", "Number", moveCompass)
 
     --RFLT
 function RFLT(pos)
@@ -175,8 +175,8 @@ function RFLT(pos)
     else
         sliderVal = 100 -(pos * 100)
     end
-   fs2020_variable_write("L:XMLVAR_LIGHTSWITCH_RFLT_INST_1_Position", "Number", sliderVal)
-   fs2020_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 4, sliderVal)
+   msfs_variable_write("L:XMLVAR_LIGHTSWITCH_RFLT_INST_1_Position", "Number", sliderVal)
+   msfs_event("GLARESHIELD_LIGHTS_POWER_SETTING_SET", 4, sliderVal)
 end
 
 slider_RFLT=slider_add_ver(nil, 724, 30, 30, 370, "slider.png", 70, 73, RFLT)
@@ -184,11 +184,11 @@ slider_RFLT=slider_add_ver(nil, 724, 30, 30, 370, "slider.png", 70, 73, RFLT)
 function moveRFLT(pos)
    slider_set_position(slider_RFLT, 1-(pos/100))
 end
-fs2020_variable_subscribe("L:XMLVAR_LIGHTSWITCH_RFLT_INST_1_Position", "Number", moveRFLT)
+msfs_variable_subscribe("L:XMLVAR_LIGHTSWITCH_RFLT_INST_1_Position", "Number", moveRFLT)
 --[[
 function switchTest(val)
     print(val)
 end
 
-fs2020_variable_subscribe("A:LIGHT CABIN ON:1", "Number", switchTest)
+msfs_variable_subscribe("A:LIGHT CABIN ON:1", "Number", switchTest)
 ]]--

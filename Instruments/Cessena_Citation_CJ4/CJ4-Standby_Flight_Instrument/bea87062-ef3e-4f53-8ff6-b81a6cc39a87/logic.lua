@@ -60,7 +60,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                            "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -73,14 +73,14 @@ function ss_screen_dim(value)
         opacity(img_screen_dimmer, 0, "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:15", "Number", ss_screen_dim)						  						  						  						  
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:15", "Number", ss_screen_dim)						  						  						  						  
 						  						  						  						  						  						  
 function turn_baroknob_cb (knobdirection)
    sound_play(dial_snd)
      if knobdirection > 0 then
-      fs2020_event("KOHLSMAN_INC",2)
+      msfs_event("KOHLSMAN_INC",2)
     else
-      fs2020_event("KOHLSMAN_DEC",2)
+      msfs_event("KOHLSMAN_DEC",2)
     end
   end
   

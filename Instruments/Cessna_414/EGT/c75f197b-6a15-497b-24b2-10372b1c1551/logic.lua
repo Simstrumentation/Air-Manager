@@ -116,7 +116,7 @@ end
 -------------------
 -- Bus subscribe --
 -------------------
-fs2020_variable_subscribe("GENERAL ENG EXHAUST GAS TEMPERATURE:1", "Celsius",
+msfs_variable_subscribe("GENERAL ENG EXHAUST GAS TEMPERATURE:1", "Celsius",
                           "GENERAL ENG EXHAUST GAS TEMPERATURE:2", "Celsius", 
                           
                           new_EGT_FS2020)                       

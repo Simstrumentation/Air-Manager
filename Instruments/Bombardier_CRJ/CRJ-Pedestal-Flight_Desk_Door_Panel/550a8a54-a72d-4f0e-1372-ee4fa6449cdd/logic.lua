@@ -38,7 +38,7 @@ function ss_backlighting(value, pwr)
         opacity(img_backlight_lock_knob, (value), "LOG", 0.04)          
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 --Day Graphics
@@ -65,17 +65,17 @@ function ss_lock(state)
     rotate(img_dial_lock_night, -(40-(state*40)))  
     rotate(img_backlight_lock_knob, -(40-(state*40)))     
 end
-fs2020_variable_subscribe("L:ASCRJ_FDD_MODE", "Number", ss_lock)
+msfs_variable_subscribe("L:ASCRJ_FDD_MODE", "Number", ss_lock)
 
 function cb_sw_lock(position, direction)
     if (position == 0 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_FDD_MODE","number",1) 
+        msfs_variable_write("L:ASCRJ_FDD_MODE","number",1) 
     elseif (position == 1 and direction == 1 ) then
-        fs2020_variable_write("L:ASCRJ_FDD_MODE","number",2) 
+        msfs_variable_write("L:ASCRJ_FDD_MODE","number",2) 
     elseif (position == 1 and direction == -1 ) then
-        fs2020_variable_write("L:ASCRJ_FDD_MODE","number",0)         
+        msfs_variable_write("L:ASCRJ_FDD_MODE","number",0)         
     elseif (position == 2 and direction == -1) then
-        fs2020_variable_write("L:ASCRJ_FDD_MODE","number",1)               
+        msfs_variable_write("L:ASCRJ_FDD_MODE","number",1)               
     end 
 end
 switch_lock = switch_add(nil,nil,nil, 228,40,50,50, "CIRCULAIR" , cb_sw_lock) 
@@ -87,12 +87,12 @@ img_lockfail= img_add("lockfail.png", 89,31,37,27)
 function ss_lockfail(state)
     visible(img_lockfail, state==1)
 end
-fs2020_variable_subscribe("L:ASCRJ_FDD_LOCK_FAIL", "Number", ss_lockfail)
+msfs_variable_subscribe("L:ASCRJ_FDD_LOCK_FAIL", "Number", ss_lockfail)
 
 img_autolock= img_add("autolock.png", 90,73,37,27)   
 --Lock Fail LED
 function ss_autolock(state)
     visible(img_autolock, state==1)
 end
-fs2020_variable_subscribe("L:ASCRJ_FDD_AUTO_UNLK", "Number", ss_autolock)
+msfs_variable_subscribe("L:ASCRJ_FDD_AUTO_UNLK", "Number", ss_autolock)
    

@@ -253,4 +253,4 @@ function new_OAT(tempc)
 end
 
 -- VARIABLE SUBSCRIBE
-fs2020_variable_subscribe("AMBIENT TEMPERATURE", "Celsius", new_OAT)
+msfs_variable_subscribe("AMBIENT TEMPERATURE", "Celsius", new_OAT)

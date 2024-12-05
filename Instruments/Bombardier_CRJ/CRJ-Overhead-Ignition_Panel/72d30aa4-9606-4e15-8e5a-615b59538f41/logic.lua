@@ -34,7 +34,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 
 -- Ambient Light Control
@@ -55,32 +55,32 @@ imgCNT_IGN_ON = img_add("light_on.png",492,129,86,85)
 tglCNT_IGN = 0
 
 function ENG_L_start()
-    fs2020_variable_write("L:ASCRJ_ENGS_START_L","Number",1)timer_start(100, function() fs2020_variable_write("L:ASCRJ_ENGS_START_L","Number",0)end) 
+    msfs_variable_write("L:ASCRJ_ENGS_START_L","Number",1)timer_start(100, function() msfs_variable_write("L:ASCRJ_ENGS_START_L","Number",0)end) 
     sound_play(click_snd)
 end
     ENG_L_START = button_add(nil,"btn_push.png", 80,80,70,70, ENG_L_start)
     
 function ENG_R_start()
-    fs2020_variable_write("L:ASCRJ_ENGS_START_R","Number",1)timer_start(100, function() fs2020_variable_write("L:ASCRJ_ENGS_START_R","Number",0)end) 
+    msfs_variable_write("L:ASCRJ_ENGS_START_R","Number",1)timer_start(100, function() msfs_variable_write("L:ASCRJ_ENGS_START_R","Number",0)end) 
     sound_play(click_snd)
 end
     ENG_R_START = button_add(nil,"btn_push.png", 198,80,70,70, ENG_R_start)
         
 function ENG_R_STOP()
-    fs2020_variable_write("L:ASCRJ_ENGS_STOP_R", "Number", 1)timer_start(100, function() fs2020_variable_write("L:ASCRJ_ENGS_STOP_R","Number",0)end) 
+    msfs_variable_write("L:ASCRJ_ENGS_STOP_R", "Number", 1)timer_start(100, function() msfs_variable_write("L:ASCRJ_ENGS_STOP_R","Number",0)end) 
     sound_play(click_snd)
 end
     btnENG_R_STOP = button_add(nil, "btn_push.png",198,196,70,70, ENG_R_STOP)
 
 function ENG_L_STOP()
-    fs2020_variable_write("L:ASCRJ_ENGS_STOP_L", "Number", 1)timer_start(100, function() fs2020_variable_write("L:ASCRJ_ENGS_STOP_L","Number",0)end) 
+    msfs_variable_write("L:ASCRJ_ENGS_STOP_L", "Number", 1)timer_start(100, function() msfs_variable_write("L:ASCRJ_ENGS_STOP_L","Number",0)end) 
     sound_play(click_snd)
 end
     btnENG_L_STOP = button_add(nil, "btn_push.png", 80,196,70,70, ENG_L_STOP)
                           
 function CONT_IGN()
     tglCNT_IGN = (tglCNT_IGN + 1) % 2
-    fs2020_variable_write("L:ASCRJ_ENGS_CONT_IGN", "Number", tglCNT_IGN)  
+    msfs_variable_write("L:ASCRJ_ENGS_CONT_IGN", "Number", tglCNT_IGN)  
     sound_play(click_snd)
 end
     btnCONT_IGN = button_add(nil, "btn_push.png",500,137,70,70, CONT_IGN)
@@ -91,29 +91,29 @@ end
 function ENG_L_STARTING(state,pwr)
         visible(imgENG_L, (state ==1 and pwr ==true))
 end
-fs2020_variable_subscribe("L:ASCRJ_ENGS_START_L_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", ENG_L_STARTING)  
+msfs_variable_subscribe("L:ASCRJ_ENGS_START_L_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", ENG_L_STARTING)  
     
 function ENG_R_STARTING(state,pwr)
         visible(imgENG_R, (state ==1 and pwr ==true))
 end
-fs2020_variable_subscribe("L:ASCRJ_ENGS_START_R_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", ENG_R_STARTING)
+msfs_variable_subscribe("L:ASCRJ_ENGS_START_R_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", ENG_R_STARTING)
 
 --Stop Subscribes
 function ENG_L_STOPING(state,pwr)
         visible(imgENG_LStop, (state==1 and pwr ==true))
 end
-fs2020_variable_subscribe("L:ASCRJ_ENGS_STOP_L_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", ENG_L_STOPING)  
+msfs_variable_subscribe("L:ASCRJ_ENGS_STOP_L_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", ENG_L_STOPING)  
     
 function ENG_R_STOPING(state,pwr)
         visible(imgENG_RStop, (state ==1 and pwr ==true))
 end
-fs2020_variable_subscribe("L:ASCRJ_ENGS_STOP_R_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", ENG_R_STOPING)
+msfs_variable_subscribe("L:ASCRJ_ENGS_STOP_R_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", ENG_R_STOPING)
    
 --Cont Subscribes   
 function CONT_IGN_ON(on,pwr)
         visible(imgCNT_IGN_ON, (on ==1 and pwr ==true))
 end
-fs2020_variable_subscribe("L:ASCRJ_ENGS_CONT_IGN_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", CONT_IGN_ON)      
+msfs_variable_subscribe("L:ASCRJ_ENGS_CONT_IGN_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", CONT_IGN_ON)      
               	  	            	  	                	  	            	  	  
                 	  	            	  	                	  	            	  	              	  	            	  	                	  	            	  	  
                 	  	            	  	                	  	            	  	              	  	            	  	                	  	            	  	              	  	            	  	                	  	            	  	              	  	            	  	                	  	            	  	  

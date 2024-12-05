@@ -34,7 +34,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04) 
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
                                               
 -----------------------------------------------------------------
@@ -60,44 +60,44 @@ end
 
 --Left LSK
 button_add(nil,LSKButtonPressed, 12,50,20,15,
-    function () fs2020_variable_write(controlside.."LSK1L","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK1L","number",0) end)end)
+    function () msfs_variable_write(controlside.."LSK1L","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK1L","number",0) end)end)
 button_add(nil,LSKButtonPressed, 12,90,20,15,
-    function () fs2020_variable_write(controlside.."LSK2L","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK2L","number",0) end)end)                
+    function () msfs_variable_write(controlside.."LSK2L","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK2L","number",0) end)end)                
 button_add(nil,LSKButtonPressed, 12,130,20,15,
-    function () fs2020_variable_write(controlside.."LSK3L","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK3L","number",0) end)end)      
+    function () msfs_variable_write(controlside.."LSK3L","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK3L","number",0) end)end)      
 button_add(nil,LSKButtonPressed, 12,175,20,15,
-    function () fs2020_variable_write(controlside.."LSK4L","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK4L","number",0) end)end)      
+    function () msfs_variable_write(controlside.."LSK4L","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK4L","number",0) end)end)      
 
 ---Right LSK                        
 button_add(nil,LSKButtonPressed, 265,47,20,20,
-    function () fs2020_variable_write(controlside.."LSK1R","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK1R","number",0) end)end)
+    function () msfs_variable_write(controlside.."LSK1R","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK1R","number",0) end)end)
 button_add(nil,LSKButtonPressed,  265,90,20,15,
-    function () fs2020_variable_write(controlside.."LSK2R","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK2R","number",0) end)end)                
+    function () msfs_variable_write(controlside.."LSK2R","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK2R","number",0) end)end)                
 button_add(nil,LSKButtonPressed, 265,130,20,15,
-    function () fs2020_variable_write(controlside.."LSK3R","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK3R","number",0) end)end)      
+    function () msfs_variable_write(controlside.."LSK3R","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK3R","number",0) end)end)      
 button_add(nil,LSKButtonPressed, 265,170,20,15,
-    function () fs2020_variable_write(controlside.."LSK4R","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK4R","number",0) end)end)      
+    function () msfs_variable_write(controlside.."LSK4R","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK4R","number",0) end)end)      
 button_add(nil,LSKButtonPressed, 265,212,20,15,
-    function () fs2020_variable_write(controlside.."LSK3R","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."LSK3R","number",0) end)end)     
+    function () msfs_variable_write(controlside.."LSK3R","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."LSK3R","number",0) end)end)     
 --Side Buttons
 button_add(nil,ButtonPressed,  310,35,25,25,
-    function () fs2020_variable_write(controlside.."IDENT","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."IDENT","number",0) end)end)   
+    function () msfs_variable_write(controlside.."IDENT","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."IDENT","number",0) end)end)   
 button_add(nil,ButtonPressed,  310,93,25,25,
-    function () fs2020_variable_write(controlside.."DMEH","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."DMEH","number",0) end)end)
+    function () msfs_variable_write(controlside.."DMEH","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."DMEH","number",0) end)end)
 button_add(nil,ButtonPressed,  310,150,25,25,
-    function () fs2020_variable_write(controlside.."1_2","number",1) sound_play(snd_click)
-                timer_start(50, function() fs2020_variable_write(controlside.."1_2","number",0) end)end)     
+    function () msfs_variable_write(controlside.."1_2","number",1) sound_play(snd_click)
+                timer_start(50, function() msfs_variable_write(controlside.."1_2","number",0) end)end)     
 --Tuning Knobs
     
 local knob_outer_position = 0
@@ -105,11 +105,11 @@ function cb_knob_outer(direction)
     sound_play(snd_dial) 
     knob_outer_position =knob_outer_position + (direction*10)
     if direction == 1 then   
-        fs2020_variable_write(controlside.."KNOB_OUTER_CHANGE","number",1) rotate(img_tuning_outer_night, knob_outer_position)   
-                timer_start(50, function() fs2020_variable_write(controlside.."KNOB_OUTER_CHANGE","number",0) end)
+        msfs_variable_write(controlside.."KNOB_OUTER_CHANGE","number",1) rotate(img_tuning_outer_night, knob_outer_position)   
+                timer_start(50, function() msfs_variable_write(controlside.."KNOB_OUTER_CHANGE","number",0) end)
     else
-        fs2020_variable_write(controlside.."KNOB_OUTER_CHANGE","number",-1) rotate(img_tuning_outer_night, knob_outer_position)   
-                timer_start(50, function() fs2020_variable_write(controlside.."KNOB_OUTER_CHANGE","number",0) end)    
+        msfs_variable_write(controlside.."KNOB_OUTER_CHANGE","number",-1) rotate(img_tuning_outer_night, knob_outer_position)   
+                timer_start(50, function() msfs_variable_write(controlside.."KNOB_OUTER_CHANGE","number",0) end)    
     end    
 end
 dial_tuning_outer =dial_add("double_outer_knob.png", 275,185,65,65, cb_knob_outer) 
@@ -120,11 +120,11 @@ function cb_knob_inner(direction)
     sound_play(snd_dial)
    knob_inner_position =knob_inner_position + (direction*10)
     if direction == 1 then
-        fs2020_variable_write(controlside.."KNOB_INNER_CHANGE","number",1) rotate(img_tuning_inner_night, knob_inner_position)   
-                timer_start(50, function() fs2020_variable_write(controlside.."KNOB_INNER_CHANGE","number",0) end)
+        msfs_variable_write(controlside.."KNOB_INNER_CHANGE","number",1) rotate(img_tuning_inner_night, knob_inner_position)   
+                timer_start(50, function() msfs_variable_write(controlside.."KNOB_INNER_CHANGE","number",0) end)
     else
-        fs2020_variable_write(controlside.."KNOB_INNER_CHANGE","number",-1) rotate(img_tuning_inner_night, knob_inner_position)   
-                timer_start(50, function() fs2020_variable_write(controlside.."KNOB_INNER_CHANGE","number",0) end)    
+        msfs_variable_write(controlside.."KNOB_INNER_CHANGE","number",-1) rotate(img_tuning_inner_night, knob_inner_position)   
+                timer_start(50, function() msfs_variable_write(controlside.."KNOB_INNER_CHANGE","number",0) end)    
     end
 end
 dial_tuning_inner = dial_add("double_inner_knob.png", 290,200,35,35, cb_knob_inner)   

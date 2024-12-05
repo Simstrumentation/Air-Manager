@@ -48,26 +48,26 @@ function new_src_pos(battery)
         visible(src_batt, false)
     end    
 end
-fs2020_variable_subscribe("L:XMLVAR_Elec_Source_Switch_State", "Enum",
+msfs_variable_subscribe("L:XMLVAR_Elec_Source_Switch_State", "Enum",
                                                  new_src_pos)
 
 -- source switch touch zones
     --off
 function cb_set_off()
-    fs2020_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 0)  
+    msfs_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 0)  
 end
 button_add(nil, nil, 345,235, 90, 90, cb_set_off)
 
 --battery
 function cb_set_battery()
-    fs2020_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
-    fs2020_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 1)
+    msfs_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
+    msfs_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 1)
 end
 button_add(nil, nil, 345,145, 90, 90, cb_set_battery)
 
 function cb_set_GPU()
-    fs2020_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
-    fs2020_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 2) 
+    msfs_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
+    msfs_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 2) 
 end
 
 button_add(nil, nil, 345,55, 90, 90, cb_set_GPU)
@@ -96,18 +96,18 @@ function ss_Generator(alt)
         visible(gen_stby, true)
     end 
 end
-fs2020_variable_subscribe("L:XMLVAR_Elec_Generator_Switch_state", "Enum", ss_Generator)
+msfs_variable_subscribe("L:XMLVAR_Elec_Generator_Switch_state", "Enum", ss_Generator)
 
 --    generator switch touch zones
 function genOff()
-    fs2020_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 0)
+    msfs_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 0)
 end
  function genOn()
-     fs2020_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 1)
+     msfs_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 1)
  end
  
  function genStdby()
-     fs2020_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 2)
+     msfs_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 2)
  end
 button_add(nil, nil, 535, 235, 90, 90, genOff)
 
@@ -131,16 +131,16 @@ function setCB(state)
         visible(img_crashup, false)   
     end
 end
-fs2020_variable_subscribe("L:XMLVAR_Elec_CrashBar_State", "Number", setCB)
+msfs_variable_subscribe("L:XMLVAR_Elec_CrashBar_State", "Number", setCB)
 
 --crash bar toggle
 function toggle_cb_callback()
     if crashbar_position== 0 then
-        fs2020_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
+        msfs_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 1)
     else
-        fs2020_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 0)  
-        fs2020_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 0)
-        fs2020_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 0)
+        msfs_variable_write("L:XMLVAR_Elec_Source_Switch_State", "ENUM", 0)  
+        msfs_variable_write("L:XMLVAR_Elec_Generator_Switch_state", "Enum", 0)
+        msfs_variable_write("L:XMLVAR_Elec_CrashBar_State", "Number", 0)
 
     end
 end

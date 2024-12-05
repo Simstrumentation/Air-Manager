@@ -55,13 +55,13 @@ function dump()
     if dump_cover == 0 then    --if button cover is down, play fail sound 
         sound_play(snd_fail)
     elseif dump_cover == 1 then
-        fs2020_event("K:PRESSURIZATION_PRESSURE_DUMP_SWITCH")
+        msfs_event("K:PRESSURIZATION_PRESSURE_DUMP_SWITCH")
         sound_play(snd_click)
     end
 end
 button_add(nil,nil, 80, 150, 115,118, dump)
  
-fs2020_variable_subscribe("A:PRESSURIZATION DUMP SWITCH", "bool",
+msfs_variable_subscribe("A:PRESSURIZATION DUMP SWITCH", "bool",
     function (dump_sw)
         if dump_sw then    
             opacity(img_dump_norm,0)
@@ -73,7 +73,7 @@ fs2020_variable_subscribe("A:PRESSURIZATION DUMP SWITCH", "bool",
  end)
 
 
-fs2020_variable_subscribe("A:BLEED AIR SOURCE CONTROL", "enum",
+msfs_variable_subscribe("A:BLEED AIR SOURCE CONTROL", "enum",
     function (bleed)
         if bleed == 0  then
             visible(img_bleed_auto, true)
@@ -92,19 +92,19 @@ fs2020_variable_subscribe("A:BLEED AIR SOURCE CONTROL", "enum",
  
 
  function btn_bleed_auto()
-    fs2020_event("K:BLEED_AIR_SOURCE_CONTROL_SET", 0)
+    msfs_event("K:BLEED_AIR_SOURCE_CONTROL_SET", 0)
     sound_play(snd_click)
 end
 button_add(nil,nil, 310, 110, 120, 50, btn_bleed_auto)
 
 function btn_bleed_maxdiff()
-    fs2020_event("K:BLEED_AIR_SOURCE_CONTROL_SET", 3)
+    msfs_event("K:BLEED_AIR_SOURCE_CONTROL_SET", 3)
     sound_play(snd_click)
 end
 button_add(nil,nil, 310, 160, 120, 50, btn_bleed_maxdiff)
 
 function btn_bleed_off()
-    fs2020_event("K:BLEED_AIR_SOURCE_CONTROL_SET", 1)
+    msfs_event("K:BLEED_AIR_SOURCE_CONTROL_SET", 1)
     sound_play(snd_click)
 end
 button_add(nil,nil, 310, 210, 120, 50, btn_bleed_off)

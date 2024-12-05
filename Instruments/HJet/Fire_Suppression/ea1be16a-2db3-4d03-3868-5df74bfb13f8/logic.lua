@@ -115,15 +115,15 @@ fire_r_id = button_add(nil, "pressed.png", 698, 66, 82, 62, fireRAction, release
 
 function extLAction()
     sound_play(press_snd)
-    fs2020_event("K:EXTINGUISH_ENGINE_FIRE:11")
-    fs2020_event("K:EXTINGUISH_ENGINE_FIRE:21")
+    msfs_event("K:EXTINGUISH_ENGINE_FIRE:11")
+    msfs_event("K:EXTINGUISH_ENGINE_FIRE:21")
 end
 ext_l_push = button_add(nil, "pressed.png", 180, 50, 112, 86, extLAction, releaseAction)
 
 function extRAction()
     sound_play(press_snd)
-    fs2020_event("K:EXTINGUISH_ENGINE_FIRE:12")
-    fs2020_event("K:EXTINGUISH_ENGINE_FIRE:22")
+    msfs_event("K:EXTINGUISH_ENGINE_FIRE:12")
+    msfs_event("K:EXTINGUISH_ENGINE_FIRE:22")
 end
 ext_r_push = button_add(nil, "pressed.png", 554, 50, 112, 86, extRAction, releaseAction)
 
@@ -226,7 +226,7 @@ function setTest(testA, testB)
 
 end
 
-fs2020_variable_subscribe("ATC ID", "STRING", 
+msfs_variable_subscribe("ATC ID", "STRING", 
                             "L:fireTestInProgress_0", "NUMBER",
                             "L:fireTestInProgress_1", "NUMBER",
                             "L:fireTestInProgress_2", "NUMBER",
@@ -235,6 +235,6 @@ fs2020_variable_subscribe("ATC ID", "STRING",
                             "A:ENG ON FIRE:2", "NUMBER",                            
                             "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",
                             setVals)
-fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 			"L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)                            

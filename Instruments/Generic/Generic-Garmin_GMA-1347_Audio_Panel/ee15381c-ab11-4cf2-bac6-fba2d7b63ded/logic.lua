@@ -117,16 +117,16 @@ visible(mute, false)
 
 --Com1 TX Select    
 function mid_com1mic()
-   fs2020_event("COM1_TRANSMIT_SELECT")
-   --fs2020_event("H:AS1000_MID_COM_Mic_1_Push")
+   msfs_event("COM1_TRANSMIT_SELECT")
+   --msfs_event("H:AS1000_MID_COM_Mic_1_Push")
    sound_play(click_snd)
 end
 button_add(nil,"com1mic_pressed.png", 19,41,90, 66, mid_com1mic)
 
 --Com2 TX Select    
 function mid_com2mic()
-   fs2020_event("COM2_TRANSMIT_SELECT")
-   --fs2020_event("H:AS1000_MID_COM_Mic_2_Push")
+   msfs_event("COM2_TRANSMIT_SELECT")
+   --msfs_event("H:AS1000_MID_COM_Mic_2_Push")
    sound_play(click_snd)
 end
 button_add(nil,"com2mic_pressed.png", 18,135,89, 64, mid_com2mic)
@@ -134,7 +134,7 @@ button_add(nil,"com2mic_pressed.png", 18,135,89, 64, mid_com2mic)
 --Com3 TX Select    
 function mid_com3mic()
    --currently INOP
-   --fs2020_event("H:AS1000_MID_COM_Mic_3_Push")
+   --msfs_event("H:AS1000_MID_COM_Mic_3_Push")
    --sound_play(click_snd)
    sound_play(fail_snd)
 end
@@ -142,21 +142,21 @@ button_add(nil,"com3mic_pressed.png", 18,219,89, 64, mid_com3mic)
 
 --Com1_2 TX Select    
 function mid_com1_2mic()
-   fs2020_event("H:AS1000_MID_COM_Swap_1_2_Push")
+   msfs_event("H:AS1000_MID_COM_Swap_1_2_Push")
    sound_play(click_snd)
 end
 button_add(nil,"com1-2_pressed.png", 18,311,89, 64, mid_com1_2mic)
 
 --Com1 Receive
 function mid_com1()
-   fs2020_event("COM_RECEIVE_ALL_TOGGLE")
+   msfs_event("COM_RECEIVE_ALL_TOGGLE")
    sound_play(click_snd)
 end
 button_add(nil,"com1_pressed.png", 122,41,90, 66, mid_com1)
 
 --Com2 Receive
 function mid_com2()
-   fs2020_event("COM_RECEIVE_ALL_TOGGLE")
+   msfs_event("COM_RECEIVE_ALL_TOGGLE")
    sound_play(click_snd)
 end
 button_add(nil,"com2_pressed.png", 122,135,90, 66, mid_com2)
@@ -164,7 +164,7 @@ button_add(nil,"com2_pressed.png", 122,135,90, 66, mid_com2)
 --Com3 Receive
 function mid_com3()
     --currently INOP
-   --fs2020_event("H:AS1000_MID_COM_3_Push")
+   --msfs_event("H:AS1000_MID_COM_3_Push")
    sound_play(fail_snd)
 end
 button_add(nil,"com3_pressed.png", 122,218,90, 66, mid_com3)
@@ -172,7 +172,7 @@ button_add(nil,"com3_pressed.png", 122,218,90, 66, mid_com3)
 --Tel
 function mid_tel()
     --currently INOP
-   --fs2020_event("H:AS1000_MID_TEL_Push")
+   --msfs_event("H:AS1000_MID_TEL_Push")
    sound_play(fail_snd)
 end
 button_add(nil,"tel_pressed.png", 122,310,90, 66, mid_tel)
@@ -180,7 +180,7 @@ button_add(nil,"tel_pressed.png", 122,310,90, 66, mid_tel)
 --PA
 function pa_btn()
    --currently INOP
-   --fs2020_event("H:AS1000_MID_PA_Push")
+   --msfs_event("H:AS1000_MID_PA_Push")
    --sound_play(click_snd)
    sound_play(fail_snd)
 end
@@ -188,23 +188,23 @@ button_add(nil,"pa_pressed.png", 18,400,89, 64, pa_btn)
 
 --Spkr
 function spkr_btn()
-   fs2020_event("K:Toggle_SPEAKER")
+   msfs_event("K:Toggle_SPEAKER")
    sound_play(click_snd)
 end
 button_add(nil,"spkr_pressed.png", 122,399,89, 64, spkr_btn)
 
 --Hi Sens
 function hisens_btn()
-  --fs2020_event("H:AS1000_MID_HI_SENS_Push")
+  --msfs_event("H:AS1000_MID_HI_SENS_Push")
   
-  --    fs2020_variable_write("A:LIGHT CABIN:3", "BOOL", true)
-  --    fs2020_event("K:ELECTRICAL_CIRCUIT_TOGGLE",49, "Int",1)
-    -- fs2020_variable_write("A:MARKER BEACON SENSITIVITY HIGH","BOOL",false)
+  --    msfs_variable_write("A:LIGHT CABIN:3", "BOOL", true)
+  --    msfs_event("K:ELECTRICAL_CIRCUIT_TOGGLE",49, "Int",1)
+    -- msfs_variable_write("A:MARKER BEACON SENSITIVITY HIGH","BOOL",false)
     
     if hisens == true then
-        fs2020_event("MARKER_BEACON_SENSITIVITY_HIGH",0)
+        msfs_event("MARKER_BEACON_SENSITIVITY_HIGH",0)
     else 
-        fs2020_event("MARKER_BEACON_SENSITIVITY_HIGH",1)
+        msfs_event("MARKER_BEACON_SENSITIVITY_HIGH",1)
     end
 
    sound_play(click_snd)
@@ -213,28 +213,28 @@ button_add(nil,"hisens_pressed.png", 122,489,89, 64, hisens_btn)
 
 --Nav 1
 function nav1_btn()
-   fs2020_event("RADIO_VOR1_IDENT_TOGGLE")
+   msfs_event("RADIO_VOR1_IDENT_TOGGLE")
    sound_play(click_snd)
 end
 button_add(nil,"NAV1_pressed.png", 121,583,90, 66, nav1_btn)
 
 --Nav 2
 function nav2_btn()
-   fs2020_event("RADIO_VOR2_IDENT_TOGGLE")
+   msfs_event("RADIO_VOR2_IDENT_TOGGLE")
    sound_play(click_snd)
 end
 button_add(nil,"NAV2_pressed.png", 121,669,90, 66, nav2_btn)
 
 --DME Button  
 function dme_btn()
-   fs2020_event("RADIO_SELECTED_DME_IDENT_TOGGLE")
+   msfs_event("RADIO_SELECTED_DME_IDENT_TOGGLE")
    sound_play(click_snd)
 end
 button_add(nil,"DME_pressed.png", 18,583,90, 66, dme_btn)
 
 --ADF Button 
 function adf_btn()
-   fs2020_event("RADIO_ADF_IDENT_TOGGLE")
+   msfs_event("RADIO_ADF_IDENT_TOGGLE")
    sound_play(click_snd)
 end
 button_add(nil,"ADF_pressed.png", 17,669,90, 66, adf_btn)
@@ -242,7 +242,7 @@ button_add(nil,"ADF_pressed.png", 17,669,90, 66, adf_btn)
 --Aux Button 
 function aux()
    --currently INOP
-   --fs2020_event("H:AS1000_MID_AUX_Push")
+   --msfs_event("H:AS1000_MID_AUX_Push")
    --sound_play(click_snd)
    sound_play(fail_snd)
 end
@@ -251,7 +251,7 @@ button_add(nil,"aux_pressed.png", 17,762,90, 66, aux)
 --Man Sq
 function mansq()
    --currently INOP
-   --fs2020_event("H:AS1000_MID_MAN_SQ_Push")
+   --msfs_event("H:AS1000_MID_MAN_SQ_Push")
    --sound_play(click_snd)
    sound_play(fail_snd)
 end
@@ -260,7 +260,7 @@ button_add(nil,"mansq_pressed.png", 17,850,90, 66, mansq)
 --Play
 function play()
    --currently INOP
-   --fs2020_event("H:AS1000_MID_Play_Push")
+   --msfs_event("H:AS1000_MID_Play_Push")
    --sound_play(click_snd)
    sound_play(fail_snd)
 end
@@ -269,7 +269,7 @@ button_add(nil,"play_pressed.png", 120,850,90, 66, play)
 --Pilot
 function pilot()
    --currently INOP
-   --fs2020_event("H:AS1000_MID_Isolate_Pilot_Push")
+   --msfs_event("H:AS1000_MID_Isolate_Pilot_Push")
    --sound_play(click_snd)
    sound_play(fail_snd)
 end
@@ -278,7 +278,7 @@ button_add(nil,"pilot_pressed.png", 18,942,90, 66, pilot)
 --Coplt
 function coplt()
    --currently INOP
-   --fs2020_event("H:AS1000_MID_Isolate_Copilot_Push")
+   --msfs_event("H:AS1000_MID_Isolate_Copilot_Push")
    --sound_play(click_snd)
    sound_play(fail_snd)
 end
@@ -286,11 +286,11 @@ button_add(nil,"coplt_pressed.png", 120,942,90, 66, coplt)
 
 --Mute Button 
 function mute_btn()
-   --fs2020_event("MARKER_SOUND_TOGGLE")
+   --msfs_event("MARKER_SOUND_TOGGLE")
       if local_mute == true then
-        fs2020_event("MARKER_BEACON_TEST_MUTE",0)
+        msfs_event("MARKER_BEACON_TEST_MUTE",0)
     else 
-        fs2020_event("MARKER_BEACON_TEST_MUTE",1)
+        msfs_event("MARKER_BEACON_TEST_MUTE",1)
     end  
    sound_play(click_snd)
 end
@@ -315,14 +315,14 @@ function plt_vol(direction)
     elseif direction == -1 then
             audio_panel_vol = var_cap((audio_panel_vol - 5), 0, 100)
     end
-    fs2020_event("AUDIO_PANEL_VOLUME_SET", audio_panel_vol)
+    msfs_event("AUDIO_PANEL_VOLUME_SET", audio_panel_vol)
     sound_play(dial_snd)
 end
 pilot_vol= dial_add("vol_inner.png", 76, 1099, 78, 78, plt_vol)
 
 -- display backup 
 function display_backup()
-    fs2020_event("AS1000_MID_Display_Backup_Set")
+    msfs_event("AS1000_MID_Display_Backup_Set")
     sound_play(fail_snd)
 end
 dsp_bkup= button_add(nil, "red_button_pressed.png", 83, 1225, 64,  65, display_backup)
@@ -428,14 +428,14 @@ function update_audio_vol(val)
 end
 
 
-fs2020_variable_subscribe("COM TRANSMIT:1","Bool",
+msfs_variable_subscribe("COM TRANSMIT:1","Bool",
                            "COM RECIEVE ALL","Bool", com_inuse)
-fs2020_variable_subscribe("SPEAKER ACTIVE","Bool", spkr_snd)                               
-fs2020_variable_subscribe("NAV SOUND:1","Bool", nav1_snd)    
-fs2020_variable_subscribe("NAV SOUND:2","Bool", nav2_snd)    
-fs2020_variable_subscribe("DME SOUND","Bool", dme_snd)  
-fs2020_variable_subscribe("ADF SOUND:1","Bool", adf_snd)
-fs2020_variable_subscribe("MARKER BEACON TEST MUTE","Bool", mute_snd)     
-fs2020_variable_subscribe("MARKER BEACON SENSITIVITY HIGH", "Bool", hisens_on)   
-fs2020_variable_subscribe("AUDIO PANEL VOLUME", "Percent", update_audio_vol)                              
+msfs_variable_subscribe("SPEAKER ACTIVE","Bool", spkr_snd)                               
+msfs_variable_subscribe("NAV SOUND:1","Bool", nav1_snd)    
+msfs_variable_subscribe("NAV SOUND:2","Bool", nav2_snd)    
+msfs_variable_subscribe("DME SOUND","Bool", dme_snd)  
+msfs_variable_subscribe("ADF SOUND:1","Bool", adf_snd)
+msfs_variable_subscribe("MARKER BEACON TEST MUTE","Bool", mute_snd)     
+msfs_variable_subscribe("MARKER BEACON SENSITIVITY HIGH", "Bool", hisens_on)   
+msfs_variable_subscribe("AUDIO PANEL VOLUME", "Percent", update_audio_vol)                              
                            

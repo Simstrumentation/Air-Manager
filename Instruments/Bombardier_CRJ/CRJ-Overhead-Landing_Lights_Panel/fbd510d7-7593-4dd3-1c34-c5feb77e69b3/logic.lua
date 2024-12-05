@@ -33,7 +33,7 @@ function ss_backlighting(value, power, extpower, busvolts)
         opacity(img_labels_backlight, (value), "LOG", 0.04)      
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                           "ELECTRICAL MASTER BATTERY","Bool", ss_backlighting)
 
 ---------------------------------------------
@@ -75,7 +75,7 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 ---------------------------------------------
 ----------------------------------------------
 --Left Switch
-fs2020_variable_subscribe("L:ASCRJ_OVHD_LDG_LEFT", "Number", 
+msfs_variable_subscribe("L:ASCRJ_OVHD_LDG_LEFT", "Number", 
         function (state)
             switch_set_position(sw_lft, state)
             visible(img_lft_mid, state ==0)
@@ -86,16 +86,16 @@ fs2020_variable_subscribe("L:ASCRJ_OVHD_LDG_LEFT", "Number",
 
 function cb_sw_lft(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_LDG_LEFT","Number",1) 
+        msfs_variable_write("L:ASCRJ_OVHD_LDG_LEFT","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_LDG_LEFT","Number",0) 
+        msfs_variable_write("L:ASCRJ_OVHD_LDG_LEFT","Number",0) 
     end 
 end
 
 sw_lft= switch_add(nil,nil, -24,61,181,179, cb_sw_lft)
 
 --Nose Switch
-fs2020_variable_subscribe("L:ASCRJ_OVHD_LDG_NOSE", "Number", 
+msfs_variable_subscribe("L:ASCRJ_OVHD_LDG_NOSE", "Number", 
         function (state)
             switch_set_position(sw_nose, state)
             visible(img_nose_mid, state ==0)
@@ -106,16 +106,16 @@ fs2020_variable_subscribe("L:ASCRJ_OVHD_LDG_NOSE", "Number",
 
 function cb_sw_nose(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_LDG_NOSE","Number",1) 
+        msfs_variable_write("L:ASCRJ_OVHD_LDG_NOSE","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_LDG_NOSE","Number",0) 
+        msfs_variable_write("L:ASCRJ_OVHD_LDG_NOSE","Number",0) 
     end 
 end
 
 sw_nose= switch_add(nil,nil, 105,61,181,179, cb_sw_nose)
 
 --Right Switch
-fs2020_variable_subscribe("L:ASCRJ_OVHD_LDG_RIGHT", "Number", 
+msfs_variable_subscribe("L:ASCRJ_OVHD_LDG_RIGHT", "Number", 
         function (state)
             switch_set_position(sw_rgt, state)
             visible(img_rgt_mid, state ==0)
@@ -126,16 +126,16 @@ fs2020_variable_subscribe("L:ASCRJ_OVHD_LDG_RIGHT", "Number",
 
 function cb_sw_rgt(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_LDG_RIGHT","Number",1) 
+        msfs_variable_write("L:ASCRJ_OVHD_LDG_RIGHT","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_LDG_RIGHT","Number",0) 
+        msfs_variable_write("L:ASCRJ_OVHD_LDG_RIGHT","Number",0) 
     end 
 end
 
 sw_rgt= switch_add(nil,nil, 230,61,181,179, cb_sw_rgt)
 
 --Recog Taxi Lights Switch
-fs2020_variable_subscribe("L:ASCRJ_OVHD_TAXI", "Number", 
+msfs_variable_subscribe("L:ASCRJ_OVHD_TAXI", "Number", 
         function (state)
             switch_set_position(sw_taxi, state)
             visible(img_taxi_mid, state ==0)
@@ -146,9 +146,9 @@ fs2020_variable_subscribe("L:ASCRJ_OVHD_TAXI", "Number",
 
 function cb_sw_taxi(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_TAXI","Number",1) 
+        msfs_variable_write("L:ASCRJ_OVHD_TAXI","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_TAXI","Number",0) 
+        msfs_variable_write("L:ASCRJ_OVHD_TAXI","Number",0) 
     end 
 end
 

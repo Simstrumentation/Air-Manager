@@ -33,7 +33,7 @@ function ss_backlighting(value, power, extpower, busvolts)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "ELECTRICAL MASTER BATTERY","Bool", ss_backlighting)
 
 ---------------------------------------------
@@ -92,19 +92,19 @@ SWITCH POSITIONS:
 ]]--
 function cb_nosmk_pos_dec()
     if current_pos_nosmk == 0  then
-        fs2020_variable_write("L:ASCRJ_OVHD_NO_SMOKING", "Number", 1)
+        msfs_variable_write("L:ASCRJ_OVHD_NO_SMOKING", "Number", 1)
 end
     if current_pos_nosmk == 1  then
-        fs2020_variable_write("L:ASCRJ_OVHD_NO_SMOKING", "Number", 2)
+        msfs_variable_write("L:ASCRJ_OVHD_NO_SMOKING", "Number", 2)
    end   
 end
 
 function cb_nosmk_pos_inc()
         if current_pos_nosmk == 2  then
-        fs2020_variable_write("L:ASCRJ_OVHD_NO_SMOKING", "Number", 1)
+        msfs_variable_write("L:ASCRJ_OVHD_NO_SMOKING", "Number", 1)
 end
     if current_pos_nosmk == 1  then
-        fs2020_variable_write("L:ASCRJ_OVHD_NO_SMOKING", "Number",0)
+        msfs_variable_write("L:ASCRJ_OVHD_NO_SMOKING", "Number",0)
    end
     
 end
@@ -129,7 +129,7 @@ function new_nosmk_pos(pos)
 current_pos_nosmk = pos
 end
 
-fs2020_variable_subscribe("L:ASCRJ_OVHD_NO_SMOKING", "Number", new_nosmk_pos)
+msfs_variable_subscribe("L:ASCRJ_OVHD_NO_SMOKING", "Number", new_nosmk_pos)
 
 -- Seat Belt Switch
 --[[
@@ -141,19 +141,19 @@ SWITCH POSITIONS:
 
 function cb_seat_pos_dec()
     if current_pos_seat == 0  then
-        fs2020_variable_write("L:ASCRJ_OVHD_SEAT_BELTS", "Number", 1)
+        msfs_variable_write("L:ASCRJ_OVHD_SEAT_BELTS", "Number", 1)
 end
     if current_pos_seat == 1  then
-        fs2020_variable_write("L:ASCRJ_OVHD_SEAT_BELTS", "Number", 2)
+        msfs_variable_write("L:ASCRJ_OVHD_SEAT_BELTS", "Number", 2)
    end   
 end
 
 function cb_seat_pos_inc()
         if current_pos_seat == 2  then
-        fs2020_variable_write("L:ASCRJ_OVHD_SEAT_BELTS", "Number", 1)
+        msfs_variable_write("L:ASCRJ_OVHD_SEAT_BELTS", "Number", 1)
 end
     if current_pos_seat == 1  then
-        fs2020_variable_write("L:ASCRJ_OVHD_SEAT_BELTS", "Number",0)
+        msfs_variable_write("L:ASCRJ_OVHD_SEAT_BELTS", "Number",0)
    end
     
 end
@@ -178,7 +178,7 @@ function new_seat_pos(pos)
 current_pos_seat = pos
 end
 
-fs2020_variable_subscribe("L:ASCRJ_OVHD_SEAT_BELTS", "Number", new_seat_pos)
+msfs_variable_subscribe("L:ASCRJ_OVHD_SEAT_BELTS", "Number", new_seat_pos)
 
 
 -- Emergency Lights
@@ -190,19 +190,19 @@ fs2020_variable_subscribe("L:ASCRJ_OVHD_SEAT_BELTS", "Number", new_seat_pos)
 
 function cb_emer_pos_dec()
     if current_pos_emer == 0  then
-        fs2020_variable_write("L:ASCRJ_OVHD_EMER_LTS", "Number", 1)
+        msfs_variable_write("L:ASCRJ_OVHD_EMER_LTS", "Number", 1)
 end
     if current_pos_emer == 1  then
-        fs2020_variable_write("L:ASCRJ_OVHD_EMER_LTS", "Number", 2)
+        msfs_variable_write("L:ASCRJ_OVHD_EMER_LTS", "Number", 2)
    end   
 end
 
 function cb_emer_pos_inc()
         if current_pos_emer == 2  then
-        fs2020_variable_write("L:ASCRJ_OVHD_EMER_LTS", "Number", 1)
+        msfs_variable_write("L:ASCRJ_OVHD_EMER_LTS", "Number", 1)
 end
     if current_pos_emer == 1  then
-        fs2020_variable_write("L:ASCRJ_OVHD_EMER_LTS", "Number",0)
+        msfs_variable_write("L:ASCRJ_OVHD_EMER_LTS", "Number",0)
    end
 end
 
@@ -226,10 +226,10 @@ function new_emer_pos(pos)
     current_pos_emer = pos
 end
 
-fs2020_variable_subscribe("L:ASCRJ_OVHD_EMER_LTS", "Number", new_emer_pos)
+msfs_variable_subscribe("L:ASCRJ_OVHD_EMER_LTS", "Number", new_emer_pos)
 
 -- ELT
-fs2020_variable_subscribe("L:ASCRJ_OVHD_ELT", "Number", 
+msfs_variable_subscribe("L:ASCRJ_OVHD_ELT", "Number", 
         function (state)
             switch_set_position(sw_elt, state)
             visible(img_elt_up, state ==0)
@@ -240,9 +240,9 @@ fs2020_variable_subscribe("L:ASCRJ_OVHD_ELT", "Number",
 
 function cb_sw_elt(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_ELT","Number",1) 
+        msfs_variable_write("L:ASCRJ_OVHD_ELT","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_OVHD_ELT","Number",0) 
+        msfs_variable_write("L:ASCRJ_OVHD_ELT","Number",0) 
     end 
 end
 sw_elt= switch_add(nil,nil, 498,61,181,179, cb_sw_elt)

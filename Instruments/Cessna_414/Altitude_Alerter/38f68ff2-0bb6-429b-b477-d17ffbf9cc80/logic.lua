@@ -74,8 +74,8 @@ function cb_ten_thou(position, direction)
         end  
     end 
 
-    fs2020_variable_write("L:Alerter_GENERIC_ALERTER_TEN_THOUSANDTHS", "Number", position)
-    fs2020_variable_write("L:GENERIC_ALERTER_TEN_THOUSANDTHS", "Number", position*11)   
+    msfs_variable_write("L:Alerter_GENERIC_ALERTER_TEN_THOUSANDTHS", "Number", position)
+    msfs_variable_write("L:GENERIC_ALERTER_TEN_THOUSANDTHS", "Number", position*11)   
 end 
 sw_tenthou=switch_add("sel_0.png", "sel_1.png", "sel_2.png", "sel_3.png", "sel_4.png", "sel_5.png", "sel_6.png", "sel_7.png", "sel_8.png", "sel_9.png",181, 80, 30, 150, "CIRCULAR", cb_ten_thou)
 
@@ -91,8 +91,8 @@ function cb_thou(position, direction)
             position = position - 1
         end  
     end 
-    fs2020_variable_write("L:Alerter_GENERIC_ALERTER_THOUSANDTHS", "Number", position)
-    fs2020_variable_write("L:GENERIC_ALERTER_THOUSANDTHS", "Number", position*11)
+    msfs_variable_write("L:Alerter_GENERIC_ALERTER_THOUSANDTHS", "Number", position)
+    msfs_variable_write("L:GENERIC_ALERTER_THOUSANDTHS", "Number", position*11)
 end 
 sw_thou=switch_add("sel_0.png", "sel_1.png", "sel_2.png", "sel_3.png", "sel_4.png", "sel_5.png", "sel_6.png", "sel_7.png", "sel_8.png", "sel_9.png",271, 80, 30, 150, "CIRCULAR", cb_thou )
 
@@ -109,16 +109,16 @@ function cb_hun(position, direction)
         end  
     end  
     
-    fs2020_variable_write("L:Alerter_GENERIC_ALERTER_HUNDREDTHS", "Number", position)
-    fs2020_variable_write("L:GENERIC_ALERTER_HUNDREDTHS", "Number", position*11)
+    msfs_variable_write("L:Alerter_GENERIC_ALERTER_HUNDREDTHS", "Number", position)
+    msfs_variable_write("L:GENERIC_ALERTER_HUNDREDTHS", "Number", position*11)
 end 
 sw_hun=switch_add("sel_0.png", "sel_1.png", "sel_2.png", "sel_3.png", "sel_4.png", "sel_5.png", "sel_6.png", "sel_7.png", "sel_8.png", "sel_9.png",351, 80, 30, 150, "CIRCULAR", cb_hun  )
 
 function alerter_arm()
         if alerter_armed == 1 then
-            fs2020_variable_write("L:Alt_Arm_Switch", "Number", 0)
+            msfs_variable_write("L:Alt_Arm_Switch", "Number", 0)
         else
-            fs2020_variable_write("L:Alt_Arm_Switch", "Number", 1)
+            msfs_variable_write("L:Alt_Arm_Switch", "Number", 1)
         end
 end
 btn_arm=button_add(nil, nil, 482,112, 40, 40, alerter_arm)
@@ -189,7 +189,7 @@ function get_vars(tenthou, thou, hun, armed, alt_lock, alt_indicated, mainbusvol
     end
 end
 
-fs2020_variable_subscribe("L:Alerter_GENERIC_ALERTER_TEN_THOUSANDTHS", "Number", 
+msfs_variable_subscribe("L:Alerter_GENERIC_ALERTER_TEN_THOUSANDTHS", "Number", 
                         "L:Alerter_GENERIC_ALERTER_THOUSANDTHS", "Number", 
                         "L:Alerter_GENERIC_ALERTER_HUNDREDTHS", "Number", 
                         "L:ALT_ARM_SWITCH", "Number",

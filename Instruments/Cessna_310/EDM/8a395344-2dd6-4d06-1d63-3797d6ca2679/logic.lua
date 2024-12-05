@@ -35,20 +35,20 @@ img_add_fullscreen("bg.png")
 
 --Left button
 function btn_l_press_cb()
-    fs2020_variable_write("L:C310_SW_EDM" .. unit_mode .. "_L", "Number", 1)
+    msfs_variable_write("L:C310_SW_EDM" .. unit_mode .. "_L", "Number", 1)
 end
 
 function btn_l_release_cb()
-   fs2020_variable_write("L:C310_SW_EDM" .. unit_mode .. "_L", "Number", 0)
+   msfs_variable_write("L:C310_SW_EDM" .. unit_mode .. "_L", "Number", 0)
 end
 btn_l = button_add(nil, nil, 68, 450, 64, 64, btn_l_press_cb, btn_l_release_cb)
 
 --right button
 function btn_r_press_cb()
-    fs2020_variable_write("L:C310_SW_EDM" .. unit_mode .. "_R", "Number", 1)
+    msfs_variable_write("L:C310_SW_EDM" .. unit_mode .. "_R", "Number", 1)
 end
    
 function btn_l_release_cb()
-     fs2020_variable_write("L:C310_SW_EDM" .. unit_mode .. "_R", "Number", 0)
+     msfs_variable_write("L:C310_SW_EDM" .. unit_mode .. "_R", "Number", 0)
 end
 btn_r = button_add(nil, nil, 386, 450, 64, 64, btn_r_press_cb, btn_l_release_cb)

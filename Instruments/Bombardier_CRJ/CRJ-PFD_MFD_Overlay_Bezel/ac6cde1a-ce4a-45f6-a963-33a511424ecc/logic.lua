@@ -107,7 +107,7 @@ if user_prop_get(prop_dimmer_knob) == true then
     local local_light_dspl = 0
     img_light_dspl = img_add("smallknob_inner.png", 20, 70, 57, 57)
     img_light_dspl_night = img_add("smallKnob_inner_night.png",20, 70, 57, 57)
-    fs2020_variable_subscribe(controlside, "Number",     
+    msfs_variable_subscribe(controlside, "Number",     
             function (state)
                 local_light_dspl = state
                  rotate(img_light_dspl, local_light_dspl*10)
@@ -116,8 +116,8 @@ if user_prop_get(prop_dimmer_knob) == true then
     
     function cb_light_dspl(direction) 
         sound_play(snd_dial)
-        if direction == 1 then fs2020_variable_write(controlside, "Number", var_cap(local_light_dspl+2,0,26) )
-        else fs2020_variable_write(controlside, "Number", var_cap(local_light_dspl-2,0,26) )
+        if direction == 1 then msfs_variable_write(controlside, "Number", var_cap(local_light_dspl+2,0,26) )
+        else msfs_variable_write(controlside, "Number", var_cap(local_light_dspl-2,0,26) )
         end 
     end
     dial_light_dspl = dial_add(nil, 20, 70, 57, 57, cb_light_dspl)

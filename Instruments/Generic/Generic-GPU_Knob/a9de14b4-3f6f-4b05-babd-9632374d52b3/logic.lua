@@ -74,7 +74,7 @@ function ss_backlighting_WTCJ4(value, power)
 end
 
 if  (user_prop_get(prop_aircraft) =="WT CJ4") then
-    fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+    msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                                                   "CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting_WTCJ4)
 --Enter more aircraft here                                                 
 else -- Doesn't support backlight
@@ -90,7 +90,7 @@ function ss_avail_GPU(avail)
         opacity(img_led_on, 0)        
     end    
 end
-fs2020_variable_subscribe("EXTERNAL POWER AVAILABLE", "bool", ss_avail_GPU)
+msfs_variable_subscribe("EXTERNAL POWER AVAILABLE", "bool", ss_avail_GPU)
 --subscribe to position
 function pos_GPU(sw_on)
     if sw_on == 0 then
@@ -105,11 +105,11 @@ function pos_GPU(sw_on)
         rotate (img_knob_indicator_backlight, 50,"LOG", 0.1)  
     end
 end 
-fs2020_variable_subscribe("EXTERNAL POWER ON", "Number", pos_GPU)
+msfs_variable_subscribe("EXTERNAL POWER ON", "Number", pos_GPU)
 
 --toggle gpu power on/off
 function callback_GPU(position, direction)		   
-          fs2020_event("K:TOGGLE_EXTERNAL_POWER") 
+          msfs_event("K:TOGGLE_EXTERNAL_POWER") 
           sound_play(snd_dial)
 end
 sw_GPU = switch_add(nil,nil, 50, 90, 140, 140, callback_GPU)

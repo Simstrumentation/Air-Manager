@@ -76,14 +76,14 @@ local adjustmentTable = { { -1000, 0   },
 function setPressure(direction)
     if direction == 1 then
         if targetAltitude >= -150 and targetAltitude <= 11950 then
-            fs2020_event("K:PRESSURIZATION_PRESSURE_ALT_INC")
+            msfs_event("K:PRESSURIZATION_PRESSURE_ALT_INC")
         else
             --play error sound
         end
         
     elseif direction == -1 then
         if targetAltitude >= 50 and targetAltitude <= 12500 then
-            fs2020_event("K:PRESSURIZATION_PRESSURE_ALT_DEC")
+            msfs_event("K:PRESSURIZATION_PRESSURE_ALT_DEC")
         else
             --play error sound
         end
@@ -107,16 +107,16 @@ function setSimTarget(val)
     print("simAlt:"..val)
     setPosition(val)
 end
-fs2020_variable_subscribe("A:PRESSURIZATION CABIN ALTITUDE GOAL", "feet", 
+msfs_variable_subscribe("A:PRESSURIZATION CABIN ALTITUDE GOAL", "feet", 
                                             setSimTarget)
 
 function adjustRate(direction)
     if direction == 1 then
-        fs2020_event("PRESSURIZATION_CLIMB_RATE_INC")
-        fs2020_event("H:KNOB_PRESSURIZATION_Knob_ClimbRate_INC")
+        msfs_event("PRESSURIZATION_CLIMB_RATE_INC")
+        msfs_event("H:KNOB_PRESSURIZATION_Knob_ClimbRate_INC")
     elseif direction == -1 then
-        fs2020_event("PRESSURIZATION_CLIMB_RATE_DEC")
-        fs2020_event("H:KNOB_PRESSURIZATION_Knob_ClimbRate_DEC")
+        msfs_event("PRESSURIZATION_CLIMB_RATE_DEC")
+        msfs_event("H:KNOB_PRESSURIZATION_Knob_ClimbRate_DEC")
     end
 end
 rate_adjustment_shadow_id = img_add("small_shadow.png", 10, 498,130,120)

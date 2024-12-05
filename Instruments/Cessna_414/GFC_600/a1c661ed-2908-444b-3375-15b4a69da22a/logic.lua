@@ -58,34 +58,34 @@ local FLCState = false
 local VSenabled = false
 --add buttons
 function cb_set_ap()
-    fs2020_event("AP_MASTER")
+    msfs_event("AP_MASTER")
 end
 
 --
 ap_btn = button_add(nil, nil, 64, 29,  56, 40, cb_set_ap)
 
 function cb_set_fd()
-    fs2020_event("TOGGLE_FLIGHT_DIRECTOR")   
+    msfs_event("TOGGLE_FLIGHT_DIRECTOR")   
 end
 fd_btn = button_add(nil, nil, 64, 110,  56, 40, cb_set_fd)
 
 function cb_set_yd()
-    fs2020_event("YAW_DAMPER_TOGGLE")
+    msfs_event("YAW_DAMPER_TOGGLE")
 end
 yd_btn= button_add(nil, nil, 64, 189,  56, 40, cb_set_yd)
 
 function cb_set_hdg()
-    fs2020_event("AP_PANEL_HEADING_HOLD")
+    msfs_event("AP_PANEL_HEADING_HOLD")
 end
 hdg_btn = button_add(nil, nil, 161, 189,  56, 40, cb_set_hdg)
 
 function cb_set_nav()
-    fs2020_event("AP_NAV1_HOLD")
+    msfs_event("AP_NAV1_HOLD")
 end
 nav_btn = button_add(nil, nil, 256, 189,  56, 40, cb_set_nav)
 
 function cb_set_apr()
-    fs2020_event("AP_APR_HOLD") 
+    msfs_event("AP_APR_HOLD") 
 end
 apr_btn = button_add(nil, nil, 344, 189,  56, 40, cb_set_apr)
 
@@ -109,18 +109,18 @@ bc_btn = button_add(nil, nil, 440, 189,  56, 40, cb_set_bc)
         return VSenabled    
         end
 -- flc current state variable
-fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", callback_flc)  
+msfs_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", callback_flc)  
 
 function callback_flc()
     print(FLCState)
     scroll_vs_mode = false
     
        if FLCState then  --check if FLC is currently on
-            fs2020_event("FLIGHT_LEVEL_CHANGE_OFF")    --if true, toggle off
+            msfs_event("FLIGHT_LEVEL_CHANGE_OFF")    --if true, toggle off
         else    -- if FLC currently off
             AirspeedDecimal = math.floor(AirspeedIndicated)        -- read current airspeed and convert variable
-            fs2020_event("FLIGHT_LEVEL_CHANGE_ON")                --enable FLC
-            fs2020_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
+            msfs_event("FLIGHT_LEVEL_CHANGE_ON")                --enable FLC
+            msfs_event("AP_SPD_VAR_SET", AirspeedDecimal)    -- set FLC speed to current airspeed
         end    
     end
 
@@ -129,39 +129,39 @@ function callback_flc()
 		return AirspeedIndicated    
 	end
 
-fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
+msfs_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
 -- End required code for proper FLC speed capture and set
 
 ias_btn = button_add(nil, nil, 632, 189,  56, 40, callback_flc)
 
 function cb_set_vs()
     scroll_vs_mode = true
-    fs2020_event("AP_PANEL_VS_HOLD")
+    msfs_event("AP_PANEL_VS_HOLD")
 end
 vs_btn = button_add(nil, nil, 752, 189,  56, 40, cb_set_vs)
 
 function cb_set_lvl()
-    fs2020_event("H:GFC605_LVL")
+    msfs_event("H:GFC605_LVL")
 end
 lvl_btn = button_add(nil, nil, 752, 9,  56, 40, cb_set_lvl)
 
 function cb_set_alt()
-    fs2020_event("AP_PANEL_ALTITUDE_HOLD")
+    msfs_event("AP_PANEL_ALTITUDE_HOLD")
 end
 alt_btn = button_add(nil, nil, 752, 109,  56, 40, cb_set_alt)
 
 function wheel_cb(direction)
  if direction == 1 then
         if scroll_vs_mode then
-		fs2020_event("AP_VS_VAR_INC")
+		msfs_event("AP_VS_VAR_INC")
       else
-            	fs2020_event("AP_SPD_VAR_INC")
+            	msfs_event("AP_SPD_VAR_INC")
         end
     else
         if scroll_vs_mode then
- 		fs2020_event("AP_VS_VAR_DEC")
+ 		msfs_event("AP_VS_VAR_DEC")
          else
-           	fs2020_event("AP_SPD_VAR_DEC")
+           	msfs_event("AP_SPD_VAR_DEC")
          end
     end
 end
@@ -189,7 +189,7 @@ function set_vars(ap, apbtn,  fd, yd, lvl, hdg, nav, apr, bc, ias, vs, alt, ap_s
     ap_master = ap_state
 end
 
- fs2020_variable_subscribe("A:AUTOPILOT MASTER", "BOOL",  
+ msfs_variable_subscribe("A:AUTOPILOT MASTER", "BOOL",  
                                                "L:AP_BTN", "Number",  
                                                "L:FD_MODE", "Number",
                                                "L:YD_MODE", "Number",
@@ -234,7 +234,7 @@ end
 
 -- Bus subscribe
 						
-fs2020_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
+msfs_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
 							"AUTOPILOT NAV1 LOCK", "Bool",
 							"AUTOPILOT APPROACH HOLD", "Bool",
 							"AUTOPILOT MASTER", "Bool",
@@ -255,7 +255,7 @@ fs2020_variable_subscribe("AUTOPILOT HEADING LOCK", "Bool",
 function aspd_callback(asindicated)
 	AirspeedIndicated = asindicated  
 end
-fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
+msfs_variable_subscribe("AIRSPEED INDICATED", "knots", aspd_callback)
 
 function set_indicators(ap, ap_blink, fd, yd, yd_blink)
     if ap == 1 and ap_blink == 0 then
@@ -311,7 +311,7 @@ end
 
 ap_blink_timer = timer_start(0, 500, 5, ap_blink_timer_cb)
 --timer_stop(ap_blink_timer)
-fs2020_variable_subscribe(--"AUTOPILOT MASTER", "Bool",
+msfs_variable_subscribe(--"AUTOPILOT MASTER", "Bool",
                           "L:AP_MEM","Number",
                           "L:AP_BLINK_ENABLE", "Number",
                           "AUTOPILOT FLIGHT DIRECTOR ACTIVE","Bool",

@@ -31,7 +31,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:2", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:2", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 ---------------------------------------------
 --Day Graphics
@@ -78,7 +78,7 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 -------------------------------------------------------------
 
 --Nav Switch
-fs2020_variable_subscribe("L:ASCRJ_EXTL_NAV", "Number", 
+msfs_variable_subscribe("L:ASCRJ_EXTL_NAV", "Number", 
         function (state)
             switch_set_position(sw_nav, state)
             visible(img_sw_nav_mid, state ==0)
@@ -89,16 +89,16 @@ fs2020_variable_subscribe("L:ASCRJ_EXTL_NAV", "Number",
 
 function cb_sw_nav(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_NAV","Number",1) 
+        msfs_variable_write("L:ASCRJ_EXTL_NAV","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_NAV","Number",0) 
+        msfs_variable_write("L:ASCRJ_EXTL_NAV","Number",0) 
     end 
 end
 
 sw_nav= switch_add(nil,nil, 50,80,100,130, cb_sw_nav)
 
 --Beacon Switch
-fs2020_variable_subscribe("L:ASCRJ_EXTL_BEACON", "Number", 
+msfs_variable_subscribe("L:ASCRJ_EXTL_BEACON", "Number", 
         function (state)
             switch_set_position(sw_beac, state)
             visible(img_sw_beac_mid, state ==0)
@@ -109,16 +109,16 @@ fs2020_variable_subscribe("L:ASCRJ_EXTL_BEACON", "Number",
 
 function cb_sw_beac(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_BEACON","Number",1) 
+        msfs_variable_write("L:ASCRJ_EXTL_BEACON","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_BEACON","Number",0) 
+        msfs_variable_write("L:ASCRJ_EXTL_BEACON","Number",0) 
     end 
 end
 
 sw_beac= switch_add(nil,nil, 170,80,100,130, cb_sw_beac)
 
 --Strobe Switch
-fs2020_variable_subscribe("L:ASCRJ_EXTL_STROBE", "Number", 
+msfs_variable_subscribe("L:ASCRJ_EXTL_STROBE", "Number", 
         function (state)
             switch_set_position(sw_strb, state)
             visible(img_sw_strb_mid, state ==0)
@@ -129,16 +129,16 @@ fs2020_variable_subscribe("L:ASCRJ_EXTL_STROBE", "Number",
 
 function cb_sw_strb(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_STROBE","Number",1) 
+        msfs_variable_write("L:ASCRJ_EXTL_STROBE","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_STROBE","Number",0) 
+        msfs_variable_write("L:ASCRJ_EXTL_STROBE","Number",0) 
     end 
 end
 
 sw_strb= switch_add(nil,nil, 280,80,100,130, cb_sw_strb)
 
 --Logo Switch
-fs2020_variable_subscribe("L:ASCRJ_EXTL_LOGO", "Number", 
+msfs_variable_subscribe("L:ASCRJ_EXTL_LOGO", "Number", 
         function (state)
             switch_set_position(sw_logo, state)
             visible(img_sw_logo_mid, state ==0)
@@ -149,9 +149,9 @@ fs2020_variable_subscribe("L:ASCRJ_EXTL_LOGO", "Number",
 
 function cb_sw_logo(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_LOGO","Number",1) 
+        msfs_variable_write("L:ASCRJ_EXTL_LOGO","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_LOGO","Number",0) 
+        msfs_variable_write("L:ASCRJ_EXTL_LOGO","Number",0) 
     end 
 end
 
@@ -159,7 +159,7 @@ sw_logo= switch_add(nil,nil, 390,80,100,130
 , cb_sw_logo)
 
 --Wing Inspection Switch
-fs2020_variable_subscribe("L:ASCRJ_EXTL_WING", "Number", 
+msfs_variable_subscribe("L:ASCRJ_EXTL_WING", "Number", 
         function (state)
             switch_set_position(sw_wng, state)
             visible(img_sw_wng_mid, state ==0)
@@ -170,9 +170,9 @@ fs2020_variable_subscribe("L:ASCRJ_EXTL_WING", "Number",
 
 function cb_sw_wng(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_WING","Number",1) 
+        msfs_variable_write("L:ASCRJ_EXTL_WING","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_EXTL_WING","Number",0) 
+        msfs_variable_write("L:ASCRJ_EXTL_WING","Number",0) 
     end 
 end
 

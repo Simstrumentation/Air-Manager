@@ -7,9 +7,9 @@ visible(level_indicator_id, false)
 
 function toggle_oxygen_cb()
     if oxygen_state == 1 then
-        fs2020_variable_write("L:XMLVAR_Oxygen", "Number", 0)
+        msfs_variable_write("L:XMLVAR_Oxygen", "Number", 0)
     else
-        fs2020_variable_write("L:XMLVAR_Oxygen", "Number", 1)
+        msfs_variable_write("L:XMLVAR_Oxygen", "Number", 1)
     end
 
 end
@@ -28,4 +28,4 @@ function new_oxygen_pos(oxygen)
     end
 end
 
-fs2020_variable_subscribe("L:XMLVAR_Oxygen", "Number", new_oxygen_pos)
+msfs_variable_subscribe("L:XMLVAR_Oxygen", "Number", new_oxygen_pos)

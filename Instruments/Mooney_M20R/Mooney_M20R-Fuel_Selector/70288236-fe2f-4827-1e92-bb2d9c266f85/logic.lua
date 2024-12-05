@@ -4,15 +4,15 @@ img_knob = img_add("FuelSelectKnob.png", 38, 45, 305, 305)
 
 -- set functions to switch tanks
 function callback_left()
-    fs2020_event("FUEL_SELECTOR_LEFT")
+    msfs_event("FUEL_SELECTOR_LEFT")
 end    
 
 function callback_right()
-    fs2020_event("FUEL_SELECTOR_RIGHT")
+    msfs_event("FUEL_SELECTOR_RIGHT")
 end
 
 function callback_off()
-    fs2020_event("FUEL_SELECTOR_OFF")
+    msfs_event("FUEL_SELECTOR_OFF")
 end
 -- set touch zones for switch activation
 button_off = button_add(nil,nil,60,280,150,150,callback_off)
@@ -29,4 +29,4 @@ function new_pos_select(tank)
     end
 end
 
-fs2020_variable_subscribe("RECIP ENG FUEL TANK SELECTOR:1", "enum", new_pos_select)
+msfs_variable_subscribe("RECIP ENG FUEL TANK SELECTOR:1", "enum", new_pos_select)

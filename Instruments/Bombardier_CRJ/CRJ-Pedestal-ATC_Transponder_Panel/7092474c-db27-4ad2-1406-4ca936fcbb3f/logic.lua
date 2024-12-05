@@ -43,7 +43,7 @@ function ss_backlighting(value, pwr)
         opacity(img_backlight_tuning_outer, (value), "LOG", 0.04)            
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 -----------------------------------------------------------------
 --Day Graphics
@@ -94,7 +94,7 @@ local nav1_active_freq_txt        =   txt_add("", "font:wwDigital.ttf; size:22; 
     else visible(com1_active_freq_txt, false) visible(nav1_active_freq_txt, false)
     end
  end
- fs2020_variable_subscribe("COM ACTIVE FREQUENCY:1", "KHz", 
+ msfs_variable_subscribe("COM ACTIVE FREQUENCY:1", "KHz", 
                                                "NAV ACTIVE FREQUENCY:1", "KHz", 
                                                "L:ASCRJ_XPDR_MODE", "Number",
                                                "A:CIRCUIT GENERAL PANEL ON","Bool", frequency_set)
@@ -103,9 +103,9 @@ local nav1_active_freq_txt        =   txt_add("", "font:wwDigital.ttf; size:22; 
 function ss_rtu1_inhb(inhb,pwr)
 	visible(img_rtu1_inhb, (inhb ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_RTU1_INH", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_rtu1_inhb)
+msfs_variable_subscribe("L:ASCRJ_RTU1_INH", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_rtu1_inhb)
 function rtu1_inhb()
-    fs2020_variable_write("L:ASCRJ_RTU1_INH_TRIGGER",  "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_RTU1_INH_TRIGGER", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_RTU1_INH_TRIGGER",  "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_RTU1_INH_TRIGGER", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_rtu1 = button_add(nil,"btn_push.png", 48, 34, 35, 35, rtu1_inhb) 
@@ -113,15 +113,15 @@ end
 function ss_rtu2_inhb(inhb,pwr)
 	visible(img_rtu2_inhb, (inhb ==1 and pwr ==true))
 end        
-fs2020_variable_subscribe("L:ASCRJ_RTU2_INH", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_rtu2_inhb)
+msfs_variable_subscribe("L:ASCRJ_RTU2_INH", "Number","A:CIRCUIT GENERAL PANEL ON","Bool",  ss_rtu2_inhb)
 function rtu2_inhb()
-    fs2020_variable_write("L:ASCRJ_RTU2_INH_TRIGGER",  "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_RTU2_INH_TRIGGER", "Number", 0) end)
+    msfs_variable_write("L:ASCRJ_RTU2_INH_TRIGGER",  "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_RTU2_INH_TRIGGER", "Number", 0) end)
     sound_play(snd_click)
 end
     btn_rtu2 = button_add(nil,"btn_push.png", 100, 34, 35, 35, rtu2_inhb) 
 
 --ATC SEL
-fs2020_variable_subscribe("L:ASCRJ_XPDR_ATC_SEL", "Number",
+msfs_variable_subscribe("L:ASCRJ_XPDR_ATC_SEL", "Number",
         function (position)
                 switch_set_position(sw_ATC_SEL, (var_round(position,0)))             
                 rotate(img_knob_ATC_SEL, (position*52)-52,"LOG", 0.1)
@@ -130,10 +130,10 @@ fs2020_variable_subscribe("L:ASCRJ_XPDR_ATC_SEL", "Number",
         end)           
 
 sw_ATC_SEL = switch_add(nil,nil,nil, 80,116,65,65, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_XPDR_ATC_SEL","Number", pos+dir) end)    
+        function (pos,dir) msfs_variable_write("L:ASCRJ_XPDR_ATC_SEL","Number", pos+dir) end)    
         
 --XPDR MODE
-fs2020_variable_subscribe("L:ASCRJ_XPDR_MODE", "Number",
+msfs_variable_subscribe("L:ASCRJ_XPDR_MODE", "Number",
         function (position)
                 switch_set_position(sw_XPDR_MODE, (var_round(position,0)))             
                 rotate(img_knob_XPDR_MODE, (position*32)-80,"LOG", 0.1)
@@ -142,7 +142,7 @@ fs2020_variable_subscribe("L:ASCRJ_XPDR_MODE", "Number",
         end)           
 
 sw_XPDR_MODE = switch_add(nil,nil,nil,nil, 203,130,35,35, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_XPDR_MODE","Number", pos+dir) end)     
+        function (pos,dir) msfs_variable_write("L:ASCRJ_XPDR_MODE","Number", pos+dir) end)     
 
 
 --------Tuning Knobs
@@ -152,11 +152,11 @@ function cb_knob_outer(direction)
     sound_play(snd_dial) 
     knob_outer_position =knob_outer_position + (direction*10)
     if direction == 1 then   
-        fs2020_variable_write("L:ASCRJ_XPDR_KNOB_OUTER_CHANGE","number",1) rotate(img_tuning_outer_night, knob_outer_position)  rotate(img_backlight_tuning_outer, knob_outer_position)  
-                timer_start(50, function() fs2020_variable_write("L:ASCRJ_XPDR_KNOB_OUTER_CHANGE","number",0) end)
+        msfs_variable_write("L:ASCRJ_XPDR_KNOB_OUTER_CHANGE","number",1) rotate(img_tuning_outer_night, knob_outer_position)  rotate(img_backlight_tuning_outer, knob_outer_position)  
+                timer_start(50, function() msfs_variable_write("L:ASCRJ_XPDR_KNOB_OUTER_CHANGE","number",0) end)
     else
-        fs2020_variable_write("L:ASCRJ_XPDR_KNOB_OUTER_CHANGE","number",-1) rotate(img_tuning_outer_night, knob_outer_position)   rotate(img_backlight_tuning_outer, knob_outer_position)  
-                timer_start(50, function() fs2020_variable_write("L:ASCRJ_XPDR_KNOB_OUTER_CHANGE","number",0) end)    
+        msfs_variable_write("L:ASCRJ_XPDR_KNOB_OUTER_CHANGE","number",-1) rotate(img_tuning_outer_night, knob_outer_position)   rotate(img_backlight_tuning_outer, knob_outer_position)  
+                timer_start(50, function() msfs_variable_write("L:ASCRJ_XPDR_KNOB_OUTER_CHANGE","number",0) end)    
     end    
 end
 dial_tuning_outer = dial_add("double_outer_knob.png", 260,115,60,60, cb_knob_outer) 
@@ -169,11 +169,11 @@ function cb_knob_inner(direction)
     sound_play(snd_dial)
    knob_inner_position =knob_inner_position + (direction*10)
     if direction == 1 then
-        fs2020_variable_write("L:ASCRJ_XPDR_KNOB_INNER_CHANGE","number",1) rotate(img_tuning_inner_night, knob_inner_position) rotate(img_backlight_tuning_inner, knob_inner_position)   
-                timer_start(50, function() fs2020_variable_write("L:ASCRJ_XPDR_KNOB_INNER_CHANGE","number",0) end)
+        msfs_variable_write("L:ASCRJ_XPDR_KNOB_INNER_CHANGE","number",1) rotate(img_tuning_inner_night, knob_inner_position) rotate(img_backlight_tuning_inner, knob_inner_position)   
+                timer_start(50, function() msfs_variable_write("L:ASCRJ_XPDR_KNOB_INNER_CHANGE","number",0) end)
     else
-        fs2020_variable_write("L:ASCRJ_XPDR_KNOB_INNER_CHANGE","number",-1) rotate(img_tuning_inner_night, knob_inner_position) rotate(img_backlight_tuning_inner, knob_inner_position)    
-                timer_start(50, function() fs2020_variable_write("L:ASCRJ_XPDR_KNOB_INNER_CHANGE","number",0) end)    
+        msfs_variable_write("L:ASCRJ_XPDR_KNOB_INNER_CHANGE","number",-1) rotate(img_tuning_inner_night, knob_inner_position) rotate(img_backlight_tuning_inner, knob_inner_position)    
+                timer_start(50, function() msfs_variable_write("L:ASCRJ_XPDR_KNOB_INNER_CHANGE","number",0) end)    
     end
 end
 dial_tuning_inner = dial_add("double_inner_knob.png", 273,127,35,35, cb_knob_inner)   
@@ -181,7 +181,7 @@ img_tuning_inner_night = img_add("double_inner_knob_night.png", 273,127,35,35)
 img_backlight_tuning_inner= img_add("double_inner_knob_backlighting.png", 273,127,35,35)
 
 --COM/NAV SWITCH
-fs2020_variable_subscribe("L:ASCRJ_XPDR_COMNAV", "Number",   
+msfs_variable_subscribe("L:ASCRJ_XPDR_COMNAV", "Number",   
         function (state)
             if state == 1 then visible(img_sw_COMNAV_up, false) visible(img_sw_COMNAV_dn, true) visible(img_sw_COMNAV_up_night, false) visible(img_sw_COMNAV_dn_night, true) 
             else  visible(img_sw_COMNAV_up, true) visible(img_sw_COMNAV_dn, false) visible(img_sw_COMNAV_up_night, true) visible(img_sw_COMNAV_dn_night, false) 
@@ -189,14 +189,14 @@ fs2020_variable_subscribe("L:ASCRJ_XPDR_COMNAV", "Number",
             switch_set_position(sw_COMNAV, state)
         end) 
 function cb_COMNAV(state) 
-    if state == 1 then fs2020_variable_write("L:ASCRJ_XPDR_COMNAV", "Number", 0 ) 
-    else fs2020_variable_write("L:ASCRJ_XPDR_COMNAV", "Number", 1 )
+    if state == 1 then msfs_variable_write("L:ASCRJ_XPDR_COMNAV", "Number", 0 ) 
+    else msfs_variable_write("L:ASCRJ_XPDR_COMNAV", "Number", 1 )
     end 
 end
 sw_COMNAV = switch_add(nil, nil, 296,53,15,40, cb_COMNAV)
 
 --TUNE INHIBIT
-fs2020_variable_subscribe("L:ASCRJ_XPDR_FMSINHIBIT", "Number",   
+msfs_variable_subscribe("L:ASCRJ_XPDR_FMSINHIBIT", "Number",   
         function (state)
             if state == 1 then visible(img_sw_FMSINHIBIT_up, false) visible(img_sw_FMSINHIBIT_down, true) visible(img_sw_FMSINHIBIT_up_night, false) visible(img_sw_FMSINHIBIT_down_night, true) 
             else  visible(img_sw_FMSINHIBIT_up, true) visible(img_sw_FMSINHIBIT_down, false) visible(img_sw_FMSINHIBIT_up_night, true) visible(img_sw_FMSINHIBIT_down_night, false) 
@@ -204,8 +204,8 @@ fs2020_variable_subscribe("L:ASCRJ_XPDR_FMSINHIBIT", "Number",
             switch_set_position(sw_FMSINHIBIT, state)
         end) 
 function cb_FMSINHIBIT(state) 
-    if state == 1 then fs2020_variable_write("L:ASCRJ_XPDR_FMSINHIBIT", "Number", 0 ) 
-    else fs2020_variable_write("L:ASCRJ_XPDR_FMSINHIBIT", "Number", 1 )
+    if state == 1 then msfs_variable_write("L:ASCRJ_XPDR_FMSINHIBIT", "Number", 0 ) 
+    else msfs_variable_write("L:ASCRJ_XPDR_FMSINHIBIT", "Number", 1 )
     end 
 end
 sw_FMSINHIBIT = switch_add(nil, nil, 40,125,30,60, cb_FMSINHIBIT) 

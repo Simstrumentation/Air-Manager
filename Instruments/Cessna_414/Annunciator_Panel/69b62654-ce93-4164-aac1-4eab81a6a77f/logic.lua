@@ -93,13 +93,13 @@ img_add("bg.png", 0,100,540,733)
 
 -- Annunciator test button
 function cb_test_pressed()
-    fs2020_variable_write("L:ANUNNCIATOR_TEST_SWITCH", "Number", 1)
+    msfs_variable_write("L:ANUNNCIATOR_TEST_SWITCH", "Number", 1)
     si_variable_write(systems_test, true)
     sound_play(press_snd)
  end
 
 function cb_test_released()
-     fs2020_variable_write("L:ANUNNCIATOR_TEST_SWITCH", "Number", 0)
+     msfs_variable_write("L:ANUNNCIATOR_TEST_SWITCH", "Number", 0)
      si_variable_write(systems_test, false)
      sound_play(release_snd)
 end
@@ -313,7 +313,7 @@ function toggle_indicators(test, volts, door, alt_l, alt_l_state, alt_r, alt_r_s
     end
 end
 
-fs2020_variable_subscribe("L:ANUNNCIATOR_TEST_SWITCH", "NUMBER", 
+msfs_variable_subscribe("L:ANUNNCIATOR_TEST_SWITCH", "NUMBER", 
                                                "A:ELECTRICAL MAIN BUS VOLTAGE", "VOLTS",
                                                "L:DOOR_HANDLE_UPPER_INSIDE_ENABLED", "NUMBER",
                                                "A:ELECTRICAL GENALT BUS VOLTAGE:1", "VOLTS", 

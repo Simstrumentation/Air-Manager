@@ -146,4 +146,4 @@ function new_data(vspeed)
 end
 
 -- DATA BUS SUBSCRIBE
-fs2020_variable_subscribe("VERTICAL SPEED", "Feet per minute", new_data)
+msfs_variable_subscribe("VERTICAL SPEED", "Feet per minute", new_data)

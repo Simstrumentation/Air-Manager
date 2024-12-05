@@ -110,4 +110,4 @@ function setO2(o2)
         end
 end
 
-fs2020_variable_subscribe("L:OXYGEN_CYL_NEEDLE", "ENUM", setO2)
+msfs_variable_subscribe("L:OXYGEN_CYL_NEEDLE", "ENUM", setO2)

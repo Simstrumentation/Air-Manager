@@ -85,7 +85,7 @@ function calcFuel(galL, galR, volts)
     rotate(reflect_needle_right, 170 / 100 * fuel_r, "LOG", 0.04)
 end
 
-fs2020_variable_subscribe("FUEL LEFT QUANTITY", "Gallon", 
+msfs_variable_subscribe("FUEL LEFT QUANTITY", "Gallon", 
                           "FUEL RIGHT QUANTITY", "Gallon",
                           "ELECTRICAL MAIN BUS VOLTAGE", "Volts", 
                           calcFuel)

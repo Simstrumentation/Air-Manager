@@ -171,7 +171,7 @@ end
 
 
 
-fs2020_variable_subscribe("CIRCUIT AVIONICS ON", "BOOL",
+msfs_variable_subscribe("CIRCUIT AVIONICS ON", "BOOL",
 					        "ELECTRICAL MAIN BUS VOLTAGE", "Volts",
 					        "GENERAL ENG GENERATOR SWITCH:1", "BOOL",
                             power_on)
@@ -181,7 +181,7 @@ fs2020_variable_subscribe("CIRCUIT AVIONICS ON", "BOOL",
 
 -- switch nav channel button
 function switch_nav_channel()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_NAV_Switch")
+    msfs_event("H:AS1000_" .. unit_mode .. "_NAV_Switch")
     sound_play(press_snd)
 end
 button_add(nil,"channel_swap_pressed.png", 102,107,50,32, switch_nav_channel)
@@ -189,7 +189,7 @@ button_add(nil,"channel_swap_pressed.png", 102,107,50,32, switch_nav_channel)
 
 -- switch comm channel button
 function switch_com_channel()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_COM_Switch")
+    msfs_event("H:AS1000_" .. unit_mode .. "_COM_Switch")
     sound_play(press_snd)
 end
 
@@ -199,13 +199,13 @@ button_add(nil,"channel_swap_pressed.png", 1259,107,50,32, switch_com_channel)
 -- nav volume knob
 function nav_vol_adjust(direction)
     if direction ==  1 then
-        --fs2020_event("H:AS1000_PFD_VOL_1_INC")
-        fs2020_event("NAV1_VOLUME_INC")
-        fs2020_event("NAV2_VOLUME_INC")
+        --msfs_event("H:AS1000_PFD_VOL_1_INC")
+        msfs_event("NAV1_VOLUME_INC")
+        msfs_event("NAV2_VOLUME_INC")
     elseif direction == -1 then
-        --fs2020_event("H:AS1000_PFD_VOL_1_INC")
-        fs2020_event("NAV1_VOLUME_DEC")
-        fs2020_event("NAV2_VOLUME_DEC")
+        --msfs_event("H:AS1000_PFD_VOL_1_INC")
+        msfs_event("NAV1_VOLUME_DEC")
+        msfs_event("NAV2_VOLUME_DEC")
     end
     sound_play(dial_snd)
 end
@@ -216,13 +216,13 @@ navvol_dial = dial_add("plain_knob_inner.png", 63,47,42,42, nav_vol_adjust)
 -- com volume knob
 function com_vol_adjust(direction)
     if direction ==  1 then
-        --fs2020_event("H:AS1000_PFD_VOL_2_INC")
-        fs2020_event("COM1_VOLUME_INC")
-        fs2020_event("COM2_VOLUME_INC")
+        --msfs_event("H:AS1000_PFD_VOL_2_INC")
+        msfs_event("COM1_VOLUME_INC")
+        msfs_event("COM2_VOLUME_INC")
     elseif direction == -1 then
-        --fs2020_event("H:AS1000_PFD_VOL_2_DEC")
-        fs2020_event("COM1_VOLUME_DEC")
-        fs2020_event("COM2_VOLUME_DEC")
+        --msfs_event("H:AS1000_PFD_VOL_2_DEC")
+        msfs_event("COM1_VOLUME_DEC")
+        msfs_event("COM2_VOLUME_DEC")
         
     end
     sound_play(dial_snd)
@@ -234,9 +234,9 @@ comvol_dial = dial_add("plain_knob_inner.png", 1300,47,42,42, com_vol_adjust)
 -- nav radio tuning knob
 function knob_nav_tune_outer( direction)        --large outer knob
     if direction ==  1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_NAV_Large_INC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_NAV_Large_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_NAV_Large_DEC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_NAV_Large_DEC")
     end
     sound_play(dial_snd)
 end
@@ -246,9 +246,9 @@ dial_click_rotate(nav_dial_outer, 6)
 
 function knob_nav_tune_inner( direction)        --small inner knob
     if direction ==  1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_NAV_Small_INC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_NAV_Small_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_NAV_Small_DEC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_NAV_Small_DEC")
     end
     sound_play(dial_snd)
 end
@@ -258,7 +258,7 @@ dial_click_rotate(nav_dial_inner, 6)
 
 -- nav radio channel swap button
 function btn_nav_channel_swap()         -- press to swap channels
-    fs2020_event("H:AS1000_" .. unit_mode .. "_NAV_Push")
+    msfs_event("H:AS1000_" .. unit_mode .. "_NAV_Push")
     sound_play(press_snd)
 end
 
@@ -268,9 +268,9 @@ button_add(nil,nil, 75,204,13,13, btn_nav_channel_swap)
 -- com radio tuning knob
 function knob_com_tune_outer( direction)
     if direction ==  1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_COM_Large_INC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_COM_Large_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_COM_Large_DEC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_COM_Large_DEC")
     end
     sound_play(dial_snd)
 end
@@ -280,9 +280,9 @@ dial_click_rotate( com_dial_outer, 6)
 
 function knob_com_tune_inner( direction)
     if direction ==  1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_COM_Small_INC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_COM_Small_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_COM_Small_DEC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_COM_Small_DEC")
     end
     sound_play(dial_snd)
 end
@@ -292,7 +292,7 @@ com_dial_inner = dial_add("plain_knob_inner.png", 1295,187,52,52, knob_com_tune_
 dial_click_rotate( com_dial_inner, 6)
 
 function btn_com_channel_swap()         -- press to swap channels
-    fs2020_event("H:AS1000_" .. unit_mode .. "_COM_Push")
+    msfs_event("H:AS1000_" .. unit_mode .. "_COM_Push")
     sound_play(press_snd)
 end
 
@@ -307,9 +307,9 @@ button_add(nil,nil, 1313,204,13,13, btn_com_channel_swap)
 -- heading knob
 function dial_hdg( direction)
     if direction ==  1 then
-        fs2020_event("HEADING_BUG_INC")
+        msfs_event("HEADING_BUG_INC")
     elseif direction == -1 then
-        fs2020_event("HEADING_BUG_DEC")
+        msfs_event("HEADING_BUG_DEC")
     end
     sound_play(dial_snd)
 end
@@ -318,7 +318,7 @@ hdg_dial = dial_add("hdg_knob.png", 45,340,80,80,3, dial_hdg)
 dial_click_rotate( hdg_dial, 6)
 
 function btn_hdg()--_hdg_down
-    fs2020_event("HEADING_BUG_SET", current_hdg)
+    msfs_event("HEADING_BUG_SET", current_hdg)
     sound_play(press_snd)
 end
 
@@ -327,7 +327,7 @@ button_add(nil,nil, 77,370,20,20,btn_hdg)
 
 -- ap button
 function btn_ap()
-    fs2020_event("AP_MASTER")
+    msfs_event("AP_MASTER")
     sound_play(press_snd)
 end
 
@@ -337,7 +337,7 @@ visible(button_ap, show_ap_buttons)  -- only show if AP buttons shown
 
 -- heading button
 function btn_hdg()
-    fs2020_event("AP_PANEL_HEADING_HOLD")
+    msfs_event("AP_PANEL_HEADING_HOLD")
     sound_play(press_snd)
 end
 
@@ -347,7 +347,7 @@ visible(button_hdg, show_ap_buttons)  -- only show if AP buttons shown
 
 -- nav mode button
 function btn_nav()
-    fs2020_event("AP_NAV1_HOLD")
+    msfs_event("AP_NAV1_HOLD")
     sound_play(press_snd)
 end
 
@@ -358,7 +358,7 @@ visible(button_nav, show_ap_buttons) -- only show if AP buttons shown
 -- apr mode button
 function btn_apr()
 
-    fs2020_event("AP_APR_HOLD")
+    msfs_event("AP_APR_HOLD")
     sound_play(press_snd)
 end
 
@@ -368,7 +368,7 @@ visible(button_apr, show_ap_buttons) -- only show if AP buttons shown
 
 -- vs hold button
 function btn_vs()
-    fs2020_event("AP_PANEL_VS_HOLD")
+    msfs_event("AP_PANEL_VS_HOLD")
     sound_play(press_snd)
 end
 
@@ -394,11 +394,11 @@ end
 -- flight level change mode button
 function btn_flc()
     if flc_engaged then                                             --check if FLC is currently on
-        fs2020_event("FLIGHT_LEVEL_CHANGE_OFF")                     --disengage FLC mode
+        msfs_event("FLIGHT_LEVEL_CHANGE_OFF")                     --disengage FLC mode
     else    -- if FLC currently off
         current_airspeed = math.floor(current_airspeed)             -- read current airspeed and convert variable
-        fs2020_event("FLIGHT_LEVEL_CHANGE_ON")                      -- engage FLC mode
-        fs2020_event("AP_SPD_VAR_SET", current_airspeed)            -- set FLC speed to current airspeed
+        msfs_event("FLIGHT_LEVEL_CHANGE_ON")                      -- engage FLC mode
+        msfs_event("AP_SPD_VAR_SET", current_airspeed)            -- set FLC speed to current airspeed
     end
     sound_play(press_snd)
 end
@@ -407,15 +407,15 @@ button_flc = button_add(nil,"flc_pressed.png", 26,721,54,32, btn_flc)
 visible(button_flc, show_ap_buttons) -- only show if AP buttons shown
 
 --simvar subscriptions for FLC and VS operation
-fs2020_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", flc_callback)  
-fs2020_variable_subscribe("AUTOPILOT VERTICAL HOLD", "bool", vs_callback)
-fs2020_variable_subscribe("AIRSPEED INDICATED", "knots", get_cuurent_ias)
+msfs_variable_subscribe("AUTOPILOT FLIGHT LEVEL CHANGE", "bool", flc_callback)  
+msfs_variable_subscribe("AUTOPILOT VERTICAL HOLD", "bool", vs_callback)
+msfs_variable_subscribe("AIRSPEED INDICATED", "knots", get_cuurent_ias)
 
 -- end flight level change mode button
 
 -- flight director button
 function btn_fd()
-    fs2020_event("TOGGLE_FLIGHT_DIRECTOR")
+    msfs_event("TOGGLE_FLIGHT_DIRECTOR")
     sound_play(press_snd)
 end
 
@@ -425,7 +425,7 @@ visible(button_fd, show_ap_buttons)  -- only show if AP buttons shown
 
 -- altitude mode button
 function btn_alt()
-    fs2020_event("AP_PANEL_ALTITUDE_HOLD")
+    msfs_event("AP_PANEL_ALTITUDE_HOLD")
     sound_play(press_snd)
 end
 
@@ -435,7 +435,7 @@ visible(button_alt, show_ap_buttons) -- only show if AP buttons shown
 
 -- vertical navigation mode button
 function btn_vnav()
-    fs2020_event("H:AS1000_VNAV_TOGGLE")
+    msfs_event("H:AS1000_VNAV_TOGGLE")
     sound_play(press_snd)
 end
 
@@ -445,7 +445,7 @@ visible(button_vnv, show_ap_buttons) -- only show if AP buttons shown
 
 -- back course button
 function btn_bc()
-    fs2020_event("AP_BC_HOLD")
+    msfs_event("AP_BC_HOLD")
     sound_play(press_snd)
 end
 
@@ -456,11 +456,11 @@ visible(button_bc, show_ap_buttons)  -- only show if AP buttons shown
 -- nose up button
 function btn_noseup()
     if vs_engaged then                      -- if VS mode
-        fs2020_event("AP_VS_VAR_INC")
+        msfs_event("AP_VS_VAR_INC")
     elseif flc_engaged then                 -- if FLC mode
-        fs2020_event("AP_SPD_VAR_DEC")
+        msfs_event("AP_SPD_VAR_DEC")
     else                                    -- PITCH mode
-        fs2020_event("AP_PITCH_REF_INC_UP")
+        msfs_event("AP_PITCH_REF_INC_UP")
     end
     sound_play(press_snd)
 end
@@ -472,11 +472,11 @@ visible(btn_noseup_id, show_ap_buttons)   -- only show if AP buttons shown
 -- nose down button
 function btn_nosedown()
     if vs_engaged then                          -- if VS mode
-            fs2020_event("AP_VS_VAR_DEC")
+            msfs_event("AP_VS_VAR_DEC")
     elseif flc_engaged then                     -- if FLC mode
-        fs2020_event("AP_SPD_VAR_INC")
+        msfs_event("AP_SPD_VAR_INC")
     else                                        -- PITCH mode
-        fs2020_event("AP_PITCH_REF_INC_DN")
+        msfs_event("AP_PITCH_REF_INC_DN")
     end 
     sound_play(press_snd)
 end
@@ -488,9 +488,9 @@ visible(btn_nosedown_id, show_ap_buttons)   -- only show if AP buttons shown
 -- alt knob
 function knob_alt_outer( direction)
     if direction ==  1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 1000)
     elseif direction == -1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 1000)
     end
     sound_play(dial_snd)
 end
@@ -501,9 +501,9 @@ visible(knob_alt_outer_id, show_alt_knob)
 
 function knob_alt_inner( direction)
     if direction ==  1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt + 100)
     elseif direction == -1 then
-        fs2020_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)
+        msfs_event("AP_ALT_VAR_SET_ENGLISH", current_alt - 100)
     end
     sound_play(dial_snd)
 end
@@ -514,7 +514,7 @@ visible(knob_alt_inner_id, show_alt_knob)
 -- end alt knob
 
 -- simvar subscriptions for ALT and HDG
-fs2020_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet", 
+msfs_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet", 
                           "PLANE HEADING DEGREES MAGNETIC", "Degrees", 
                           function(ap_alt, heading)
                               current_alt = ap_alt
@@ -527,84 +527,84 @@ fs2020_variable_subscribe("AUTOPILOT ALTITUDE LOCK VAR", "Feet",
 
 -- SOFTKEYS
 function btn_sc1()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_1")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_1")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 212,852,50,32, btn_sc1)
 
 function btn_sc2()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_2")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_2")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 296,852,50,32, btn_sc2)
 
 function btn_sc3()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_3")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_3")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 382,852,50,32, btn_sc3)
 
 function btn_sc4()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_4")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_4")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 467,852,50,32, btn_sc4)
 
 function btn_sc5()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_5")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_5")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 553,852,50,32, btn_sc5)
 
 function btn_sc6()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_6")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_6")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 639,852,50,32, btn_sc6)
 
 function btn_sc7()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_7")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_7")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 723,852,50,32, btn_sc7)
 
 function btn_sc8()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_8")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_8")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 807,852,50,32, btn_sc8)
 
 function btn_sc9()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_9")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_9")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 891,852,50,32, btn_sc9)
 
 function btn_sc10()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_10")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_10")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 978,852,50,32, btn_sc10)
 
 function btn_sc11()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_11")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_11")
     sound_play(press_snd)
 end
 
 button_add(nil,"softkey_pressed.png", 1063,852,50,32, btn_sc11)
 
 function btn_sc12()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_12")
+    msfs_event("H:AS1000_" .. unit_mode .. "_SOFTKEYS_12")
     sound_play(press_snd)
 end
 
@@ -617,9 +617,9 @@ button_add(nil,"softkey_pressed.png", 1148,852,50,32, btn_sc12)
 -- baro / crs knob
 function knob_baro( direction)
     if direction ==  1 then
-        fs2020_event("KOHLSMAN_INC")
+        msfs_event("KOHLSMAN_INC")
     elseif direction == -1 then
-        fs2020_event("KOHLSMAN_DEC")
+        msfs_event("KOHLSMAN_DEC")
     end
     sound_play(dial_snd)
 end
@@ -629,9 +629,9 @@ dial_click_rotate( baro_dial, 6)
 
 function knob_crs( direction)
     if direction ==  1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_CRS_INC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_CRS_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_CRS_DEC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_CRS_DEC")
     end
     sound_play(dial_snd)
 end
@@ -640,7 +640,7 @@ crs_dial = dial_add("crs_knob.png", 1294,347, 54, 54, knob_crs)
 dial_click_rotate( crs_dial, 6)
 
 function btn_crs_knob()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_CRS_PUSH")
+    msfs_event("H:AS1000_" .. unit_mode .. "_CRS_PUSH")
     sound_play(press_snd)
 end
 
@@ -655,44 +655,44 @@ pan_background = img_add("pan_background.png", 1229 ,432,190,190)
 -- up
 
 function btn_0_deg()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_UP")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_UP")
 end
 
 up_press = button_add(nil, "0_deg.png", 1298, 432, 49,42, btn_0_deg)
 
 -- up right
 function btn_45_deg()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_RIGHT")
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_UP")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_RIGHT")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_UP")
 end
 
 uprt_press = button_add(nil, "45_deg.png", 1345, 457, 46,48, btn_45_deg)
 
 -- right
 function btn_90_deg()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_RIGHT")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_RIGHT")
 end
 
 rt_press = button_add(nil, "90_deg.png", 1374, 504, 44,46, btn_90_deg)
 
 --down right
 function btn_135_deg()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_RIGHT")
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_DOWN")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_RIGHT")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_DOWN")
 end
 dnrt_press = button_add(nil, "135_deg.png", 1347, 552, 46,48, btn_135_deg)
 
 -- down
 function btn_180_deg()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_DOWN")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_DOWN")
 end
 
 dn_press = button_add(nil, "180_deg.png", 1298, 580, 49,42, btn_180_deg)
 
 -- down left
 function btn_225_deg()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_LEFT")
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_DOWN")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_LEFT")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_DOWN")
 end
 
 dnlt_press = button_add(nil, "225_deg.png", 1251, 552, 47,47, btn_225_deg)
@@ -700,15 +700,15 @@ dnlt_press = button_add(nil, "225_deg.png", 1251, 552, 47,47, btn_225_deg)
 
 -- left
 function btn_270_deg()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_LEFT")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_LEFT")
 end
 lt_press = button_add(nil, "270_deg.png", 1229, 506, 44,46, btn_270_deg)
 
 
 -- up left
 function btn_315_deg()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_LEFT")
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_UP")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_LEFT")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_UP")
 end
 
 uplt_press = button_add(nil, "315_deg.png", 1252, 458, 47,47, btn_315_deg)
@@ -721,9 +721,9 @@ visible(pan_background, show_cursor)
 -- map zoom knob
 function range_turn( direction)
     if direction ==  1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_RANGE_INC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_RANGE_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_RANGE_DEC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_RANGE_DEC")
     end
     sound_play(dial_snd)
 end
@@ -734,7 +734,7 @@ dial_click_rotate( rng_dial, 6)
 function btn_map_cursor_toggle()
     show_cursor = not show_cursor
     visible(pan_background, show_cursor)
-    fs2020_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_PUSH")
+    msfs_event("H:AS1000_" .. unit_mode .. "_JOYSTICK_PUSH")
     sound_play(press_snd)
 end
 
@@ -747,7 +747,7 @@ button_add(nil,nil, 1313,519,21,21, btn_map_cursor_toggle)
 
 --dct button
 function btn_dct()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_DIRECTTO")
+    msfs_event("H:AS1000_" .. unit_mode .. "_DIRECTTO")
     sound_play(press_snd)
 end
 
@@ -756,7 +756,7 @@ button_add(nil,"dir_pressed.png", 1262,621,50,32, btn_dct)
 
 --menu button
 function btn_menu()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_MENU_Push")
+    msfs_event("H:AS1000_" .. unit_mode .. "_MENU_Push")
     sound_play(press_snd)
 end
 
@@ -765,7 +765,7 @@ button_add(nil,"menu_pressed.png", 1334,621,50,32, btn_menu)
 
 --fpl button
 function btn_fpl()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_FPL_Push")
+    msfs_event("H:AS1000_" .. unit_mode .. "_FPL_Push")
     sound_play(press_snd)
 end
 
@@ -774,7 +774,7 @@ button_add(nil,"fpl_pressed.png", 1262,673,50,32, btn_fpl)
 
 -- proc button
 function btn_proc()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_PROC_Push")
+    msfs_event("H:AS1000_" .. unit_mode .. "_PROC_Push")
     sound_play(press_snd)
 end
 
@@ -783,7 +783,7 @@ button_add(nil,"proc_pressed.png", 1334,673,50,32, btn_proc)
 
 --CLR button
 function fmc_btn_clear_start()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_CLR")
+    msfs_event("H:AS1000_" .. unit_mode .. "_CLR")
     sound_play(press_snd)
     timer_id1 = timer_start(1000,CLR_LONG)
  end
@@ -793,7 +793,7 @@ function fmc_btn_clear_start()
  end
  
  function CLR_LONG()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_CLR_Long")
+    msfs_event("H:AS1000_" .. unit_mode .. "_CLR_Long")
  end
  
 button_add(nil,"clr_pressed.png", 1262,725,50,32, fmc_btn_clear_start,  fmc_btn_clear_end)
@@ -801,7 +801,7 @@ button_add(nil,"clr_pressed.png", 1262,725,50,32, fmc_btn_clear_start,  fmc_btn_
 
 --ent button
 function btn_ent()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_ENT_Push")
+    msfs_event("H:AS1000_" .. unit_mode .. "_ENT_Push")
     sound_play(press_snd)
 end
 
@@ -813,9 +813,9 @@ button_add(nil,"ent_pressed.png", 1334,725,50,32, btn_ent)
 -- fms knob
 function fms_outer_turn( direction)
     if direction ==  1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_FMS_Lower_INC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_FMS_Lower_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_FMS_Lower_DEC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_FMS_Lower_DEC")
     end
     sound_play(dial_snd)
 end
@@ -825,9 +825,9 @@ dial_click_rotate( fms_dial_outer, 6)
 
 function fms_inner_turn( direction)
     if direction ==  1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_FMS_Upper_INC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_FMS_Upper_INC")
     elseif direction == -1 then
-        fs2020_event("H:AS1000_" .. unit_mode .. "_FMS_Upper_DEC")
+        msfs_event("H:AS1000_" .. unit_mode .. "_FMS_Upper_DEC")
     end
     sound_play(dial_snd)
 end
@@ -836,7 +836,7 @@ fms_dial_inner = dial_add("plain_knob_inner.png", 1296,807,52,52, fms_inner_turn
 dial_click_rotate( fms_dial_outer, 6)
 
 function cursor_click()
-    fs2020_event("H:AS1000_" .. unit_mode .. "_FMS_Upper_PUSH")
+    msfs_event("H:AS1000_" .. unit_mode .. "_FMS_Upper_PUSH")
     sound_play(press_snd)
 end
 

@@ -77,15 +77,15 @@ btn_rev_id = button_add(nil, "pressed.png", 40, 40, 80, 80, revAction, releaseAc
 --    Chime mute
 function muteAction()
     sound_play(press_snd)
-    fs2020_event("H:HPFD_WARNING_MUTE")
+    msfs_event("H:HPFD_WARNING_MUTE")
 end
 btn_mute_id = button_add(nil, "pressed.png", 130, 40, 80, 80, muteAction, releaseAction)
 
 function warnAction()
     sound_play(press_snd)
-    fs2020_event("H:HPFD_Master_Warning_Push")
-    fs2020_event("K:MASTER_CAUTION_ACKNOWLEDGE")
-    fs2020_event("K:MASTER_WARNING_ACKNOWLEDGE")
+    msfs_event("H:HPFD_Master_Warning_Push")
+    msfs_event("K:MASTER_CAUTION_ACKNOWLEDGE")
+    msfs_event("K:MASTER_WARNING_ACKNOWLEDGE")
 end
 btn_warn_id = button_add(nil, "pressed.png", 290, 50, 80, 52, warnAction, releaseAction)
 --    baro knob
@@ -95,9 +95,9 @@ opacity(knob_shadow_id, .85)
 knob_id = img_add("knob.png", 462, 30, 95, 122 )
 function baroAction(direction)
     if direction == 1 then
-        fs2020_event("H:AS3000_PFD_1_BARO_INC")
+        msfs_event("H:AS3000_PFD_1_BARO_INC")
     else
-         fs2020_event("H:AS3000_PFD_1_BARO_DEC")
+         msfs_event("H:AS3000_PFD_1_BARO_DEC")
     end
     sound_play(dial_snd)
 end
@@ -105,7 +105,7 @@ baro_id = dial_add(nil, 472, 41, 75, 75, baroAction)
 
 function baroPressAction()
     sound_play(press_snd)
-    fs2020_event("H:AS3000_PFD_1_BARO_PUSH")
+    msfs_event("H:AS3000_PFD_1_BARO_PUSH")
 end
 baro_press_id = button_add(nil, nil, 482, 51, 55, 55, baroPressAction, releaseAction)
 
@@ -176,7 +176,7 @@ function setVars(revLF, rev, mute, caut, warn, elecSt)
 		opacity(warnAnnun, 0)
     end
 end
-fs2020_variable_subscribe("L:REVERSION Pushed LF", "NUMBER",
+msfs_variable_subscribe("L:REVERSION Pushed LF", "NUMBER",
                             "L:REVERSION Pushed", "NUMBER",
                                               "L:HJET_MUTE_VISIBLE", "NUMBER",
                                               "L:HJET_MASTER_CAUTION_ACTIVE", "NUMBER", 
@@ -184,6 +184,6 @@ fs2020_variable_subscribe("L:REVERSION Pushed LF", "NUMBER",
 											  "L:HJET_ELECTRICITY_ESTABLISHED", "NUMBER",
                                               setVars)
 
-fs2020_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
+msfs_variable_subscribe("L:lightTestInProgress_6", "NUMBER",
 							"L:lightTestInProgress_0", "NUMBER",                                   
                                               setTest)

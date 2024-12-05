@@ -57,14 +57,14 @@ function handle_position_set_fs2020( pos)
 	    rotate(handle_group, 60, 130, 235, 0, "LINEAR", 0.1, "DIRECT") 
 	end
 end
-fs2020_variable_subscribe("A:FLAPS HANDLE INDEX", "ENUM", handle_position_set_fs2020)
+msfs_variable_subscribe("A:FLAPS HANDLE INDEX", "ENUM", handle_position_set_fs2020)
 
  --activate flaps 
 function flap_callback(direction)
     if direction == 1 then
-        fs2020_event("FLAPS_INCR")
+        msfs_event("FLAPS_INCR")
     else
-        fs2020_event("FLAPS_DECR")
+        msfs_event("FLAPS_DECR")
     end
     sound_play(click_snd)
 end
@@ -84,7 +84,7 @@ function lightPot(val, panel, pot, power)
     end
 end
 
-fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+msfs_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
                                                 "A:LIGHT PANEL:1", "Bool", 
                                                 "A:LIGHT POTENTIOMETER:3", "Percent", 
                                                 "A:ELECTRICAL MASTER BATTERY", "Bool",

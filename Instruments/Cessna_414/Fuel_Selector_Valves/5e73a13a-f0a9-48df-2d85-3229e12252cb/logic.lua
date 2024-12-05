@@ -30,19 +30,19 @@ lever_r = img_add("lever.png", 510, 58, 111, 288)
 --LEFT LEVER
 --Main Tank
 function left_left_main()
-    fs2020_variable_write("L:FUEL_Lever_Selector_1", "Enum", 1)
+    msfs_variable_write("L:FUEL_Lever_Selector_1", "Enum", 1)
 end
 left_left_btn = button_add(nil, nil, 15, 38, 180, 180, left_left_main)
 
 -- Right Tank
 function left_right_main()
-    fs2020_variable_write("L:FUEL_Lever_Selector_1", "Enum", 2)
+    msfs_variable_write("L:FUEL_Lever_Selector_1", "Enum", 2)
 end
 left_right_btn = button_add(nil, nil, 215, 38, 180, 180, left_right_main)
 
 --Off
 function left_off_main()
-    fs2020_variable_write("L:FUEL_Lever_Selector_1", "Enum", 0)
+    msfs_variable_write("L:FUEL_Lever_Selector_1", "Enum", 0)
 end
 left_off_btn = button_add(nil, nil, 126, 282, 125, 125, left_off_main)
 
@@ -50,19 +50,19 @@ left_off_btn = button_add(nil, nil, 126, 282, 125, 125, left_off_main)
 --RIGHT LEVER
 --Main Tank
 function right_left_main()
-    fs2020_variable_write("L:FUEL_Lever_Selector_2", "Enum", 1)
+    msfs_variable_write("L:FUEL_Lever_Selector_2", "Enum", 1)
 end
 right_left_btn = button_add(nil, nil, 566, 38, 180, 180, right_left_main)
 
 -- Left Tank
 function right_left_main()
-    fs2020_variable_write("L:FUEL_Lever_Selector_2", "Enum",0)
+    msfs_variable_write("L:FUEL_Lever_Selector_2", "Enum",0)
 end
 right_right_btn = button_add(nil, nil, 387, 38, 180, 180, right_left_main)
 
 --Off
 function right_off_main()
-    fs2020_variable_write("L:FUEL_Lever_Selector_2", "Enum", 2)
+    msfs_variable_write("L:FUEL_Lever_Selector_2", "Enum", 2)
 end
 right_off_btn = button_add(nil, nil, 487, 282, 125, 125, right_off_main)
 
@@ -76,7 +76,7 @@ function fuel_left(pos)
     end
 end
 
-fs2020_variable_subscribe("L:FUEL_Lever_Selector_1", "Enum", fuel_left)
+msfs_variable_subscribe("L:FUEL_Lever_Selector_1", "Enum", fuel_left)
 
 function fuel_right(pos)
     if pos == 2 then                --opposite
@@ -88,6 +88,6 @@ function fuel_right(pos)
     end
 end
 
-fs2020_variable_subscribe("L:FUEL_Lever_Selector_2", "Enum", fuel_right)
+msfs_variable_subscribe("L:FUEL_Lever_Selector_2", "Enum", fuel_right)
 
 

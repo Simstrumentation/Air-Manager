@@ -34,7 +34,7 @@ local cabin_sw_pos
 
 --Beacon Switch
 function toggle_beacon()
-    fs2020_event("TOGGLE_BEACON_LIGHTS")
+    msfs_event("TOGGLE_BEACON_LIGHTS")
 end
 
 beacon_id = switch_add("toggle_down.png","toggle_up.png", 116, 67, 72, 154, toggle_beacon)
@@ -46,11 +46,11 @@ function new_beacon_pos(beacon)
        switch_set_position(beacon_id, 0)
     end
 end
-fs2020_variable_subscribe("LIGHT BEACON", "Bool",new_beacon_pos)
+msfs_variable_subscribe("LIGHT BEACON", "Bool",new_beacon_pos)
 
 --Strobe Switch
 function toggle_strobe()
-    fs2020_event("STROBES_TOGGLE")
+    msfs_event("STROBES_TOGGLE")
 end
 
 strobe_id = switch_add("toggle_down.png","toggle_up.png", 246, 67, 72, 154, toggle_strobe)
@@ -62,11 +62,11 @@ function new_strobe_pos(strobe)
        switch_set_position(strobe_id, 0)
     end
 end
-fs2020_variable_subscribe("LIGHT STROBE", "Bool", new_strobe_pos)
+msfs_variable_subscribe("LIGHT STROBE", "Bool", new_strobe_pos)
 
 --Nav Switch
 function toggle_nav()
-    fs2020_event("TOGGLE_NAV_LIGHTS")
+    msfs_event("TOGGLE_NAV_LIGHTS")
 end
 
 nav_id = switch_add("toggle_down.png","toggle_up.png", 376, 67, 72, 154, toggle_nav)
@@ -78,12 +78,12 @@ function new_nav_pos(nav)
        switch_set_position(nav_id, 0)
     end
 end
-fs2020_variable_subscribe("LIGHT NAV", "Bool", new_nav_pos)
+msfs_variable_subscribe("LIGHT NAV", "Bool", new_nav_pos)
 
 
 --Taxi Switch
 function toggle_taxi()
-    fs2020_event("TOGGLE_TAXI_LIGHTS")
+    msfs_event("TOGGLE_TAXI_LIGHTS")
 end
 
 taxi_id = switch_add("toggle_down.png","toggle_up.png", 508, 67, 72, 154, toggle_taxi)
@@ -95,23 +95,23 @@ function new_taxi_pos(taxi)
        switch_set_position(taxi_id, 0)
     end
 end
-fs2020_variable_subscribe("LIGHT TAXI", "Bool", new_taxi_pos)
+msfs_variable_subscribe("LIGHT TAXI", "Bool", new_taxi_pos)
 
 --Landing Switch
 function landing_inc()
       if landing_sw_pos == 0 then
-          fs2020_variable_write("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", 1)
+          msfs_variable_write("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", 1)
       elseif landing_sw_pos == 1 then
-          fs2020_variable_write("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", 2) 
+          msfs_variable_write("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", 2) 
       end
 end
 landing_inc_id = button_add(nil, nil, 670, 37, 72, 72, landing_inc)
 
 function landing_dec()
     if landing_sw_pos == 2 then
-          fs2020_variable_write("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", 1)
+          msfs_variable_write("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", 1)
       elseif landing_sw_pos == 1 then
-          fs2020_variable_write("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", 0) 
+          msfs_variable_write("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", 0) 
       end
 end
 
@@ -140,24 +140,24 @@ function new_landing_pos(landing)
         landing_sw_pos = landing
  end   
     
-fs2020_variable_subscribe("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", new_landing_pos)
+msfs_variable_subscribe("L:SWS_LIGHTING_Switch_Light_Landing", "Enum", new_landing_pos)
 
 --Cabin Switch
 
 
 function cabin_inc()
     if cabin_sw_pos == 0 then
-        fs2020_variable_write("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", 1)
+        msfs_variable_write("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", 1)
     elseif cabin_sw_pos ==1 then
-        fs2020_variable_write("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", 2)
+        msfs_variable_write("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", 2)
     end
 end
 
 function cabin_dec()
     if cabin_sw_pos == 2 then
-        fs2020_variable_write("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", 1)
+        msfs_variable_write("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", 1)
     elseif cabin_sw_pos ==1 then
-        fs2020_variable_write("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", 0)
+        msfs_variable_write("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", 0)
     end
 end
 
@@ -188,7 +188,7 @@ function new_cabin_pos(cabin)
     cabin_sw_pos = cabin
 end
 
-fs2020_variable_subscribe("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", new_cabin_pos)
+msfs_variable_subscribe("L:SWS_LIGHTING_Switch_Light_Cabin_12", "Enum", new_cabin_pos)
 
 --light knob graphics
 
@@ -203,17 +203,17 @@ function ss_lights_glareshield(value)
     rotate (img_lights_glareshield_knob, (value*290),"LOG", 0.1)
     switch_set_position(sw_lights_glareshield, ((value*200)/10))
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number", ss_lights_glareshield)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number", ss_lights_glareshield)
 
 function callback_lights_glareshield(position, direction)
     if direction == 1 then
-      fs2020_event("LIGHT_POTENTIOMETER_3_SET", var_cap(((position*5)+5),0,100))
-       fs2020_event("GLARESHIELD_LIGHTS_ON")
+      msfs_event("LIGHT_POTENTIOMETER_3_SET", var_cap(((position*5)+5),0,100))
+       msfs_event("GLARESHIELD_LIGHTS_ON")
    else
-       fs2020_event("LIGHT_POTENTIOMETER_3_SET", var_cap(((position*5)-5),0,100))
+       msfs_event("LIGHT_POTENTIOMETER_3_SET", var_cap(((position*5)-5),0,100))
        if position ==0  then
-            fs2020_event("LIGHT_POTENTIOMETER_3_SET", 0)
-            fs2020_event("GLARESHIELD_LIGHTS_OFF")
+            msfs_event("LIGHT_POTENTIOMETER_3_SET", 0)
+            msfs_event("GLARESHIELD_LIGHTS_OFF")
        end
    end
 end        
@@ -226,19 +226,19 @@ function ss_lights_instruments(value)
     switch_set_position(sw_lights_instruments, (value*200)/10)
 end
 
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:2", "Number", ss_lights_instruments)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:2", "Number", ss_lights_instruments)
 
 function callback_lights_instruments(position, direction)
     if direction == 1 then
-       fs2020_event("LIGHT_POTENTIOMETER_2_SET", var_cap(((position*5)+5),0,100))
-       fs2020_event("PANEL_LIGHTS_ON")
-       --fs2020_event("PANEL_LIGHTS_SET")
-       --fs2020_variable_write("L:LIGHTING_PANEL_1_Inc", "Number", 1)
+       msfs_event("LIGHT_POTENTIOMETER_2_SET", var_cap(((position*5)+5),0,100))
+       msfs_event("PANEL_LIGHTS_ON")
+       --msfs_event("PANEL_LIGHTS_SET")
+       --msfs_variable_write("L:LIGHTING_PANEL_1_Inc", "Number", 1)
    else
-       fs2020_event("LIGHT_POTENTIOMETER_2_SET", var_cap(((position*5)-5),0,100))
+       msfs_event("LIGHT_POTENTIOMETER_2_SET", var_cap(((position*5)-5),0,100))
        if position == 0  then
-          fs2020_event("PANEL_LIGHTS_OFF")
-          fs2020_event("LIGHT_POTENTIOMETER_2_SET", 0)
+          msfs_event("PANEL_LIGHTS_OFF")
+          msfs_event("LIGHT_POTENTIOMETER_2_SET", 0)
        end
    end
 end        
@@ -252,17 +252,17 @@ function ss_lights_panel(value)
     switch_set_position(sw_lights_panel, ((value*200)/10))
 end
 
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:21", "Number", ss_lights_panel)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:21", "Number", ss_lights_panel)
 
 function callback_lights_panel(position, direction)
     if direction == 1 then
-      fs2020_event("LIGHT_POTENTIOMETER_21_SET", var_cap(((position*5)+5),0,100))
-       fs2020_event("PEDESTRAL_LIGHTS_ON")
+      msfs_event("LIGHT_POTENTIOMETER_21_SET", var_cap(((position*5)+5),0,100))
+       msfs_event("PEDESTRAL_LIGHTS_ON")
    else
-       fs2020_event("LIGHT_POTENTIOMETER_21_SET", var_cap(((position*5)-5),0,100))
+       msfs_event("LIGHT_POTENTIOMETER_21_SET", var_cap(((position*5)-5),0,100))
        if position ==0  then
-            fs2020_event("LIGHT_POTENTIOMETER_21_SET", 0)
-            fs2020_event("PEDESTRAL_LIGHTS_OFF")
+            msfs_event("LIGHT_POTENTIOMETER_21_SET", 0)
+            msfs_event("PEDESTRAL_LIGHTS_OFF")
        end
    end
 end        
@@ -279,7 +279,7 @@ override_id = img_add("override_switch.png", 91, 365, 84, 130)
     
 --Inlet Bypass Switch
 function toggle_bypass()
-    fs2020_event("ANTI_ICE_TOGGLE_ENG1")    
+    msfs_event("ANTI_ICE_TOGGLE_ENG1")    
 end
 bypass_id = switch_add("paddle_down.png","paddle_up.png", 247, 310, 72, 154, toggle_bypass)
 
@@ -290,11 +290,11 @@ function new_bypass_pos(bypass)
        switch_set_position(bypass_id, 0)
     end
 end
-fs2020_variable_subscribe("ENG ANTI ICE:1", "Bool", new_bypass_pos)
+msfs_variable_subscribe("ENG ANTI ICE:1", "Bool", new_bypass_pos)
 
 -- Pitot switches
 function pitot_l_taxi()
-    fs2020_event("PITOT_HEAT_TOGGLE", 1)
+    msfs_event("PITOT_HEAT_TOGGLE", 1)
 end
 
 pitot_l_id = switch_add("toggle_down.png","toggle_up.png", 378, 310, 72, 154, pitot_l_taxi)
@@ -307,10 +307,10 @@ function new_pitot_l_pos(pitot_l)
     end
 end
 
-fs2020_variable_subscribe("L:DEICE_Pitot_1", "Int", new_pitot_l_pos)
+msfs_variable_subscribe("L:DEICE_Pitot_1", "Int", new_pitot_l_pos)
 
 function pitot_r_taxi()
-    fs2020_event("PITOT_HEAT_TOGGLE", 2)
+    msfs_event("PITOT_HEAT_TOGGLE", 2)
 end
 
 pitot_r_id = switch_add("toggle_down.png","toggle_up.png", 508, 310, 72, 154, pitot_r_taxi)
@@ -323,13 +323,13 @@ function new_pitot_r_pos(pitot_r)
     end
 end
 
-fs2020_variable_subscribe("L:DEICE_Pitot_2", "Int", new_pitot_r_pos)
+msfs_variable_subscribe("L:DEICE_Pitot_2", "Int", new_pitot_r_pos)
 
 
 -- Ice Knob
 
 function ice_power()
-    fs2020_event("TOGGLE_PROPELLER_DEICE")
+    msfs_event("TOGGLE_PROPELLER_DEICE")
 end
 
 ice_id = img_add("ice_knob.png", 675, 350, 67, 84)
@@ -345,12 +345,12 @@ function new_prop_pos(prop)
         rotate(ice_id, 0, "LINEAR", 0.05)
     end
 end
-fs2020_variable_subscribe("A:PROP DEICE SWITCH:1", "bOOL", new_prop_pos)
+msfs_variable_subscribe("A:PROP DEICE SWITCH:1", "bOOL", new_prop_pos)
 
 
 --Windshield Switch
 function toggle_windshield()
-    fs2020_event("WINDSHIELD_DEICE_TOGGLE")
+    msfs_event("WINDSHIELD_DEICE_TOGGLE")
 end
 windshield_id = switch_add("toggle_down.png","toggle_up.png", 832, 310, 72, 154, toggle_windshield)
 
@@ -361,7 +361,7 @@ function new_windshield_pos(windshield)
        switch_set_position(windshield_id, 0)
     end
 end
-fs2020_variable_subscribe("WINDSHIELD DEICE SWITCH", "Bool", new_windshield_pos)
+msfs_variable_subscribe("WINDSHIELD DEICE SWITCH", "Bool", new_windshield_pos)
 
 --Pump Switch
 function toggle_pump()
@@ -373,7 +373,7 @@ pump_id = switch_add("toggle_down.png","toggle_up.png", 960, 310, 72, 154, toggl
 
 --Ice light Switch
 function toggle_ice_light()
-    fs2020_event("TOGGLE_WING_LIGHTS")
+    msfs_event("TOGGLE_WING_LIGHTS")
 end
 
 ice_light_id = switch_add("toggle_down.png","toggle_up.png", 1090, 310, 72, 154, toggle_ice_light)
@@ -386,6 +386,6 @@ function new_ice_light_pos(ice_light)
     end
 
 end
-fs2020_variable_subscribe("LIGHT WING", "Bool", new_ice_light_pos)
+msfs_variable_subscribe("LIGHT WING", "Bool", new_ice_light_pos)
 
 

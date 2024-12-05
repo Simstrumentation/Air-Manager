@@ -42,7 +42,7 @@ function ss_backlighting(value, pwr)
         opacity(img_labels_backlight, (value), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
 -----------------------------------------------------------------
 
@@ -97,23 +97,23 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 --BTMS RESET
 my_button = button_add(nil,nil, 65, 50, 35, 30, 
     function ()
-            fs2020_variable_write("L:ASCRJ_GEAR_BTMS_RESET_BTN_ANIM","number",1) 
+            msfs_variable_write("L:ASCRJ_GEAR_BTMS_RESET_BTN_ANIM","number",1) 
             timer_id1 = timer_start(200,BTMS_Clear)
 end)
 
 function BTMS_Clear()
-    fs2020_variable_write("L:ASCRJ_GEAR_BTMS_RESET","number",1) 
-    fs2020_variable_write("L:ASCRJ_GEAR_BTMS_RESET_BTN_ANIM","number",0)
+    msfs_variable_write("L:ASCRJ_GEAR_BTMS_RESET","number",1) 
+    msfs_variable_write("L:ASCRJ_GEAR_BTMS_RESET_BTN_ANIM","number",0)
 end
 
 --MUTE HORN SWITCH
-fs2020_variable_subscribe("L:ASCRJ_GEAR_HORN_MUTE_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
+msfs_variable_subscribe("L:ASCRJ_GEAR_HORN_MUTE_ON", "Number","A:CIRCUIT GENERAL PANEL ON","Bool", 
     function (on,pwr) if (pwr==true) then visible(img_horn_muted, on ==1)else visible(img_Horn_Muted, false)end end) 
 
 sw_horn_muted = switch_add(nil, "btn_push.png", 162, 45, 49, 50, 
     function ()
             sound_play(snd_click)
-            fs2020_variable_write("L:ASCRJ_GEAR_HORN_MUTE", "Number", 1) timer_start(100, function() fs2020_variable_write("L:ASCRJ_GEAR_HORN_MUTE","Number",0)end) 
+            msfs_variable_write("L:ASCRJ_GEAR_HORN_MUTE", "Number", 1) timer_start(100, function() msfs_variable_write("L:ASCRJ_GEAR_HORN_MUTE","Number",0)end) 
     end) visible(sw_horn_muted, false)
 
 function  cb_horn_muted_Cover()
@@ -136,7 +136,7 @@ end
 
 
 --ANTI SKID SWITCH
-fs2020_variable_subscribe("L:ASCRJ_GEAR_ANTISKID_ARM", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GEAR_ANTISKID_ARM", "Number", 
         function (state)
             switch_set_position(sw_skid, state)
             visible(img_sw_skid_up, state ==1)
@@ -146,17 +146,17 @@ fs2020_variable_subscribe("L:ASCRJ_GEAR_ANTISKID_ARM", "Number",
         end)
 
 function cb_sw_skid(position)
-        fs2020_variable_write("L:ASCRJ_GEAR_ANTISKID_ARM","Number",5)  --this is used to trick AM into getting position.
+        msfs_variable_write("L:ASCRJ_GEAR_ANTISKID_ARM","Number",5)  --this is used to trick AM into getting position.
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_GEAR_ANTISKID_ARM","Number",1) 
+        msfs_variable_write("L:ASCRJ_GEAR_ANTISKID_ARM","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_GEAR_ANTISKID_ARM","Number",0) 
+        msfs_variable_write("L:ASCRJ_GEAR_ANTISKID_ARM","Number",0) 
     end 
 end
 sw_skid= switch_add(nil, nil, 60,125,50,110, cb_sw_skid)
 
 --GEAR BAY OVHT SWITCH
-fs2020_variable_subscribe("L:ASCRJ_GEAR_MLG_TEST", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GEAR_MLG_TEST", "Number", 
         function (state)
             switch_set_position(sw_bay_ovht, state)
             visible(img_sw_bay_ovht_up, state ==1)
@@ -167,15 +167,15 @@ fs2020_variable_subscribe("L:ASCRJ_GEAR_MLG_TEST", "Number",
 
 function cb_sw_bay_ovht(position)
     if (position == 0 ) then
-        fs2020_variable_write("L:ASCRJ_GEAR_MLG_TEST","Number",1) 
+        msfs_variable_write("L:ASCRJ_GEAR_MLG_TEST","Number",1) 
     elseif (position == 1 ) then
-        fs2020_variable_write("L:ASCRJ_GEAR_MLG_TEST","Number",0) 
+        msfs_variable_write("L:ASCRJ_GEAR_MLG_TEST","Number",0) 
     end 
 end
 sw_bay_ovht= switch_add(nil,nil, 60, 256, 50,110, cb_sw_bay_ovht)
 
 --GEAR OVHT TEST SWITCH
-fs2020_variable_subscribe("L:ASCRJ_GEAR_TEST_FAIL_TEST", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GEAR_TEST_FAIL_TEST", "Number", 
         function (state)
             switch_set_position(sw_bay_ovht_test, state)
             visible(img_sw_bay_ovht_test_up, state ==1)
@@ -187,15 +187,15 @@ function cb_sw_bay_ovht_test_nothing(position)
         --NOT NEEDED
 end
 function cb_sw_bay_ovht_test(position)
-        fs2020_variable_write("L:ASCRJ_GEAR_TEST_FAIL_TEST","Number",1) 
+        msfs_variable_write("L:ASCRJ_GEAR_TEST_FAIL_TEST","Number",1) 
 end
 function cb_sw_bay_ovht_test_release(position)
-        fs2020_variable_write("L:ASCRJ_GEAR_TEST_FAIL_TEST","Number",0) 
+        msfs_variable_write("L:ASCRJ_GEAR_TEST_FAIL_TEST","Number",0) 
 end
 sw_bay_ovht_test= switch_add(nil,nil, 160,256,50,110,  cb_sw_bay_ovht_test_nothing,  cb_sw_bay_ovht_test, cb_sw_bay_ovht_test_release)
 
 --LANDING GEAR SWITCH
-fs2020_variable_subscribe("L:ASCRJ_GEAR_GEAR_LEVER", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GEAR_GEAR_LEVER", "Number", 
         function  (state)
             switch_set_position(sw_Gear, state)
             if (state == 1) then move(img_gear, 330, 130, nil, nil,  'LINEAR', 0.05)move(img_gear_night, 330, 130, nil, nil,  'LINEAR', 0.05)
@@ -205,14 +205,14 @@ end)
 
 sw_Gear = switch_add(nil, nil, 340, 80, 90, 240, 
         function (position)
-        fs2020_variable_write("L:ASCRJ_GEAR_GEAR_LEVER", "Number", 5)  --this is used to trick AM into getting position
-              if position == 1 then fs2020_variable_write("L:ASCRJ_GEAR_GEAR_LEVER", "Number", 0) 
-              else  fs2020_variable_write("L:ASCRJ_GEAR_GEAR_LEVER", "Number", 1)  
+        msfs_variable_write("L:ASCRJ_GEAR_GEAR_LEVER", "Number", 5)  --this is used to trick AM into getting position
+              if position == 1 then msfs_variable_write("L:ASCRJ_GEAR_GEAR_LEVER", "Number", 0) 
+              else  msfs_variable_write("L:ASCRJ_GEAR_GEAR_LEVER", "Number", 1)  
               end
 end)
 
 --Landing Gear Release Button
-fs2020_variable_subscribe("L:ASCRJ_GEAR_LOCK_RELEASE", "Number", 
+msfs_variable_subscribe("L:ASCRJ_GEAR_LOCK_RELEASE", "Number", 
         function  (state)
             switch_set_position(sw_Gear_Release, state)
             if (state == 1) then move(img_gear_release, 270, 285, nil, nil,  'LINEAR', 0.05)move(img_gear_release_night, 270, 285, nil, nil,  'LINEAR', 0.05)
@@ -222,5 +222,5 @@ end)
 
 sw_Gear_Release = switch_add(nil, nil, 260, 260, 40, 60, 
         function() end,
-        function () fs2020_variable_write("L:ASCRJ_GEAR_LOCK_RELEASE", "Number", 1) end,
-        function () fs2020_variable_write("L:ASCRJ_GEAR_LOCK_RELEASE", "Number", 0) end)
+        function () msfs_variable_write("L:ASCRJ_GEAR_LOCK_RELEASE", "Number", 1) end,
+        function () msfs_variable_write("L:ASCRJ_GEAR_LOCK_RELEASE", "Number", 0) end)

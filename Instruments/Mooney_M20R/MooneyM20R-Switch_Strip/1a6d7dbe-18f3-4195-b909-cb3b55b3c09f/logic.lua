@@ -72,9 +72,9 @@ function hi_boost_cb()
 
   if cover_state == 1 then
     if boost_state == 1 then
-      fs2020_variable_write("L:M20R_switch_hight_boost", "Number", 0)
+      msfs_variable_write("L:M20R_switch_hight_boost", "Number", 0)
     else
-      fs2020_variable_write("L:M20R_switch_hight_boost", "Number", 1)
+      msfs_variable_write("L:M20R_switch_hight_boost", "Number", 1)
     end
   else
     -- play error sound
@@ -89,15 +89,15 @@ function new_hi_boost_pos(hi_boost)
     switch_set_position(hi_boost_id, hi_boost)    
 end
 
-fs2020_variable_subscribe("L:M20R_switch_hight_boost", "Number", new_hi_boost_pos)
+msfs_variable_subscribe("L:M20R_switch_hight_boost", "Number", new_hi_boost_pos)
 
 
 --Vacuum Boost
 function vac_cb()
   if vac_state == 1 then
-    fs2020_variable_write("L:M20R_SWITCH_STANDBY_VACUUM", "Number", 0)
+    msfs_variable_write("L:M20R_SWITCH_STANDBY_VACUUM", "Number", 0)
   else
-    fs2020_variable_write("L:M20R_SWITCH_STANDBY_VACUUM", "Number", 1)
+    msfs_variable_write("L:M20R_SWITCH_STANDBY_VACUUM", "Number", 1)
   end
 end 
 vac_id = switch_add("vac_off.png", "vac_on.png", 190, 360, 160, 262, vac_cb)
@@ -108,13 +108,13 @@ print (vac)
   switch_set_position(vac_id, vac)
 end
 
-fs2020_variable_subscribe("L:M20R_SWITCH_STANDBY_VACUUM", "Number", new_vac_pos)
+msfs_variable_subscribe("L:M20R_SWITCH_STANDBY_VACUUM", "Number", new_vac_pos)
 
 
 
 --Pitot
 function pitot_cb()
-  fs2020_event("PITOT_HEAT_TOGGLE", new_position)
+  msfs_event("PITOT_HEAT_TOGGLE", new_position)
 end
 pitot_id = switch_add("pitot_off.png", "pitot_on.png", 360, 360, 160, 262, pitot_cb)
 
@@ -122,11 +122,11 @@ function new_pitot_pos(pitot)
   switch_set_position(pitot_id, pitot)
 end
 
-fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_pos)
+msfs_variable_subscribe("PITOT HEAT", "Bool", new_pitot_pos)
 
 --Fuel Pump
 function pump_cb()
-  fs2020_event("TOGGLE_ELECT_FUEL_PUMP1")
+  msfs_event("TOGGLE_ELECT_FUEL_PUMP1")
 end
 pump_id = switch_add("pump_off.png", "pump_on.png", 532, 360, 160, 262, pump_cb)
 
@@ -134,7 +134,7 @@ function new_pump_pos(pump)
   switch_set_position(pump_id, pump)
 end
 
-fs2020_variable_subscribe("GENERAL ENG FUEL PUMP SWITCH:1", "Bool", new_pump_pos)
+msfs_variable_subscribe("GENERAL ENG FUEL PUMP SWITCH:1", "Bool", new_pump_pos)
 
 --Elevator Trim
 function el_trim_cb()
@@ -156,7 +156,7 @@ function cover_cb()
     visible(cover_dn_id, false)
   else
     cover_state = 0
-    fs2020_variable_write("L:M20R_switch_hight_boost", "Number", 0)
+    msfs_variable_write("L:M20R_switch_hight_boost", "Number", 0)
     visible(cover_up_id, false)
     visible(cover_dn_id, true)
     sound_play(snd_cover_close)    

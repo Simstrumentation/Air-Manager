@@ -34,7 +34,7 @@ function ss_backlighting(value, pwr)
         opacity(img_backlight_knob_RUDTrim, (value), "LOG", 0.04) 
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
                                               
 --Day Graphics   
@@ -64,7 +64,7 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 --------------------------------------------------------------------------------------------
 
 --Aileron Upper Trim
-fs2020_variable_subscribe("L:ASCRJ_TRIM_AIL_UPR", "Number",
+msfs_variable_subscribe("L:ASCRJ_TRIM_AIL_UPR", "Number",
         function (position)
                 switch_set_position(sw_AilUpperTrim, (var_round(position,0)))             
                 move(img_knob_AilUpperTrim, 74-(1-position*15),30,35,30,"LOG", 0.1)
@@ -72,10 +72,10 @@ fs2020_variable_subscribe("L:ASCRJ_TRIM_AIL_UPR", "Number",
         end)
 
 sw_AilUpperTrim = switch_add(nil,nil,nil, 70,30,70,30, "HORIZONTAL",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_TRIM_AIL_UPR","Number", pos+dir) end) 
+        function (pos,dir) msfs_variable_write("L:ASCRJ_TRIM_AIL_UPR","Number", pos+dir) end) 
 
 --Aileron Lower Trim
-fs2020_variable_subscribe("L:ASCRJ_TRIM_AIL_LWR", "Number",
+msfs_variable_subscribe("L:ASCRJ_TRIM_AIL_LWR", "Number",
         function (position)
                 switch_set_position(sw_AilLowerTrim, (var_round(position,0)))             
                 move(img_knob_AilLowerTrim, 74-(1-position*15),59,35,30,"LOG", 0.1)
@@ -83,10 +83,10 @@ fs2020_variable_subscribe("L:ASCRJ_TRIM_AIL_LWR", "Number",
         end)
 
 sw_AilLowerTrim = switch_add(nil,nil,nil, 70,59,70,30, "HORIZONTAL",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_TRIM_AIL_LWR","Number", pos+dir) end) 
+        function (pos,dir) msfs_variable_write("L:ASCRJ_TRIM_AIL_LWR","Number", pos+dir) end) 
 
 --Rudder Trim
-fs2020_variable_subscribe("L:ASCRJ_TRIM_RUD", "Number",
+msfs_variable_subscribe("L:ASCRJ_TRIM_RUD", "Number",
         function (position)
                 switch_set_position(sw_RudTrim, (var_round(position,0)))             
                 rotate(img_knob_RUDTrim, (position*45)-45,"LOG", 0.1)
@@ -95,4 +95,4 @@ fs2020_variable_subscribe("L:ASCRJ_TRIM_RUD", "Number",
         end)
 
 sw_RudTrim = switch_add(nil,nil,nil, 198,15,85,85, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_TRIM_RUD","Number", pos+dir) end) 
+        function (pos,dir) msfs_variable_write("L:ASCRJ_TRIM_RUD","Number", pos+dir) end) 

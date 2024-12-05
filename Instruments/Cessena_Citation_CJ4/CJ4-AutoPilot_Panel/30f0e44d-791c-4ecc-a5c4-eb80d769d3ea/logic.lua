@@ -115,7 +115,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_IAS_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -128,44 +128,44 @@ img_AP_Dis = img_add("AP_Dis.png", 1515,117,170,75)
 
 --Flight Director ON   
 function callback_FD()
-   fs2020_event("TOGGLE_FLIGHT_DIRECTOR")
+   msfs_event("TOGGLE_FLIGHT_DIRECTOR")
    sound_play(snd_click)
 end
 button_add(nil,"FD_pressed.png",  103,37,63,48, callback_FD)
 button_add(nil,"FD_pressed.png",  1751,37,63,48, callback_FD)
 --Verticle Speed    
 function callback_VS()
-   fs2020_event("AP_VS_HOLD")
+   msfs_event("AP_VS_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"VS_pressed.png", 270,37,63,48, callback_VS)
 --FLC    
 function callback_FLC()
-   fs2020_event("FLIGHT_LEVEL_CHANGE")
+   msfs_event("FLIGHT_LEVEL_CHANGE")
    sound_play(snd_click)
 end
 button_add(nil,"FLC_pressed.png", 607,37,63,48, callback_FLC) 
 --NAV    
 function callback_NAV()
-   fs2020_event("AP_NAV1_HOLD")
+   msfs_event("AP_NAV1_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"NAV_pressed.png", 775,37,63,48, callback_NAV) 
 --HDG    
 function callback_HDG()
-   fs2020_event("AP_HDG_HOLD")
+   msfs_event("AP_HDG_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"HDG_pressed.png", 935,37,63,48, callback_HDG) 
 --APPR    
 function callback_APPR()
-   fs2020_event("AP_APR_HOLD")
+   msfs_event("AP_APR_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"APPR_pressed.png", 1085,37,63,48, callback_APPR) 
 --ALT    
 function callback_ALT()
-   fs2020_event("AP_PANEL_ALTITUDE_HOLD")
+   msfs_event("AP_PANEL_ALTITUDE_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"ALT_pressed.png", 1236,37,63,48, callback_ALT) 
@@ -173,19 +173,19 @@ button_add(nil,"ALT_pressed.png", 1236,37,63,48, callback_ALT)
 function ss_yd_state(val)
     yd_state = val
 end
-fs2020_variable_subscribe("AUTOPILOT YAW DAMPER","Bool", ss_yd_state)
+msfs_variable_subscribe("AUTOPILOT YAW DAMPER","Bool", ss_yd_state)
 function callback_YD()
    if yd_state == false then
-       fs2020_event("YAW_DAMPER_ON")
+       msfs_event("YAW_DAMPER_ON")
    else
-       fs2020_event("YAW_DAMPER_OFF")
+       msfs_event("YAW_DAMPER_OFF")
    end
    sound_play(snd_click)
 end
 button_add(nil,"YD_pressed.png", 1389,37,63,48, callback_YD) 
 --AP    
 function callback_AP()
-   fs2020_event("AP_MASTER")
+   msfs_event("AP_MASTER")
    sound_play(snd_click)
 end
 button_add(nil,"AP_pressed.png", 1569,37,63,48, callback_AP) 
@@ -194,9 +194,9 @@ button_add(nil,"AP_pressed.png", 1569,37,63,48, callback_AP)
 function ss_ap_vnav(val)
     ap_vnav_state = val
 end
-fs2020_variable_subscribe("L:XMLVAR_VNAVButtonValue","Int", ss_ap_vnav)
+msfs_variable_subscribe("L:XMLVAR_VNAVButtonValue","Int", ss_ap_vnav)
 function callback_VNAV()
-  fs2020_variable_write("L:XMLVAR_VNAVButtonValue","Int",fif(ap_vnav_state==1, 0, 1))
+  msfs_variable_write("L:XMLVAR_VNAVButtonValue","Int",fif(ap_vnav_state==1, 0, 1))
    sound_play(snd_click)
 end
 button_add(nil,"VNAV_pressed.png", 270,135,63,48, callback_VNAV)
@@ -205,19 +205,19 @@ button_add(nil,"VNAV_pressed.png", 270,135,63,48, callback_VNAV)
 function ss_ap_bank(val)
     ap_max_bank = val
 end
-fs2020_variable_subscribe("AUTOPILOT MAX BANK", "degrees", ss_ap_bank)
+msfs_variable_subscribe("AUTOPILOT MAX BANK", "degrees", ss_ap_bank)
 function callback_BANK()
    if ap_max_bank < 16 then
-       fs2020_event("AP_MAX_BANK_INC")
+       msfs_event("AP_MAX_BANK_INC")
    else
-       fs2020_event("AP_MAX_BANK_DEC")
+       msfs_event("AP_MAX_BANK_DEC")
    end
    sound_play(snd_click)
 end
 button_add(nil,"BANK_pressed.png", 775,135,63,48, callback_BANK) 
 --BackCourse    
 function callback_BC()
-   fs2020_event("AP_BC_HOLD")
+   msfs_event("AP_BC_HOLD")
    sound_play(snd_click)
 end
 button_add(nil,"BC_pressed.png", 1085,135,63,48, callback_BC) 
@@ -225,9 +225,9 @@ button_add(nil,"BC_pressed.png", 1085,135,63,48, callback_BC)
 function ss_ap_xfr(val)
     ap_xfr_state = val
 end
-fs2020_variable_subscribe("L:XMLVAR_PushXFR","Int", ss_ap_xfr)
+msfs_variable_subscribe("L:XMLVAR_PushXFR","Int", ss_ap_xfr)
 function callback_APXFR()
-   fs2020_variable_write("L:XMLVAR_PushXFR","Int", fif(ap_xfr_state==1, 0, 1))
+   msfs_variable_write("L:XMLVAR_PushXFR","Int", fif(ap_xfr_state==1, 0, 1))
    sound_play(snd_click)
 end
 button_add(nil,"AP-XFR_pressed.png", 1389,135,63,48, callback_APXFR) 
@@ -237,22 +237,22 @@ button_add(nil,"AP-XFR_pressed.png", 1389,135,63,48, callback_APXFR)
 function vsstate_callback(state)
     vs_state = state  
 end
-fs2020_variable_subscribe("AUTOPILOT VERTICAL HOLD", "bool", vsstate_callback)
+msfs_variable_subscribe("AUTOPILOT VERTICAL HOLD", "bool", vsstate_callback)
 
 prop_VSDialorButtons = user_prop_add_boolean("VS Dial acts as buttons instead of dial", false, "") -- Show or hide the unit type onscreen
 if user_prop_get(prop_VSDialorButtons) then
     --VS DEC    
     function callback_VS_DEC()
-       if vs_state then fs2020_event("AP_VS_VAR_DEC")
-       else fs2020_event("AP_PITCH_REF_INC_DN")       
+       if vs_state then msfs_event("AP_VS_VAR_DEC")
+       else msfs_event("AP_PITCH_REF_INC_DN")       
        end
        sound_play(snd_dial)
     end
     button_add(nil,"VS_DEC_pressed.png", 437,42,40,68, callback_VS_DEC) 
     --VS INC    
     function callback_VS_INC()
-       if vs_state then fs2020_event("AP_VS_VAR_INC")
-       else fs2020_event("AP_PITCH_REF_INC_UP")       
+       if vs_state then msfs_event("AP_VS_VAR_INC")
+       else msfs_event("AP_PITCH_REF_INC_UP")       
        end
        sound_play(snd_dial)
     end
@@ -260,13 +260,13 @@ if user_prop_get(prop_VSDialorButtons) then
 else
     function callback_VS_DIAL( direction)
          if direction ==  1 then
-             if vs_state then fs2020_event("AP_VS_VAR_DEC")
-             else fs2020_event("AP_PITCH_REF_INC_DN")             
+             if vs_state then msfs_event("AP_VS_VAR_DEC")
+             else msfs_event("AP_PITCH_REF_INC_DN")             
              end
              sound_play(snd_dial)
          elseif direction == -1 then
-             if vs_state then fs2020_event("AP_VS_VAR_INC")
-             else fs2020_event("AP_PITCH_REF_INC_UP")
+             if vs_state then msfs_event("AP_VS_VAR_INC")
+             else msfs_event("AP_PITCH_REF_INC_UP")
              end
              sound_play(snd_dial)
          end
@@ -278,7 +278,7 @@ end
 function ss_update_nav1_obs(deg)
     orignav1_obs = deg
 end
-fs2020_variable_subscribe("NAV OBS:1", "Degrees", ss_update_nav1_obs)
+msfs_variable_subscribe("NAV OBS:1", "Degrees", ss_update_nav1_obs)
 crs1_angle = 0
 function callback_CRS1_DIAL(direction)
     if direction == -1 then
@@ -295,7 +295,7 @@ function callback_CRS1_DIAL(direction)
         end
     end
     rotate(img_CRS1_dial_backlight , crs1_angle)
-    fs2020_event("VOR1_SET", orignav1_obs)
+    msfs_event("VOR1_SET", orignav1_obs)
     sound_play(snd_dial)
 end
 dial_crs1 = dial_add("CRS_DIAL.png", 89,112,96,95,2,callback_CRS1_DIAL, calllback_CRS1_DIAL_click)
@@ -304,7 +304,7 @@ img_CRS1_dial_backlight = img_add("CRS_DIAL_backlight.png", 89,112,96,95)
 
 --CRS1 PRESS
 function callback_CRS1_DIAL_click()
-    fs2020_event("K:VOR1_SET", current_heading )  
+    msfs_event("K:VOR1_SET", current_heading )  
     sound_play(snd_click)
 end    
 button_add(nil,nil, 110,135,50,50, callback_CRS1_DIAL_click) 
@@ -316,7 +316,7 @@ button_add(nil,nil, 110,135,50,50, callback_CRS1_DIAL_click)
 function ss_update_nav2_obs(deg)
     orignav2_obs = deg
 end
-fs2020_variable_subscribe("NAV OBS:2", "Degrees", ss_update_nav2_obs)
+msfs_variable_subscribe("NAV OBS:2", "Degrees", ss_update_nav2_obs)
 crs2_angle = 0
 function callback_CRS2_DIAL(direction)
     if direction == -1 then
@@ -333,7 +333,7 @@ function callback_CRS2_DIAL(direction)
         end
     end
     rotate(img_CRS2_dial_backlight , crs2_angle)
-    fs2020_event("VOR2_SET", orignav2_obs)
+    msfs_event("VOR2_SET", orignav2_obs)
     sound_play(snd_dial)
 end
 dial_crs2 = dial_add("CRS_DIAL.png", 1739,112,96,95,2, callback_CRS2_DIAL, callback_CRS2_DIAL_click)
@@ -342,7 +342,7 @@ img_CRS2_dial_backlight = img_add("CRS_DIAL_backlight.png", 1739,112,96,95)
 
 --CRS2 PRESS
 function callback_CRS2_DIAL_click()
-    fs2020_event("K:VOR2_SET", current_heading )  
+    msfs_event("K:VOR2_SET", current_heading )  
     sound_play(snd_click)
 end    
 button_add(nil,nil, 1763,135,50,50, callback_CRS2_DIAL_click) 
@@ -352,11 +352,11 @@ IAS_angle = 0
 function callback_IAS_DIAL(direction)
      if direction ==  -1 then
          IAS_angle = IAS_angle - 10
-         fs2020_event("AP_SPD_VAR_DEC")
+         msfs_event("AP_SPD_VAR_DEC")
          sound_play(snd_dial)
      elseif direction == 1 then
          IAS_angle = IAS_angle + 10
-         fs2020_event("AP_SPD_VAR_INC")
+         msfs_event("AP_SPD_VAR_INC")
          sound_play(snd_dial)
      end
      rotate(img_IAS_backlight, IAS_angle)
@@ -367,7 +367,7 @@ img_IAS_backlight = img_add("IAS_DIAL_backlight.png", 592,112,96,95)
 
 --IAS PRESS 
 function callback_IAS_DIAL_click()
-     fs2020_event("AP_MANAGED_SPEED_IN_MACH_TOGGLE" )  
+     msfs_event("AP_MANAGED_SPEED_IN_MACH_TOGGLE" )  
     sound_play(snd_click)
  end    
 button_add(nil,nil, 607,140,40,40, callback_IAS_DIAL_click) 
@@ -378,7 +378,7 @@ function ss_ap_heading_bug_callback(heading)
     HDG_Degrees = heading
     return HDG_Degrees
 end
-fs2020_variable_subscribe("AUTOPILOT HEADING LOCK DIR", "Degrees", ss_ap_heading_bug_callback)
+msfs_variable_subscribe("AUTOPILOT HEADING LOCK DIR", "Degrees", ss_ap_heading_bug_callback)
 hdg_angle = 0
 function hdg_turn_inner( direction)
     if direction ==  -1 then
@@ -389,7 +389,7 @@ function hdg_turn_inner( direction)
             else
                 NewHdg = HDG_Degrees
             end            
-            fs2020_event("HEADING_BUG_SET", NewHdg)
+            msfs_event("HEADING_BUG_SET", NewHdg)
     elseif direction == 1 then
             hdg_angle = hdg_angle +10
             HDG_Degrees = HDG_Degrees + 1
@@ -398,7 +398,7 @@ function hdg_turn_inner( direction)
             else
                 NewHdg = HDG_Degrees
             end
-            fs2020_event("HEADING_BUG_SET", NewHdg)
+            msfs_event("HEADING_BUG_SET", NewHdg)
     end
     rotate(img_HDG_dial_backlight, hdg_angle)
     sound_play(snd_dial)    
@@ -409,7 +409,7 @@ img_HDG_dial_backlight = img_add("HDG_dial_backlight.png", 917,120,90,90)
 
 --HDG PRESS
 function callback_HDG_DIAL_click()
-    fs2020_event("HEADING_BUG_SET", current_heading )  
+    msfs_event("HEADING_BUG_SET", current_heading )  
     sound_play(snd_click)
 end    
 button_add(nil,nil, 940,140,40,40, callback_HDG_DIAL_click) 
@@ -417,17 +417,17 @@ button_add(nil,nil, 940,140,40,40, callback_HDG_DIAL_click)
 function ss_current_heading_callback(heading)   
     current_heading = heading
 end
-fs2020_variable_subscribe("A:HEADING INDICATOR", "Degrees", ss_current_heading_callback)
+msfs_variable_subscribe("A:HEADING INDICATOR", "Degrees", ss_current_heading_callback)
 
 -- Altitude Target Knob
 alt_knob_angle = 0
 function alt_large_callback(direction)
     if direction == 1 then
         alt_knob_angle = alt_knob_angle + 10
-        fs2020_event("AP_ALT_VAR_INC", 1000)
+        msfs_event("AP_ALT_VAR_INC", 1000)
     else
         alt_knob_angle = alt_knob_angle - 10
-        fs2020_event("AP_ALT_VAR_DEC", 1000)
+        msfs_event("AP_ALT_VAR_DEC", 1000)
     end
 	rotate(img_ALT_dial_backlight, alt_knob_angle)
 	rotate(img_alt_dial,  alt_knob_angle)
@@ -437,10 +437,10 @@ end
 function alt_small_callback(direction)
     if direction == 1 then
 		alt_knob_angle = alt_knob_angle + 10
-        fs2020_event("AP_ALT_VAR_INC", 100)
+        msfs_event("AP_ALT_VAR_INC", 100)
     else
         alt_knob_angle = alt_knob_angle - 10
-        fs2020_event("AP_ALT_VAR_DEC", 100)
+        msfs_event("AP_ALT_VAR_DEC", 100)
     end
     rotate(img_ALT_dial_backlight, alt_knob_angle)
     rotate(img_alt_dial,  alt_knob_angle)
@@ -458,7 +458,7 @@ dial_click_rotate(dial_alt_inner, 6)
 --ALT PRESS
 --[[
 function ALT_DIAL_click()
-    fs2020_event("AP_ALT_HOLD_OFF")  
+    msfs_event("AP_ALT_HOLD_OFF")  
     sound_play(snd_click)
 end    
 button_add(nil,nil, 1240,140,45,45, ALT_DIAL_click) 
@@ -474,14 +474,14 @@ function  ss_AP_DIS_STATUS(AP_DIS_STATUS1)
 		move(img_AP_Dis, 1515,117,170,75,"LOG", 0.04 )       
     end
 end
-fs2020_variable_subscribe("AUTOPILOT DISENGAGED","Bool", ss_AP_DIS_STATUS)   
+msfs_variable_subscribe("AUTOPILOT DISENGAGED","Bool", ss_AP_DIS_STATUS)   
 
 function callback_AP_DIS()
     if AP_DIS_STATUS_LOCAL == true then
-        fs2020_event("AUTOPILOT_DISENGAGE_SET",0)
+        msfs_event("AUTOPILOT_DISENGAGE_SET",0)
         sound_play(snd_click)
     else
-        fs2020_event("AUTOPILOT_DISENGAGE_SET",1)
+        msfs_event("AUTOPILOT_DISENGAGE_SET",1)
         sound_play(snd_click)
     end
 end

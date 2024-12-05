@@ -63,7 +63,7 @@ function ss_screenpower(Cir41, Cir39)
             visible(screenoff, true)
         end        
 end
-fs2020_variable_subscribe(
+msfs_variable_subscribe(
                           "CIRCUIT ON:41","bool",
                           "CIRCUIT ON:39","bool", ss_screenpower)
 

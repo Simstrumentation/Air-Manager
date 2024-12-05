@@ -131,6 +131,6 @@ function setValues(cabinAlt, diff)
         rotate(reflect_needle_id, interpolate_linear(cabin_alt_settings, var_cap(cabinAlt, 0, 35000)), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:PRESSURIZATION CABIN ALTITUDE", "Feet", 
+msfs_variable_subscribe("A:PRESSURIZATION CABIN ALTITUDE", "Feet", 
                           "A:PRESSURIZATION PRESSURE DIFFERENTIAL", "PSI",
                                             setValues)

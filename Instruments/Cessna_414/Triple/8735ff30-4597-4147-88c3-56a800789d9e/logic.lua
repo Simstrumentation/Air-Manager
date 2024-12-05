@@ -153,7 +153,7 @@ function new_oilPress_FSX(eOilPress)
     new_oilPress({eOilPress})
 end
 --***********************************************VARIABLE SUBSCRIBE***********************************************
-fs2020_variable_subscribe("ELECTRICAL GENALT BUS VOLTAGE:"..tostring(engine_number).."", "Volts", new_electricBus_FSX)
-fs2020_variable_subscribe("ENG CYLINDER HEAD TEMPERATURE:"..tostring(engine_number).."", "Celsius", new_CHT_FSX)
-fs2020_variable_subscribe("ENG OIL TEMPERATURE:"..tostring(engine_number).."", "Celsius", new_oilTemp_FSX)
-fs2020_variable_subscribe("ENG OIL PRESSURE:"..tostring(engine_number).."", "PSI", new_oilPress_FSX)
+msfs_variable_subscribe("ELECTRICAL GENALT BUS VOLTAGE:"..tostring(engine_number).."", "Volts", new_electricBus_FSX)
+msfs_variable_subscribe("ENG CYLINDER HEAD TEMPERATURE:"..tostring(engine_number).."", "Celsius", new_CHT_FSX)
+msfs_variable_subscribe("ENG OIL TEMPERATURE:"..tostring(engine_number).."", "Celsius", new_oilTemp_FSX)
+msfs_variable_subscribe("ENG OIL PRESSURE:"..tostring(engine_number).."", "PSI", new_oilPress_FSX)

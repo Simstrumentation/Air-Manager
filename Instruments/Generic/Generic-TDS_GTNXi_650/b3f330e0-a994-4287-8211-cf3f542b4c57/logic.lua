@@ -24,30 +24,30 @@ visible(img_sd_white, user_prop_get(sd_prop) == "White")
 
 dial_add(nil, 0, 5, 80, 80, function(direction)
     if direction == 1 then
-        fs2020_event("K:GPS_BUTTON2", 10)
-        fs2020_event("K:GPS_BUTTON2", 12)
+        msfs_event("K:GPS_BUTTON2", 10)
+        msfs_event("K:GPS_BUTTON2", 12)
     elseif direction == -1 then
-        fs2020_event("K:GPS_BUTTON3", 10)
-        fs2020_event("K:GPS_BUTTON3", 12)
+        msfs_event("K:GPS_BUTTON3", 10)
+        msfs_event("K:GPS_BUTTON3", 12)
     end
     sound_play(dial_snd)
 end)
 
 button_add(nil, nil, 21, 22, 38, 38, function()
-    fs2020_event("K:GPS_BUTTON1", 10)
-    fs2020_event("K:GPS_BUTTON1", 12)
+    msfs_event("K:GPS_BUTTON1", 10)
+    msfs_event("K:GPS_BUTTON1", 12)
     sound_play(press_snd)
 end)
 
 button_add(nil, nil, 883, 130, 52, 38, function()
-    fs2020_event("K:GPS_MENU_BUTTON", 10)
-    fs2020_event("K:GPS_MENU_BUTTON", 12)
+    msfs_event("K:GPS_MENU_BUTTON", 10)
+    msfs_event("K:GPS_MENU_BUTTON", 12)
     sound_play(press_snd)
 end)
 
 button_add(nil, nil, 883, 225, 52, 38, function()
-    fs2020_event("K:GPS_DIRECTTO_BUTTON", 10)
-    fs2020_event("K:GPS_DIRECTTO_BUTTON", 12)
+    msfs_event("K:GPS_DIRECTTO_BUTTON", 10)
+    msfs_event("K:GPS_DIRECTTO_BUTTON", 12)
     sound_play(press_snd)
 end)
 
@@ -59,18 +59,18 @@ inner_pos = fif(user_prop_get(input_prop) == "Mouse / touch", {890, 340, 70, 70}
 
 fms_outer = dial_add(nil, outer_pos[1], outer_pos[2], outer_pos[3], outer_pos[4], function(direction)
     if direction == 1 then
-        fs2020_event("K:GPS_GROUP_KNOB_INC", 8)
+        msfs_event("K:GPS_GROUP_KNOB_INC", 8)
     elseif direction == -1 then
-        fs2020_event("K:GPS_GROUP_KNOB_DEC", 8)
+        msfs_event("K:GPS_GROUP_KNOB_DEC", 8)
     end
     sound_play(dial_snd)
 end)
 
 fms_inner = dial_add(nil, inner_pos[1], inner_pos[2], inner_pos[3], inner_pos[4], function(direction)
     if direction == 1 then
-        fs2020_event("K:GPS_PAGE_KNOB_INC", 8)
+        msfs_event("K:GPS_PAGE_KNOB_INC", 8)
     elseif direction == -1 then
-        fs2020_event("K:GPS_PAGE_KNOB_DEC", 8)
+        msfs_event("K:GPS_PAGE_KNOB_DEC", 8)
     end
     sound_play(dial_snd)
 end)
@@ -78,6 +78,6 @@ mouse_setting(fms_inner , "CURSOR_LEFT", "ctr_cursor_ccw.png")
 mouse_setting(fms_inner , "CURSOR_RIGHT", "ctr_cursor_cw.png")
 
 button_add(nil, nil, 767, 716, 38, 38, function()
-    fs2020_event("K:GPS_CURSOR_BUTTON", 10)
-    fs2020_event("K:GPS_CURSOR_BUTTON", 12)
+    msfs_event("K:GPS_CURSOR_BUTTON", 10)
+    msfs_event("K:GPS_CURSOR_BUTTON", 12)
 end)

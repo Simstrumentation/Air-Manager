@@ -69,23 +69,23 @@ visible(img_sd_white, user_prop_get(sd_prop) == "White")
 --Volume Knob
 dial_add(nil, 0, 5, 80, 80, function(direction)
     if direction == 1 then
-        fs2020_event(unitvar .. "VolInc")
+        msfs_event(unitvar .. "VolInc")
     elseif direction == -1 then
-        fs2020_event(unitvar .. "VolDec")
+        msfs_event(unitvar .. "VolDec")
     end
     sound_play(dial_snd)
 end)
 
 -- volume button
 button_add(nil, nil, 21, 26, 38, 38, function()
-    fs2020_event(unitvar .. "VolPush")
+    msfs_event(unitvar .. "VolPush")
     sound_play(press_snd)
 end)
 
 --Home Button
 
 function home_start()
-    fs2020_event(unitvar .. "HomePush")
+    msfs_event(unitvar .. "HomePush")
     sound_play(press_snd)
     timer_id1 = timer_start(1000,CLR_LONG)
  end
@@ -95,7 +95,7 @@ function home_start()
  end
  
  function CLR_LONG()
-    fs2020_event(unitvar .. "HomePushLong")
+    msfs_event(unitvar .. "HomePushLong")
  end
 
 
@@ -105,7 +105,7 @@ button_add(nil, nil, 883, 639, 52, 38, home_start,  home_end)
 
 
 function dtcpush()
-    fs2020_event(unitvar .. "DirectToPush")
+    msfs_event(unitvar .. "DirectToPush")
     sound_play(press_snd)
 end
 button_add(nil, nil, 883, 721, 52, 38, dtcpush)
@@ -121,18 +121,18 @@ inner_pos = fif(user_prop_get(input_prop) == "Mouse / touch", {886, 830, 70, 70}
 --FMS Knob
 fms_outer = dial_add(nil, outer_pos[1], outer_pos[2], outer_pos[3], outer_pos[4], function(direction)
     if direction == 1 then
-        fs2020_event(unitvar .. "KnobLargeInc")
+        msfs_event(unitvar .. "KnobLargeInc")
     elseif direction == -1 then
-        fs2020_event(unitvar .. "KnobLargeDec")
+        msfs_event(unitvar .. "KnobLargeDec")
     end
     sound_play(dial_snd)
 end)
 
 fms_inner = dial_add(nil, inner_pos[1], inner_pos[2], inner_pos[3], inner_pos[4], function(direction)
     if direction == 1 then
-        fs2020_event(unitvar .. "KnobSmallInc")
+        msfs_event(unitvar .. "KnobSmallInc")
     elseif direction == -1 then
-        fs2020_event(unitvar .. "KnobSmallDec")
+        msfs_event(unitvar .. "KnobSmallDec")
     end
     sound_play(dial_snd)
 end)
@@ -141,6 +141,6 @@ mouse_setting(fms_inner , "CURSOR_RIGHT", "ctr_cursor_cw.png")
 
 --Knob Press
 button_add(nil, nil, inner_pos[1], inner_pos[2], inner_pos[3], inner_pos[4], function()
-   fs2020_event(unitvar .. "KnobPush")
+   msfs_event(unitvar .. "KnobPush")
    sound_play(press_snd)
 end)

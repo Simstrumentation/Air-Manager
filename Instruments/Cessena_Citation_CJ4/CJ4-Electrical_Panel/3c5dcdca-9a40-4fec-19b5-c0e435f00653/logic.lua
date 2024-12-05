@@ -90,7 +90,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_labels_backlight, ((value/2)+0.5), "LOG", 0.04)     
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                            "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -98,44 +98,44 @@ fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
 						  
 --L Gen    
 function callback_LGen()
-   fs2020_event("TOGGLE_ALTERNATOR1")
+   msfs_event("TOGGLE_ALTERNATOR1")
 end
 button_add(nil,nil,  147,87,90,90, callback_LGen)
 --R Gen    
 function callback_RGen()
-   fs2020_event("TOGGLE_ALTERNATOR2")
+   msfs_event("TOGGLE_ALTERNATOR2")
 end
 button_add(nil,nil, 511,84,94,94, callback_RGen)
 
 --BatteryOn     baterystatus = 1
 function callback_BatteryOn()
     if (batterystatus ==  0) then
-       fs2020_event("MASTER_BATTERY_ON")
+       msfs_event("MASTER_BATTERY_ON")
     end
 end
 button_add(nil,nil, 330,35,94,60, callback_BatteryOn)
 --BatteryOff     baterystatus = 0
 function callback_BatteryOff()
     if (batterystatus ==  1) then
-        fs2020_variable_write("L:XMLVAR_Essential_Bus_On", "number", 0)
-        fs2020_event("MASTER_BATTERY_OFF")
+        msfs_variable_write("L:XMLVAR_Essential_Bus_On", "number", 0)
+        msfs_event("MASTER_BATTERY_OFF")
     elseif (batterystatus ==  2) then
-        fs2020_variable_write("L:XMLVAR_Essential_Bus_On", "number", 0)
-        fs2020_event("MASTER_BATTERY_OFF")
-        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,3)
-        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,2)        
-        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",2,3)
+        msfs_variable_write("L:XMLVAR_Essential_Bus_On", "number", 0)
+        msfs_event("MASTER_BATTERY_OFF")
+        msfs_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,3)
+        msfs_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,2)        
+        msfs_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",2,3)
     end
 end
 button_add(nil,nil, 330,97,94,60, callback_BatteryOff)
 --BatteryEmer baterystatus = 2
 function callback_BatteryEMER()
     if (batterystatus ==  0) then 
-        fs2020_variable_write("L:XMLVAR_Essential_Bus_On", "number", 1)
-        fs2020_event("MASTER_BATTERY_ON")
-        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,3)
-        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,2)        
-        fs2020_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",2,3)
+        msfs_variable_write("L:XMLVAR_Essential_Bus_On", "number", 1)
+        msfs_event("MASTER_BATTERY_ON")
+        msfs_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,3)
+        msfs_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",1,2)        
+        msfs_event("ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE",2,3)
        
     end
 end
@@ -144,39 +144,39 @@ button_add(nil,nil, 330,160,94,60, callback_BatteryEMER)
 
 --AVIOn   
 function callback_AVI_On()
-    fs2020_event("AVIONICS_MASTER_1_SET",1)
-    fs2020_event("AVIONICS_MASTER_2_SET",0)
+    msfs_event("AVIONICS_MASTER_1_SET",1)
+    msfs_event("AVIONICS_MASTER_2_SET",0)
 end
 button_add(nil,nil, 501,285,120,60, callback_AVI_On)  
 --AVIOff
 function callback_AVI_Off()
-    fs2020_event("AVIONICS_MASTER_1_SET",0)
-    fs2020_event("AVIONICS_MASTER_2_SET",0)
+    msfs_event("AVIONICS_MASTER_1_SET",0)
+    msfs_event("AVIONICS_MASTER_2_SET",0)
 end
 button_add(nil,nil, 501,335,120,50, callback_AVI_Off)
 --AVIDispatch
 function callback_AVI_Dispatch()
-    fs2020_event("AVIONICS_MASTER_1_SET",0)
-    fs2020_event("AVIONICS_MASTER_2_SET",1)
+    msfs_event("AVIONICS_MASTER_1_SET",0)
+    msfs_event("AVIONICS_MASTER_2_SET",1)
 end
 button_add(nil,nil, 501,385,120,50, callback_AVI_Dispatch)
 -- EmergencyLightsArmed
 function callback_Emerg_Lights_Armed()
-     fs2020_variable_write("L:CJ4_EMER_LIGHT_ARMED","Int",fif(emerlts_state==1, 0, 1)) 
+     msfs_variable_write("L:CJ4_EMER_LIGHT_ARMED","Int",fif(emerlts_state==1, 0, 1)) 
 end
 button_add(nil,nil, 110,250,180,160, callback_Emerg_Lights_Armed)
 function callback_Emerg_Lights_Off()
-        fs2020_variable_write("L:CJ4_EMER_LIGHT_ARMED","Int",fif(emerlts_state==1, 0, 1))
+        msfs_variable_write("L:CJ4_EMER_LIGHT_ARMED","Int",fif(emerlts_state==1, 0, 1))
 end
 button_add(nil,nil, 100,330,240,100, callback_Emerg_Lights_Off)
 --Stand By Display On
 function callback_Standby_Display_On()
-    fs2020_event("K:ELECTRICAL_CIRCUIT_TOGGLE",49, "Int",1)
+    msfs_event("K:ELECTRICAL_CIRCUIT_TOGGLE",49, "Int",1)
 end
 button_add(nil,nil, 321,295,120,50, callback_Standby_Display_On)
 --Stand By Display Off
 function callback_Standby_Display_Off()
-   fs2020_event("K:ELECTRICAL_CIRCUIT_TOGGLE",49, "Int",0)
+   msfs_event("K:ELECTRICAL_CIRCUIT_TOGGLE",49, "Int",0)
 end
 button_add(nil,nil, 321,340,120,50, callback_Standby_Display_Off)
 
@@ -199,7 +199,7 @@ function ss_Gen_Status(Gen1_Status,Gen2_Status)
         visible(img_RGen_On_night, false)
     end
 end
-fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1","Bool",
+msfs_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1","Bool",
                           "GENERAL ENG MASTER ALTERNATOR:2","Bool",ss_Gen_Status)
                           
 --Test if Batt is On         
@@ -224,7 +224,7 @@ function ss_Battery_Status(Battery_Status1,EMER)
         visible(img_Battery_EMER_night, false)
     end 
 end
-fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY","Bool",
+msfs_variable_subscribe("ELECTRICAL MASTER BATTERY","Bool",
                                               "L:XMLVAR_Essential_Bus_On", "number", ss_Battery_Status)
 
 --Test if AVI is On         
@@ -249,7 +249,7 @@ function ss_AVI_Status(AVI_Bus_1,AVI_Bus_2)
        -- AVI_OnOff = false
     end 
 end
-fs2020_variable_subscribe("AVIONICS MASTER SWITCH:1","Bool",
+msfs_variable_subscribe("AVIONICS MASTER SWITCH:1","Bool",
                           "AVIONICS MASTER SWITCH:2","Bool", ss_AVI_Status)
                           
 --Test if Emergency Lights Armed
@@ -263,7 +263,7 @@ function ss_Emerg_Lights_Status(emlights_armed)
         visible(img_Emergency_Armed_night, false)
     end
 end
-fs2020_variable_subscribe("L:CJ4_EMER_LIGHT_ARMED", "Int", ss_Emerg_Lights_Status)
+msfs_variable_subscribe("L:CJ4_EMER_LIGHT_ARMED", "Int", ss_Emerg_Lights_Status)
 
 --Test if Standy By Display ON
 function ss_Standby_Display_Status(standby_on)
@@ -275,4 +275,4 @@ function ss_Standby_Display_Status(standby_on)
         visible(img_StandbyDisplay_On_night, false)
     end
 end   
-fs2020_variable_subscribe("A:Circuit Switch On:49", "Bool", ss_Standby_Display_Status)                             
+msfs_variable_subscribe("A:Circuit Switch On:49", "Bool", ss_Standby_Display_Status)                             

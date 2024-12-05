@@ -71,7 +71,7 @@ local panelLight
 
 --battery 2
 function set_bat2(position)
-    fs2020_event("K:TOGGLE_MASTER_BATTERY", 2)
+    msfs_event("K:TOGGLE_MASTER_BATTERY", 2)
 end
 bat2_sw = switch_add( "tog_off.png" , "tog_on.png", 74,64,68,125, set_bat2)
 
@@ -83,13 +83,13 @@ function  new_bat2_pos(batt2)
         visible(batt2_annun, false)
     end
 end
-fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY:2", "Bool", new_bat2_pos)
+msfs_variable_subscribe("ELECTRICAL MASTER BATTERY:2", "Bool", new_bat2_pos)
 
 batt2_annun = img_add("switch_annunciator.png", 94, 156, 30, 19, "visible:false")
 
 --battery 1
 function set_bat1(position)
-    fs2020_event("K:TOGGLE_MASTER_BATTERY", 1)
+    msfs_event("K:TOGGLE_MASTER_BATTERY", 1)
 end
 
 bat1_sw = switch_add( "tog_off.png" , "tog_on.png", 142,64,68,125, set_bat1)
@@ -105,12 +105,12 @@ function  new_bat1_pos(batt1)
         visible(batt1_annun, false)
     end
 end
-fs2020_variable_subscribe("ELECTRICAL MASTER BATTERY:1", "Bool", new_bat1_pos)
+msfs_variable_subscribe("ELECTRICAL MASTER BATTERY:1", "Bool", new_bat1_pos)
 
 
 --generator 1
 function set_gen1(position)
-    fs2020_event("TOGGLE_ALTERNATOR1")
+    msfs_event("TOGGLE_ALTERNATOR1")
 end
 gen1_sw = switch_add( "tog_off.png" , "tog_on.png", 215,64,68,125, set_gen1)
 gen1_annun = img_add("switch_annunciator.png", 235, 156, 30, 19, "visible:false")
@@ -123,11 +123,11 @@ function new_gen1_pos(gen1)
         visible(gen1_annun, false)
     end
 end
-fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1", "BOOL", new_gen1_pos)
+msfs_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:1", "BOOL", new_gen1_pos)
 
 --generator 2
 function set_gen2(position)
-    fs2020_event("TOGGLE_ALTERNATOR2")
+    msfs_event("TOGGLE_ALTERNATOR2")
 end
 gen2_sw = switch_add( "tog_off.png" , "tog_on.png", 282,64,68,125, set_gen2)
 gen2_annun = img_add("switch_annunciator.png", 301, 156, 30, 19, "visible:false")
@@ -139,11 +139,11 @@ function new_gen2_pos(gen2)
         visible(gen2_annun, false)
     end   
 end
-fs2020_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:2", "BOOL", new_gen2_pos)
+msfs_variable_subscribe("GENERAL ENG MASTER ALTERNATOR:2", "BOOL", new_gen2_pos)
 
 --strobe lights
 function set_strb(position)
-    fs2020_event("STROBES_TOGGLE")
+    msfs_event("STROBES_TOGGLE")
 end
 strb_sw = switch_add( "tog_off.png" , "tog_on.png", 363,64,68,125, set_strb)
 strobe_annun = img_add("switch_annunciator.png", 382, 156, 30, 19, "visible:false")
@@ -156,11 +156,11 @@ function new_strobe_pos(strobe)
         visible(strobe_annun, false)
     end  
 end
-fs2020_variable_subscribe("LIGHT STROBE", "BOOL", new_strobe_pos)
+msfs_variable_subscribe("LIGHT STROBE", "BOOL", new_strobe_pos)
 
 --landing lights
 function set_land(position)
-    fs2020_event("LANDING_LIGHTS_TOGGLE")
+    msfs_event("LANDING_LIGHTS_TOGGLE")
 end
 land_sw = switch_add( "tog_off.png" , "tog_on.png", 432,64,68,125, set_land)
 land_annun = img_add("switch_annunciator.png", 452, 156, 30, 19, "visible:false")
@@ -173,11 +173,11 @@ function new_land_pos(land)
         visible(land_annun, false)
     end  
 end
-fs2020_variable_subscribe("LIGHT LANDING", "BOOL", new_land_pos)
+msfs_variable_subscribe("LIGHT LANDING", "BOOL", new_land_pos)
 
 --ice lights
 function set_nav(position)
-    fs2020_event("TOGGLE_WING_LIGHTS")
+    msfs_event("TOGGLE_WING_LIGHTS")
 end
 ice_sw = switch_add( "tog_off.png" , "tog_on.png", 500,64,68,125, set_nav)
 ice_annun = img_add("switch_annunciator.png", 520, 156, 30, 19, "visible:false")
@@ -190,14 +190,14 @@ function cb_set_ice_light(light)
         visible(ice_annun, false)
     end 
 end 
-fs2020_variable_subscribe("LIGHT WING", "Bool", cb_set_ice_light)
+msfs_variable_subscribe("LIGHT WING", "Bool", cb_set_ice_light)
 
 --oxygen switch
 function set_moxy(position)
     if oxygen == 0 then
-        fs2020_variable_write("L:SF50_oxygen_switch", "Number", 1)
+        msfs_variable_write("L:SF50_oxygen_switch", "Number", 1)
     else
-        fs2020_variable_write("L:SF50_oxygen_switch", "Number", 0)
+        msfs_variable_write("L:SF50_oxygen_switch", "Number", 0)
     end
 end
 
@@ -214,14 +214,14 @@ function setOxy(pos)
     end
 end
 
-fs2020_variable_subscribe("L:SF50_oxygen_switch", "Number", setOxy)
+msfs_variable_subscribe("L:SF50_oxygen_switch", "Number", setOxy)
 
 --fresh air
 function set_bair()
     if fresh_air == 0 then
-        fs2020_variable_write("L:SF50_air_flow_switch", "Number", 1)
+        msfs_variable_write("L:SF50_air_flow_switch", "Number", 1)
     else
-        fs2020_variable_write("L:SF50_air_flow_switch", "Number", 0)
+        msfs_variable_write("L:SF50_air_flow_switch", "Number", 0)
     end    
 end
 
@@ -238,11 +238,11 @@ function setAir(pos)
     fresh_air = pos
 end
 
-fs2020_variable_subscribe("L:SF50_air_flow_switch", "Number", setAir)
+msfs_variable_subscribe("L:SF50_air_flow_switch", "Number", setAir)
 
 --probe
 function set_prob(position)
-    fs2020_event("PITOT_HEAT_TOGGLE", 1)
+    msfs_event("PITOT_HEAT_TOGGLE", 1)
 end
 prob_sw = switch_add( "tog_off.png" , "tog_on.png", 733,64,68,125, set_prob)
 probe_annun = img_add("switch_annunciator.png", 753, 156, 30, 19, "visible:false")
@@ -255,11 +255,11 @@ function new_pitot_pos(pitot)
         visible(probe_annun, false)
     end 
 end
-fs2020_variable_subscribe("PITOT HEAT", "Bool", new_pitot_pos)
+msfs_variable_subscribe("PITOT HEAT", "Bool", new_pitot_pos)
 
 --engine anti-ice
 function set_engai(position)
-    fs2020_event("K:ANTI_ICE_TOGGLE_ENG1")
+    msfs_event("K:ANTI_ICE_TOGGLE_ENG1")
 end
 
 engai_sw = switch_add( "tog_off.png" , "tog_on.png", 842,64,68,125, set_engai)
@@ -274,11 +274,11 @@ function engai_change(ai)
     end 
 end
 
-fs2020_variable_subscribe("A:ENG ANTI ICE:1", "Bool", engai_change)
+msfs_variable_subscribe("A:ENG ANTI ICE:1", "Bool", engai_change)
 
 --wing anti-ice
 function set_wingai(position)
-   fs2020_event("K:TOGGLE_STRUCTURAL_DEICE")
+   msfs_event("K:TOGGLE_STRUCTURAL_DEICE")
 end
 wingai_sw = switch_add( "tog_off.png" , "tog_on.png", 910,64,68,125, set_wingai)
 wing_annun = img_add("switch_annunciator.png", 928, 156, 30, 19, "visible:false")
@@ -292,11 +292,11 @@ function wingai_change(wi)
         visible(wing_annun, false)
     end 
 end
-fs2020_variable_subscribe("A:STRUCTURAL DEICE SWITCH", "Bool", wingai_change)
+msfs_variable_subscribe("A:STRUCTURAL DEICE SWITCH", "Bool", wingai_change)
 
 --windshield deice
 function set_windon(position)
-    fs2020_event("K:WINDSHIELD_DEICE_TOGGLE")
+    msfs_event("K:WINDSHIELD_DEICE_TOGGLE")
 end
 windon_sw = switch_add( "tog_off.png" , "tog_on.png", 993,64,68,125, set_windon)
 ws_annun = img_add("switch_annunciator.png", 1013, 156, 30, 19, "visible:false")
@@ -309,14 +309,14 @@ function windon_change(wo)
         visible(ws_annun, false)
     end 
 end
-fs2020_variable_subscribe("A:WINDSHIELD DEICE SWITCH", "Bool", windon_change)
+msfs_variable_subscribe("A:WINDSHIELD DEICE SWITCH", "Bool", windon_change)
 
 --windshield high
 function set_windhi(position)
     if windhi == 1 then
-        fs2020_variable_write("L:SF50_deice_high", "Number", 0)
+        msfs_variable_write("L:SF50_deice_high", "Number", 0)
     else
-        fs2020_variable_write("L:SF50_deice_high", "Number", 1)
+        msfs_variable_write("L:SF50_deice_high", "Number", 1)
     end
 end
 windhi_sw = switch_add( "tog_off.png" , "tog_on.png", 1059,64,68,125, set_windhi)
@@ -331,7 +331,7 @@ function windhi_set(pos)
         visible(windhi_annun, false)
     end 
 end
-fs2020_variable_subscribe("L:SF50_deice_high", "Number", windhi_set)
+msfs_variable_subscribe("L:SF50_deice_high", "Number", windhi_set)
 
 --windshield_max
 function release()
@@ -341,9 +341,9 @@ end
 
 function set_windmax(position)
     if windmax == 1 then
-        fs2020_variable_write("L:SF50_deice_max", "Number", 0)
+        msfs_variable_write("L:SF50_deice_max", "Number", 0)
     else
-        fs2020_variable_write("L:SF50_deice_max", "Number", 1)
+        msfs_variable_write("L:SF50_deice_max", "Number", 1)
     end
     sound_play(click_snd)
 end
@@ -352,7 +352,7 @@ windmax_sw = button_add( "max_button_norm.png", "max_button_press.png" , 1136,64
 function windmax_set(pos)
     windmax = pos
 end
-fs2020_variable_subscribe("L:SF50_deice_max", "Number", windmax_set)
+msfs_variable_subscribe("L:SF50_deice_max", "Number", windmax_set)
 
 
 --Light Potentiometer
@@ -362,28 +362,28 @@ function set_panel_lights(direction)
             newVal = lightKnob + 5           
             if newVal <=100 then
                 if lightKnob == 0 then
-                    fs2020_variable_write("A:LIGHT PANEL:1", "Number", 1)
+                    msfs_variable_write("A:LIGHT PANEL:1", "Number", 1)
                     sound_volume(dial_snd, 300)
                     sound_play(dial_snd)
                     sound_volume(dial_snd, 100)
                 end
-                fs2020_variable_write("L:LIGHTING_PANEL_1", "Number", newVal)
-                fs2020_event("K:LIGHT_POTENTIOMETER_SET", 3, newVal)
-                fs2020_variable_write("L:LIGHTING_PANEL_1", "Number", newVal)
+                msfs_variable_write("L:LIGHTING_PANEL_1", "Number", newVal)
+                msfs_event("K:LIGHT_POTENTIOMETER_SET", 3, newVal)
+                msfs_variable_write("L:LIGHTING_PANEL_1", "Number", newVal)
             end
             
         elseif direction == -1 then
             newVal = lightKnob - 5
             if newVal >=0 then
                 if lightKnob == 5 then
-                    fs2020_variable_write("A:LIGHT PANEL:1", "Number", 0)
+                    msfs_variable_write("A:LIGHT PANEL:1", "Number", 0)
                     sound_volume(dial_snd, 300)
                     sound_play(dial_snd)
                     sound_volume(dial_snd, 100)
                 end
-                fs2020_variable_write("L:LIGHTING_PANEL_1", "Number", newVal)
-                fs2020_event("K:LIGHT_POTENTIOMETER_SET", 3, newVal)
-                fs2020_variable_write("L:LIGHTING_PANEL_1", "Number", newVal)
+                msfs_variable_write("L:LIGHTING_PANEL_1", "Number", newVal)
+                msfs_event("K:LIGHT_POTENTIOMETER_SET", 3, newVal)
+                msfs_variable_write("L:LIGHTING_PANEL_1", "Number", newVal)
             end
         end
         if lightKnob >0 and lightKnob <100 then
@@ -398,9 +398,9 @@ light_pot = dial_add( "light_knob.png", 1234,87,82,82, set_panel_lights)
 --checklist
 function checklist_dial(direction)
     if direction == 1 then
-        fs2020_event("H:checklist_scroll_down")
+        msfs_event("H:checklist_scroll_down")
     else
-        fs2020_event("H:checklist_scroll_up")
+        msfs_event("H:checklist_scroll_up")
     end  
     sound_play(dial_snd)
     
@@ -410,7 +410,7 @@ function release()
     sound_play(release_snd)
 end
 function checklist_press()
-    fs2020_event("H:checklist_checklist_select")
+    msfs_event("H:checklist_checklist_select")
     sound_play(press_snd)
 end
 button_add(nil, nil, 1355, 110,40, 40, checklist_press, release)
@@ -431,7 +431,7 @@ function lightPot(val, panel, pot, power)
     end
 end
 
-fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+msfs_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
                                                 "A:LIGHT PANEL:1", "Bool", 
                                                 "A:LIGHT POTENTIOMETER:3", "Percent", 
                                                 "A:ELECTRICAL MASTER BATTERY", "Bool",
@@ -440,14 +440,14 @@ fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
 -- BONUS Button - remove static elements and coverings and put on headphones
 function removeCovers()
     sound_play(click_snd)
-    fs2020_variable_write("L:sf50_vams_static_storage_cover", "Enum", 1)
-    fs2020_variable_write("L:sf50_vams_static_chocks", "Number", 1)
-    fs2020_variable_write("L:sf50_vams_static_covers", "Number", 1)
-    fs2020_variable_write("L:sf50_vams_static_headphones", "Number", 0)
-    fs2020_variable_write("L:sf50_vams_static_storage_cover", "Enum", 0)
-    fs2020_variable_write("L:sf50_vams_static_chocks", "Number", 0)
-    fs2020_variable_write("L:sf50_vams_static_covers", "Number", 0)
-    fs2020_variable_write("L:sf50_vams_static_headphones", "Number", 1)
+    msfs_variable_write("L:sf50_vams_static_storage_cover", "Enum", 1)
+    msfs_variable_write("L:sf50_vams_static_chocks", "Number", 1)
+    msfs_variable_write("L:sf50_vams_static_covers", "Number", 1)
+    msfs_variable_write("L:sf50_vams_static_headphones", "Number", 0)
+    msfs_variable_write("L:sf50_vams_static_storage_cover", "Enum", 0)
+    msfs_variable_write("L:sf50_vams_static_chocks", "Number", 0)
+    msfs_variable_write("L:sf50_vams_static_covers", "Number", 0)
+    msfs_variable_write("L:sf50_vams_static_headphones", "Number", 1)
 end
 
 button_add(nil, nil, 23,  111, 40, 40, removeCovers)

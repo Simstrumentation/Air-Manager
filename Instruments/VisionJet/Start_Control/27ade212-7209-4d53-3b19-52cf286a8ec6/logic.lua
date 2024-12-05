@@ -58,13 +58,13 @@ end
 function start_push_pressed()
     --MSFS
         if arm_pos == 1 then
-           fs2020_event("K:SET_FUEL_VALVE_ENG1", 1)
-           fs2020_event("K:ELECT_FUEL_PUMP1_SET", 1)        
-           fs2020_event("K:STARTER1_SET", 1) 
+           msfs_event("K:SET_FUEL_VALVE_ENG1", 1)
+           msfs_event("K:ELECT_FUEL_PUMP1_SET", 1)        
+           msfs_event("K:STARTER1_SET", 1) 
         else
-            fs2020_event("K:ELECT_FUEL_PUMP1_SET", 0)
-           fs2020_event("K:SET_FUEL_VALVE_ENG1", 0)
-           fs2020_event("K:STARTER1_SET", 0) 
+            msfs_event("K:ELECT_FUEL_PUMP1_SET", 0)
+           msfs_event("K:SET_FUEL_VALVE_ENG1", 0)
+           msfs_event("K:STARTER1_SET", 0) 
         end
         sound_play(press_snd)
 end
@@ -74,11 +74,11 @@ start_label = img_add("start_btn_label.png", 35,51,227,183)
 
 function ignition()
     if arm_pos == 0then
-        fs2020_variable_write("L:SF50_knob_stop_run", "Enum", 2)    --does nothing. temporary workaround for AM bug
-        fs2020_variable_write("L:SF50_knob_stop_run", "Enum", 1)
+        msfs_variable_write("L:SF50_knob_stop_run", "Enum", 2)    --does nothing. temporary workaround for AM bug
+        msfs_variable_write("L:SF50_knob_stop_run", "Enum", 1)
     else
-        fs2020_variable_write("L:SF50_knob_stop_run", "Enum", 2)    --does nothing. temporary workaround for AM bug
-        fs2020_variable_write("L:SF50_knob_stop_run", "Enum", 0)
+        msfs_variable_write("L:SF50_knob_stop_run", "Enum", 2)    --does nothing. temporary workaround for AM bug
+        msfs_variable_write("L:SF50_knob_stop_run", "Enum", 0)
     end
 end
 
@@ -97,7 +97,7 @@ function set_start_switch_fs2020(position)
     end
 end
 
-fs2020_variable_subscribe("L:SF50_knob_stop_run", "Enum", set_start_switch_fs2020)
+msfs_variable_subscribe("L:SF50_knob_stop_run", "Enum", set_start_switch_fs2020)
 
 backlight_group = group_add(bg_labels, start_label, start_knob_backlight)
 opacity(backlight_group, 0)
@@ -113,7 +113,7 @@ function lightPot(val, panel, pot, power)
     end
 end
 
-fs2020_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
+msfs_variable_subscribe("L:LIGHTING_PANEL_1", "Number",
                                                 "A:LIGHT PANEL:1", "Bool", 
                                                 "A:LIGHT POTENTIOMETER:3", "Percent", 
                                                 "A:ELECTRICAL MASTER BATTERY", "Bool",

@@ -65,7 +65,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_light_copilot_dimmer_indicator, ((value/2)+0.5), "LOG", 0.04)                
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                            "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -79,24 +79,24 @@ function ss_Lights_Flood(value)
     rotate (img_light_flood_dimmer_indicator, (value*80),"LOG", 0.1)
     switch_set_position(sw_light_flood, (value * 10)) 
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:4", "Number", ss_Lights_Flood)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:4", "Number", ss_Lights_Flood)
 
 function callback_light_flood(position, direction)
     sound_play(snd_dial)
-    fs2020_variable_write("A:LIGHT CABIN:3", "BOOL", true)
-    fs2020_event("LIGHT_POTENTIOMETER_4_SET",var_cap((var_round((position + direction), 0) * 10),0,100))
-    --fs2020_variable_write("L:LIGHTING_Knob_Master", "Int", var_cap((var_round((position + direction), 0) * 10),0,100))
+    msfs_variable_write("A:LIGHT CABIN:3", "BOOL", true)
+    msfs_event("LIGHT_POTENTIOMETER_4_SET",var_cap((var_round((position + direction), 0) * 10),0,100))
+    --msfs_variable_write("L:LIGHTING_Knob_Master", "Int", var_cap((var_round((position + direction), 0) * 10),0,100))
 end
 sw_light_flood = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 158, 13, 120, 120, callback_light_flood)
 function callback_light_flood_click()
     position = switch_get_position(sw_light_flood)
     if position <= 0 then
-        fs2020_variable_write("A:LIGHT CABIN:3", "BOOL", true)
-        fs2020_event("LIGHT_POTENTIOMETER_4_SET",100)
+        msfs_variable_write("A:LIGHT CABIN:3", "BOOL", true)
+        msfs_event("LIGHT_POTENTIOMETER_4_SET",100)
         sound_play(snd_click)
     else 
-        fs2020_variable_write("A:LIGHT CABIN:3", "BOOL", true)
-        fs2020_event("LIGHT_POTENTIOMETER_4_SET",0)
+        msfs_variable_write("A:LIGHT CABIN:3", "BOOL", true)
+        msfs_event("LIGHT_POTENTIOMETER_4_SET",0)
         sound_play(snd_click)
      end
 end
@@ -109,23 +109,23 @@ function ss_Lights_Pilot(value)
     rotate (img_light_pilot_dimmer_indicator, (value*80),"LOG", 0.1)
     switch_set_position(sw_light_pilot, (value * 10)) 
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:5", "Number", ss_Lights_Pilot)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:5", "Number", ss_Lights_Pilot)
 
 function callback_light_pilot(position, direction)
     sound_play(snd_dial)
-    fs2020_variable_write("A:LIGHT CABIN:1", "BOOL", true)
-    fs2020_event("LIGHT_POTENTIOMETER_5_SET",var_cap((var_round((position + direction), 0) * 10),0,100))
+    msfs_variable_write("A:LIGHT CABIN:1", "BOOL", true)
+    msfs_event("LIGHT_POTENTIOMETER_5_SET",var_cap((var_round((position + direction), 0) * 10),0,100))
 end
 sw_light_pilot = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 18, 13, 120, 120, callback_light_pilot)
 function callback_light_pilot_click()
     position = switch_get_position(sw_light_pilot)
     if position <= 0 then
-        fs2020_variable_write("A:LIGHT CABIN:1", "BOOL", true)
-        fs2020_event("LIGHT_POTENTIOMETER_5_SET",100)
+        msfs_variable_write("A:LIGHT CABIN:1", "BOOL", true)
+        msfs_event("LIGHT_POTENTIOMETER_5_SET",100)
         sound_play(snd_click)
     else 
-        fs2020_variable_write("A:LIGHT CABIN:1", "BOOL", true)
-        fs2020_event("LIGHT_POTENTIOMETER_5_SET",0)
+        msfs_variable_write("A:LIGHT CABIN:1", "BOOL", true)
+        msfs_event("LIGHT_POTENTIOMETER_5_SET",0)
         sound_play(snd_click)
      end
 end
@@ -137,23 +137,23 @@ function ss_Lights_CoPilot(value)
     rotate (img_light_copilot_dimmer_indicator, (value*80),"LOG", 0.1)
     switch_set_position(sw_light_copilot, (value * 10)) 
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:6", "Number", ss_Lights_CoPilot)
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:6", "Number", ss_Lights_CoPilot)
 
 function callback_light_copilot(position, direction)
     sound_play(snd_dial)
-    fs2020_variable_write("A:LIGHT CABIN:2", "BOOL", true)
-    fs2020_event("LIGHT_POTENTIOMETER_6_SET",var_cap((var_round((position + direction), 0) * 10),0,100))
+    msfs_variable_write("A:LIGHT CABIN:2", "BOOL", true)
+    msfs_event("LIGHT_POTENTIOMETER_6_SET",var_cap((var_round((position + direction), 0) * 10),0,100))
 end
 sw_light_copilot = switch_add(nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, 298, 13, 120, 120, callback_light_copilot)
 function callback_light_copilot_click()
     position = switch_get_position(sw_light_copilot)
     if position <= 0 then
-        fs2020_variable_write("A:LIGHT CABIN:2", "BOOL", true)
-        fs2020_event("LIGHT_POTENTIOMETER_6_SET",100)
+        msfs_variable_write("A:LIGHT CABIN:2", "BOOL", true)
+        msfs_event("LIGHT_POTENTIOMETER_6_SET",100)
         sound_play(snd_click)
     else 
-        fs2020_variable_write("A:LIGHT CABIN:2", "BOOL", true)
-        fs2020_event("LIGHT_POTENTIOMETER_6_SET",0)
+        msfs_variable_write("A:LIGHT CABIN:2", "BOOL", true)
+        msfs_event("LIGHT_POTENTIOMETER_6_SET",0)
         sound_play(snd_click)
      end
 end

@@ -37,7 +37,7 @@ function ss_backlighting(value, pwr)
         opacity(img_backlight_knob_AVI, (value), "LOG", 0.04)           
     end
 end
-fs2020_variable_subscribe("A:Light Potentiometer:4", "Number",
+msfs_variable_subscribe("A:Light Potentiometer:4", "Number",
                                               "A:CIRCUIT GENERAL PANEL ON","Bool", ss_backlighting)
                                               
 --Day Graphics   
@@ -62,7 +62,7 @@ si_variable_subscribe("sivar_ambient_darkness", "FLOAT", ss_ambient_darkness)
 
 --------------------------------------------------------------------------------------------
 
-fs2020_variable_subscribe("L:ASCRJ_IRS1_KNOB", "Number",
+msfs_variable_subscribe("L:ASCRJ_IRS1_KNOB", "Number",
         function (position)
                 switch_set_position(sw_DSPL_FAN, (var_round(position,0)))             
                 rotate(img_knob_DSPLY, (position*52)-52,"LOG", 0.1)
@@ -71,9 +71,9 @@ fs2020_variable_subscribe("L:ASCRJ_IRS1_KNOB", "Number",
         end)           
 
 sw_DSPL_FAN = switch_add(nil,nil,nil, 58,28,65,65, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_IRS1_KNOB","Number", pos+dir) end) 
+        function (pos,dir) msfs_variable_write("L:ASCRJ_IRS1_KNOB","Number", pos+dir) end) 
         
-fs2020_variable_subscribe("L:ASCRJ_IRS2_KNOB", "Number",
+msfs_variable_subscribe("L:ASCRJ_IRS2_KNOB", "Number",
         function (position)
                 switch_set_position(sw_AVI_FAN, (var_round(position,0)))             
                 rotate(img_knob_AVI, (position*52)-52,"LOG", 0.1)
@@ -82,4 +82,4 @@ fs2020_variable_subscribe("L:ASCRJ_IRS2_KNOB", "Number",
         end)           
 
 sw_AVI_FAN = switch_add(nil,nil,nil, 237,28,65,65, "CIRCULAIR",
-        function (pos,dir) fs2020_variable_write("L:ASCRJ_IRS2_KNOB","Number", pos+dir) end) 
+        function (pos,dir) msfs_variable_write("L:ASCRJ_IRS2_KNOB","Number", pos+dir) end) 

@@ -56,7 +56,7 @@ function ss_backlighting(value, panellight, power, extpower, busvolts)
         opacity(img_fuel_knob_indicator_backlight, ((value/2)+0.5), "LOG", 0.04)
     end
 end
-fs2020_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
+msfs_variable_subscribe("A:LIGHT POTENTIOMETER:3", "Number",
                           "LIGHT PANEL","Bool",
                           "ELECTRICAL MASTER BATTERY","Bool",
                           "EXTERNAL POWER ON:1", "Bool",
@@ -83,21 +83,21 @@ function ss_fuel_transfer(Lside,Rside)
         rotate (img_fuel_knob_indicator_backlight, -90, "LOG", 0.1)
     end
 end 
-fs2020_variable_subscribe("CIRCUIT SWITCH ON:45", "Bool", 
+msfs_variable_subscribe("CIRCUIT SWITCH ON:45", "Bool", 
                                               "CIRCUIT SWITCH ON:46", "Bool", ss_fuel_transfer)
 
 function callback_fuel_control(position, direction)
     if direction == 1 then           -- turned dial to the right  
         if position == 1 then    -- turn from pos 1 to pos 2		
-		fs2020_event("FUEL_TRANSFER_CUSTOM_INDEX_TOGGLE",1) 
+		msfs_event("FUEL_TRANSFER_CUSTOM_INDEX_TOGGLE",1) 
 	elseif position == 0 then    -- turn from pos 0 to pos 1
-		fs2020_event("FUEL_TRANSFER_CUSTOM_INDEX_TOGGLE",1)
+		msfs_event("FUEL_TRANSFER_CUSTOM_INDEX_TOGGLE",1)
 	end
     else    -- turned dial to the left  		   
         if position == 2 then
-		fs2020_event("FUEL_TRANSFER_CUSTOM_INDEX_TOGGLE",2)
+		msfs_event("FUEL_TRANSFER_CUSTOM_INDEX_TOGGLE",2)
         elseif position == 1 then
-		fs2020_event("FUEL_TRANSFER_CUSTOM_INDEX_TOGGLE",2)
+		msfs_event("FUEL_TRANSFER_CUSTOM_INDEX_TOGGLE",2)
 	end
    end
 end
