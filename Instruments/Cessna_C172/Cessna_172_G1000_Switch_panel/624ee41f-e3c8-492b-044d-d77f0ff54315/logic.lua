@@ -101,13 +101,13 @@ msfs_variable_subscribe("L:XMLVAR_BatterySTBY_SwitchState", "Enum", cb_test_stat
 --standby battery
 
 function cb_on()
-       msfs_event("B:ELECTRICAL_BATTERY_STBY_2", 0)
+       fs2024_event("B:ELECTRICAL_BATTERY_STBY_2", 0)
        fs2020_event("BATTERY2_SET", 1)
 end
 btn_stdb_bat = button_add(nil, nil, 129, 75,  60, 60, cb_on)
 
 function cb_off()
-       msfs_event("B:ELECTRICAL_BATTERY_STBY_2", 1)
+       fs2024_event("B:ELECTRICAL_BATTERY_STBY_2", 1)
        fs2020_event("BATTERY2_SET", 0)
 end
 btn_off = button_add(nil, nil, 79, 105, 60, 60, cb_off)        
@@ -245,7 +245,7 @@ msfs_variable_subscribe("PITOT HEAT SWITCH:1", "Number", new_pitot_pos)
 -- INOP for 2020
 
 function cb_power(position)
-    --I switches stay in sync, but no real effect in sim
+
 --    sound_play(snd_inop)
     if position == 0 then
         position = 1
