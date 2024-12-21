@@ -7,11 +7,12 @@
 <h1 align="center">SIMSTRUMENTATION
 </h1><h2 align="center">EXTERMINATE THE MICE FROM YOUR COCKPIT!
 </h2>
->[!IMPORTANT]  
+>[!IMPORTANT]
 >December 2024 Update
-<h3 align="center">SimInnovations is in the process of bringing all of our Simstrumentation GitHub instruments into the AirManager store for (free) easy downloading in the next release of AirManager (AM5). They will be compatible with MSFS2020 and 2024 natively. Estimated release date is February 2025. In the mean time, several others have already git forked our repo and converted some instruments for MSFS2024, you'll find links to them in the chat on discord, or by looking at the forks of this repo.
-</h3>
----
+<h5 align="center">SimInnovations is in the process of bringing all of our Simstrumentation GitHub instruments into the AirManager store for (free) easy downloading in the next release of AirManager (AM5). They will be compatible with MSFS2020 and 2024 natively. Estimated release date is February 2025. In the mean time, several others have already git forked our repo and converted some instruments for MSFS2024, you'll find links to them in the chat on discord, or by looking at the forks of this repo.
+</h5>
+
+
 <h3 align="center">Flying Microsoft Flight Simulator Mouse-Free using touch screen instruments built on Air Manager
 </h3>
 <h3 align="center">Join Discord for information and help https://discord.gg/6xkCXe5pMn
