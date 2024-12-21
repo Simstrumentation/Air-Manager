@@ -9,6 +9,9 @@
 </h2>
 > [!IMPORTANT]
 > December 2024 Update
+> **Note**
+>
+> This is a note
 <h5 align="center">SimInnovations is in the process of bringing all of our Simstrumentation GitHub instruments into the AirManager store for (free) easy downloading in the next release of AirManager (AM5). They will be compatible with MSFS2020 and 2024 natively. Estimated release date is February 2025. In the mean time, several others have already git forked our repo and converted some instruments for MSFS2024, you'll find links to them in the chat on discord, or by looking at the forks of this repo.
 </h5>
 
