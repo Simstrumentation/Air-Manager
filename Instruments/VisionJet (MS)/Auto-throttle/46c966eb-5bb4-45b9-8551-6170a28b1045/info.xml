@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (MS)</aircraft><type>Auto-Throttle</type><uuid>46c966eb-5bb4-45b9-8551-6170a28b1045</uuid><author>Simstrumentation</author><description>*********************** CIRRUS SF50 VISION JET AUTO THROTTLE CONTROL *********************
+******************************************************************************************
+   Made by SIMSTRUMENTATION in collaboration with Russ Barlow for FlightFX VisionJet, updated for MS 2024 VisionJet by Vandalay1125
+
+Auto throttle for the Vision Jet by MS/Asobo
+
+Version info:
+- **v1.0** - 2025-1-2
+    - Original release
+
+NOTES: 
+    -Contains user-selectable properties for:
+        - Sounds
+        - using Knobster for the speed thumb wheel
+        - show / hide label for TOGA
+            * Hidden TOGA button was added to the nub to the left of the AT 
+               button for those who don't have a button available on their
+               throttle quadrant. By default the label is shown. If you wish to hide
+               it since it isn't in the real aircraft, select this option
+
+
+
+- Will only work with the MS Vision Jet. Compatibility with other aircraft not 
+  supported or guaranteed. 
+  
+  
+
+KNOWN ISSUES:
+- None
+
+ATTRIBUTION:
+Original code, graphics and sound by Simstrumentation. 
+Sharing or re-use of any code or assets is not permitted without credit to the original authors.
+
+Font : Mil Spec 33558
+http://www.fontsaddict.com/font/MilSpec33558.html</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>false</compatibleFS2020><compatibleFS2024>true</compatibleFS2024><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>865</prefWidth><prefHeight>826</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

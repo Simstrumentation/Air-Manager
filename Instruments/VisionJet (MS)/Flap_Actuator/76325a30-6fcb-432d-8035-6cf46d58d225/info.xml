@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (MS)</aircraft><type>Flap Actuator</type><uuid>76325a30-6fcb-432d-8035-6cf46d58d225</uuid><author>Russ Barlow &amp; Simstrumentation</author><description>****************** CIRRUS SF50 VISION JET FLAP ACTUATOR **************************
+******************************************************************************************
+   Made by SIMSTRUMENTATION in collaboration with Russ Barlow for FlightFX VisionJet, updated for MS 2024 VisionJet by Vandalay1125
+     GitHub: https://simstrumentation.com
+
+Flap actuator for the Vision Jet by MS/Asobo
+
+Version info:
+
+- **v1.0** - 2025-1-2
+    - Original release
+
+NOTES: 
+- Made for the MS Vision Jet
+- Should function in most MSFS aircraft, but compatibility not guaranteed. 
+- Backlighting will only work in the MS Vision Jet
+
+
+KNOWN ISSUES:
+- None
+
+ATTRIBUTION:
+Based on code and graphics from Russ Barlow. Used with permission. 
+
+Sharing or re-use of any code or assets is not permitted without credit to the original authors.</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>true</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><compatibleFS2024>true</compatibleFS2024><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>673</prefWidth><prefHeight>604</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
