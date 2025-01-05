@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (MS)</aircraft><type>Landing Gear Panel</type><uuid>f6cb81a6-c39a-43a2-8c82-ec371dd4e428</uuid><author>Simstrumentation &amp; Russ Barlow</author><description>********************* CIRRUS SF50 VISION JET LANDING GEAR ************************
+******************************************************************************************
+    Made by SIMSTRUMENTATION in collaboration with Russ Barlow for FlightFX VisionJet, updated for MS 2024 VisionJet by Vandalay1125
+    GitHub: https://simstrumentation.com
+
+Landing Gear panel for the Vision Jet by MS/Asobo
+
+Version info:
+- **v1.0** - 2025-1-2
+    - Updated for MS verrsion of SF50 in FS2024
+
+
+NOTES: 
+- Compatible with the MS SF50 Vision Jet. Compatibility with other aircraft possible but not guaranteed.
+
+KNOWN ISSUES:
+- None
+
+ATTRIBUTION:
+Based on code and graphics from Russ Barlow. Used with permission. 
+
+Sharing or re-use of any code or assets is not permitted without credit to the original authors.
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><compatibleFS2024>true</compatibleFS2024><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>219</prefWidth><prefHeight>1131</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

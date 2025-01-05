@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (MS)</aircraft><type>Switch Panel </type><uuid>dce7c2ed-ab7a-4dda-3b88-ea948e7d5e1f</uuid><author>Simstrumentation &amp; Russ Barlow</author><description>************************ CIRRUS SF50 VISION JET SWITCH PANEL *****************************
+******************************************************************************************
+    Made by SIMSTRUMENTATION in collaboration with Russ Barlow for FlightFX VisionJet, updated for MS 2024 VisionJet by Vandalay1125
+    GitHub: https://simstrumentation.com
+
+Master switch panel for the Vision Jet by Microsoft/Asobo
+
+Version info:
+- **v1.0** - 2024-12-31
+    - Original release
+
+
+NOTES: 
+- Panel knob will adjust backlighting of this panel and all other Vision Jet - specific
+   instruments in this collection
+- Since the GTC580 and G3000 bezels are NOT specific to this plane, but rather GENERIC
+    instruments, the panel dimmer will not affect their backlighting brightness.
+
+- Playing or muting of sounds can be adjusted via instrument user properties
+
+- Will only work with the MS Vision Jet
+
+KNOWN ISSUES:
+- Checklist and max deice inop in 2024
+
+ATTRIBUTION:
+-Based on code and graphics from Russ Barlow. Used with permission. 
+-Sharing or re-use of any code or assets is not permitted without credit to the original authors.
+******************************************************************************************</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>false</compatibleFS2020><compatibleFS2024>true</compatibleFS2024><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>1497</prefWidth><prefHeight>300</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>

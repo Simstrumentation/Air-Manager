@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cirrus SF50 Vision Jet (MS)</aircraft><type>Start Controls</type><uuid>33e7e871-e94e-4cb5-3f7c-32122b595435</uuid><author>SIMSTRUMENTATION &amp; Russ Barlow</author><description>************************ CIRRUS SF50 VISION JET MS START CONTROL *****************************
+******************************************************************************************
+    Made by SIMSTRUMENTATION in collaboration with Russ Barlow for FlightFX VisionJet, updated for MS 2024 VisionJet by Vandalay1125
+    GitHub: https://simstrumentation.com
+
+Start control for the Vision Jet by MS/Asobo
+
+Version info:
+- **v1.0** - 2025-1-2
+    - Updated for MS verrsion of SF50 in FS2024
+
+NOTES: 
+- Will only work with the MS Vision Jet
+
+KNOWN ISSUES:
+- None
+
+ATTRIBUTION:
+-Based on code from Russ Barlow. Used with permission. 
+-Sharing or re-use of any code or assets is not permitted without credit to the original authors.
+</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>false</compatibleFS2020><compatibleFS2024>true</compatibleFS2024><version>100</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>364</prefWidth><prefHeight>611</prefHeight><source>PERSONAL</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>RASPBERRY_PI</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>ESP32</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
