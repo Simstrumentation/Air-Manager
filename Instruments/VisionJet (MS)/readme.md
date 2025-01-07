@@ -22,12 +22,12 @@ There were quite a few changes from the FFX version on FS2020 to this new MS ver
 Instrument | Current Version | Documentation | Preview
 -------------|-----------------|--------------|--------------
 Auto Throttle Panel | [12-31-2024 v1.0](Auto-throttle/Cirrus%20SF50%20Vision%20Jet%20(MS)%20-%20Auto-Throttle.siff) | [files](Auto-throttle) | <p align="center"><img src="Auto-throttle\46c966eb-5bb4-45b9-8551-6170a28b1045\preview.png" width="100" /> </p>
-Environmental Control System | [12-31-2024 v1.0](ECS\Cirrus%20SF50%20Vision%20Jet%20%28MS%29%20-%20Environmental%20Control%20System.siff) | [files](ECS) | <p align="center"><img src="ECS\d9b02e5e-c13c-405c-27dd-ae4fa1a78d32\preview.png" width="100" /> </p>
-Flap Actuator | [12-31-2024 v1.0](Flap_Actuator\Cirrus%20SF50%20Vision%20Jet%20%28MS%29%20-%20Flap%20Actuator.siff) | [files](Flap_Actuator) | <p align="center"><img src="Flap_Actuator\76325a30-6fcb-432d-8035-6cf46d58d225\preview.png" width="100" /> </p>
-Fuel Selector | [12-31-2024 v1.0](Fuel_Selector\Cirrus%20SF50%20Vision%20Jet%20%28MS%29%20-%20Fuel%20Selector.siff) | [files](Fuel_Selector) | <p align="center"><img src="Fuel_Selector\fc5ea007-ecb7-43c0-2e20-b5118286c903\preview.png" width="100" /> </p>
-Landing Gear | [12-31-2024 v1.0](Landing_Gear\Cirrus%20SF50%20Vision%20Jet%20%28MS%29%20-%20Landing%20Gear%20Panel.siff) | [files](Landing_Gear) | <p align="center"><img src="Landing_Gear/f6cb81a6-c39a-43a2-8c82-ec371dd4e428/preview.png" width="100" /> </p>
-Start Control | [12-31-2024 v1.0](Start_Control\Cirrus%20SF50%20Vision%20Jet%20%28MS%29%20-%20Start%20Controls.siff) | [files](Start_Control) | <p align="center"><img src="Start_Control\33e7e871-e94e-4cb5-3f7c-32122b595435\preview.png" width="100" /> </p>
-Switch Panel | [12-31-2024 v1.0](Switch_Panel\Cirrus%20SF50%20Vision%20Jet%20%28MS%29%20-%20Switch%20Panel.siff) | [files](Switch_Panel) | <p align="center"><img src="Switch_Panel/dce7c2ed-ab7a-4dda-3b88-ea948e7d5e1f/preview.png" width="100" /> </p>
+Environmental Control System | [12-31-2024 v1.0](ECS/Cirrus%20SF50%20Vision%20Jet%20(MS)%20-%20Evironmental%20Control%20System.siff) | [files](ECS) | <p align="center"><img src="ECS\d9b02e5e-c13c-405c-27dd-ae4fa1a78d32\preview.png" width="100" /> </p>
+Flap Actuator | [12-31-2024 v1.0](Flap_Actuator/Cirrus%20SF50%20Vision%20Jet%20(MS)%20-%20Flap%20Actuator.siff) | [files](Flap_Actuator) | <p align="center"><img src="Flap_Actuator\76325a30-6fcb-432d-8035-6cf46d58d225\preview.png" width="100" /> </p>
+Fuel Selector | [12-31-2024 v1.0](Fuel_Selector/Cirrus%20SF50%20Vision%20Jet%20(MS)%20-%20Fuel%20Selector.siff) | [files](Fuel_Selector) | <p align="center"><img src="Fuel_Selector\fc5ea007-ecb7-43c0-2e20-b5118286c903\preview.png" width="100" /> </p>
+Landing Gear | [12-31-2024 v1.0](Landing_Gear/Cirrus%20SF50%20Vision%20Jet%20(MS)%20-%20Landing%20Gear%20Panel.siff) | [files](Landing_Gear) | <p align="center"><img src="Landing_Gear/f6cb81a6-c39a-43a2-8c82-ec371dd4e428/preview.png" width="100" /> </p>
+Start Control | [12-31-2024 v1.0](Start_Control/Cirrus%20SF50%20Vision%20Jet%20(MS)%20-%20Start%20Controls.siff) | [files](Start_Control) | <p align="center"><img src="Start_Control\33e7e871-e94e-4cb5-3f7c-32122b595435\preview.png" width="100" /> </p>
+Switch Panel | [12-31-2024 v1.0](Switch_Panel/Cirrus%20SF50%20Vision%20Jet%20(MS)%20-%20Switch%20Panel%20.siff) | [files](Switch_Panel) | <p align="center"><img src="Switch_Panel/dce7c2ed-ab7a-4dda-3b88-ea948e7d5e1f/preview.png" width="100" /> </p>
 
 ## Extra instruments for this plane
 
