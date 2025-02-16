@@ -6,7 +6,7 @@
 <img src="https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/f8f83fd0-af45-4991-38cc-4eabc21e872d/preview.PNG?raw=true" width="200">
 </p>
 
-[Download Ambient Light Dimmer Latest Version v2.2  12-18-2022](https://github.com/Simstrumentation/Air-Manager/blob/main/Ambient_Light_Dimmer/Generic-Ambient_Light_Dimmer.siff?raw=true)
+[Download Ambient Light Dimmer Latest Version v2.2  12-18-2022](https://github.com/Simstrumentation/Air-Manager/raw/refs/heads/main/Ambient_Light_Dimmer/Generic-Ambient_Light_Dimmer.siff)
 
 
 The ALD talks to the other Air Manager panels and dims the panels according to the dial, by pressing day or night and now evaluates the ambient light value based on time of day and more!
