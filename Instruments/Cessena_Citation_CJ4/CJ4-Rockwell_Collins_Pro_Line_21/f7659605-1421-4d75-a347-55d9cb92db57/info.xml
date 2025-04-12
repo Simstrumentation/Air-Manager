@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><pluginstrument><aircraft>Cessna Citation CJ4</aircraft><type>Rockwel Collins Pro Line 21 FMS MCDU Overlay</type><uuid>f7659605-1421-4d75-a347-55d9cb92db57</uuid><author>SIMSTRUMENTATION</author><description>Rockwel Collins Pro Line 21 FMS / MCDU for the Cessna Citation CJ4 
-See here for contact info and notes: http://simstrumentation.com
-
-Ambient back lighting is only supported while using the SIMSTRUMENTATON Ambient Light Dimmer control.
-</description><compatibleFSX>false</compatibleFSX><compatibleP3D>false</compatibleP3D><compatibleXPL>false</compatibleXPL><compatibleFS2>false</compatibleFS2><compatibleFS2020>true</compatibleFS2020><version>220</version><configVersion>1</configVersion><pluginInterfaceVersion>100</pluginInterfaceVersion><prefWidth>750</prefWidth><prefHeight>990</prefHeight><source>ONLINE</source><platforms><platform>WINDOWS</platform><platform>MAC</platform><platform>LINUX</platform><platform>ANDROID</platform><platform>IPAD</platform><platform>RASPBERRY_PI</platform></platforms><tiers><tier>HOME_USE_STANDARD</tier></tiers></pluginstrument>
