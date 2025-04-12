@@ -8,7 +8,7 @@ This collection of Cessna Citation CJ4 instruments contains every instrument tha
 
 
 ## 2025 Update
-All instruments have been updated to support both MSFS2020 and MSFS2024 and are now incorporated into the AirManager store directly under "Simstrumentation". This page will be used as a guide to show what instruments are available. AirManager instruments should auto update. No downloads are available here.
+All instruments have been updated to support both MSFS2020 and MSFS2024 and are now incorporated into the AirManager store directly. This page will be used as a guide to show what instruments are available. AirManager instruments should auto update. No downloads are available here.
 
 ## Main Panels & Instruments
 
